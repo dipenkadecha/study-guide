@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.20 Microservices - Interview Prep</title>
+<title>4.20 Microservices - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -96,7 +96,7 @@
 <li><strong>Library (Spring Cloud):</strong> Simpler ops, no sidecar overhead. Java-only, library version management, code coupling.</li>
 <li><strong>Decision:</strong> Polyglot/large orgs -> Service Mesh. Java-only/small team -> Spring Cloud. Can combine both.</li>
 </ul></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention service mesh for cross-cutting concerns: "Rather than implementing retry/timeout/circuit-breaker in every service, we use Istio service mesh. The Envoy sidecar handles: mTLS (zero-trust), retries with budget (max 20% of requests retried), circuit breaking (5xx threshold), and emits golden metrics (latency, errors, saturation) automatically. App code stays focused on business logic."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention service mesh for cross-cutting concerns: "Rather than implementing retry/timeout/circuit-breaker in every service, we use Istio service mesh. The Envoy sidecar handles: mTLS (zero-trust), retries with budget (max 20% of requests retried), circuit breaking (5xx threshold), and emits golden metrics (latency, errors, saturation) automatically. App code stays focused on business logic."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.20.2 Strangler Fig Migration</h3><span class="badge">Architecture</span></div><div class="card-body">
@@ -120,7 +120,7 @@ public class LegacyOrderAdapter implements OrderPort {
 <p><strong>Amazon:</strong> Migrated from monolithic bookstore (Obidos) to microservices over 8+ years. New features built as services, old monolith routes gradually redirected via API Gateway. No big-bang rewrite — the monolith "strangled" as traffic shifted service by service until nothing remained.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Strangler Fig is low-risk (old system runs until new one proves itself) but slow (months-to-years for full migration) and complex (routing logic, data sync between old and new). Big-bang rewrite is faster but high-risk (if it fails, massive wasted effort). Strangler Fig is almost always preferred — reduces risk at the cost of longer timeline and temporary complexity of running both systems.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>For migration questions: "I'd use Strangler Fig — route new feature traffic to the new service while existing traffic stays on the monolith. An API gateway routes by path: /v2/users → new service, /users → legacy. Gradually migrate endpoints. Data: new service reads from both old DB and new DB during transition. Once all traffic migrated, decommission legacy."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>For migration questions: "I'd use Strangler Fig — route new feature traffic to the new service while existing traffic stays on the monolith. An API gateway routes by path: /v2/users → new service, /users → legacy. Gradually migrate endpoints. Data: new service reads from both old DB and new DB during transition. Once all traffic migrated, decommission legacy."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.20.3 BFF (Backend for Frontend)</h3><span class="badge">Architecture</span></div><div class="card-body">
@@ -159,7 +159,7 @@ public class LegacyOrderAdapter implements OrderPort {
 </table>
 </div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Netflix:</strong> Separate BFFs for TV app (simple navigation, large images), mobile app (bandwidth-constrained, smaller payloads), and web app (interactive, more data). Each BFF aggregates the same backend microservices but returns device-optimized responses — TV BFF returns pre-formatted layouts; mobile BFF returns compressed, paginated data.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Use BFF when clients have very different needs: "Mobile app needs minimal payload (battery, bandwidth). Web app needs rich data for interactive dashboards. Rather than one generic API that over-serves mobile or under-serves web, each platform gets a BFF that aggregates and shapes data from the same backend services for its specific needs."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Use BFF when clients have very different needs: "Mobile app needs minimal payload (battery, bandwidth). Web app needs rich data for interactive dashboards. Rather than one generic API that over-serves mobile or under-serves web, each platform gets a BFF that aggregates and shapes data from the same backend services for its specific needs."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.20.4 Service Discovery</h3><span class="badge">Patterns</span></div><div class="card-body">
@@ -176,7 +176,7 @@ public class LegacyOrderAdapter implements OrderPort {
 // kube-dns resolves "order-service.namespace.svc.cluster.local" -> pod IPs</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Client-side (Eureka) vs Server-side (K8s DNS/AWS ALB): Client-side gives more control (custom load balancing, circuit breaking) but adds library dependency to every service. Server-side is transparent (services just use DNS) but less flexible (standard round-robin only). In Kubernetes: use K8s Service (server-side) as default; add Istio for advanced routing if needed.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Netflix (Eureka):</strong> Each service instance registers itself with Eureka on startup, sends heartbeats every 30s. Client library caches the registry locally — continues working even if Eureka goes down. Services fetch registry updates every 30s. Deregistration on graceful shutdown; 90s timeout for crashed instances. Self-preservation mode prevents mass deregistration during network partitions.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>In Kubernetes designs, service discovery is mostly solved: "K8s Services provide DNS-based discovery (my-service.namespace.svc.cluster.local resolves to pod IPs). For cross-cluster or non-K8s: Consul for service registry with health checks. Key point: services register on startup, deregister on shutdown, and health checks remove unhealthy instances automatically."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>In Kubernetes designs, service discovery is mostly solved: "K8s Services provide DNS-based discovery (my-service.namespace.svc.cluster.local resolves to pod IPs). For cross-cluster or non-K8s: Consul for service registry with health checks. Key point: services register on startup, deregister on shutdown, and health checks remove unhealthy instances automatically."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.20.5 Database-per-Service Pattern</h3><span class="badge">Patterns</span></div><div class="card-body">
@@ -204,7 +204,7 @@ public class OrderSummaryAggregator {
 <p><strong>Netflix:</strong> Each microservice owns its data store — user service uses Cassandra (high write throughput), recommendation service uses MySQL + ML feature store, search uses Elasticsearch, session service uses Redis. No shared databases — services communicate only via APIs and events.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Data isolation (each service owns its data) eliminates coupling but makes cross-service queries impossible (no JOINs). Requires: API calls for cross-service data, eventual consistency between services, Saga pattern for distributed transactions. Alternative: shared database with schema-per-service (logical isolation, physical sharing) — easier queries but risks coupling through shared tables.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Explain the motivation: "Each microservice owns its database — User Service has PostgreSQL, Product Service has MongoDB, Search Service has Elasticsearch. This enables: independent deployments (schema changes don't affect others), technology diversity (right DB for each use case), independent scaling. Trade-off: cross-service queries require API composition (BFF aggregates) or materialized views via CDC."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Explain the motivation: "Each microservice owns its database — User Service has PostgreSQL, Product Service has MongoDB, Search Service has Elasticsearch. This enables: independent deployments (schema changes don't affect others), technology diversity (right DB for each use case), independent scaling. Trade-off: cross-service queries require API composition (BFF aggregates) or materialized views via CDC."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.20.6 Anti-corruption Layer (ACL)</h3><span class="badge">Patterns</span></div><div class="card-body">
@@ -234,7 +234,7 @@ public class PaymentGatewayACL implements PaymentPort {
 <tr><td>Shared schema, separate tables</td><td>Medium</td><td>Medium</td><td>Medium</td><td>Transitional step from monolith</td></tr>
 </table></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Shopify:</strong> When integrating with legacy ERP systems for enterprise merchants, they use an ACL that translates between Shopify's modern domain model (Product, Variant, Inventory) and the ERP's legacy model (SKU, BOM, WarehouseSlot). The ACL prevents ERP concepts from leaking into Shopify's clean domain — isolates legacy complexity.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Use ACL during migrations or integrations: "Between our new Order Service and the legacy billing system, I'd place an Anti-corruption Layer. It translates our domain events (OrderPlaced) into the legacy system's expected format (SOAP XML with their specific field names). If the legacy system changes or is replaced, only the ACL adapter needs updating — our domain stays clean."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Use ACL during migrations or integrations: "Between our new Order Service and the legacy billing system, I'd place an Anti-corruption Layer. It translates our domain events (OrderPlaced) into the legacy system's expected format (SOAP XML with their specific field names). If the legacy system changes or is replaced, only the ACL adapter needs updating — our domain stays clean."</p></div>
 </div></div>
 
 </div>

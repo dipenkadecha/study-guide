@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.22 Concurrency - Interview Prep</title>
+<title>4.22 Concurrency - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -97,7 +97,7 @@ public class Product {
 <p><strong>GitHub:</strong> Pull request merges use optimistic locking. When you click "Merge," GitHub checks if the base branch has changed since you last loaded the page (version check). If it has, the merge is rejected and you must re-fetch — prevents silent overwrites in concurrent merge scenarios without holding locks during code review.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Optimistic (check version at commit, abort on conflict): high throughput when conflicts are rare (read-heavy), but wasted work on abort. Pessimistic (lock before read): guaranteed success but blocks concurrent access (lower throughput). Rule of thumb: optimistic for web apps (low contention on any single row), pessimistic for inventory/seat booking (high contention on popular items).</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Match locking strategy to contention level: 'For user profile updates (low contention — only the user themselves edits): optimistic locking with version column. For concert seat booking (high contention — thousands competing for same seat): pessimistic lock (SELECT FOR UPDATE). Optimistic would cause too many retries under high contention.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Match locking strategy to contention level: 'For user profile updates (low contention — only the user themselves edits): optimistic locking with version column. For concert seat booking (high contention — thousands competing for same seat): pessimistic lock (SELECT FOR UPDATE). Optimistic would cause too many retries under high contention.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.22.2 Distributed Lock with Fencing</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -121,7 +121,7 @@ public class Product {
 <tr><td>Distributed (Redis)</td><td>Medium</td><td>Fail-fast or wait</td><td>Cross-service coordination</td></tr>
 <tr><td>Lock-free (CAS)</td><td>Highest</td><td>Spin retry</td><td>Hot paths, counters, queues</td></tr>
 </table></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Always mention the fencing token: 'A distributed lock alone isn't safe — if the holder pauses (GC, network delay) and the lock expires, two processes can act as leader simultaneously. The fencing token (monotonic counter from the lock service) ensures storage rejects stale writes. Process with token=34 can't overwrite data written by process with token=35.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Always mention the fencing token: 'A distributed lock alone isn't safe — if the holder pauses (GC, network delay) and the lock expires, two processes can act as leader simultaneously. The fencing token (monotonic counter from the lock service) ensures storage rejects stale writes. Process with token=34 can't overwrite data written by process with token=35.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.22.3 MVCC Deep Dive (PostgreSQL)</h3><span class="badge">Deep Dive</span></div><div class="card-body">
@@ -138,7 +138,7 @@ public class Product {
 // -> Table bloat -> Slower queries. Monitor: pg_stat_user_tables (n_dead_tup)</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>MVCC eliminates read-write contention (readers see snapshots, never block) but: old versions accumulate as dead tuples (bloat), long-running transactions prevent cleanup (hold snapshots open), and VACUUM CPU/IO cost. Alternatives: lock-based (simple, blocks readers) or optimistic without MVCC (recheck at commit). PostgreSQL chose MVCC — optimized for read-heavy OLTP workloads.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>PostgreSQL:</strong> VACUUM ANALYZE runs automatically (autovacuum) to reclaim dead tuples. But: a single long-running query (analytics report on OLTP DB) can pin the snapshot horizon — preventing VACUUM from cleaning up tuples that newer transactions created and deleted. Solution: statement_timeout for long queries, separate OLAP replica for analytics.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Explain MVCC's benefit concretely: 'In PostgreSQL, a SELECT never blocks an UPDATE and vice versa. The reader sees the row version that existed at query start, while the writer creates a new version. This enables high concurrency for read-heavy apps without explicit locking. The cost: tuples accumulate and VACUUM is needed — monitor bloat in production.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Explain MVCC's benefit concretely: 'In PostgreSQL, a SELECT never blocks an UPDATE and vice versa. The reader sees the row version that existed at query start, while the writer creates a new version. This enables high concurrency for read-heavy apps without explicit locking. The cost: tuples accumulate and VACUUM is needed — monitor bloat in production.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.22.4 Lock-free Patterns (CAS)</h3><span class="badge">Deep Dive</span></div><div class="card-body">
@@ -163,7 +163,7 @@ public class LockFreeStack&lt;E&gt; {
 // Solution: exponential backoff or LongAdder (striped counters)</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Lock-free (CAS loops): no blocking, no deadlocks, better throughput under low-to-medium contention. But: high contention → excessive retries (spinning wastes CPU), complex to implement correctly (ABA problem), and harder to reason about. Lock-based: simpler to understand, fair (FIFO ordering), but risk of priority inversion and deadlocks. Use lock-free for hot counters/queues; lock-based for complex critical sections.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Java ConcurrentHashMap:</strong> Uses CAS for individual bucket updates — multiple threads can write to different buckets concurrently without locks. Under the hood: compare-and-swap on the bucket's head node. If CAS fails (another thread modified it), retry with the new value. Achieves near-linear scalability on multi-core CPUs for non-conflicting keys.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Know when to suggest CAS: 'For the distributed counter (likes, views), I'd use AtomicLong (CAS-based) rather than synchronized — no thread blocking, scales better on multi-core. For complex operations (transfer money between two accounts), I'd use locks — CAS on multiple variables simultaneously isn't atomic without hardware support (DCAS doesn't exist on commodity hardware).'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Know when to suggest CAS: 'For the distributed counter (likes, views), I'd use AtomicLong (CAS-based) rather than synchronized — no thread blocking, scales better on multi-core. For complex operations (transfer money between two accounts), I'd use locks — CAS on multiple variables simultaneously isn't atomic without hardware support (DCAS doesn't exist on commodity hardware).'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.22.5 Deadlock Prevention in Production</h3><span class="badge">Deep Dive</span></div><div class="card-body">
@@ -189,7 +189,7 @@ Optional&lt;Seat&gt; findByIdForUpdate(String id);
 <li><strong>Distributed locks (Redis/ZK):</strong> Cross-process coordination. Keep TTL short, always use fencing tokens, handle failures gracefully.</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>PostgreSQL:</strong> Detects deadlocks automatically by checking the wait-for graph every deadlock_timeout (default 1s). When detected, one transaction is aborted (victim chosen by least work done). Application must catch the deadlock error and retry. Prevention: always acquire locks in consistent order (e.g., by account_id ascending) — guarantees no circular wait.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>For any system with multiple locks: 'Deadlock prevention via lock ordering — all services acquire locks in a globally consistent order (e.g., alphabetical by resource ID). For database transactions: keep them short (minimize lock holding time), access tables in the same order across all queries, and use SELECT FOR UPDATE NOWAIT to fail fast rather than block indefinitely.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>For any system with multiple locks: 'Deadlock prevention via lock ordering — all services acquire locks in a globally consistent order (e.g., alphabetical by resource ID). For database transactions: keep them short (minimize lock holding time), access tables in the same order across all queries, and use SELECT FOR UPDATE NOWAIT to fail fast rather than block indefinitely.'</p></div>
 </div></div>
 </div>
 

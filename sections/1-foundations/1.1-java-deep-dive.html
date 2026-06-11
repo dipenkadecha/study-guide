@@ -4,14 +4,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>1.1 Java Deep Dive - Interview Prep</title>
+<title>1.1 Java Deep Dive - Study Guide</title>
 <link href="../../assets/styles.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
@@ -64,7 +64,7 @@
 <li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
 <li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
 <li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
-<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 Senior Engineer Expectations</a></li>
 </ul></div>
 <div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
 <li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
@@ -105,7 +105,7 @@ public class Singleton {
 <tr><td>synchronized</td><td>Multiple operations must be atomic</td><td>Medium - thread blocking</td><td>Mutual exclusion + visibility + ordering</td></tr>
 <tr><td>Atomic*</td><td>Lock-free single variable CAS</td><td>Low - CAS spin</td><td>Atomicity + visibility via CAS</td></tr>
 <tr><td>StampedLock</td><td>Read-heavy workloads</td><td>Low reads / Medium writes</td><td>Optimistic reads without blocking writers</td></tr>
-</table></div><div class="interview-tip"><h4>Interview Tip</h4>
+</table></div><div class="interview-tip"><h4>Key Tip</h4>
 <p>When asked "why volatile in DCL?", explain: without volatile, the JIT can reorder <code>instance = new Singleton()</code> into (1) allocate memory, (2) assign reference, (3) call constructor. Another thread sees non-null reference to unconstructed object.</p></div></div>
 </div>
 <div class="card"><div class="card-header"><h3>1.1.2 volatile - Visibility Without Locking</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -412,7 +412,7 @@ long total = adder.sum();                 // Sum all cells (slightly stale under
 <tr><td>Sequence number generator (exact ordering)</td><td><code>AtomicLong</code></td><td>LongAdder doesn't guarantee exact current value; synchronized too slow</td></tr>
 <tr><td>Read-heavy, rare-write shared state</td><td><code>StampedLock</code> or <code>volatile</code> immutable snapshot</td><td>synchronized penalizes all readers; CAS loop on reads wasteful</td></tr>
 </table>
-</div><div class="interview-tip"><h4>Interview Tip</h4>
+</div><div class="interview-tip"><h4>Key Tip</h4>
 <p>When discussing CAS in interviews, always mention: (1) It's a single CPU instruction - truly atomic at hardware level, (2) The retry loop pattern for building higher-level atomic operations, (3) ABA problem and how AtomicStampedReference solves it, (4) Why it degrades under high contention (cache-line bouncing, failed retries), and (5) LongAdder as the solution for high-contention counters. Show you understand the full spectrum from hardware to design trade-offs.</p></div></div>
 </div>
 <div class="card"><div class="card-header"><h3>1.1.6 GC Algorithms Comparison</h3><span class="badge">Performance</span></div><div class="card-body">

@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.3 Networking - Interview Prep</title>
+<title>4.3 Networking - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -93,7 +93,7 @@
 <div class="production-insight"><h4>Production Example</h4>
 <p><strong>Netflix:</strong> Uses Route 53 weighted DNS for gradual region failover. DNS TTL set to 60s — allows shifting traffic from us-east-1 to eu-west-1 within minutes during regional outages without client changes.</p>
 </div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Always start HLD diagrams with DNS. "Client hits DNS which resolves to our load balancer IP. We use weighted DNS for gradual region failover and low TTL (60s) to enable fast failover." Shows you understand the full request path from user to server.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Always start HLD diagrams with DNS. "Client hits DNS which resolves to our load balancer IP. We use weighted DNS for gradual region failover and low TTL (60s) to enable fast failover." Shows you understand the full request path from user to server.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.3.2 HTTP Protocol Comparison</h3><span class="badge">Networking</span></div><div class="card-body">
@@ -102,7 +102,7 @@
 <tr><td>HTTP/2</td><td>Multiplexing, header compression, server push</td><td>Single TCP, binary frames</td><td>Most web traffic today</td></tr>
 <tr><td>HTTP/3 (QUIC)</td><td>UDP-based, 0-RTT, no head-of-line blocking</td><td>UDP + QUIC</td><td>Mobile, unreliable networks</td></tr>
 </table>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention HTTP/2 as the baseline for modern services (multiplexing eliminates head-of-line blocking at HTTP level). For mobile-first or global apps, mention HTTP/3 (QUIC): "Zero-RTT connection resumption reduces latency for mobile users switching between Wi-Fi and cellular."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention HTTP/2 as the baseline for modern services (multiplexing eliminates head-of-line blocking at HTTP level). For mobile-first or global apps, mention HTTP/3 (QUIC): "Zero-RTT connection resumption reduces latency for mobile users switching between Wi-Fi and cellular."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.3.3 API Communication Comparison</h3><span class="badge">Networking</span></div><div class="card-body">
@@ -122,7 +122,7 @@
 <li><strong>GraphQL:</strong> Client controls data shape, single endpoint, no over-fetching. Overhead: N+1 problem (use DataLoader), complex caching, no HTTP caching.</li>
 <li><strong>Decision:</strong> Public API = REST. Internal high-throughput = gRPC. BFF with diverse clients = GraphQL.</li>
 </ul></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Default to REST for external APIs and gRPC for internal microservice communication in your designs. Say: "External clients use REST (universal, cacheable via CDN), while internal services use gRPC for lower latency and strong typing via Protobuf contracts."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Default to REST for external APIs and gRPC for internal microservice communication in your designs. Say: "External clients use REST (universal, cacheable via CDN), while internal services use gRPC for lower latency and strong typing via Protobuf contracts."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.3.4 REST API Maturity (Richardson Model)</h3><span class="badge">Essential</span></div><div class="card-body">
@@ -132,7 +132,7 @@
 <li><strong>Level 2:</strong> HTTP verbs (GET, POST, PUT, DELETE) + status codes</li>
 <li><strong>Level 3:</strong> HATEOAS - hypermedia links in responses</li>
 </ul>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When designing REST APIs in interviews, aim for Level 2 (resources + proper HTTP verbs + status codes). Mention HATEOAS awareness but note it's rarely implemented in practice. What matters: consistent resource naming, proper status codes (201 Created, 404, 409 Conflict), and idempotent PUT/DELETE.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When designing REST APIs in interviews, aim for Level 2 (resources + proper HTTP verbs + status codes). Mention HATEOAS awareness but note it's rarely implemented in practice. What matters: consistent resource naming, proper status codes (201 Created, 404, 409 Conflict), and idempotent PUT/DELETE.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.3.5 Idempotency</h3><span class="badge">Essential</span></div><div class="card-body">
@@ -143,7 +143,7 @@ Headers: Idempotency-Key: "uuid-12345-unique-per-request"
 // Implementation: store key + response in Redis with TTL (24h).
 // GET/PUT/DELETE are naturally idempotent; POST is not -> needs a key.</code></pre>
 <div class="see-also">→ Pagination is covered in <a href="4.3-networking.html">4.3.8 Cursor-Based Pagination</a> and API versioning in <a href="4.3-networking.html">4.3.9 API Versioning</a> (both below).</div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention idempotency keys for payment/order APIs — it signals production experience: "We put idempotency keys on POST /payments so a network retry doesn't double-charge; the server stores the key + response in Redis for 24h and replays the cached response on a repeat."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention idempotency keys for payment/order APIs — it signals production experience: "We put idempotency keys on POST /payments so a network retry doesn't double-charge; the server stores the key + response in Redis for 24h and replays the cached response on a repeat."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.3.6 Error Response Standard (RFC 7807)</h3><span class="badge">Essential</span></div><div class="card-body">
@@ -196,7 +196,7 @@ Headers: Idempotency-Key: "uuid-12345-unique-per-request"
 //   "data": { "orderId": "ord_789", "amount": 99.99, "currency": "USD" },
 //   "timestamp": "2024-01-15T10:30:00Z"
 // }</code></pre>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When designing any event notification system, mention webhook best practices: HMAC signature verification, exponential backoff retries, idempotency keys, and a dead-letter queue for failed deliveries. This shows you've built production integrations, not just consumed APIs.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When designing any event notification system, mention webhook best practices: HMAC signature verification, exponential backoff retries, idempotency keys, and a dead-letter queue for failed deliveries. This shows you've built production integrations, not just consumed APIs.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.3.8 Cursor-Based Pagination</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -218,7 +218,7 @@ Headers: Idempotency-Key: "uuid-12345-unique-per-request"
 // Why cursor is better for infinite scroll / timelines:
 // - Offset page 1000: SELECT * FROM posts OFFSET 20000 LIMIT 20 (scans 20000 rows!)
 // - Cursor page 1000: SELECT * FROM posts WHERE id > 12345 LIMIT 20 (index seek!)</code></pre>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When an interviewer asks about pagination, immediately say "cursor-based" and explain why: "Offset pagination degrades at scale — OFFSET 10000 scans and discards 10K rows. Cursor pagination uses an indexed WHERE clause, giving O(1) seek regardless of page depth. Essential for feeds and timelines."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When an interviewer asks about pagination, immediately say "cursor-based" and explain why: "Offset pagination degrades at scale — OFFSET 10000 scans and discards 10K rows. Cursor pagination uses an indexed WHERE clause, giving O(1) seek regardless of page depth. Essential for feeds and timelines."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.3.9 API Versioning</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -232,7 +232,7 @@ Headers: Idempotency-Key: "uuid-12345-unique-per-request"
 <tr><td><strong>Content Negotiation</strong></td><td><code>Accept: application/vnd.company.v2+json</code></td><td>Most RESTful approach</td><td>Complex to implement and document</td></tr>
 </table>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>In system design interviews, when designing APIs mention: (1) versioning strategy (URL path is most common in practice), (2) pagination approach (cursor for feeds/timelines, offset for admin dashboards with page jumps), and (3) rate limiting. These show you think about API evolution and real-world usage, not just the happy path.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>In system design interviews, when designing APIs mention: (1) versioning strategy (URL path is most common in practice), (2) pagination approach (cursor for feeds/timelines, offset for admin dashboards with page jumps), and (3) rate limiting. These show you think about API evolution and real-world usage, not just the happy path.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.3.10 Long Polling</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -278,7 +278,7 @@ public DeferredResult&lt;List&lt;Message&gt;&gt; pollMessages(@RequestParam long
 <li>Many concurrent users — each holds a connection open</li>
 </ul>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Slack (early days):</strong> Used long polling for real-time messages before migrating to WebSockets. The client held an open HTTP request; when a new message arrived in the channel, the server responded immediately. Scaled to millions of connections but eventually migrated to WebSockets for lower overhead.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention long polling as a fallback when WebSockets aren't feasible (corporate firewalls, proxy servers that strip upgrade headers). "Our primary real-time channel is WebSocket, with long polling as a fallback for restricted network environments."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention long polling as a fallback when WebSockets aren't feasible (corporate firewalls, proxy servers that strip upgrade headers). "Our primary real-time channel is WebSocket, with long polling as a fallback for restricted network environments."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.3.11 Server-Sent Events (SSE)</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -328,7 +328,7 @@ public Flux&lt;ServerSentEvent&lt;Order&gt;&gt; streamOrders() {
 </table>
 </div>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>When designing notification systems or live feeds, mention SSE first — it's simpler, HTTP-native, auto-reconnects, and works through CDNs. Reserve WebSockets for truly bidirectional needs (chat, multiplayer). Interviewers appreciate when you pick the simpler tool that fits rather than defaulting to WebSockets for everything.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When designing notification systems or live feeds, mention SSE first — it's simpler, HTTP-native, auto-reconnects, and works through CDNs. Reserve WebSockets for truly bidirectional needs (chat, multiplayer). Interviewers appreciate when you pick the simpler tool that fits rather than defaulting to WebSockets for everything.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.3.12 WebSockets &amp; Scaling</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -346,7 +346,7 @@ public Flux&lt;ServerSentEvent&lt;Order&gt;&gt; streamOrders() {
 //   heartbeats/ping-pong to detect dead connections, and backpressure on slow clients.</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>WebSocket gives the lowest latency and true bidirectionality, but every connection is stateful — horizontal scaling needs sticky routing plus a pub/sub fanout so any server can reach any client. SSE avoids all of that (stateless-ish, auto-reconnect, CDN-friendly) but is one-way. Default to SSE unless the client must also push.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Slack:</strong> Uses WebSocket for real-time messaging (bidirectional — typing indicators need client→server too), falling back to long polling on restrictive corporate proxies. Presence (online/away) rides the same socket via lightweight heartbeats, so presence adds no extra connections.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Lead with the scaling answer: "WebSocket connections are stateful, so I'd put a connection registry (userId → server) and a Redis/Kafka pub/sub layer between socket servers — a message arriving anywhere is published and delivered to whichever server holds that user's socket. Sticky sessions at the LB keep a client pinned to its server." See the comparison table in 4.3.11 for choosing between polling / SSE / WebSocket.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Lead with the scaling answer: "WebSocket connections are stateful, so I'd put a connection registry (userId → server) and a Redis/Kafka pub/sub layer between socket servers — a message arriving anywhere is published and delivered to whichever server holds that user's socket. Sticky sessions at the LB keep a client pinned to its server." See the comparison table in 4.3.11 for choosing between polling / SSE / WebSocket.</p></div>
 </div></div>
 
 <div class="page-nav">

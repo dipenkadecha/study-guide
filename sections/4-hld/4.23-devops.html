@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.23 DevOps - Interview Prep</title>
+<title>4.23 DevOps - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -86,7 +86,7 @@
 // No kubectl apply from laptops - all changes through PR review</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>GitOps (declarative, git as source of truth): full audit trail, easy rollback (git revert), consistent environments. But: secrets management is tricky (can't store secrets in git), and drift detection adds complexity. Traditional CI/CD (imperative push): simpler for small teams but no audit trail of WHAT is deployed WHERE without extra tooling.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Weaveworks/Intuit:</strong> ArgoCD watches git repositories for Kubernetes manifest changes. When a developer merges a PR that changes a Deployment replica count, ArgoCD detects the drift from desired state and automatically syncs the cluster. Rollback = revert the git commit. Entire cluster state is reproducible from a single git repository.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>For deployment questions: 'We use GitOps with ArgoCD — Kubernetes manifests stored in git, ArgoCD syncs cluster state to match. Deployment = merge PR to main branch. Rollback = git revert. Benefits: complete audit trail (who changed what, when, why via PR), reproducible environments (spin up staging from same git repo), and developer-friendly (no kubectl access needed).'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>For deployment questions: 'We use GitOps with ArgoCD — Kubernetes manifests stored in git, ArgoCD syncs cluster state to match. Deployment = merge PR to main branch. Rollback = git revert. Benefits: complete audit trail (who changed what, when, why via PR), reproducible environments (spin up staging from same git repo), and developer-friendly (no kubectl access needed).'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.23.2 Feature Flags</h3><span class="badge">DevOps</span></div><div class="card-body">
@@ -103,7 +103,7 @@ if (featureFlags.isEnabled("new-checkout-flow", userId)) {
 <p><strong>Facebook:</strong> GateKeeper system controls feature rollout to 3B+ users. New features start at 0.1% (internal), scale to 1% (dogfood), then 10%, 50%, 100%. If metrics degrade at any stage, one click disables the feature globally in seconds without a deploy. Engineers ship code daily — GateKeeper decouples deploy from release.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Feature flags enable safe deployments (deploy dark, enable gradually) but accumulate as technical debt if not cleaned up. Each flag adds conditional complexity, increases test matrix (flag on/off), and risk of flag conflicts. Best practice: treat flags as temporary — remove within 2 sprints of full rollout. Permanent flags only for ops toggles (maintenance mode) or A/B experiments.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention feature flags for risk mitigation: 'New recommendation algorithm deployed behind a feature flag. Enable for 1% of users, monitor engagement metrics for 24h. If positive, roll to 10%, 50%, 100% over a week. If metrics degrade at any stage, kill switch (disable flag) gives instant rollback without deployment. Flags are cleaned up after full rollout.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention feature flags for risk mitigation: 'New recommendation algorithm deployed behind a feature flag. Enable for 1% of users, monitor engagement metrics for 24h. If positive, roll to 10%, 50%, 100% over a week. If metrics degrade at any stage, kill switch (disable flag) gives instant rollback without deployment. Flags are cleaned up after full rollout.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.23.3 Immutable Infrastructure</h3><span class="badge">DevOps</span></div><div class="card-body">
@@ -121,7 +121,7 @@ if (featureFlags.isEnabled("new-checkout-flow", userId)) {
 <li><strong>Best practice:</strong> Use flags for major features (gradual rollout), short-lived branches (&lt; 2 days) for smaller changes.</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Netflix:</strong> Every deployment creates new AMIs (Amazon Machine Images). Servers are never patched in place — a new image is built, tested, and deployed. The old ASG (Auto Scaling Group) is scaled down as the new one scales up (red/black deployment). If issues arise, simply scale the old ASG back up. No configuration drift — every server is identical to its image.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Connect to deployment strategy: 'We use immutable infrastructure — containers are built once, promoted through environments (dev → staging → prod) without modification. No SSH into production, no config changes on running instances. If a fix is needed, build a new image and deploy. This eliminates configuration drift — every production instance is identical and reproducible from the Dockerfile.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Connect to deployment strategy: 'We use immutable infrastructure — containers are built once, promoted through environments (dev → staging → prod) without modification. No SSH into production, no config changes on running instances. If a fix is needed, build a new image and deploy. This eliminates configuration drift — every production instance is identical and reproducible from the Dockerfile.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.23.4 Production CI/CD Pipeline Stages</h3><span class="badge">Production</span></div><div class="card-body">
@@ -140,7 +140,7 @@ if (featureFlags.isEnabled("new-checkout-flow", userId)) {
 <p><strong>Google:</strong> Monorepo with 1 billion files, 86TB of source code. Every commit triggers CI across affected targets. 150K+ builds/day on distributed build system (Bazel). Deploys to production multiple times daily via automated canary analysis — if error rates spike, automatic rollback within 2 minutes.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Comprehensive pipeline (lint → unit test → integration test → security scan → performance test → canary) gives confidence but is slow (30-60 min). Fast pipeline (lint → unit test → deploy) enables rapid iteration but risky. Balance: fast pipeline for feature branches (lint + unit tests, ~5 min), comprehensive pipeline for main/release branches (all stages, 30 min). Never block developers with slow feedback loops.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Describe your ideal pipeline: 'PR triggers: lint + unit tests + security scan (5 min). Merge to main triggers: full integration tests + build image + deploy to staging + smoke tests (15 min). Release: canary 5% for 30 min (automated metric comparison) → progressive rollout. On failure at any stage: block + notify. Key metric: lead time (commit to production) < 1 hour.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Describe your ideal pipeline: 'PR triggers: lint + unit tests + security scan (5 min). Merge to main triggers: full integration tests + build image + deploy to staging + smoke tests (15 min). Release: canary 5% for 30 min (automated metric comparison) → progressive rollout. On failure at any stage: block + notify. Key metric: lead time (commit to production) < 1 hour.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.23.5 Blue-Green vs Canary vs Rolling</h3><span class="badge">Production</span></div><div class="card-body">
@@ -168,7 +168,7 @@ spec:
 <div class="production-insight"><h4>Production Example</h4>
 <p><strong>Amazon:</strong> Canary deployments across 100M+ customer requests. New version gets 1% traffic for 30 minutes. Automated analysis compares error rates, latency percentiles, and business metrics against baseline. If any metric regresses beyond threshold, automatic rollback fires — zero human intervention for 99% of bad deploys.</p>
 </div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When asked about deployment, always mention: "We use canary with automated metric analysis. If error rate exceeds threshold, Argo Rollouts automatically rolls back. This caught a memory leak in production last quarter before it affected more than 2% of users."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When asked about deployment, always mention: "We use canary with automated metric analysis. If error rate exceeds threshold, Argo Rollouts automatically rolls back. This caught a memory leak in production last quarter before it affected more than 2% of users."</p></div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Blue-Green: instant rollback (switch back to old), simple, but requires 2x infrastructure during transition. Canary: gradual risk exposure (1% → 5% → 100%), resource-efficient (only a few new pods), but rollback is slower (need to detect issue, route back). Rolling update: resource-efficient (replace pods one by one), zero extra infra, but rollback means re-rolling forward with old version (slow).</p></div>
 </div></div>
 

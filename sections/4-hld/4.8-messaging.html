@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.8 Messaging - Interview Prep</title>
+<title>4.8 Messaging - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -99,7 +99,7 @@
 <p><strong>Uber:</strong> Kafka processes 7 trillion messages/day across 6000+ microservices. Every ride generates events (request, match, start, GPS updates, end, payment) flowing through Kafka topics. Consumer groups allow independent processing — fraud, analytics, billing, and mapping services each consume at their own pace.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: Kafka vs RabbitMQ vs SQS</h4><p>Kafka: high throughput, replay capability, ordering within partition, but complex operations. RabbitMQ: flexible routing, priority queues, simpler, but lower throughput and no replay. SQS: fully managed, infinite scale, but no ordering guarantee (FIFO queues limited to 300 msg/s). Choose Kafka for event streaming/replay; RabbitMQ for complex routing; SQS for simple serverless workloads.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Default to Kafka in system design interviews: "Events published to Kafka topics, partitioned by entity_id for ordering. Consumer groups allow independent consumption — analytics, billing, and notification services each read at their own pace. Kafka's retention (7 days) enables replay if a consumer needs reprocessing."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Default to Kafka in system design interviews: "Events published to Kafka topics, partitioned by entity_id for ordering. Consumer groups allow independent consumption — analytics, billing, and notification services each read at their own pace. Kafka's retention (7 days) enables replay if a consumer needs reprocessing."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.8.2 Delivery Semantics</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -130,7 +130,7 @@ public void processPayment(ConsumerRecord&lt;String, PaymentEvent&gt; record) {
 <p><strong>Stripe:</strong> Payment webhooks use at-least-once delivery with idempotency keys. Merchants may receive the same "payment.succeeded" webhook multiple times — they must deduplicate using the event ID. Stripe chose reliability over exactly-once because exactly-once across network boundaries is impossible without client cooperation.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: At-Least-Once vs Exactly-Once</h4><p>At-least-once: simple (retry until ack), may duplicate — consumer must be idempotent. Exactly-once: complex (Kafka transactions + idempotent producer + consumer offset commit in same transaction), higher latency. Most production systems use at-least-once + idempotent consumers — simpler and good enough.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Always mention idempotency with messaging: "We use at-least-once delivery with idempotent consumers. Each message has a unique event_id — consumer checks Redis before processing. If event_id exists, skip (duplicate). This gives us effectively-once semantics without the complexity of distributed transactions."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Always mention idempotency with messaging: "We use at-least-once delivery with idempotent consumers. Each message has a unique event_id — consumer checks Redis before processing. If event_id exists, skip (duplicate). This gives us effectively-once semantics without the complexity of distributed transactions."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.8.3 Dead Letter Queue (DLQ)</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -153,7 +153,7 @@ public DefaultErrorHandler errorHandler(KafkaTemplate&lt;String, Object&gt; temp
 <tr><td>Best for</td><td>Event streaming, log aggregation</td><td>Task queues, RPC</td><td>Simple queuing, serverless</td></tr>
 </table></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>AWS SQS + Lambda:</strong> Messages that fail processing 3 times are automatically moved to a DLQ. Ops team monitors DLQ depth via CloudWatch alarm. Common causes: malformed JSON, missing reference data, transient dependency failures. DLQ messages are manually inspected, fixed, and replayed — no data loss.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Always include DLQ in message-based designs: "Messages that fail after 3 retries with exponential backoff move to a Dead Letter Queue. We set up alerting on DLQ depth — if it grows, it indicates a systemic issue (schema change, downstream outage). DLQ preserves failed messages for manual investigation and replay."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Always include DLQ in message-based designs: "Messages that fail after 3 retries with exponential backoff move to a Dead Letter Queue. We set up alerting on DLQ depth — if it grows, it indicates a systemic issue (schema change, downstream outage). DLQ preserves failed messages for manual investigation and replay."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.8.4 Backpressure Strategies</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -197,7 +197,7 @@ Flux.range(1, 1_000_000)
 // - Server can signal "I'm busy" via flow control frames
 // - Client backs off automatically</code></pre>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>When designing any producer-consumer system, always mention backpressure. Ask yourself: "What happens when the producer is 10x faster than the consumer?" The answer reveals your design's failure mode. For Kafka specifically, note that it handles backpressure naturally because consumers pull — they only fetch what they can process. For push-based systems (WebSocket, gRPC streaming), you need explicit flow control.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When designing any producer-consumer system, always mention backpressure. Ask yourself: "What happens when the producer is 10x faster than the consumer?" The answer reveals your design's failure mode. For Kafka specifically, note that it handles backpressure naturally because consumers pull — they only fetch what they can process. For push-based systems (WebSocket, gRPC streaming), you need explicit flow control.</p></div>
 <div class="trade-off-box"><h4>Trade-off: Drop vs Buffer vs Throttle</h4><p>Drop: no memory growth but data loss (acceptable for metrics/telemetry). Buffer: no data loss but OOM risk if consumer is permanently slower than producer. Throttle producer: safest but producer latency increases (may cascade upstream). Best: bounded buffer + alert when >80% full + scale consumers automatically.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Netflix:</strong> Uses reactive streams (RxJava) throughout their microservices. When a downstream service is slow, backpressure propagates upstream automatically — the API gateway slows down acceptance of new requests rather than queuing unboundedly. Prevents cascading OOM failures across the entire call chain.</p></div>
 </div></div>

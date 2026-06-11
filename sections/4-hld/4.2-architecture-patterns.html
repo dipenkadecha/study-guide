@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.2 Architecture Patterns - Interview Prep</title>
+<title>4.2 Architecture Patterns - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -143,7 +143,7 @@ public class OrderQueryService {
 <div class="production-insight"><h4>Production Example</h4>
 <p><strong>Uber CQRS:</strong> Write path ingests 1M+ trip GPS events/sec into Kafka → stored in Cassandra. Read path materializes into Elasticsearch for rider-facing ETA and driver-facing navigation. Different models optimized for their access patterns.</p>
 </div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Don't just name a pattern — explain WHY you'd choose it for THIS system. "I'm choosing CQRS here because our read traffic is 100x write traffic, and reads need denormalized views that would be expensive to compute on every query." Pattern + justification = senior-level answer.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Don't just name a pattern — explain WHY you'd choose it for THIS system. "I'm choosing CQRS here because our read traffic is 100x write traffic, and reads need denormalized views that would be expensive to compute on every query." Pattern + justification = senior-level answer.</p></div>
 </div></div>
 </div>
 
@@ -162,7 +162,7 @@ public class OrderQueryService {
 <p><strong>When to choose Microservices instead:</strong> Greenfield projects, cloud-native, team autonomy needed, independent scaling required.</p>
 <div class="trade-off-box"><h4>Trade-off: SOA vs Microservices</h4><p>SOA with ESB is simpler to coordinate but creates a central bottleneck (ESB is SPOF). Microservices are more resilient but require each team to handle cross-cutting concerns (auth, logging, tracing) independently or via a service mesh.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Banks &amp; Insurance:</strong> Most large banks still run SOA — legacy COBOL systems wrapped in SOAP/XML services connected via IBM MQ or TIBCO ESB. Migration to microservices happens slowly (5-10 year programs) because replacing the ESB means rewiring thousands of integrations.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>If asked "monolith vs microservices," mention SOA as the middle ground that enterprises used in the 2000s. Show awareness that architecture is a spectrum: Monolith → Modular Monolith → SOA → Microservices → Serverless. Each step adds operational complexity but gains team autonomy and independent scaling.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>If asked "monolith vs microservices," mention SOA as the middle ground that enterprises used in the 2000s. Show awareness that architecture is a spectrum: Monolith → Modular Monolith → SOA → Microservices → Serverless. Each step adds operational complexity but gains team autonomy and independent scaling.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.2.3 Event-Driven Architecture (EDA)</h3><span class="badge">Architecture</span></div><div class="card-body">
@@ -210,7 +210,7 @@ public class InventoryHandler {
 
 <div class="production-insight"><h4>Production Example</h4><p><strong>Uber:</strong> When a rider requests a ride, the event "RideRequested" flows through Kafka to dozens of services independently — matching, pricing, driver notification, fraud detection, surge calculation, ETA estimation. No single orchestrator. Each service acts on the event autonomously. If fraud detection is slow, the ride still proceeds for most cases.</p></div>
 <div class="trade-off-box"><h4>Trade-off: Event-Driven vs Request-Driven</h4><p>Events decouple producers from consumers (add new consumers without changing producer). But: debugging is harder (no call stack, events flow through queues), ordering isn't guaranteed across topics, and eventual consistency means UI may show stale state briefly.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Use EDA whenever the interviewer says "multiple downstream services need to know about X." Say: "Rather than the order service calling 5 services synchronously, it publishes an OrderPlaced event. Each consumer processes independently — if notification service is slow, it doesn't block payment processing."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Use EDA whenever the interviewer says "multiple downstream services need to know about X." Say: "Rather than the order service calling 5 services synchronously, it publishes an OrderPlaced event. Each consumer processes independently — if notification service is slow, it doesn't block payment processing."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.2.4 Event Sourcing</h3><span class="badge">Pattern</span></div><div class="card-body">
@@ -242,7 +242,7 @@ public class InventoryHandler {
 
 <div class="production-insight"><h4>Production Example</h4><p><strong>Banking/Finance:</strong> Every transaction is an event. Regulators require full audit trails. LMAX Exchange processes 6 million financial events/second using event sourcing. <strong>Git</strong> is event sourcing — each commit is an event; current file state = replay all commits.</p></div>
 <div class="trade-off-box"><h4>Trade-off: Event Sourcing vs CRUD</h4><p>Event Sourcing gives complete audit trail and temporal queries but makes simple reads complex (must replay or maintain projections). CRUD is simpler for basic apps but loses history (you only see current state). Use Event Sourcing when audit/compliance matters or you need "time travel" queries.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention Event Sourcing for: payment systems (audit trail), collaborative editors (undo/redo), and any system where "why did this happen?" matters. Pair it with CQRS: "Events are the write model, projections are the read model — optimized for their respective access patterns."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention Event Sourcing for: payment systems (audit trail), collaborative editors (undo/redo), and any system where "why did this happen?" matters. Pair it with CQRS: "Events are the write model, projections are the read model — optimized for their respective access patterns."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.2.5 Serverless Architecture</h3><span class="badge">Architecture</span></div><div class="card-body">
@@ -263,7 +263,7 @@ public class InventoryHandler {
 
 <div class="production-insight"><h4>Production Example</h4><p><strong>Netflix:</strong> Uses Lambda for encoding validation — when a video is uploaded to S3, a Lambda triggers to check format, resolution, and metadata before expensive transcoding begins. Idle most of the time, bursts to thousands of concurrent invocations during content drops.</p></div>
 <div class="trade-off-box"><h4>Trade-off: Serverless vs Containers</h4><p>Serverless: zero ops, auto-scales to zero (cost-effective for sporadic traffic), but cold starts add latency and max execution time is limited (15min Lambda). Containers: more control, no cold starts, unlimited runtime, but you manage scaling and pay for idle capacity.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Use serverless in designs for: webhook handlers, image processing triggers, scheduled cleanup jobs, and low-traffic APIs. Say: "For the thumbnail generation service, I'd use Lambda triggered by S3 upload — it's event-driven, stateless, and we pay nothing when no uploads are happening."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Use serverless in designs for: webhook handlers, image processing triggers, scheduled cleanup jobs, and low-traffic APIs. Say: "For the thumbnail generation service, I'd use Lambda triggered by S3 upload — it's event-driven, stateless, and we pay nothing when no uploads are happening."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.2.6 Layered Architecture (N-Tier)</h3><span class="badge">Architecture</span></div><div class="card-body">
@@ -300,7 +300,7 @@ public class InventoryHandler {
 <p><strong>When to consider alternatives:</strong> Complex domain logic (→ Hexagonal/DDD), microservices (→ vertical slicing per service), event-heavy systems (→ EDA).</p>
 <div class="trade-off-box"><h4>Trade-off: Layered vs Hexagonal vs Vertical Slicing</h4><p>Layered is simple but changes cascade vertically. Hexagonal isolates business logic from infrastructure (better testability) but adds abstraction overhead. Vertical slicing (feature-based) keeps related code together but may duplicate infrastructure patterns across slices.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Most Spring Boot apps:</strong> The default Spring Boot project structure IS layered architecture — @Controller → @Service → @Repository. Works well for CRUD apps up to medium complexity. Companies like Shopify started layered and migrated to modular monolith (vertical slices) as complexity grew.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>For LLD questions, default to layered architecture (it's expected). For HLD, layered applies within each microservice. Say: "Each service internally follows a 3-layer structure (API → Domain → Persistence), while the overall system is microservices communicating via events."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>For LLD questions, default to layered architecture (it's expected). For HLD, layered applies within each microservice. Say: "Each service internally follows a 3-layer structure (API → Domain → Persistence), while the overall system is microservices communicating via events."</p></div>
 </div></div>
 
 <div class="page-nav">

@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.15 Storage - Interview Prep</title>
+<title>4.15 Storage - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -108,7 +108,7 @@
 <p><strong>Dropbox:</strong> Stores 2+ exabytes in a custom object storage system (Magic Pocket). Originally used S3 but built their own to save $75M+ annually at scale. Objects stored with Reed-Solomon erasure coding (1.5x storage overhead vs 3x for replication) across multiple data centers.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Consistency vs Performance in Object Storage: S3 is now strongly consistent for all operations (since Dec 2020) — no more eventual consistency issues. However: single-object write throughput is limited (5GB single PUT, 5TB multipart). For small files (&lt;1MB), S3 latency (50-100ms first byte) is too slow for hot path — front with CloudFront CDN or ElastiCache.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Use S3 for all blob storage in system design: 'User uploads go to S3 (11 nines durability, lifecycle policies move to Glacier after 90 days). Pre-signed URLs for direct upload/download — our servers never touch the binary data. S3 event notification triggers Lambda for thumbnail generation.' Shows complete data flow without hand-waving.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Use S3 for all blob storage in system design: 'User uploads go to S3 (11 nines durability, lifecycle policies move to Glacier after 90 days). Pre-signed URLs for direct upload/download — our servers never touch the binary data. S3 event notification triggers Lambda for thumbnail generation.' Shows complete data flow without hand-waving.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.15.3 Block Storage (EBS) Patterns</h3><span class="badge">Infrastructure</span></div><div class="card-body">
@@ -136,7 +136,7 @@
 <li><strong>File Storage:</strong> Shared access across instances, familiar POSIX interface, but lower performance than block. Best for shared state between containers.</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Hadoop/HDFS:</strong> Each data block (128MB) replicated 3x across different racks. NameNode tracks all block locations in memory — 1 billion files requires ~300GB RAM for metadata. Facebook's HDFS cluster: 600+ PB across 4,000+ nodes. Trade-off: great for large sequential reads (analytics), terrible for small random reads (use HBase/Cassandra instead).</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention HDFS for batch analytics: 'Raw event data (clickstream, logs) is stored in HDFS/S3 as Parquet files partitioned by date. Spark jobs process daily partitions for analytics. The large block size (128MB-256MB) optimizes for sequential scan throughput rather than random access — appropriate for our batch processing pattern.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention HDFS for batch analytics: 'Raw event data (clickstream, logs) is stored in HDFS/S3 as Parquet files partitioned by date. Spark jobs process daily partitions for analytics. The large block size (128MB-256MB) optimizes for sequential scan throughput rather than random access — appropriate for our batch processing pattern.'</p></div>
 </div></div>
 <div class="page-nav">
 <a href="4.14-cloud.html">&#8592; Previous: 4.14 Cloud</a>

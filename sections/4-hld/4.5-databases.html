@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.5 Databases - Interview Prep</title>
+<title>4.5 Databases - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -93,7 +93,7 @@
 <div class="production-insight"><h4>Production Example</h4>
 <p><strong>Discord:</strong> Started with PostgreSQL, hit scaling limits at 1 billion messages. Migrated to Cassandra for messages (write-heavy, partitioned by channel_id + time bucket). Kept PostgreSQL for user accounts (strong consistency needed for auth).</p>
 </div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Always justify your database choice: "I'm choosing PostgreSQL for the user service because we need ACID transactions for account operations. For the activity feed, I'd use Cassandra — write-heavy, partitioned by user_id, eventual consistency is acceptable for social feeds." Never say "just use MySQL" without reasoning.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Always justify your database choice: "I'm choosing PostgreSQL for the user service because we need ACID transactions for account operations. For the activity feed, I'd use Cassandra — write-heavy, partitioned by user_id, eventual consistency is acceptable for social feeds." Never say "just use MySQL" without reasoning.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.5.2 Indexing Internals</h3><span class="badge">Database</span></div><div class="card-body">
@@ -115,7 +115,7 @@ CREATE INDEX idx_active_orders ON orders(customer_id) WHERE status = 'ACTIVE';
 CREATE INDEX idx_orders_cover ON orders(customer_id) INCLUDE (total, status);</code></pre>
 <div class="trade-off-box"><h4>Trade-off: B-Tree vs LSM-Tree</h4><p>B-Tree (PostgreSQL, MySQL): fast reads (O(log n) point lookups), slower writes (random I/O for updates). LSM-Tree (Cassandra, RocksDB): fast writes (sequential I/O, append-only), slower reads (must check multiple levels). Choose B-Tree for read-heavy OLTP; LSM-Tree for write-heavy ingestion.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Slack:</strong> Added a composite index on (channel_id, timestamp) to their messages table. Query "last 50 messages in channel X" went from 800ms full table scan to 2ms index seek. A single index change eliminated their #1 performance bottleneck at 10M+ daily active users.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing database design, always mention: "I'd add indexes on columns used in WHERE clauses and JOIN conditions. For the messages table: composite index on (channel_id, created_at DESC) supports our primary query pattern — latest messages per channel."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When discussing database design, always mention: "I'd add indexes on columns used in WHERE clauses and JOIN conditions. For the messages table: composite index on (channel_id, created_at DESC) supports our primary query pattern — latest messages per channel."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.5.3 Sharding Strategies</h3><span class="badge">Database</span></div><div class="card-body">
@@ -136,7 +136,7 @@ CREATE INDEX idx_orders_cover ON orders(customer_id) INCLUDE (total, status);</c
 <p><strong>Instagram:</strong> Shards PostgreSQL by user_id. Each shard holds ~10M users. Shard key chosen so one user's feed/posts/likes stay on same shard (locality). Cross-shard queries (global search) go to separate Elasticsearch cluster.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: Sharding Strategies</h4><p>Hash-based: even distribution but cross-shard queries are expensive and range queries impossible. Range-based: efficient range queries and data locality but risks hot shards (recent dates get all writes). Directory-based: flexible mapping but directory is SPOF. Most systems start hash-based and add application-level routing for cross-shard needs.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Only introduce sharding when you've shown the scale requires it. Say: "At 1TB and 50K QPS, a single PostgreSQL instance won't suffice. I'd shard by user_id using consistent hashing — keeps one user's data co-located, and we can add shards without full re-partition." Always mention the cross-shard query challenge and how you'd handle it (scatter-gather or separate search index).</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Only introduce sharding when you've shown the scale requires it. Say: "At 1TB and 50K QPS, a single PostgreSQL instance won't suffice. I'd shard by user_id using consistent hashing — keeps one user's data co-located, and we can add shards without full re-partition." Always mention the cross-shard query challenge and how you'd handle it (scatter-gather or separate search index).</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.5.4 Multi-tenancy Patterns</h3><span class="badge">Pattern</span></div><div class="card-body">
@@ -186,7 +186,7 @@ CREATE INDEX idx_orders_cover ON orders(customer_id) INCLUDE (total, status);</c
 <tr><td>Atomic transactions across multiple operations</td><td>Adds I/O latency (fsync on every commit for durability)</td></tr>
 </table>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing database internals or replication, always mention WAL. It's the foundation of: (1) crash recovery, (2) replication (streaming WAL to replicas), (3) point-in-time recovery (replay WAL to any timestamp), and (4) CDC (Debezium reads PostgreSQL's WAL). Say: "The WAL guarantees durability — once the write is in the log, it survives crashes even if the data pages haven't been flushed yet."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When discussing database internals or replication, always mention WAL. It's the foundation of: (1) crash recovery, (2) replication (streaming WAL to replicas), (3) point-in-time recovery (replay WAL to any timestamp), and (4) CDC (Debezium reads PostgreSQL's WAL). Say: "The WAL guarantees durability — once the write is in the log, it survives crashes even if the data pages haven't been flushed yet."</p></div>
 <div class="production-insight"><h4>Production Example</h4>
 <p><strong>PostgreSQL streaming replication:</strong> Primary streams WAL records to replicas in real-time. Debezium reads PostgreSQL's WAL for Change Data Capture — every INSERT/UPDATE/DELETE becomes a Kafka event for downstream services without touching the application code.</p>
 </div>
@@ -230,7 +230,7 @@ CREATE INDEX idx_orders_cover ON orders(customer_id) INCLUDE (total, status);</c
 </table>
 <div class="trade-off-box"><h4>Trade-off: Isolation Level Selection</h4><p>Higher isolation = fewer anomalies but more locking/aborts = lower throughput. Read Committed (PostgreSQL default) is the sweet spot for most apps — prevents dirty reads without heavy locking. Use Serializable only for financial operations where correctness > performance.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Stripe:</strong> Payment processing uses Serializable isolation for balance operations — a double-charge would be catastrophic. Non-critical reads (dashboard analytics) use Read Committed for better performance. Different isolation levels for different operations within the same application.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When designing payment or inventory systems, explicitly state: "I'd use Serializable isolation for the balance deduction to prevent race conditions — two concurrent purchases can't both read balance=100 and both succeed." Shows you understand concurrency at the database level.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When designing payment or inventory systems, explicitly state: "I'd use Serializable isolation for the balance deduction to prevent race conditions — two concurrent purchases can't both read balance=100 and both succeed." Shows you understand concurrency at the database level.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.5.7 Schema Design: Normalization vs Denormalization</h3><span class="badge">Database</span></div><div class="card-body">
@@ -267,7 +267,7 @@ CREATE INDEX idx_orders_cover ON orders(customer_id) INCLUDE (total, status);</c
 // FROM orders o JOIN customers c ON ... JOIN products p ON ...;
 // REFRESH MATERIALIZED VIEW order_summary;  -- run on schedule</code></pre>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>In system design: normalize for the write path (transactional core), denormalize for the read path (query/search/dashboard). This is essentially what CQRS does — normalized write model, denormalized read model. Mention Materialized Views as the middle ground. For NoSQL (DynamoDB, Cassandra), denormalization is the default because JOINs don't exist — you design your schema around your access patterns.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>In system design: normalize for the write path (transactional core), denormalize for the read path (query/search/dashboard). This is essentially what CQRS does — normalized write model, denormalized read model. Mention Materialized Views as the middle ground. For NoSQL (DynamoDB, Cassandra), denormalization is the default because JOINs don't exist — you design your schema around your access patterns.</p></div>
 <div class="trade-off-box"><h4>Trade-off: When to Denormalize</h4><p>Denormalize when: read queries are slow due to JOINs, data changes infrequently, and you accept write complexity. Keep normalized when: data changes frequently (avoid update anomalies), storage is a concern, or consistency is critical. The modern pattern: normalized for writes (OLTP), denormalized for reads (OLAP/cache).</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Twitter:</strong> Tweets table is denormalized — includes author_name directly (avoids JOIN to users table on every timeline render). When a user changes their display name, a background job updates all their tweet records. Acceptable trade-off: name changes are rare, timeline reads happen billions of times daily.</p></div>
 </div></div>

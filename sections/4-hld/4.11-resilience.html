@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.11 Resilience - Interview Prep</title>
+<title>4.11 Resilience - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -131,7 +131,7 @@ public Executor shippingExecutor() {
 <p><strong>Netflix:</strong> Circuit breakers (Hystrix/Resilience4j) protect against cascading failures. When the recommendation service latency exceeds 500ms, circuit opens — returns cached/default recommendations instantly. Fallback serves 95th-percentile quality while preventing the slow service from taking down the entire page load for 200M+ users.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: Resilience vs Complexity</h4><p>Each resilience pattern (circuit breaker, bulkhead, retry) adds code, configuration, and failure modes. Over-engineering with all patterns on every call creates complexity that's harder to debug than the failures it prevents. Apply resilience patterns at service boundaries (external calls), not internal method calls.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Layer resilience patterns together: "External service calls get: timeout (2s) → retry (3x with exponential backoff + jitter) → circuit breaker (opens after 5 failures in 30s) → fallback (cached/default response). This ensures graceful degradation without cascading failures." Show the full chain, not just one pattern.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Layer resilience patterns together: "External service calls get: timeout (2s) → retry (3x with exponential backoff + jitter) → circuit breaker (opens after 5 failures in 30s) → fallback (cached/default response). This ensures graceful degradation without cascading failures." Show the full chain, not just one pattern.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.11.2 Chaos Engineering</h3><span class="badge">Resilience</span></div><div class="card-body">
@@ -159,7 +159,7 @@ public Executor shippingExecutor() {
 <li><strong>Too long:</strong> Thread pool exhaustion, cascading failures, users waiting forever</li>
 <li><strong>Best practice:</strong> Set timeout slightly above p99 latency of dependency. If payment p99=800ms, set timeout=1200ms. Monitor and adjust based on SLOs.</li>
 </ul></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention chaos engineering to show production readiness: "We'd run game days quarterly — inject network latency, kill random pods, simulate region failure. This validates that our circuit breakers, fallbacks, and failover actually work under real conditions rather than just in theory." Shows you think beyond happy-path design.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention chaos engineering to show production readiness: "We'd run game days quarterly — inject network latency, kill random pods, simulate region failure. This validates that our circuit breakers, fallbacks, and failover actually work under real conditions rather than just in theory." Shows you think beyond happy-path design.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.11.3 Failover Patterns</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -186,7 +186,7 @@ public Executor shippingExecutor() {
 // Challenge: both nodes must handle full write load (no split-brain writes)</code></pre>
 <div class="trade-off-box"><h4>Trade-off: Active-Active vs Active-Passive</h4><p>Active-Active: near-zero failover time, both regions serve traffic, but requires conflict resolution for writes (multi-leader replication) and 2x cost. Active-Passive: simpler (single writer), cheaper (standby mostly idle), but failover takes seconds-to-minutes (DNS propagation, connection draining). Choose based on RTO requirements and budget.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Netflix:</strong> Runs active-active across 3 AWS regions (us-east-1, us-west-2, eu-west-1). Zuul routes users to nearest region. If us-east-1 fails, traffic automatically shifts to remaining regions within 30 seconds via DNS + health checks. Each region can handle 100% of global traffic (over-provisioned for failover).</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>For high-availability questions: "Active-active across 2 regions with stateless services and eventually-consistent data replication. If Region A fails, DNS health checks detect it within 30s and shift traffic to Region B. The key challenge is data: we use async replication with conflict resolution (last-writer-wins) for non-critical data, and synchronous replication for payment state."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>For high-availability questions: "Active-active across 2 regions with stateless services and eventually-consistent data replication. If Region A fails, DNS health checks detect it within 30s and shift traffic to Region B. The key challenge is data: we use async replication with conflict resolution (last-writer-wins) for non-critical data, and synchronous replication for payment state."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.11.4 Disaster Recovery (RPO / RTO)</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -211,7 +211,7 @@ public Executor shippingExecutor() {
 // - Blog platform: RPO=24h, RTO=4h (daily backups, manual restore)
 // - E-commerce: RPO=5min, RTO=15min (warm standby, async replication)</code></pre>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing high availability in system design, always quantify with RPO/RTO. Say: "For this payment system, we need RPO near zero (no lost transactions) and RTO under 30 seconds. This means active-active with synchronous replication across regions." This shows you think in business requirements, not just technical patterns. Then map: stricter RPO/RTO = more expensive = discuss trade-offs with the interviewer.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When discussing high availability in system design, always quantify with RPO/RTO. Say: "For this payment system, we need RPO near zero (no lost transactions) and RTO under 30 seconds. This means active-active with synchronous replication across regions." This shows you think in business requirements, not just technical patterns. Then map: stricter RPO/RTO = more expensive = discuss trade-offs with the interviewer.</p></div>
 <div class="trade-off-box"><h4>Trade-off: Cost vs Recovery Speed</h4><p>Stricter RPO/RTO = exponentially more expensive. RPO=0 requires synchronous cross-region replication (doubles write latency + network costs). RTO=0 requires active-active (2x infrastructure). Most systems accept RPO=5min (async replication) and RTO=15min (warm standby) as a cost-effective middle ground.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>AWS Multi-AZ RDS:</strong> Synchronous replication across Availability Zones (RPO=0 within region). Automatic failover in 60-120 seconds (RTO≈2min). Cross-region read replicas provide RPO=seconds for regional disaster (async replication). Full region failover (Route 53 health check → promote cross-region replica) achieves RTO≈5-10min.</p></div>
 </div></div>

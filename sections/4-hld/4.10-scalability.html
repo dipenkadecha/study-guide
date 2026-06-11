@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.10 Scalability - Interview Prep</title>
+<title>4.10 Scalability - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -88,7 +88,7 @@
 <p><strong>Instagram:</strong> Started on a single Django server (vertical scaling). At 25M users, switched to horizontal scaling — 12 Django app servers behind HAProxy. Now runs 1000+ instances on Kubernetes. Database remained vertically scaled (PostgreSQL on largest available instance) until sharding was introduced at 1B posts.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: Scale Up vs Scale Out</h4><p>Vertical (bigger machine): simple, no distributed complexity, but has a ceiling (largest available instance) and is a SPOF. Horizontal (more machines): theoretically unlimited, fault-tolerant, but introduces distributed systems complexity (consistency, partitioning, network failures). Start vertical, go horizontal when you hit the ceiling or need fault tolerance.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Show pragmatism: "For the first version, I'd vertically scale the database (RDS r6g.16xlarge handles most loads up to 100K QPS). When we outgrow that, we shard horizontally." Interviewers appreciate knowing WHEN to add complexity rather than defaulting to the most complex architecture from the start.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Show pragmatism: "For the first version, I'd vertically scale the database (RDS r6g.16xlarge handles most loads up to 100K QPS). When we outgrow that, we shard horizontally." Interviewers appreciate knowing WHEN to add complexity rather than defaulting to the most complex architecture from the start.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.10.2 Auto-Scaling Strategies</h3><span class="badge">Foundation</span></div><div class="card-body">
@@ -110,7 +110,7 @@
 <p><strong>Airbnb:</strong> Uses Kubernetes HPA with custom metrics (requests per pod + booking queue depth). During New Year's Eve search spikes, scales from 200 to 2000 pods in under 2 minutes. Scales down overnight to save 60% compute cost. KEDA handles event-driven scaling for async booking processors.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: Reactive vs Predictive Scaling</h4><p>Reactive (scale on current metrics): simple but has cold-start lag — traffic spike hits before new instances are ready. Predictive (scale on forecasted load): pre-provisions capacity but wastes resources on wrong predictions. Best practice: predictive for known patterns (daily peaks) + reactive for unexpected spikes, with aggressive scale-up and conservative scale-down.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Specify scaling triggers: "HPA scales on CPU (target 70%) for compute-bound services and on custom metrics (queue depth, p99 latency) for I/O-bound services. Scale-up threshold is aggressive (1 minute), scale-down is conservative (5 minutes) to avoid flapping during bursty traffic."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Specify scaling triggers: "HPA scales on CPU (target 70%) for compute-bound services and on custom metrics (queue depth, p99 latency) for I/O-bound services. Scale-up threshold is aggressive (1 minute), scale-down is conservative (5 minutes) to avoid flapping during bursty traffic."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.10.3 Stateless vs Stateful Services</h3><span class="badge">Foundation</span></div><div class="card-body">
@@ -139,7 +139,7 @@
 <tr><td>Time-Based</td><td>Partition by time period</td><td>Easy archival, hot/cold separation</td><td>Recent partition may be hot</td></tr>
 </table>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Kafka:</strong> Topics partitioned by message key (e.g., user_id). All events for one user land on the same partition — guarantees ordering per user. Adding partitions increases parallelism (more consumer instances), but requires careful key selection to avoid hot partitions (celebrity users).</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Always explain your partition key choice: "I partition by user_id — keeps one user's data co-located for efficient queries. The hash distribution ensures even load across shards. For the 0.01% of power users with disproportionate data, we'd use a composite key (user_id + date bucket) to prevent hot partitions."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Always explain your partition key choice: "I partition by user_id — keeps one user's data co-located for efficient queries. The hash distribution ensures even load across shards. For the 0.01% of power users with disproportionate data, we'd use a composite key (user_id + date bucket) to prevent hot partitions."</p></div>
 </div></div>
 <div class="page-nav">
 <a href="4.9-distributed-systems.html">&#8592; Previous: 4.9 Distributed Systems</a>

@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.6 Caching - Interview Prep</title>
+<title>4.6 Caching - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -132,7 +132,7 @@ public Order getOrderWithLock(String orderId) {
 <p><strong>Facebook (Meta):</strong> Memcached cluster with 1000+ servers caching user profiles, friend lists, and news feed data. Cache-aside pattern: on miss, read from MySQL, populate cache. Handles 10B+ cache requests/second with p99 < 1ms.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: Cache-Aside vs Read-Through</h4><p>Cache-Aside: application controls loading logic (flexible, explicit) but cache misses are expensive (app must handle). Read-Through: cache auto-loads on miss (simpler app code) but less control over loading strategy. Write-Through ensures consistency but doubles write latency. Write-Behind is fast but risks data loss if cache crashes before flush.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Always specify your caching strategy in HLD: "We use Cache-Aside with Redis for user profiles — TTL of 5 minutes. On write, we invalidate the cache key (not update it) to avoid race conditions between concurrent reads and writes." Mention TTL + invalidation strategy together.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Always specify your caching strategy in HLD: "We use Cache-Aside with Redis for user profiles — TTL of 5 minutes. On write, we invalidate the cache key (not update it) to avoid race conditions between concurrent reads and writes." Mention TTL + invalidation strategy together.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.6.2 Eviction Policies</h3><span class="badge">Performance</span></div><div class="card-body">
@@ -146,7 +146,7 @@ public Order getOrderWithLock(String orderId) {
 <p><strong>Caffeine (Java):</strong> Uses W-TinyLFU eviction — combines recency (LRU window) and frequency (count-min sketch). Achieves near-optimal hit rates. Used by Spring Boot's default cache, Neo4j, Apache Druid. Outperforms Guava cache by 30-50% hit rate in production benchmarks.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: LRU vs LFU vs W-TinyLFU</h4><p>LRU: evicts least recently accessed (simple, good for temporal locality). LFU: evicts least frequently accessed (good for stable hot set) but slow to adapt to new popular items. W-TinyLFU (Caffeine): combines both — admission window (LRU) + main cache (LFU with aging). Dominates in benchmarks but more complex implementation.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Default to LRU in interviews (it's the most common). If asked to optimize: "For our product catalog cache where some items are always popular, I'd use W-TinyLFU (Caffeine in Java, or Redis with approximated LFU). It prevents cache pollution from one-time scans that would evict genuinely hot items."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Default to LRU in interviews (it's the most common). If asked to optimize: "For our product catalog cache where some items are always popular, I'd use W-TinyLFU (Caffeine in Java, or Redis with approximated LFU). It prevents cache pollution from one-time scans that would evict genuinely hot items."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.6.3 Connection Pooling</h3><span class="badge">Performance</span></div><div class="card-body">
@@ -179,7 +179,7 @@ public WebClient webClient() {
 </table>
 <p><strong>Best practice: Multi-level caching:</strong> L1 (Caffeine, in-JVM, 100ns) -> L2 (Redis, distributed, 0.5ms) -> DB (10-50ms)</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Heroku:</strong> Each dyno gets max 20 database connections. With 50 dynos, that's 1000 connections to PostgreSQL (near its limit). PgBouncer in transaction-pooling mode reduces actual DB connections to 100 while serving 1000 application connections — 10x multiplexing ratio.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention connection pooling whenever you discuss databases at scale: "Each service instance maintains a HikariCP pool of 10-20 connections. With 100 instances, that's 1000-2000 DB connections — if that exceeds PostgreSQL's limit (~500 recommended), we add PgBouncer for connection multiplexing."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention connection pooling whenever you discuss databases at scale: "Each service instance maintains a HikariCP pool of 10-20 connections. With 100 instances, that's 1000-2000 DB connections — if that exceeds PostgreSQL's limit (~500 recommended), we add PgBouncer for connection multiplexing."</p></div>
 </div></div>
 </div>
 
@@ -240,7 +240,7 @@ public User getUser(String id) {
     }
 }</code></pre>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing caching, interviewers often follow up with "what happens when the cache key expires and 10,000 requests hit simultaneously?" This is the cache stampede question. Mention request coalescing (singleflight) as the primary solution, then note that Caffeine and Guava LoadingCache handle this automatically. For distributed caches (Redis), mention distributed locks or probabilistic early refresh.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When discussing caching, interviewers often follow up with "what happens when the cache key expires and 10,000 requests hit simultaneously?" This is the cache stampede question. Mention request coalescing (singleflight) as the primary solution, then note that Caffeine and Guava LoadingCache handle this automatically. For distributed caches (Redis), mention distributed locks or probabilistic early refresh.</p></div>
 <div class="trade-off-box"><h4>Trade-off: Stampede Prevention Approaches</h4><p>Locking (singleflight): guaranteed single fetch but adds coordination latency + lock contention. Probabilistic early refresh: no locks but occasional redundant DB reads. Stale-while-revalidate: instant response (stale) but clients briefly see outdated data. Best practice: use Caffeine/Guava LoadingCache (built-in coalescing) for local cache, distributed lock for Redis.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Reddit:</strong> Popular post cache keys expire simultaneously → thousands of requests hit PostgreSQL for the same post. Solution: probabilistic early expiration — random 10% of requests refresh the cache 30 seconds before TTL. Popular keys stay warm naturally from organic traffic.</p></div>
 </div></div>

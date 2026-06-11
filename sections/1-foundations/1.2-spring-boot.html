@@ -4,14 +4,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>1.2 Spring Boot &amp; Reactive - Interview Prep</title>
+<title>1.2 Spring Boot &amp; Reactive - Study Guide</title>
 <link href="../../assets/styles.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
@@ -64,7 +64,7 @@
 <li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
 <li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
 <li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
-<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 Senior Engineer Expectations</a></li>
 </ul></div>
 <div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
 <li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
@@ -119,7 +119,7 @@ public class CustomCacheAutoConfiguration {
 <text fill="#e2e8f0" font-size="9" text-anchor="middle" x="615" y="65">@PreDestroy</text>
 </svg>
 </div>
-<div class="interview-tip"><h4>Interview Tip</h4>
+<div class="interview-tip"><h4>Key Tip</h4>
 <p>The order is: Constructor -&gt; @Autowired setters -&gt; BeanPostProcessor.postProcessBeforeInitialization -&gt; @PostConstruct -&gt; InitializingBean.afterPropertiesSet -&gt; custom init-method -&gt; BeanPostProcessor.postProcessAfterInitialization -&gt; Ready -&gt; @PreDestroy -&gt; DisposableBean.destroy</p></div></div>
 </div>
 <div class="card"><div class="card-header"><h3>1.2.3 N+1 Problem &amp; Solutions</h3><span class="badge">Performance</span></div><div class="card-body">

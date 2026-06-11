@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.14 Cloud - Interview Prep</title>
+<title>4.14 Cloud - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -111,7 +111,7 @@ spec:
 <p><strong>Spotify:</strong> Runs 2000+ microservices on GKE (Google Kubernetes Engine). Each team owns their service's Helm chart. HPA scales based on custom Datadog metrics (p99 latency). A new service goes from code to production in under 15 minutes via fully automated CI/CD pipeline triggered by PR merge.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Managed K8s (EKS/GKE) vs Self-Managed: Managed removes control plane burden ($0.10/hr premium) but limits customization. Self-managed gives full control (custom schedulers, CNI plugins) but requires dedicated platform team (3-5 engineers). For 99% of companies: use managed K8s. Self-manage only if you're at Google/Netflix scale or have unique requirements.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention K8s scaling naturally: 'Services deployed as K8s Deployments with HPA (target 70% CPU). Each pod has resource requests/limits to prevent noisy neighbors. Liveness and readiness probes ensure traffic only routes to healthy pods. Rolling deployments with maxSurge=25% for zero-downtime releases.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention K8s scaling naturally: 'Services deployed as K8s Deployments with HPA (target 70% CPU). Each pod has resource requests/limits to prevent noisy neighbors. Liveness and readiness probes ensure traffic only routes to healthy pods. Rolling deployments with maxSurge=25% for zero-downtime releases.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.14.2 Compute Options: EKS vs ECS vs Lambda</h3><span class="badge">Cloud</span></div><div class="card-body">
@@ -128,7 +128,7 @@ spec:
 <li><strong>ECS Fargate:</strong> Simpler K8s. Use when you want containers without managing nodes.</li>
 <li><strong>Lambda:</strong> Event-driven, sporadic traffic, glue logic. Avoid for: steady high traffic (expensive), long-running tasks (&gt;15min), large payloads.</li>
 </ul></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Default to managed containers, reserve serverless for spiky work: "Steady traffic → ECS Fargate or EKS (no cold starts, predictable cost). Spiky/event-driven → Lambda. We keep Lambda off the hot request path to avoid cold-start tail latency, using it for async jobs and glue."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Default to managed containers, reserve serverless for spiky work: "Steady traffic → ECS Fargate or EKS (no cold starts, predictable cost). Spiky/event-driven → Lambda. We keep Lambda off the hot request path to avoid cold-start tail latency, using it for async jobs and glue."</p></div>
 </div></div>
 </div>
 
@@ -158,7 +158,7 @@ spec:
 //   Use case: Microservices, portable deployments</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>IaaS (EC2): maximum control, maximum responsibility (you patch the OS). PaaS (Heroku, App Runner): focus on code but limited customization. SaaS (Stripe, Auth0): zero development effort for solved problems but vendor lock-in and less control. Choose: IaaS for core differentiating services, PaaS for standard web services, SaaS for commoditized functions (auth, payments, email).</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Shopify:</strong> Runs core commerce platform on IaaS (custom K8s on GCP). Uses SaaS for non-core: Cloudflare (CDN/WAF), Datadog (observability), PagerDuty (alerting), Vault (secrets). Philosophy: build what differentiates you, buy everything else.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Show pragmatism in your design: 'For authentication, I'd use Auth0 (SaaS) rather than building custom auth — it's a solved problem. For our core recommendation engine (business differentiator), we need full control so I'd run it on K8s (IaaS). This lets the team focus engineering effort on what makes our product unique.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Show pragmatism in your design: 'For authentication, I'd use Auth0 (SaaS) rather than building custom auth — it's a solved problem. For our core recommendation engine (business differentiator), we need full control so I'd run it on K8s (IaaS). This lets the team focus engineering effort on what makes our product unique.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.14.4 Containers &amp; Docker</h3><span class="badge">Foundation</span></div><div class="card-body">
@@ -200,7 +200,7 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 // - Docker Compose: multi-container local development
 // - Registry: Docker Hub, ECR, GCR (store/distribute images)</code></pre>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing deployment in system design, mention containers as the default packaging mechanism: "Services are containerized with Docker, deployed to Kubernetes for orchestration." If asked about the difference from VMs, highlight: containers share the host kernel (faster, lighter) while VMs provide stronger isolation. For multi-tenant SaaS, you might use VMs for tenant isolation with containers inside each VM for service deployment.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When discussing deployment in system design, mention containers as the default packaging mechanism: "Services are containerized with Docker, deployed to Kubernetes for orchestration." If asked about the difference from VMs, highlight: containers share the host kernel (faster, lighter) while VMs provide stronger isolation. For multi-tenant SaaS, you might use VMs for tenant isolation with containers inside each VM for service deployment.</p></div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Containers vs VMs vs Serverless: VMs provide strong isolation (separate kernels) but slow boot (minutes) and resource-heavy. Containers share kernel (faster boot in seconds, efficient) but weaker isolation. Serverless has zero management but cold starts and execution limits. Default to containers for general workloads; VMs for strict isolation (multi-tenant); serverless for event-driven, sporadic loads.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Docker Hub:</strong> 13+ billion image pulls per month. Most enterprises standardize on 3-5 base images (company-approved, security-scanned) that teams extend. Multi-stage builds reduce production image size by 70-90% (build stage has compilers, production stage has only runtime). Distroless images (Google) eliminate shell/package managers — reduces attack surface.</p></div>
 </div></div>

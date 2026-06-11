@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.16 Performance - Interview Prep</title>
+<title>4.16 Performance - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -105,7 +105,7 @@ CREATE INDEX idx_covering ON orders(user_id, status) INCLUDE (total_amount);
 CREATE INDEX idx_active_premium ON users(email) WHERE status = 'active' AND tier = 'premium';</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>More indexes = faster reads but slower writes (each INSERT/UPDATE must update all relevant indexes). A table with 10 indexes can have 5-10x slower write throughput. Strategy: index only columns in WHERE/JOIN/ORDER BY clauses. For write-heavy tables, keep indexes minimal and use covering indexes to eliminate table lookups for hot queries.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>LinkedIn:</strong> Reduced query latency by 95% by adding a covering index that included all columns needed by their most frequent query — eliminated the table lookup (index-only scan). Before: 50ms with 2 disk seeks. After: 2ms from index cache only.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When designing schemas: 'For the users table, I'd add a unique index on (email) for login lookups, a composite index on (status, created_at) for admin filtering, and ensure our primary query uses a covering index to avoid heap lookups. I'd monitor unused indexes periodically and drop them to reduce write overhead.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When designing schemas: 'For the users table, I'd add a unique index on (email) for login lookups, a composite index on (status, created_at) for admin filtering, and ensure our primary query uses a covering index to avoid heap lookups. I'd monitor unused indexes periodically and drop them to reduce write overhead.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.16.3 Query Optimization</h3><span class="badge">Performance</span></div><div class="card-body">
@@ -136,7 +136,7 @@ CREATE INDEX idx_active_premium ON users(email) WHERE status = 'active' AND tier
 <li><strong>Cache invalidation:</strong> "The two hardest problems in CS: cache invalidation, naming things, and off-by-one errors." Every cache adds a consistency challenge.</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Google:</strong> Uses Brotli compression for all web assets — 20-26% smaller than gzip at comparable CPU cost. For internal data: Zstandard (zstd) compresses Bigtable column families — 3-5x compression ratio with decompression at 1.5 GB/s (fast enough to be I/O-bound, not CPU-bound). Net effect: more data fits in memory cache.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention compression at appropriate layers: 'API responses use gzip/Brotli (Accept-Encoding). Database uses page-level compression (PostgreSQL TOAST, RocksDB LZ4). Network: gRPC has built-in compression for internal RPCs. Kafka: producer-side compression (LZ4) reduces network bandwidth by 70% with minimal CPU overhead.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention compression at appropriate layers: 'API responses use gzip/Brotli (Accept-Encoding). Database uses page-level compression (PostgreSQL TOAST, RocksDB LZ4). Network: gRPC has built-in compression for internal RPCs. Kafka: producer-side compression (LZ4) reduces network bandwidth by 70% with minimal CPU overhead.'</p></div>
 </div></div>
 <div class="page-nav">
 <a href="4.15-storage.html">&#8592; Previous: 4.15 Storage</a>

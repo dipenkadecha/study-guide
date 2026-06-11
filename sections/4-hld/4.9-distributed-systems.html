@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.9 Distributed Systems - Interview Prep</title>
+<title>4.9 Distributed Systems - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -92,7 +92,7 @@
 <p><strong>etcd (Kubernetes):</strong> Uses Raft consensus for cluster state. Every kubectl apply writes to etcd — requires majority (3 of 5 nodes) to acknowledge before confirming. If 2 nodes die, cluster remains operational. If 3 die, cluster becomes read-only (no quorum for writes).</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: Raft vs Paxos</h4><p>Raft: easier to understand and implement (clear leader, sequential log), used by etcd, Consul. Paxos: more flexible (multi-decree, leaderless variants) but notoriously hard to implement correctly. In practice, choose Raft for new systems — correctness is easier to verify. Paxos for academic/research contexts or Google-scale (Chubby uses Multi-Paxos).</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing coordination services: "We use etcd (Raft-based) for leader election and distributed configuration. Raft guarantees that as long as a majority of nodes (3 of 5) are alive, the cluster remains operational and consistent." Mention the write penalty: every write requires majority acknowledgment.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When discussing coordination services: "We use etcd (Raft-based) for leader election and distributed configuration. Raft guarantees that as long as a majority of nodes (3 of 5) are alive, the cluster remains operational and consistent." Mention the write penalty: every write requires majority acknowledgment.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.9.2 Distributed Locking</h3><span class="badge">Advanced</span></div><div class="card-body">
@@ -120,7 +120,7 @@ public void releaseLock(String resource, String lockId) {
 <p><strong>Redlock (Redis):</strong> Stripe uses Redis-based distributed locks for idempotent payment processing. Lock acquired across 5 Redis instances — if client gets lock on 3+, it proceeds. Fencing tokens prevent stale lock holders from making writes after their lock expired.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: Redis Lock vs ZooKeeper Lock</h4><p>Redis (Redlock): fast, simple, but relies on clock synchronization (unsafe if clocks drift). ZooKeeper/etcd: slower but uses sequential nodes + ephemeral sessions (no clock dependency). For critical sections (payment deduction), use ZooKeeper. For best-effort dedup (prevent duplicate emails), Redis is fine.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Always mention fencing tokens with distributed locks: "The lock includes a monotonically increasing fencing token. If a lock holder is slow and its lock expires, the new holder gets a higher token. Storage rejects writes with stale tokens — prevents the 'zombie process' problem where an expired lock holder still writes."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Always mention fencing tokens with distributed locks: "The lock includes a monotonically increasing fencing token. If a lock holder is slow and its lock expires, the new holder gets a higher token. Storage rejects writes with stale tokens — prevents the 'zombie process' problem where an expired lock holder still writes."</p></div>
 <div class="see-also">→ The fencing-token mechanism (with a step-by-step GC-pause example) is detailed on the <a href="4.22-concurrency.html">Concurrency &amp; Locking</a> page (4.22.2 Distributed Lock with Fencing).</div>
 </div></div>
 
@@ -219,7 +219,7 @@ public boolean isAllowed(String clientId, int maxRequests, Duration window) {
 <tr><td>Used by</td><td>Riak (deprecated), research</td><td>Many distributed DBs internally</td><td>Cassandra, DynamoDB (simplified)</td></tr>
 </table>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>In practice, most production systems use simplified approaches: DynamoDB uses Last-Writer-Wins with server timestamps, Cassandra uses LWW per column. Full vector clocks are rarely used due to space overhead. But knowing them shows deep understanding of distributed causality. Mention: "Vector clocks solve the problem of detecting concurrent writes, but most systems trade correctness for simplicity with LWW."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>In practice, most production systems use simplified approaches: DynamoDB uses Last-Writer-Wins with server timestamps, Cassandra uses LWW per column. Full vector clocks are rarely used due to space overhead. But knowing them shows deep understanding of distributed causality. Mention: "Vector clocks solve the problem of detecting concurrent writes, but most systems trade correctness for simplicity with LWW."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.9.6 Leader Election</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -244,7 +244,7 @@ public boolean isAllowed(String clientId, int maxRequests, Duration window) {
 // 6. If heartbeat stops → followers timeout → new election</code></pre>
 <div class="trade-off-box"><h4>Trade-off: Single Leader vs Multi-Leader</h4><p>Single leader: simple coordination, no conflicts, but leader is SPOF and bottleneck. Multi-leader: higher availability and write throughput but requires conflict resolution (LWW, vector clocks, CRDTs). Use single leader for coordination (schedulers, lock managers); multi-leader for geo-distributed writes (DynamoDB global tables).</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Kubernetes:</strong> The kube-controller-manager uses leader election via etcd lease. Only ONE controller-manager runs active at a time — others are standby. If the leader crashes, lease expires in 15s, and a new leader is elected automatically. Prevents duplicate scheduling of pods.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Use leader election for any "exactly-one" constraint: "The scheduler service uses leader election (etcd lease) — only one instance dispatches jobs at a time. If the leader dies, a new one takes over within the lease TTL (10-15s). This prevents duplicate job execution without distributed locking per job."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Use leader election for any "exactly-one" constraint: "The scheduler service uses leader election (etcd lease) — only one instance dispatches jobs at a time. If the leader dies, a new one takes over within the lease TTL (10-15s). This prevents duplicate job execution without distributed locking per job."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.9.7 Heartbeat &amp; Failure Detection</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -267,7 +267,7 @@ public boolean isAllowed(String clientId, int maxRequests, Duration window) {
 // - etcd: election timeout = 1000ms, heartbeat = 100ms</code></pre>
 <div class="trade-off-box"><h4>Trade-off: Fast Detection vs False Positives</h4><p>Short heartbeat interval (100ms) + low threshold (3 misses = 300ms detection): fast failure detection but network jitter causes false positives (healthy nodes marked dead). Long interval (5s) + high threshold (3 misses = 15s): fewer false positives but slow to detect actual failures. Adaptive approaches (Phi Accrual) auto-tune based on observed latency distribution.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Cassandra:</strong> Uses Phi Accrual failure detector — adapts threshold based on historical heartbeat intervals between specific node pairs. If Node A typically responds in 50ms but hasn't in 500ms, suspicion is high. If Node B (cross-region) typically takes 200ms, same 500ms delay has lower suspicion. Reduces false positives in heterogeneous networks.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When designing health checks: "Each node sends heartbeats every 1s. If 3 consecutive heartbeats are missed (3s), the node is suspected dead and traffic is redirected. We use a Phi Accrual detector to adapt to network conditions rather than a fixed timeout — reduces false positives during GC pauses or network congestion."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When designing health checks: "Each node sends heartbeats every 1s. If 3 consecutive heartbeats are missed (3s), the node is suspected dead and traffic is redirected. We use a Phi Accrual detector to adapt to network conditions rather than a fixed timeout — reduces false positives during GC pauses or network congestion."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.9.8 Split Brain Problem</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -294,7 +294,7 @@ public boolean isAllowed(String clientId, int maxRequests, Duration window) {
 //    - Used in traditional HA (Pacemaker/Corosync)</code></pre>
 <div class="trade-off-box"><h4>Trade-off: Quorum vs Availability During Partition</h4><p>Requiring quorum (majority) prevents split brain but makes the minority partition completely unavailable. Without quorum, both partitions serve traffic but risk data divergence. Trade-off: safety (data correctness) vs liveness (continued operation). CP systems choose safety; AP systems choose liveness and reconcile later.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Elasticsearch:</strong> Historically suffered split brain when network partitions caused two master nodes. Fixed by requiring minimum_master_nodes = (N/2)+1 (quorum). In ES 7+, this is automatic via the voting configuration. A 3-node cluster tolerates 1 node failure; 2 failures = cluster goes read-only (no quorum for writes).</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When asked "how do you prevent split brain?": "Quorum requirement — a leader must maintain majority acknowledgment to accept writes. If a network partition splits our 5-node cluster into [2] and [3], only the [3] partition elects a new leader. The [2] partition stops accepting writes, serving stale reads until reconnection."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When asked "how do you prevent split brain?": "Quorum requirement — a leader must maintain majority acknowledgment to accept writes. If a network partition splits our 5-node cluster into [2] and [3], only the [3] partition elects a new leader. The [2] partition stops accepting writes, serving stale reads until reconnection."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.9.9 Hinted Handoff</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -317,7 +317,7 @@ public boolean isAllowed(String clientId, int maxRequests, Duration window) {
 // - NOT a replacement for full repair (read repair + anti-entropy still needed)</code></pre>
 <div class="trade-off-box"><h4>Trade-off: Hint Duration vs Storage Cost</h4><p>Long hint retention (24h+): node recovers fully from short outages but hinting nodes accumulate significant storage. Short retention (1h): less storage overhead but longer outages require full anti-entropy repair (slower recovery). Cassandra defaults to 3 hours — balances recovery speed vs storage cost for typical maintenance windows.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Cassandra:</strong> During rolling upgrades, each node goes down for 2-3 minutes. Hinted handoff stores writes destined for the upgrading node on its peers. When it comes back, hints replay in seconds — the node catches up without triggering expensive full repair. Enables zero-downtime upgrades across 100+ node clusters.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention hinted handoff for eventually consistent systems: "If a replica is temporarily down, coordinator stores the write as a hint. On recovery, hints replay to bring the replica current. This handles brief outages (maintenance, restarts) without requiring a full anti-entropy repair — which would scan the entire dataset."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention hinted handoff for eventually consistent systems: "If a replica is temporarily down, coordinator stores the write as a hint. On recovery, hints replay to bring the replica current. This handles brief outages (maintenance, restarts) without requiring a full anti-entropy repair — which would scan the entire dataset."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.9.10 Read Repair</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -342,7 +342,7 @@ public boolean isAllowed(String clientId, int maxRequests, Duration window) {
 // - QUORUM: reads from majority, repairs minority if they disagree
 // - ALL: reads from all replicas, guaranteed to detect and repair inconsistency</code></pre>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>These patterns form a complete failure recovery story: Heartbeats detect failure → Leader election picks a new coordinator → Quorum prevents split brain → Hinted handoff handles short outages → Read repair fixes staleness over time → Anti-entropy repair catches everything else. Mention this full chain when discussing "how does your system handle node failures?" in interviews.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>These patterns form a complete failure recovery story: Heartbeats detect failure → Leader election picks a new coordinator → Quorum prevents split brain → Hinted handoff handles short outages → Read repair fixes staleness over time → Anti-entropy repair catches everything else. Mention this full chain when discussing "how does your system handle node failures?" in interviews.</p></div>
 </div></div>
 
 <div class="page-nav">

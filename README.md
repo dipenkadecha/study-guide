@@ -1,6 +1,6 @@
-# SDE2 / SDE3 Interview Preparation — Study Guide
+# Study Guide
 
-A **self-contained, original** study guide for Software Engineer (SDE2/SDE3) interviews at top tech companies. Unlike link-directory style resources, every topic here is written out in full — concept → diagram/code → production example → trade-offs → **"what to say" in the interview** — and it runs entirely as a static site with no build step, no dependencies, and works offline.
+A **self-contained, original** study guide covering Java & Spring, data structures & algorithms, low-level design, system design, and behavioral topics. Every topic is written out in full — concept → diagram/code → production example → trade-offs → key takeaways — and the whole thing runs as a static site with no build step, no dependencies, and works offline.
 
 > 🔗 **Live site:** _add your GitHub Pages URL here after publishing_ (e.g. `https://<username>.github.io/<repo>/`)
 >
@@ -14,9 +14,9 @@ A **self-contained, original** study guide for Software Engineer (SDE2/SDE3) int
 
 - **Foundations** — modern Java & Spring
 - **DSA & Algorithms** — patterns with worked code and complexity
-- **Low-Level Design** — SOLID, GoF patterns, LLD problem walkthroughs, testing
-- **System Design (HLD)** — 24 pages, the centerpiece
-- **Behavioral** — STAR stories and SDE3 leadership signals
+- **Low-Level Design** — SOLID, GoF patterns, design-problem walkthroughs, testing
+- **System Design** — 24 pages, the deepest section
+- **Behavioral** — STAR stories, leadership & communication
 - **Reference** — quick-reference cheat sheet + filterable pattern flashcards
 
 ### Built-in features
@@ -46,7 +46,7 @@ A **self-contained, original** study guide for Software Engineer (SDE2/SDE3) int
 - [3.5 LLD Problems](sections/3-lld/3.5-lld-problems.html)
 - [3.6 Testing Strategies](sections/3-lld/3.6-testing.html)
 
-### 4 — System Design (HLD)
+### 4 — System Design
 - [4.0 Overview & Topic Index](sections/4-hld/4.0-overview.html)
 - [4.1 Core Fundamentals](sections/4-hld/4.1-core-fundamentals.html)
 - [4.2 Architecture Patterns](sections/4-hld/4.2-architecture-patterns.html)
@@ -65,10 +65,10 @@ A **self-contained, original** study guide for Software Engineer (SDE2/SDE3) int
 - [4.15 Storage Systems](sections/4-hld/4.15-storage.html)
 - [4.16 Performance Optimization](sections/4-hld/4.16-performance.html)
 - [4.17 Design Trade-offs](sections/4-hld/4.17-tradeoffs.html)
-- [4.18 Common SD Problems](sections/4-hld/4.18-system-design-problems.html)
+- [4.18 Common System-Design Problems](sections/4-hld/4.18-system-design-problems.html)
 - [4.19 Consistency Patterns](sections/4-hld/4.19-consistency.html)
 - [4.20 Microservices Patterns](sections/4-hld/4.20-microservices.html)
-- [4.21 SD Data Structures](sections/4-hld/4.21-data-structures.html)
+- [4.21 Data Structures for System Design](sections/4-hld/4.21-data-structures.html)
 - [4.22 Concurrency & Locking](sections/4-hld/4.22-concurrency.html)
 - [4.23 DevOps & Deployment](sections/4-hld/4.23-devops.html)
 
@@ -78,7 +78,7 @@ A **self-contained, original** study guide for Software Engineer (SDE2/SDE3) int
 - [5.3 Conflict & Mentoring](sections/5-behavioral/5.3-conflict-mentoring.html)
 - [5.4 Operational Excellence](sections/5-behavioral/5.4-operational-excellence.html)
 - [5.5 Technical Writing](sections/5-behavioral/5.5-technical-writing.html)
-- [5.6 SDE3 Expectations](sections/5-behavioral/5.6-sde3-expectations.html)
+- [5.6 Senior Engineer Expectations](sections/5-behavioral/5.6-sde3-expectations.html)
 
 ### Reference
 - [Quick Reference](sections/reference/quick-reference.html) — complexity tables, latency numbers, availability math
@@ -86,12 +86,12 @@ A **self-contained, original** study guide for Software Engineer (SDE2/SDE3) int
 
 ---
 
-## How to use it for interview prep
+## How to use it
 
-1. **Start with [4.0 Overview](sections/4-hld/4.0-overview.html)** for the system-design topic checklist and the answer framework.
-2. Work through a section, ticking **"Mark complete"** on each page — the dashboard tracks your progress.
-3. Drill the **[Pattern Flashcards](sections/reference/pattern-flashcards.html)** and the **[14 worked SD problems](sections/4-hld/4.18-system-design-problems.html)**.
-4. Before the loop, skim the **[Quick Reference](sections/reference/quick-reference.html)** for estimation numbers and complexity tables.
+1. **Start with [4.0 Overview](sections/4-hld/4.0-overview.html)** for the system-design topic checklist and a structured approach.
+2. Work through a section, ticking **"Mark complete"** on each page — the home page tracks your progress.
+3. Drill the **[Pattern Flashcards](sections/reference/pattern-flashcards.html)** and the **[14 worked system-design problems](sections/4-hld/4.18-system-design-problems.html)**.
+4. Keep the **[Quick Reference](sections/reference/quick-reference.html)** handy for estimation numbers and complexity tables.
 
 ---
 
@@ -99,4 +99,4 @@ A **self-contained, original** study guide for Software Engineer (SDE2/SDE3) int
 
 Pure HTML/CSS/JS — no framework, no build. The sidebar is rendered from a single source of truth in [`assets/scripts.js`](assets/scripts.js); styling lives in [`assets/styles.css`](assets/styles.css). Syntax highlighting loads from a CDN and degrades gracefully offline.
 
-_Personal study material. Not affiliated with any employer; no confidential content._
+_Personal study material. Not affiliated with any employer; contains no confidential content._

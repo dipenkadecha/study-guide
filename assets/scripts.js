@@ -52,7 +52,7 @@ const NAV_SECTIONS = [
         ['sections/5-behavioral/5.3-conflict-mentoring.html', '5.3 Conflict & Mentoring'],
         ['sections/5-behavioral/5.4-operational-excellence.html', '5.4 Operational Excellence'],
         ['sections/5-behavioral/5.5-technical-writing.html', '5.5 Technical Writing'],
-        ['sections/5-behavioral/5.6-sde3-expectations.html', '5.6 SDE3 Expectations'],
+        ['sections/5-behavioral/5.6-sde3-expectations.html', '5.6 Senior Engineer Expectations'],
     ]},
     { title: 'Reference', items: [
         ['sections/reference/quick-reference.html', 'Quick Reference'],
@@ -189,7 +189,7 @@ function renderSidebar(sidebar) {
 
     const header = document.createElement('div');
     header.className = 'sidebar-header';
-    header.innerHTML = '<h2><a href="' + base + 'index.html" class="home-link">Study Dashboard</a></h2>' +
+    header.innerHTML = '<h2><a href="' + base + 'index.html" class="home-link">Study Guide</a></h2>' +
         '<button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button>';
     frag.appendChild(header);
 

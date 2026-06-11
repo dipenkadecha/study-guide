@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.18 System Design Problems - Interview Prep</title>
+<title>4.18 System Design Problems - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -101,7 +101,7 @@
 <tr><td>Search System</td><td>Inverted Index + Sharding + Replication + Cache-Aside + Cursor Pagination</td></tr>
 </table>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>The engineer who knows 50 patterns can design ANY system. The engineer who memorized 10 architectures freezes on the 11th. Start every design with the 5 questions above, then select patterns that address each answer. This shows structured thinking — exactly what interviewers look for at senior levels.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>The engineer who knows 50 patterns can design ANY system. The engineer who memorized 10 architectures freezes on the 11th. Start every design with the 5 questions above, then select patterns that address each answer. This shows structured thinking — exactly what interviewers look for at senior levels.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.3 URL Shortener (Bitly)</h3><span class="badge">Classic</span></div><div class="card-body">
@@ -149,7 +149,7 @@ Read bandwidth = 116K * 600B        ~= ~70 MB/s out</code></pre>
 <li><strong>Pre-generated pool:</strong> Pre-compute IDs, store in DB. No collision, no coordination at runtime. Complexity in pool management.</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Bitly:</strong> Handles 28 billion clicks/month. Uses Base62 encoding (a-zA-Z0-9) for short codes. Pre-generates IDs in batches (counter ranges) to avoid distributed coordination. Read:write ratio is 100:1, so aggressive caching of popular short links in Redis achieves sub-millisecond redirect latency.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Start with API design (shorten + redirect), then discuss: "Key challenge is unique ID generation at scale. I'd use a counter-based approach with range allocation (each server gets 1M IDs) rather than random to avoid collisions. 7 chars in Base62 = 3.5 trillion combinations — sufficient for decades."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Start with API design (shorten + redirect), then discuss: "Key challenge is unique ID generation at scale. I'd use a counter-based approach with range allocation (each server gets 1M IDs) rather than random to avoid collisions. 7 chars in Base62 = 3.5 trillion combinations — sufficient for decades."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.4 Chat System (WhatsApp/Slack)</h3><span class="badge">Real-time</span></div><div class="card-body">
@@ -181,7 +181,7 @@ Read bandwidth = 116K * 600B        ~= ~70 MB/s out</code></pre>
 <li><strong>Hybrid:</strong> WhatsApp uses push for small groups, pull for broadcast lists.</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>WhatsApp:</strong> 2 billion users, 100 billion messages/day. Uses Erlang for connection management (each server handles 2M concurrent connections). Messages stored in Mnesia (write-optimized). End-to-end encrypted — server can't read message content. Delivery receipts (single tick, double tick, blue tick) are separate lightweight messages.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Key design points: "WebSocket for persistent connections. Messages stored in Cassandra (partition by chat_id, cluster by timestamp). Offline users get messages queued — delivered when they reconnect. Group messages use fan-out-on-write (max 256 members for WhatsApp groups). For presence: heartbeat every 30s, shown as online/last seen."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Key design points: "WebSocket for persistent connections. Messages stored in Cassandra (partition by chat_id, cluster by timestamp). Offline users get messages queued — delivered when they reconnect. Group messages use fan-out-on-write (max 256 members for WhatsApp groups). For presence: heartbeat every 30s, shown as online/last seen."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.5 News Feed (Instagram/Twitter)</h3><span class="badge">Scale</span></div><div class="card-body">
@@ -220,7 +220,7 @@ public List&lt;Post&gt; getFeed(String userId) {
 }</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Fan-out-on-write (precompute feeds, fast reads, expensive writes for users with many followers) vs Fan-out-on-read (compute at read time, cheaper writes, slower reads). Hybrid: fan-out-on-write for normal users, fan-out-on-read for celebrities (>1M followers). This avoids writing to millions of feed caches when a celebrity posts.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Instagram:</strong> Uses hybrid fan-out. Regular users' posts are pushed to all followers' feed caches (Redis). For accounts with 10M+ followers, posts are pulled at read time and merged. Feed ranking model considers: relationship (interactions), timeliness, content type, and predicted engagement.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Always mention the hybrid approach: "For the 99% of users with &lt;10K followers, fan-out-on-write gives instant feed reads. For the top 1% celebrities, fan-out-on-read avoids writing to millions of caches per post. At read time, we merge the precomputed feed with celebrity posts and rank by engagement score."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Always mention the hybrid approach: "For the 99% of users with &lt;10K followers, fan-out-on-write gives instant feed reads. For the top 1% celebrities, fan-out-on-read avoids writing to millions of caches per post. At read time, we merge the precomputed feed with celebrity posts and rank by engagement score."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.6 File Storage (Dropbox/Google Drive)</h3><span class="badge">Storage</span></div><div class="card-body">
@@ -238,7 +238,7 @@ public List&lt;Post&gt; getFeed(String userId) {
 <li><strong>Dropbox uses CDC</strong> for efficient sync of large files with small modifications.</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Dropbox:</strong> Files split into 4MB chunks, content-addressed by SHA-256. Deduplication across all users — if 100 users upload the same PDF, stored once. Block-level sync: changing 1 byte in a 1GB file only uploads one 4MB chunk. Metadata in MySQL (sharded by namespace_id), blocks in a custom storage system (Magic Pocket on bare metal).</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Key design decisions: "Chunk files into fixed-size blocks (4MB). Each block content-addressed (SHA-256 hash). Client computes hashes locally, uploads only new/changed blocks — enables efficient sync. Metadata service (what files exist, their block lists) separated from block storage (actual bytes). Conflict resolution: last-writer-wins with conflict copy for simultaneous edits."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Key design decisions: "Chunk files into fixed-size blocks (4MB). Each block content-addressed (SHA-256 hash). Client computes hashes locally, uploads only new/changed blocks — enables efficient sync. Metadata service (what files exist, their block lists) separated from block storage (actual bytes). Conflict resolution: last-writer-wins with conflict copy for simultaneous edits."</p></div>
 </div></div>
 <div class="card"><div class="card-header"><h3>4.18.7 Video Streaming (Netflix)</h3><span class="badge">Scale</span></div><div class="card-body">
 <div class="diagram-container">
@@ -265,7 +265,7 @@ public List&lt;Post&gt; getFeed(String userId) {
 <li><strong>Netflix hybrid:</strong> Pre-transcode popular titles in all formats. JIT for old/rare content. Per-title encoding (optimize bitrate ladder per video complexity).</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Netflix:</strong> Encodes each title in 1200+ variants (resolution x bitrate x codec x audio). Open Connect CDN (custom hardware in 1000+ ISP locations) serves 95% of traffic from within the user's ISP network. Adaptive bitrate streaming (DASH) measures bandwidth every 2s and switches quality seamlessly. Pre-positions popular titles overnight to edge locations.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Cover the pipeline: "Upload → async transcoding pipeline (FFmpeg, multiple resolutions/codecs) → store chunks in S3 → distribute to CDN edge. Playback: manifest file lists available qualities, client picks based on bandwidth. Adaptive streaming adjusts mid-playback. Key metric: rebuffer rate (should be &lt;0.5%). Pre-position predicted popular content at edge."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Cover the pipeline: "Upload → async transcoding pipeline (FFmpeg, multiple resolutions/codecs) → store chunks in S3 → distribute to CDN edge. Playback: manifest file lists available qualities, client picks based on bandwidth. Adaptive streaming adjusts mid-playback. Key metric: rebuffer rate (should be &lt;0.5%). Pre-position predicted popular content at edge."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.8 Ride Sharing (Uber)</h3><span class="badge">Real-time</span></div><div class="card-body">
@@ -297,7 +297,7 @@ public List&lt;Post&gt; getFeed(String userId) {
 <li><strong>H3 (Uber):</strong> Hexagonal grid, uniform neighbors, no edge distortion. Best for ride-sharing. Library available.</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Uber:</strong> Geospatial matching uses Google S2 cells (Earth divided into ~400M cells at level 12). Driver locations updated every 4 seconds via persistent connection. Matching algorithm considers: distance, ETA (routing), driver rating, trip acceptance probability. Surge pricing uses real-time supply/demand ratio per S2 cell — computed every 2 minutes.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Focus on matching: "Drivers send GPS coordinates every 4s. We index by geohash (S2 cells) in Redis. When rider requests: query nearby cells, compute ETA for top-20 candidates (routing service), pick optimal match. Key challenge: consistency during matching — use distributed locks per driver to prevent double-dispatch."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Focus on matching: "Drivers send GPS coordinates every 4s. We index by geohash (S2 cells) in Redis. When rider requests: query nearby cells, compute ETA for top-20 candidates (routing service), pick optimal match. Key challenge: consistency during matching — use distributed locks per driver to prevent double-dispatch."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.9 Typeahead / Autocomplete (Google Search)</h3><span class="badge">Low Latency</span></div><div class="card-body">
@@ -331,7 +331,7 @@ class TrieNode {
 <li><strong>Redis Sorted Sets:</strong> Simple, distributed. ZRANGEBYLEX for prefix. Moderate latency. Best for: small dataset, simple ranking.</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Google:</strong> Trie built from billions of queries. Updated incrementally (new trending queries propagated in minutes). Personalized layer overlays user's search history. Ranking considers: query frequency, freshness, user history, language, and location. Infrastructure: entire trie sharded across 100s of machines, each prefix maps to specific shards.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Explain the data structure: "Trie (prefix tree) where each node stores top-K suggestions. Pre-computed and cached at each level. Trie sharded by prefix (a-m on shard 1, n-z on shard 2). Updates: batch rebuild nightly for frequency changes, real-time path for trending queries. Response must be &lt;100ms — serve from memory, never disk."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Explain the data structure: "Trie (prefix tree) where each node stores top-K suggestions. Pre-computed and cached at each level. Trie sharded by prefix (a-m on shard 1, n-z on shard 2). Updates: batch rebuild nightly for frequency changes, real-time path for trending queries. Response must be &lt;100ms — serve from memory, never disk."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.10 Ticket Booking (BookMyShow/Ticketmaster)</h3><span class="badge">Concurrency</span></div><div class="card-body">
@@ -385,7 +385,7 @@ public void releaseExpiredHolds() {
 <li><strong>Queue-based (virtual waiting room):</strong> Serialize access, fair ordering. Higher latency. Use for: extremely high demand (Taylor Swift tickets).</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Ticketmaster:</strong> Handles 1.5M+ concurrent users for popular events. Uses queue system (virtual waiting room) to control load — 100K users see "selecting seats" at a time. Seat holds: pessimistic locking with 10-minute timeout. Payment processed within hold window. If timeout expires, seat released back to available pool automatically.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Key challenge is inventory consistency: "Seats use pessimistic locking — SELECT FOR UPDATE. When user selects seat, it's held for 10 minutes (timer starts). Concurrent requests for same seat get "unavailable." If payment fails or timer expires, seat releases. For hot events: virtual queue (CloudFlare Waiting Room) prevents thundering herd. Show seat map from a cache with near-real-time availability."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Key challenge is inventory consistency: "Seats use pessimistic locking — SELECT FOR UPDATE. When user selects seat, it's held for 10 minutes (timer starts). Concurrent requests for same seat get "unavailable." If payment fails or timer expires, seat releases. For hot events: virtual queue (CloudFlare Waiting Room) prevents thundering herd. Show seat map from a cache with near-real-time availability."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.11 Design a Web Crawler</h3><span class="badge">Practice</span></div><div class="card-body">
@@ -401,7 +401,7 @@ public void releaseExpiredHolds() {
 <p><strong>Key trade-off:</strong> BFS (breadth-first) discovers more domains quickly but misses deep pages; priority-based crawling focuses on important pages but may never reach long-tail content. Politeness delays (1-2s per domain) limit throughput per domain — parallelize across many domains instead.</p>
 <div class="trade-off-box"><h4>Trade-off</h4><p>BFS vs DFS crawling: BFS (level-by-level) discovers important pages first (homepage links) and distributes load evenly. DFS goes deep into one domain (risk of getting stuck in infinite traps). Hybrid: BFS across domains + priority queue weighted by page importance (PageRank) and freshness (time since last crawl).</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Google:</strong> Crawls 100+ billion pages. Uses a URL frontier (priority queue) with politeness constraints (max 1 request/second per domain). DNS pre-fetching and connection pooling for throughput. Duplicate detection via SimHash (content fingerprint) — avoids recrawling mirror sites. Crawl budget allocated proportionally to site quality.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Structure your answer: "1) Seed URLs → URL frontier (priority queue). 2) Fetcher pool respects politeness (robots.txt, rate limit per domain). 3) Content parser extracts links + text. 4) URL dedup via Bloom filter (seen before?). 5) Content dedup via SimHash. Scaling: partition frontier by domain hash across workers. Key metrics: pages/second, coverage, freshness."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Structure your answer: "1) Seed URLs → URL frontier (priority queue). 2) Fetcher pool respects politeness (robots.txt, rate limit per domain). 3) Content parser extracts links + text. 4) URL dedup via Bloom filter (seen before?). 5) Content dedup via SimHash. Scaling: partition frontier by domain hash across workers. Key metrics: pages/second, coverage, freshness."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.12 Design a Payment System</h3><span class="badge">Practice</span></div><div class="card-body">
@@ -417,7 +417,7 @@ public void releaseExpiredHolds() {
 <p><strong>Key trade-off:</strong> Synchronous processing gives instant feedback but risks timeout failures mid-payment. Async (queue-based) is more reliable but user waits for confirmation. Solution: accept payment intent synchronously, process asynchronously, notify via webhook/push.</p>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Synchronous vs Asynchronous payment processing: Sync gives immediate confirmation but blocks user (and timeout = unknown state). Async (webhook callback) is more resilient but user must wait/poll. Best practice: optimistic response ("payment processing") + async confirmation. For refunds: always async — batch processing reduces costs.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Stripe:</strong> Uses double-entry bookkeeping — every money movement creates two entries (debit + credit). Idempotency keys on every API call prevent duplicate charges. Payment state machine: created → processing → succeeded/failed. Reconciliation job runs hourly comparing internal ledger with bank statements — discrepancies trigger alerts.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Critical points: "Idempotency key on every payment request (UUID from client). State machine: pending → authorized → captured → settled. Use distributed transactions (Saga) for multi-step flows (charge + update order + send notification). Every money movement is double-entry in the ledger. Reconciliation job compares our records vs payment gateway daily."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Critical points: "Idempotency key on every payment request (UUID from client). State machine: pending → authorized → captured → settled. Use distributed transactions (Saga) for multi-step flows (charge + update order + send notification). Every money movement is double-entry in the ledger. Reconciliation job compares our records vs payment gateway daily."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.13 Design a Notification System</h3><span class="badge">Practice</span></div><div class="card-body">
@@ -434,7 +434,7 @@ public void releaseExpiredHolds() {
 <p><strong>Key trade-off:</strong> Push notifications are real-time but unreliable (device offline). Email is reliable but slow. SMS is reliable and fast but expensive. Solution: use push as primary, fall back to email/SMS for critical messages, deduplicate across channels.</p>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Push vs Pull: Push (server sends to device) for time-sensitive notifications (messages, alerts). Pull (client polls) for non-urgent (digest emails). Push risks overwhelming devices (notification fatigue). Best practice: priority levels — P0 (push immediately), P1 (batch per 15 min), P2 (daily digest). Users control per-channel preferences.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Facebook:</strong> Sends 10+ billion push notifications daily. Uses a priority queue with rate limiting per user (max 5 pushes/hour to prevent fatigue). Multi-channel: push notification → if unread after 4 hours → email → if still unread after 24 hours → SMS. ML model predicts optimal delivery time per user to maximize engagement.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Design template: "Event triggers notification → message queue (Kafka) → priority router → channel-specific workers (push/SMS/email). Each channel has its own adapter (APNS for iOS, FCM for Android, SendGrid for email). Key features: user preferences (opt-out per channel), rate limiting (max N/hour), template engine (i18n), delivery tracking (sent/delivered/read)."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Design template: "Event triggers notification → message queue (Kafka) → priority router → channel-specific workers (push/SMS/email). Each channel has its own adapter (APNS for iOS, FCM for Android, SendGrid for email). Key features: user preferences (opt-out per channel), rate limiting (max N/hour), template engine (i18n), delivery tracking (sent/delivered/read)."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.14 Design a Collaborative Editor (Google Docs)</h3><span class="badge">Practice</span></div><div class="card-body">
@@ -450,7 +450,7 @@ public void releaseExpiredHolds() {
 <p><strong>Key trade-off:</strong> OT requires a central server to order operations (simpler but single point of failure). CRDTs work peer-to-peer with no central coordination (resilient but larger state overhead and limited operation types). Google Docs uses OT; newer tools (Figma, Notion) increasingly use CRDTs.</p>
 <div class="trade-off-box"><h4>Trade-off</h4><p>OT (Operational Transform) vs CRDTs: OT requires central server to order operations — simpler, proven (Google Docs), but server is bottleneck. CRDTs are decentralized (work offline, peer-to-peer) but more complex and higher metadata overhead. OT for centralized real-time (Google Docs). CRDTs for offline-first or P2P (Figma canvas, local-first apps).</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Google Docs:</strong> Uses OT with a central server maintaining document version. Each keystroke becomes an operation (insert char at position X). Server transforms concurrent operations to maintain consistency. Cursor positions of all collaborators broadcast via presence channel (WebSocket). Undo stack is per-user (local operations only).</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Explain the core mechanism: "Each edit is an operation (insert/delete at position). When two users edit simultaneously, the server resolves conflicts via Operational Transform — adjusts positions based on concurrent edits. WebSocket for real-time sync (&lt;50ms). Cursor presence via lightweight broadcast. Document stored as operation log — replay to reconstruct any version."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Explain the core mechanism: "Each edit is an operation (insert/delete at position). When two users edit simultaneously, the server resolves conflicts via Operational Transform — adjusts positions based on concurrent edits. WebSocket for real-time sync (&lt;50ms). Cursor presence via lightweight broadcast. Document stored as operation log — replay to reconstruct any version."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.15 Design an E-Commerce Platform (Amazon)</h3><span class="badge">Practice</span></div><div class="card-body">
@@ -467,7 +467,7 @@ public void releaseExpiredHolds() {
 <p><strong>Key trade-off:</strong> Strong consistency on inventory prevents overselling but adds latency and reduces throughput. Solution: optimistic approach — allow checkout, validate inventory asynchronously, compensate (refund + notify) on rare conflicts. Amazon accepts ~0.1% oversell rate as acceptable vs blocking millions of checkouts for strict consistency.</p>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Monolith vs Microservices for e-commerce: Start monolithic (faster development, simpler transactions for cart+inventory+payment). Split when: team grows >50 engineers, deploy conflicts increase, one component needs independent scaling. First split candidates: search (different scaling pattern), payments (compliance isolation), recommendations (ML pipeline).</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Amazon:</strong> Hundreds of microservices. Product page alone involves 100+ service calls (rendered in parallel). Cart service is eventually consistent — adding to cart always succeeds (optimistic), inventory check happens at checkout. "Add to Cart" is the most important button in e-commerce — it must never fail or show loading.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Cover the key flows: "Product catalog (Elasticsearch for search + DynamoDB for product details). Cart service (Redis for session cart, persisted to DB on login). Checkout flow: reserve inventory (distributed lock, 10-min hold) → payment (idempotent charge) → order created (event published) → inventory deducted → fulfillment triggered. Handle: abandoned carts (release inventory), payment failures (compensating transaction), overselling (backorder queue)."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Cover the key flows: "Product catalog (Elasticsearch for search + DynamoDB for product details). Cart service (Redis for session cart, persisted to DB on login). Checkout flow: reserve inventory (distributed lock, 10-min hold) → payment (idempotent charge) → order created (event published) → inventory deducted → fulfillment triggered. Handle: abandoned carts (release inventory), payment failures (compensating transaction), overselling (backorder queue)."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.18.16 Design a Distributed Task Scheduler</h3><span class="badge">Practice</span></div><div class="card-body">
@@ -484,7 +484,7 @@ public void releaseExpiredHolds() {
 <p><strong>Key trade-off:</strong> Pull-based (workers poll for due tasks) is simple but has latency jitter. Push-based (scheduler dispatches to workers) is precise but scheduler becomes a bottleneck. Hybrid: scheduler pushes to a Kafka topic partitioned by time window, workers consume from their partition.</p>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Push vs Pull model: Push (scheduler assigns tasks to workers) gives better load balancing but scheduler is bottleneck/SPOF. Pull (workers pull from queue when ready) is simpler, self-balancing, but priority/ordering is harder. Hybrid: scheduler enqueues prioritized tasks, workers pull from priority queues. Exactly-once execution via distributed lock + fencing token per task.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Uber (Peloton/Mesos):</strong> Schedules millions of tasks daily across 10,000+ machines. Tasks have priorities (P0 ride-matching > P1 ETL > P2 batch). Resource-aware scheduling: each task declares CPU/memory needs, scheduler bin-packs onto machines. Dead task detection via heartbeat (no heartbeat in 30s = reschedule). At-least-once with idempotent tasks.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Structure: "Task submitted → persisted to DB (durable) → scheduler picks tasks by priority + scheduled_time → assigns to available worker (via queue). Worker sends heartbeat every 10s. If missed 3x, task re-queued. Completed tasks update state. Key challenges: exactly-once execution (idempotency key + fencing), clock skew for scheduled tasks (centralized time source), fair scheduling across tenants (weighted queues)."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Structure: "Task submitted → persisted to DB (durable) → scheduler picks tasks by priority + scheduled_time → assigns to available worker (via queue). Worker sends heartbeat every 10s. If missed 3x, task re-queued. Completed tasks update state. Key challenges: exactly-once execution (idempotency key + fencing), clock skew for scheduled tasks (centralized time source), fair scheduling across tenants (weighted queues)."</p></div>
 </div></div>
 </div>
 

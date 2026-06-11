@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.12 Security - Interview Prep</title>
+<title>4.12 Security - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -91,7 +91,7 @@
 <p><strong>Google:</strong> OAuth 2.0 + OpenID Connect for "Sign in with Google" across 4M+ third-party apps. Internally uses ALTS (Application Layer Transport Security) for service-to-service mTLS — every RPC between Google services is authenticated and encrypted without developer involvement.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: JWT vs Session Tokens</h4><p>JWT: stateless (no server-side session store), scalable, but can't be revoked until expiry (use short TTL + refresh tokens). Session tokens: revocable instantly (delete from store), but require centralized session store (Redis) — adds latency and SPOF. Most production systems use short-lived JWTs (15min) + refresh tokens stored server-side.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Specify your auth architecture: "API Gateway validates JWT signatures (stateless, no DB call). JWTs expire in 15 minutes. Refresh tokens are stored in Redis with user_id — enables instant revocation (logout, password change). Internal service-to-service uses mTLS (mutual TLS) — no tokens needed, identity verified by certificate."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Specify your auth architecture: "API Gateway validates JWT signatures (stateless, no DB call). JWTs expire in 15 minutes. Refresh tokens are stored in Redis with user_id — enables instant revocation (logout, password change). Internal service-to-service uses mTLS (mutual TLS) — no tokens needed, identity verified by certificate."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.12.2 Encryption</h3><span class="badge">Security</span></div><div class="card-body">
@@ -129,7 +129,7 @@
 <p><strong>Google BeyondCorp:</strong> Eliminated VPN entirely. Every request (internal or external) must prove identity + device health + context. An engineer accessing an internal tool from a coffee shop gets the same auth challenge as from the office. Access decisions made per-request, not per-network-location.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: Zero Trust vs Perimeter Security</h4><p>Zero Trust: every request authenticated/authorized regardless of network location — more secure but adds latency (auth check on every call) and complexity (policy engine, identity infrastructure). Perimeter: simple (trust everything inside the VPN) but catastrophic if breached (lateral movement is trivial). Industry is moving to Zero Trust after high-profile breaches (SolarWinds).</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>For security-sensitive designs: "We follow Zero Trust — no implicit trust based on network location. Every service-to-service call requires mTLS + JWT with fine-grained permissions. Even internal services behind the firewall authenticate every request. Access decisions are policy-based (OPA/Rego) evaluating: who + what + where + when."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>For security-sensitive designs: "We follow Zero Trust — no implicit trust based on network location. Every service-to-service call requires mTLS + JWT with fine-grained permissions. Even internal services behind the firewall authenticate every request. Access decisions are policy-based (OPA/Rego) evaluating: who + what + where + when."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.12.5 Secrets Management</h3><span class="badge">Security</span></div><div class="card-body">

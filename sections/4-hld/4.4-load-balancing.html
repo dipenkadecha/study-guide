@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.4 Load Balancing - Interview Prep</title>
+<title>4.4 Load Balancing - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -84,7 +84,7 @@
 <p><strong>Cloudflare:</strong> L4 (TCP) load balancing for raw throughput (gaming, IoT). L7 (HTTP) for smart routing — inspects headers to route /api/* to backend clusters and /static/* to CDN. Processes 45M+ HTTP requests/second at L7.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off: L4 vs L7 Load Balancing</h4><p>L4 (TCP): faster (no packet inspection), handles any protocol, but can't route based on content. L7 (HTTP): smarter routing (URL path, headers, cookies), can terminate TLS, enable caching, but adds latency from packet inspection. Use L4 for raw throughput (gaming, streaming); L7 for web apps needing content-based routing.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>In system design, always specify L7: "We use an L7 load balancer (ALB/Nginx) that routes /api/* to backend service pods and /static/* to a CDN origin. Health checks at L7 verify HTTP 200 responses, not just TCP connectivity — catches application-level failures."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>In system design, always specify L7: "We use an L7 load balancer (ALB/Nginx) that routes /api/* to backend service pods and /static/* to a CDN origin. Health checks at L7 verify HTTP 200 responses, not just TCP connectivity — catches application-level failures."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.4.2 Algorithms</h3><span class="badge">Infrastructure</span></div><div class="card-body">
@@ -120,7 +120,7 @@
 <div class="production-insight"><h4>Production Example</h4>
 <p><strong>Netflix Open Connect:</strong> Custom CDN with servers physically inside ISP networks. Caches popular content locally — 95% of traffic served from ISP-local boxes. Reduces Netflix bandwidth from crossing the internet backbone, saving ISPs money and improving user experience (lower latency, fewer buffering events).</p>
 </div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention CDN early in any design serving global users: "Static assets (JS, CSS, images) served via CDN with long cache TTL. API responses for popular queries cached at CDN edge with short TTL (30s) — reduces origin load by 80% for read-heavy workloads like news feeds."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention CDN early in any design serving global users: "Static assets (JS, CSS, images) served via CDN with long cache TTL. API responses for popular queries cached at CDN edge with short TTL (30s) — reduces origin load by 80% for read-heavy workloads like news feeds."</p></div>
 </div></div>
 </div>
 

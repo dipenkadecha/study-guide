@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.19 Consistency - Interview Prep</title>
+<title>4.19 Consistency - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -84,7 +84,7 @@
 // Use case: Single database with XA transactions. Avoid across microservices.</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>2PC guarantees atomicity across services but is blocking — if coordinator crashes after prepare, participants hold locks indefinitely. Also slow (2 round-trips). Alternative: Saga pattern (non-blocking, compensating transactions) for most distributed scenarios. Use 2PC only within a single database (XA transactions) or when atomicity is absolutely required and latency is acceptable.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Spanner (Google):</strong> Uses 2PC internally for cross-shard transactions, but with TrueTime clock to avoid the blocking problem. For mortals: MySQL XA transactions coordinate across two MySQL instances within the same datacenter. Outside Google, most companies avoid 2PC for cross-service transactions — they use Saga/Outbox instead.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Know when NOT to use 2PC: "For cross-service transactions, 2PC is fragile (coordinator SPOF, blocking on failure). I'd use the Saga pattern instead — each step has a compensating action. For cross-shard within one database (e.g., transfer money between two MySQL shards), 2PC is acceptable because the coordinator is the application itself with known recovery behavior."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Know when NOT to use 2PC: "For cross-service transactions, 2PC is fragile (coordinator SPOF, blocking on failure). I'd use the Saga pattern instead — each step has a compensating action. For cross-shard within one database (e.g., transfer money between two MySQL shards), 2PC is acceptable because the coordinator is the application itself with known recovery behavior."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.19.2 Saga Pattern</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -114,7 +114,7 @@ public class OrderSagaOrchestrator {
 <p><strong>Uber:</strong> Ride completion uses orchestrated saga: (1) charge rider → (2) pay driver → (3) update trip record → (4) emit analytics event. If payment fails at step 1, compensating action cancels the ride charge. Cadence/Temporal workflow engine manages saga state and retries — handles 100K+ concurrent sagas.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Choreography vs Orchestration: Choreography (events between services, no central controller) is more decoupled but harder to reason about (implicit workflow, hard to debug). Orchestration (central coordinator directs steps) is easier to understand and monitor but coordinator is a coupling point. Use orchestration for complex flows (>4 steps) and choreography for simple 2-3 step flows.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Always mention compensation: "Order saga: reserve inventory → charge payment → confirm order. If payment fails, compensation runs: release inventory. Each step is idempotent, each compensation is idempotent. We use an orchestrator (Temporal/Cadence) that tracks saga state and triggers compensations on failure — no manual intervention needed."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Always mention compensation: "Order saga: reserve inventory → charge payment → confirm order. If payment fails, compensation runs: release inventory. Each step is idempotent, each compensation is idempotent. We use an orchestrator (Temporal/Cadence) that tracks saga state and triggers compensations on failure — no manual intervention needed."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.19.3 Outbox Pattern</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -136,7 +136,7 @@ public void createOrder(OrderRequest req) {
 <p><strong>Zalando:</strong> Uses Transactional Outbox with Debezium CDC. Order service writes order + outbox event in same PostgreSQL transaction. Debezium tails the WAL, picks up outbox entries, publishes to Kafka. Guarantees no lost events even if Kafka is temporarily down — the outbox acts as a durable buffer.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Outbox Pattern solves dual-write (DB + message broker atomicity) but adds complexity: outbox table, CDC/polling job, dedup on consumer side. Alternative: "Listen to yourself" — service publishes event first, then consumes its own event to update DB. Simpler but loses DB transaction guarantee. Outbox is the industry standard for financial/critical operations.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Explain the dual-write problem first: "If I update the DB and publish to Kafka separately, either can fail — leading to inconsistency. Solution: write the event to an outbox table in the SAME DB transaction as the business data. A CDC connector (Debezium) tails the outbox table and publishes to Kafka. Guarantees: if DB commits, event will be published. Consumer must be idempotent (possible duplicates)."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Explain the dual-write problem first: "If I update the DB and publish to Kafka separately, either can fail — leading to inconsistency. Solution: write the event to an outbox table in the SAME DB transaction as the business data. A CDC connector (Debezium) tails the outbox table and publishes to Kafka. Guarantees: if DB commits, event will be published. Consumer must be idempotent (possible duplicates)."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.19.4 Change Data Capture (CDC)</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -153,7 +153,7 @@ public void createOrder(OrderRequest req) {
 <tr><td>Outbox + CDC</td><td>Eventual (reliable)</td><td>Good</td><td>Medium</td><td>Reliable event publishing</td></tr>
 </table></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>LinkedIn:</strong> Uses Databus (internal CDC) to stream database changes to search indexes, caches, and analytics. When a profile is updated in MySQL, the change propagates to Elasticsearch (search), Espresso cache (profile views), and Hadoop (analytics) — all within seconds. Single source of truth (MySQL), multiple derived views kept in sync via CDC.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention CDC for any "keep systems in sync" requirement: "Rather than dual-writing to both the database and search index, I'd use CDC (Debezium) to capture every committed change from PostgreSQL's WAL and stream it to Kafka. Consumers update Elasticsearch, Redis cache, and analytics warehouse independently. This ensures all derived systems are consistent with the primary database."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention CDC for any "keep systems in sync" requirement: "Rather than dual-writing to both the database and search index, I'd use CDC (Debezium) to capture every committed change from PostgreSQL's WAL and stream it to Kafka. Consumers update Elasticsearch, Redis cache, and analytics warehouse independently. This ensures all derived systems are consistent with the primary database."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.19.5 Eventual Consistency Variants</h3><span class="badge">Advanced</span></div><div class="card-body">
@@ -189,7 +189,7 @@ public void createOrder(OrderRequest req) {
 <p><strong>Figma:</strong> Uses CRDTs for real-time collaborative design. Multiple designers edit the same canvas simultaneously — each change is a CRDT operation that auto-merges without conflicts. No central server needed for conflict resolution. Also used by Apple Notes, Redis (CRDB), and Riak for multi-region replication.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>CRDTs guarantee eventual convergence without coordination but: limited data types (counters, sets, registers — not arbitrary business logic), higher storage overhead (metadata for conflict resolution), and semantic conflicts (counter can go negative in some implementations). Use for: collaborative editing, distributed counters, shopping carts. Don't use for: complex business rules requiring invariants.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Use CRDTs when offline/multi-region writes are needed: "Shopping cart is a OR-Set CRDT — items added in any region merge without conflicts. Likes counter is a G-Counter CRDT — each replica counts independently, sum gives total. For the collaborative whiteboard, we'd use an RGA (Replicated Growable Array) CRDT for the element list — supports insert/delete without central coordination."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Use CRDTs when offline/multi-region writes are needed: "Shopping cart is a OR-Set CRDT — items added in any region merge without conflicts. Likes counter is a G-Counter CRDT — each replica counts independently, sum gives total. For the collaborative whiteboard, we'd use an RGA (Replicated Growable Array) CRDT for the element list — supports insert/delete without central coordination."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.19.7 Quorum Reads/Writes</h3><span class="badge">Advanced</span></div><div class="card-body">
@@ -212,7 +212,7 @@ public void createOrder(OrderRequest req) {
 <li><strong>Key question in interview:</strong> "What happens if two users edit simultaneously?" If answer is "one wins" -> LWW. If "both preserved" -> CRDTs/merge.</li>
 </ul></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Cassandra:</strong> Default replication_factor=3 with QUORUM consistency = write to 2/3 replicas, read from 2/3 replicas. Guarantees overlap (at least one node has latest value). For cross-DC: LOCAL_QUORUM = quorum within local datacenter only (fast) + async replication to remote DC. Tunable per-query: ONE for analytics reads (fast, possibly stale), QUORUM for user-facing (consistent).</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Explain the math: "With N=3 replicas, W=2 writes, R=2 reads: W+R > N guarantees we read at least one up-to-date replica. Trade-off: higher W = more durable writes but slower. Higher R = more consistent reads but slower. Common configs: (W=2, R=2) for balanced, (W=3, R=1) for read-heavy workloads that need consistency without read overhead."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Explain the math: "With N=3 replicas, W=2 writes, R=2 reads: W+R > N guarantees we read at least one up-to-date replica. Trade-off: higher W = more durable writes but slower. Higher R = more consistent reads but slower. Common configs: (W=2, R=2) for balanced, (W=3, R=1) for read-heavy workloads that need consistency without read overhead."</p></div>
 </div></div>
 </div>
 

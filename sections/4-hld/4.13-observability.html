@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.13 Observability - Interview Prep</title>
+<title>4.13 Observability - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -100,7 +100,7 @@ public Order createOrder(OrderRequest req) { ... }
 <p><strong>Uber:</strong> Jaeger (distributed tracing, which Uber created) traces a single ride request across 50+ microservices. Each service adds a span. When a rider reports "ride took 3 minutes to match," engineers search traces by ride_id to find exactly which service added latency — was it matching algorithm, driver notification, or fraud check?</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Logs vs Metrics vs Traces — Logs: rich detail but expensive at scale (storage, indexing). Metrics: cheap (numbers, aggregatable) but no context on individual requests. Traces: show full request path but sampling needed at scale (100% tracing is prohibitively expensive). Use all three together: metrics detect, logs diagnose, traces pinpoint.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When asked about observability: 'Every service emits structured logs (JSON, correlation_id), RED metrics (Rate, Errors, Duration), and distributed traces (OpenTelemetry). Grafana dashboard shows service health. Alerts fire on p99 latency > 500ms or error rate > 1%. On-call uses traces to identify which downstream service caused the spike.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When asked about observability: 'Every service emits structured logs (JSON, correlation_id), RED metrics (Rate, Errors, Duration), and distributed traces (OpenTelemetry). Grafana dashboard shows service health. Alerts fire on p99 latency > 500ms or error rate > 1%. On-call uses traces to identify which downstream service caused the spike.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.13.2 Monitoring Methodologies</h3><span class="badge">Operations</span></div><div class="card-body">
@@ -109,7 +109,7 @@ public Order createOrder(OrderRequest req) { ... }
 <tr><td>USE</td><td>Utilization, Saturation, Errors</td><td>Infrastructure resources (CPU, disk, network)</td></tr>
 <tr><td>Golden Signals</td><td>Latency, Traffic, Errors, Saturation</td><td>Google SRE approach (comprehensive)</td></tr>
 </table>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Know USE (Utilization, Saturation, Errors) for infrastructure and RED (Rate, Errors, Duration) for services. In interviews: 'I monitor infrastructure with USE method — is the CPU saturated? Is the disk queue full? For microservices I use RED — what's the request rate, error rate, and latency distribution?'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Know USE (Utilization, Saturation, Errors) for infrastructure and RED (Rate, Errors, Duration) for services. In interviews: 'I monitor infrastructure with USE method — is the CPU saturated? Is the disk queue full? For microservices I use RED — what's the request rate, error rate, and latency distribution?'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.13.3 SLI / SLO / SLA</h3><span class="badge">Operations</span></div><div class="card-body">
@@ -119,7 +119,7 @@ public Order createOrder(OrderRequest req) { ... }
 <tr><td>SLA (Agreement)</td><td>Contract with consequences if SLO breached</td><td>99.9% uptime or credits issued</td></tr>
 <tr><td>Error Budget</td><td>Allowed unreliability (100% - SLO)</td><td>99.9% SLO = 43.8 min/month budget</td></tr>
 </table>
-<div class="interview-tip"><h4>Interview Tip</h4><p>State your SLO concretely: 'Our SLO is 99.9% of requests complete successfully within 200ms, measured over a 30-day rolling window. Error budget = 0.1% = ~43 minutes of downtime/month. When budget is exhausted, we freeze deployments and focus on reliability.' Shows you can translate reliability into business terms.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>State your SLO concretely: 'Our SLO is 99.9% of requests complete successfully within 200ms, measured over a 30-day rolling window. Error budget = 0.1% = ~43 minutes of downtime/month. When budget is exhausted, we freeze deployments and focus on reliability.' Shows you can translate reliability into business terms.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.13.4 Alerting Best Practices</h3><span class="badge">Operations</span></div><div class="card-body">
@@ -136,7 +136,7 @@ public Order createOrder(OrderRequest req) { ... }
 // Slow burn: consuming 5% of monthly budget in 6 hours -> ticket</code></pre>
 <div class="production-insight"><h4>Production Insight</h4><p>Set SLOs tighter than SLAs. If SLA promises 99.9%, set internal SLO at 99.95%. The gap is your safety margin. When error budget is exhausted, freeze feature work and focus on reliability.</p></div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Sensitive alerts (low threshold) catch real issues faster but generate alert fatigue from false positives. Conservative alerts (high threshold) reduce noise but miss slow degradations. Best practice: multi-window alerting — short window (5min) for severe issues, long window (1h) for gradual degradation. Separate paging alerts (SLO-burning) from informational ones.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Describe your alerting philosophy: 'We alert on symptoms, not causes. Page on: error rate > 1% for 5 minutes (user-facing impact), p99 > 2s (SLO breach), error budget burn rate > 10x (will exhaust budget in 3 days). We DON'T page on: high CPU (a cause, not a symptom) unless it correlates with user impact.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Describe your alerting philosophy: 'We alert on symptoms, not causes. Page on: error rate > 1% for 5 minutes (user-facing impact), p99 > 2s (SLO breach), error budget burn rate > 10x (will exhaust budget in 3 days). We DON'T page on: high CPU (a cause, not a symptom) unless it correlates with user impact.'</p></div>
 </div></div>
 
 <div class="page-nav">

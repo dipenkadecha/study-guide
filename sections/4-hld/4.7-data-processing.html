@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.7 Data Processing - Interview Prep</title>
+<title>4.7 Data Processing - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -110,7 +110,7 @@ hourlyRevenue.toStream()
 <div class="production-insight"><h4>Production Example</h4>
 <p><strong>Spotify Wrapped:</strong> Batch processing (Apache Spark) computes yearly listening statistics for 400M+ users. Runs in December, processes petabytes of listening history accumulated all year. Results cached and served when users open the app — classic batch-then-serve pattern.</p>
 </div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Always clarify latency requirements: "Does the user need results in real-time (stream processing) or is nightly batch acceptable?" This single question determines your architecture. Real-time → Flink/Kafka Streams. Batch → Spark/Airflow. Hybrid → Lambda Architecture (both).</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Always clarify latency requirements: "Does the user need results in real-time (stream processing) or is nightly batch acceptable?" This single question determines your architecture. Real-time → Flink/Kafka Streams. Batch → Spark/Airflow. Hybrid → Lambda Architecture (both).</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.7.2 Lambda Architecture Pattern</h3><span class="badge">Architecture</span></div><div class="card-body">
@@ -167,7 +167,7 @@ hourlyRevenue.toStream()
 <div class="production-insight"><h4>Production Example</h4>
 <p><strong>LinkedIn:</strong> Real-time analytics use Lambda Architecture — batch layer (Hadoop) computes accurate daily metrics, speed layer (Kafka Streams + Samza) provides real-time counters for active sessions. Serving layer merges both for dashboard that shows "today's views" (stream) alongside "last 30 days" (batch).</p>
 </div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention Lambda Architecture for analytics systems: "We run batch (Spark, nightly) for accurate historical metrics and stream (Flink) for real-time dashboards. The serving layer merges both views." If the interviewer asks about complexity, suggest Kappa as the simpler alternative when reprocessing from Kafka replay is acceptable.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention Lambda Architecture for analytics systems: "We run batch (Spark, nightly) for accurate historical metrics and stream (Flink) for real-time dashboards. The serving layer merges both views." If the interviewer asks about complexity, suggest Kappa as the simpler alternative when reprocessing from Kafka replay is acceptable.</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.7.3 OLTP vs OLAP</h3><span class="badge">Critical</span></div><div class="card-body">
@@ -201,7 +201,7 @@ hourlyRevenue.toStream()
 //   (name, country) (title, cat)  (year, quarter, month)</code></pre>
 <div class="trade-off-box"><h4>Trade-off: Row Store vs Column Store</h4><p>Row stores (PostgreSQL): fast for point lookups and transactional writes (entire row in one disk read). Column stores (ClickHouse, Redshift): fast for aggregations over millions of rows (reads only needed columns, better compression). Never use a column store for OLTP or a row store for heavy analytics.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Uber:</strong> OLTP (MySQL) handles ride transactions in real-time. OLAP (Apache Pinot) powers the internal analytics dashboard — queries like "average ride duration by city this week" scan billions of rows in seconds using columnar storage + pre-aggregated indexes.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When designing systems with both transactional AND analytical needs: "OLTP database (PostgreSQL) handles user-facing operations. CDC streams changes to the OLAP warehouse (ClickHouse/BigQuery) for analytics. This separation lets each optimize for its workload without interference."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When designing systems with both transactional AND analytical needs: "OLTP database (PostgreSQL) handles user-facing operations. CDC streams changes to the OLAP warehouse (ClickHouse/BigQuery) for analytics. This separation lets each optimize for its workload without interference."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.7.4 ETL (Extract, Transform, Load)</h3><span class="badge">Data</span></div><div class="card-body">
@@ -231,7 +231,7 @@ hourlyRevenue.toStream()
 // GROUP BY 1, 2</code></pre>
 <div class="trade-off-box"><h4>Trade-off: ETL vs ELT</h4><p>ETL: transform before loading (data arrives clean, warehouse stays tidy) but pipeline is complex and slow to iterate. ELT: load raw data first, transform in-place (faster iteration, schema-on-read) but warehouse accumulates raw junk. Modern trend favors ELT with tools like dbt for in-warehouse transformations.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Airbnb:</strong> Uses Apache Airflow (which they created) to orchestrate 50,000+ daily ETL jobs. Data flows from production PostgreSQL → S3 (raw) → Spark transforms → Hive/Presto tables → Superset dashboards. DAG-based scheduling ensures jobs run in dependency order with automatic retries.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>When asked about data pipelines: "We use ELT — Fivetran syncs raw data to Snowflake, then dbt models transform it into analytics-ready tables. This decouples ingestion from transformation, letting analysts iterate on transforms without re-running expensive extracts."</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When asked about data pipelines: "We use ELT — Fivetran syncs raw data to Snowflake, then dbt models transform it into analytics-ready tables. This decouples ingestion from transformation, letting analysts iterate on transforms without re-running expensive extracts."</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.7.5 Data Lake vs Data Warehouse vs Lakehouse</h3><span class="badge">Storage</span></div><div class="card-body">
@@ -248,7 +248,7 @@ hourlyRevenue.toStream()
 <tr><td>Examples</td><td>Snowflake, BigQuery, Redshift</td><td>S3 + Athena, HDFS, Azure Data Lake</td><td>Databricks (Delta Lake), Apache Iceberg on S3</td></tr>
 </table>
 
-<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing data architecture, mention the modern trend: "Companies are moving from separate data lakes and warehouses to lakehouses. A lakehouse gives you the cheap, scalable storage of a data lake (S3/Parquet) with the ACID transactions and query performance of a warehouse (via Delta Lake or Iceberg). This eliminates the need to copy data between systems." This shows awareness of current industry direction.</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>When discussing data architecture, mention the modern trend: "Companies are moving from separate data lakes and warehouses to lakehouses. A lakehouse gives you the cheap, scalable storage of a data lake (S3/Parquet) with the ACID transactions and query performance of a warehouse (via Delta Lake or Iceberg). This eliminates the need to copy data between systems." This shows awareness of current industry direction.</p></div>
 <div class="trade-off-box"><h4>Trade-off: Separate vs Unified Architecture</h4><p>Separate lake + warehouse: mature tooling but data copied between systems (expensive, stale). Unified lakehouse: single copy of data, no movement, but newer technology (Delta Lake/Iceberg maturity). If starting fresh in 2024+, default to lakehouse. Legacy systems may keep both during migration.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Netflix:</strong> Runs a Lakehouse on Apache Iceberg + S3. All data (structured analytics, semi-structured logs, unstructured ML features) lives in one S3-backed system. Both Spark batch jobs and Trino interactive queries access the same tables — no ETL between lake and warehouse needed.</p></div>
 </div></div>

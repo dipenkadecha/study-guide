@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4.21 SD Data Structures - Interview Prep</title>
+<title>4.21 SD Data Structures - Study Guide</title>
 <link rel="stylesheet" href="../../assets/styles.css">
 </head>
 <body>
 <div class="progress-bar" id="progressBar"></div>
 <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
 <nav class="sidebar" id="sidebar">
-<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="sidebar-header"><h2>Study Guide</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
 <div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
 <li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
 <li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
@@ -92,7 +92,7 @@ if (!usernames.mightContain(username)) {
 <p><strong>Google Chrome:</strong> Safe Browsing uses a Bloom filter to check if a URL is malicious. The filter (stored locally) contains millions of known-bad URLs in just a few MB. On every navigation, Chrome checks the Bloom filter — if positive, it makes a server call to confirm. False positives (~1%) cause a brief server check; false negatives are impossible.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>False positives (says 'maybe present' when absent) but NEVER false negatives (says 'definitely absent' is always correct). Larger bit array = fewer false positives but more memory. At 1% false positive rate: ~10 bits per element. Cannot delete elements (use Counting Bloom Filter for deletion support, 4x memory). Trade-off: memory efficiency vs false positive rate.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention Bloom Filters for any 'is this element in a large set?' question: 'Before querying the database for a URL (expensive disk I/O), check a Bloom Filter in memory. If absent → definitely not in DB (skip query). If present → might be in DB (query to confirm). Eliminates 99% of unnecessary disk reads for a cache/shortener/crawler dedup service.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention Bloom Filters for any 'is this element in a large set?' question: 'Before querying the database for a URL (expensive disk I/O), check a Bloom Filter in memory. If absent → definitely not in DB (skip query). If present → might be in DB (query to confirm). Eliminates 99% of unnecessary disk reads for a cache/shortener/crawler dedup service.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.21.2 Count-Min Sketch & HyperLogLog</h3><span class="badge">Advanced</span></div><div class="card-body">
@@ -108,7 +108,7 @@ if (!usernames.mightContain(username)) {
 <p><strong>Redis:</strong> HyperLogLog counts unique visitors with 0.81% error using only 12KB of memory regardless of cardinality. Reddit uses it to count unique post viewers — tracking "4.2M people viewed this post" without storing 4.2M user IDs. Standard error of 0.81% means the displayed count may be off by ~34K, which is acceptable for display purposes.</p>
 </div>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Both trade accuracy for massive memory savings. HyperLogLog: counts unique elements (cardinality) using ~12KB regardless of dataset size, ±0.81% error. Count-Min Sketch: estimates frequency (how often each element appears) with bounded overcount. Neither supports exact answers or element deletion. Perfect when approximate answers are acceptable (analytics, rate limiting).</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Use HyperLogLog for 'count unique X': 'For unique visitors per page, exact counting would need O(n) memory (store every user_id). Redis HyperLogLog gives ±0.81% accuracy using only 12KB per page — even for billions of visitors. PFADD for each visit, PFCOUNT for the unique count. Perfect for analytics dashboards where approximate is acceptable.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Use HyperLogLog for 'count unique X': 'For unique visitors per page, exact counting would need O(n) memory (store every user_id). Redis HyperLogLog gives ±0.81% accuracy using only 12KB per page — even for billions of visitors. PFADD for each visit, PFCOUNT for the unique count. Perfect for analytics dashboards where approximate is acceptable.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.21.3 Geospatial Indexing</h3><span class="badge">Advanced</span></div><div class="card-body">
@@ -133,7 +133,7 @@ if (!usernames.mightContain(username)) {
 // Efficient ops: k-ring (all hexes within k steps), polyfill (hexes covering a polygon)</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Geohash (1D string, easy to index, prefix matching for proximity) vs R-Tree (2D spatial index, exact range/box queries) vs S2/H3 Cells (hierarchical, variable resolution). Geohash: simple but edge cases at cell boundaries (nearby points in different prefixes). S2: no edge issues (sphere geometry) but more complex. PostGIS (R-Tree) for SQL databases; Redis GEO (geohash) for in-memory lookups. <strong>Resolution trade-off:</strong> smaller cells = more precise proximity but more cells to scan per radius query; larger cells query faster but produce false "nearby" positives.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Uber:</strong> Uses Google S2 cells (level 12, ~3km² each) for driver matching — queries the rider's S2 cell + adjacent cells for available drivers; higher levels drive city-wide surge pricing, lower levels precise matching. <strong>Google Maps</strong> uses the same S2 library for POI indexing, route segments, and geofencing — querying level 4 for country-level and level 12 for local search.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>For 'find nearby X' problems: 'Store locations with geohash prefix. To find restaurants within 5km: compute geohash of user's location at appropriate precision (6 chars ≈ 1.2km), query all entries with same prefix + 8 neighboring prefixes. Redis GEORADIUS does this natively. For more precision, post-filter results by exact Haversine distance.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>For 'find nearby X' problems: 'Store locations with geohash prefix. To find restaurants within 5km: compute geohash of user's location at appropriate precision (6 chars ≈ 1.2km), query all entries with same prefix + 8 neighboring prefixes. Redis GEORADIUS does this natively. For more precision, post-filter results by exact Haversine distance.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.21.4 MVCC (Multi-Version Concurrency Control)</h3><span class="badge">Advanced</span></div><div class="card-body">
@@ -160,7 +160,7 @@ if (!usernames.mightContain(username)) {
 // Compares trees with replicas -> only syncs differing partitions</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Efficient difference detection (O(log n) to find divergent data ranges between replicas) but expensive to maintain (every data change updates the tree from leaf to root). Works best when: data changes infrequently relative to sync checks, and datasets are large enough that full comparison is impractical.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Cassandra (Anti-Entropy Repair):</strong> Builds Merkle trees over each token range per table. Two replicas compare root hashes — if they match, data is identical (no transfer needed). If different, they traverse down to find the specific divergent ranges and only sync those rows. Reduces repair data transfer from 'entire dataset' to 'only differences.'</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention Merkle Trees for data sync/verification: 'To detect data inconsistencies between replicas, we build Merkle trees over partition ranges. Comparing root hashes tells us instantly if replicas are in sync. If not, we traverse the tree to identify exactly which data ranges differ — only those ranges need repair. Used by Cassandra, DynamoDB, and git (for commits).'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention Merkle Trees for data sync/verification: 'To detect data inconsistencies between replicas, we build Merkle trees over partition ranges. Comparing root hashes tells us instantly if replicas are in sync. If not, we traverse the tree to identify exactly which data ranges differ — only those ranges need repair. Used by Cassandra, DynamoDB, and git (for commits).'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.21.6 Skip List</h3><span class="badge">Internals</span></div><div class="card-body">
@@ -174,7 +174,7 @@ if (!usernames.mightContain(username)) {
 // Trade-off: ~50% more memory than BST, probabilistic O(log n) not guaranteed</code></pre>
 <div class="trade-off-box"><h4>Trade-off</h4><p>Skip List vs Balanced BST (Red-Black Tree): Skip List is simpler to implement, naturally supports concurrent access (lock-free with CAS), and has the same O(log n) performance. BST gives deterministic worst-case; Skip List is probabilistic (but practically equivalent). Redis uses Skip Lists for sorted sets because they're simpler and support range queries efficiently.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Redis Sorted Sets (ZSET):</strong> Implemented as Skip List + hash table. The Skip List enables O(log n) insertion and range queries (ZRANGEBYSCORE). Used for: leaderboards (rank players by score), rate limiting (sliding window of timestamps), and priority queues. Redis chose Skip List over BST for simplicity of implementation and lock-free concurrent access.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Mention Skip Lists for ordered data with fast range queries: 'For the leaderboard, I'd use Redis Sorted Set (backed by a Skip List). ZADD for score updates (O(log n)), ZREVRANGE for top-K players (O(log n + K)). Skip Lists support concurrent writers without complex rebalancing — unlike AVL/Red-Black trees. Perfect for real-time ranking systems.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Mention Skip Lists for ordered data with fast range queries: 'For the leaderboard, I'd use Redis Sorted Set (backed by a Skip List). ZADD for score updates (O(log n)), ZREVRANGE for top-K players (O(log n + K)). Skip Lists support concurrent writers without complex rebalancing — unlike AVL/Red-Black trees. Perfect for real-time ranking systems.'</p></div>
 </div></div>
 
 <div class="card"><div class="card-header"><h3>4.21.7 Probabilistic Structures - When to Use</h3><span class="badge">Internals</span></div><div class="card-body">
@@ -206,7 +206,7 @@ if (!usernames.mightContain(username)) {
 </table>
 <div class="trade-off-box"><h4>Trade-off</h4><p>All probabilistic data structures trade exactness for massive space savings. Bloom Filter: membership testing (12 bits/element vs full storage). HyperLogLog: cardinality (12KB vs storing all elements). Count-Min Sketch: frequency estimation (fixed size vs exact counters). T-Digest: percentiles (few KB vs storing all values). Use when: dataset is huge AND approximate answers are acceptable.</p></div>
 <div class="production-insight"><h4>Production Example</h4><p><strong>Google Chrome:</strong> Uses Bloom Filter to check URLs against a malware database. The full database is on Google's servers, but a Bloom Filter fits in the browser. If URL passes Bloom Filter ('definitely not malicious'), no network call needed. If Bloom Filter says 'maybe malicious' (1% false positive rate), Chrome queries the full database server-side for exact check.</p></div>
-<div class="interview-tip"><h4>Interview Tip</h4><p>Know when to suggest probabilistic structures: 'Exact unique user count across 1B events? HyperLogLog (12KB, 0.81% error). Check if URL was seen in a crawler with 10B URLs? Bloom Filter (1.2GB vs 100GB for hash set). Estimate top-K trending hashtags in a stream? Count-Min Sketch with min-heap. The interviewer wants to see you optimize for scale — exact isn't always necessary.'</p></div>
+<div class="interview-tip"><h4>Key Tip</h4><p>Know when to suggest probabilistic structures: 'Exact unique user count across 1B events? HyperLogLog (12KB, 0.81% error). Check if URL was seen in a crawler with 10B URLs? Bloom Filter (1.2GB vs 100GB for hash set). Estimate top-K trending hashtags in a stream? Count-Min Sketch with min-heap. The interviewer wants to see you optimize for scale — exact isn't always necessary.'</p></div>
 </div></div>
 
 </div>
