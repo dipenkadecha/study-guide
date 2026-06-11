@@ -95,8 +95,4 @@ A **self-contained, original** study guide covering Java & Spring, data structur
 
 ---
 
-## Tech notes
-
-Pure HTML/CSS/JS — no framework, no build. The sidebar is rendered from a single source of truth in [`assets/scripts.js`](assets/scripts.js); styling lives in [`assets/styles.css`](assets/styles.css). Syntax highlighting loads from a CDN and degrades gracefully offline.
-
 _Personal study material. Not affiliated with any employer; contains no confidential content._
