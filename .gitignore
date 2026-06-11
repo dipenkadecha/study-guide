@@ -7,3 +7,6 @@ desktop.ini
 
 # Local preview helper logs (keep serve.cjs and launch.json — they're useful)
 *.log
+
+# Personal Claude Code config (keep serve.cjs / launch.json, exclude local settings)
+.claude/settings.local.json
