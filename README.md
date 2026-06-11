@@ -2,7 +2,7 @@
 
 A **self-contained, original** study guide covering Java & Spring, data structures & algorithms, low-level design, system design, and behavioral topics. Every topic is written out in full — concept → diagram/code → production example → trade-offs → key takeaways — and the whole thing runs as a static site with no build step, no dependencies, and works offline.
 
-> 🔗 **Live site:** _add your GitHub Pages URL here after publishing_ (e.g. `https://<username>.github.io/<repo>/`)
+> 🔗 **Live site:** **https://dipenkadecha.github.io/study-guide/**
 >
 > 💻 **Run locally:** open [`index.html`](index.html) in any browser, or serve the folder (`node .claude/serve.cjs` → http://localhost:8765).
 
