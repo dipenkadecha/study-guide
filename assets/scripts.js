@@ -52,7 +52,7 @@ const NAV_SECTIONS = [
         ['sections/5-behavioral/5.3-conflict-mentoring.html', '5.3 Conflict & Mentoring'],
         ['sections/5-behavioral/5.4-operational-excellence.html', '5.4 Operational Excellence'],
         ['sections/5-behavioral/5.5-technical-writing.html', '5.5 Technical Writing'],
-        ['sections/5-behavioral/5.6-sde3-expectations.html', '5.6 Senior Engineer Expectations'],
+        ['sections/5-behavioral/5.6-senior-engineer-expectations.html', '5.6 Senior Engineer Expectations'],
     ]},
     { title: 'Reference', items: [
         ['sections/reference/quick-reference.html', 'Quick Reference'],
