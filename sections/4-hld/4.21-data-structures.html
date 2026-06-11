@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.21 SD Data Structures - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-sdstructures" class="section-block section-s4">
+<h2 class="section-title"><span class="section-num">4.21</span>System Design Data Structures</h2>
+<div class="card"><div class="card-header"><h3>4.21.1 Bloom Filter</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// Probabilistic set membership: "definitely NOT in set" or "probably in set"
+// False positives possible, false negatives impossible
+// Space: ~10 bits per element for 1% FP rate (vs 64 bits for HashSet)
+// Use cases: avoid expensive DB lookups, spam filtering, cache miss reduction
+
+// Example: Check if username exists before querying DB
+BloomFilter&lt;String&gt; usernames = BloomFilter.create(Funnels.stringFunnel(), 10_000_000, 0.01);
+if (!usernames.mightContain(username)) {
+    return "Available"; // Definitely not taken - skip DB query
+}
+// Might be taken - check DB to confirm (1% false positive)</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Google Chrome:</strong> Safe Browsing uses a Bloom filter to check if a URL is malicious. The filter (stored locally) contains millions of known-bad URLs in just a few MB. On every navigation, Chrome checks the Bloom filter — if positive, it makes a server call to confirm. False positives (~1%) cause a brief server check; false negatives are impossible.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>False positives (says 'maybe present' when absent) but NEVER false negatives (says 'definitely absent' is always correct). Larger bit array = fewer false positives but more memory. At 1% false positive rate: ~10 bits per element. Cannot delete elements (use Counting Bloom Filter for deletion support, 4x memory). Trade-off: memory efficiency vs false positive rate.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention Bloom Filters for any 'is this element in a large set?' question: 'Before querying the database for a URL (expensive disk I/O), check a Bloom Filter in memory. If absent → definitely not in DB (skip query). If present → might be in DB (query to confirm). Eliminates 99% of unnecessary disk reads for a cache/shortener/crawler dedup service.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.21.2 Count-Min Sketch & HyperLogLog</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// Count-Min Sketch: estimate frequency of items in a stream
+// Use: top-K heavy hitters, rate limiting per IP, trending hashtags
+// Space: O(1) fixed size regardless of stream length. May overcount, never undercount.
+
+// HyperLogLog: estimate cardinality (unique count) with ~0.8% error
+// Uses only 12KB memory to count billions of unique items!
+// Use: unique visitors, distinct IP counts, unique search queries
+// Redis: PFADD users "user123" / PFCOUNT users -> approximate unique count</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Redis:</strong> HyperLogLog counts unique visitors with 0.81% error using only 12KB of memory regardless of cardinality. Reddit uses it to count unique post viewers — tracking "4.2M people viewed this post" without storing 4.2M user IDs. Standard error of 0.81% means the displayed count may be off by ~34K, which is acceptable for display purposes.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Both trade accuracy for massive memory savings. HyperLogLog: counts unique elements (cardinality) using ~12KB regardless of dataset size, ±0.81% error. Count-Min Sketch: estimates frequency (how often each element appears) with bounded overcount. Neither supports exact answers or element deletion. Perfect when approximate answers are acceptable (analytics, rate limiting).</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Use HyperLogLog for 'count unique X': 'For unique visitors per page, exact counting would need O(n) memory (store every user_id). Redis HyperLogLog gives ±0.81% accuracy using only 12KB per page — even for billions of visitors. PFADD for each visit, PFCOUNT for the unique count. Perfect for analytics dashboards where approximate is acceptable.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.21.3 Geospatial Indexing</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// Geohash: encode lat/lng into string. Same prefix = nearby
+// "9q8yyk" (San Francisco) - longer string = more precise
+// Redis: GEOADD locations 13.361389 38.115556 "restaurant1"
+//        GEORADIUS locations 15 37 200 km -> find all within 200km
+
+// Geohash edge problem: adjacent points can have totally different prefixes
+// Solution: also query the 8 neighboring cells, then post-filter by distance
+
+// Quadtree: recursively divide 2D space into 4 quadrants
+// Adaptive: dense areas (cities) get a deeper tree; node splits when a cell's
+// point count exceeds a threshold (e.g. 100). Sparse areas stay shallow (saves memory)
+// Use: spatial databases, collision detection, Uber driver locations
+
+// R-tree: balanced tree of bounding rectangles - best for "all X within a box"
+// PostGIS uses R-trees for its spatial indexes
+
+// H3 (Uber): hexagonal grid system, 16 resolution levels (0=continent, 15=1m^2)
+// Uniform neighbors (each hex has exactly 6) -> no geohash edge distortion
+// Efficient ops: k-ring (all hexes within k steps), polyfill (hexes covering a polygon)</code></pre>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Geohash (1D string, easy to index, prefix matching for proximity) vs R-Tree (2D spatial index, exact range/box queries) vs S2/H3 Cells (hierarchical, variable resolution). Geohash: simple but edge cases at cell boundaries (nearby points in different prefixes). S2: no edge issues (sphere geometry) but more complex. PostGIS (R-Tree) for SQL databases; Redis GEO (geohash) for in-memory lookups. <strong>Resolution trade-off:</strong> smaller cells = more precise proximity but more cells to scan per radius query; larger cells query faster but produce false "nearby" positives.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Uber:</strong> Uses Google S2 cells (level 12, ~3km² each) for driver matching — queries the rider's S2 cell + adjacent cells for available drivers; higher levels drive city-wide surge pricing, lower levels precise matching. <strong>Google Maps</strong> uses the same S2 library for POI indexing, route segments, and geofencing — querying level 4 for country-level and level 12 for local search.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>For 'find nearby X' problems: 'Store locations with geohash prefix. To find restaurants within 5km: compute geohash of user's location at appropriate precision (6 chars ≈ 1.2km), query all entries with same prefix + 8 neighboring prefixes. Redis GEORADIUS does this natively. For more precision, post-filter results by exact Haversine distance.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.21.4 MVCC (Multi-Version Concurrency Control)</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// MVCC: readers don't block writers, writers don't block readers.
+// Each transaction sees a snapshot of the data as of its start time;
+// old row versions are kept and later reclaimed (PostgreSQL VACUUM).
+// Use: high-concurrency OLTP databases (PostgreSQL, MySQL InnoDB, Oracle).</code></pre>
+<div class="see-also">→ Full MVCC internals (xmin/xmax, isolation levels, bloat &amp; VACUUM) are on the <a href="4.22-concurrency.html">Concurrency &amp; Locking</a> page (4.22.3 MVCC Deep Dive). Fencing tokens for safe distributed locks are covered there too (4.22.2 Distributed Lock with Fencing).</div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.21.5 Merkle Trees</h3><span class="badge">Internals</span></div><div class="card-body">
+<pre><code>// Merkle Tree: binary tree of hashes for efficient data integrity verification
+// Leaf = hash of data block. Parent = hash(left_child + right_child). Root = tree hash.
+// Use cases: detect data differences between replicas, blockchain, git, Cassandra anti-entropy
+
+// To find which blocks differ between two replicas:
+// 1. Compare root hashes (O(1)) - if same, all data identical
+// 2. If different, compare children - recurse down tree
+// 3. Only transfer the differing leaf blocks
+// Efficiency: O(log n) comparisons to find differences vs O(n) full scan
+
+// Cassandra uses Merkle trees for repair:
+// Each node builds Merkle tree of its data range
+// Compares trees with replicas -> only syncs differing partitions</code></pre>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Efficient difference detection (O(log n) to find divergent data ranges between replicas) but expensive to maintain (every data change updates the tree from leaf to root). Works best when: data changes infrequently relative to sync checks, and datasets are large enough that full comparison is impractical.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Cassandra (Anti-Entropy Repair):</strong> Builds Merkle trees over each token range per table. Two replicas compare root hashes — if they match, data is identical (no transfer needed). If different, they traverse down to find the specific divergent ranges and only sync those rows. Reduces repair data transfer from 'entire dataset' to 'only differences.'</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention Merkle Trees for data sync/verification: 'To detect data inconsistencies between replicas, we build Merkle trees over partition ranges. Comparing root hashes tells us instantly if replicas are in sync. If not, we traverse the tree to identify exactly which data ranges differ — only those ranges need repair. Used by Cassandra, DynamoDB, and git (for commits).'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.21.6 Skip List</h3><span class="badge">Internals</span></div><div class="card-body">
+<pre><code>// Skip List: probabilistic sorted data structure, O(log n) search/insert/delete
+// Like a linked list with express lanes (multiple levels of forward pointers)
+// Used in: Redis sorted sets (ZSET), LevelDB/RocksDB memtable, ConcurrentSkipListMap
+
+// Why skip list over balanced BST?
+// Simpler implementation, better cache locality for range scans,
+// lock-free concurrent versions easier to implement (ConcurrentSkipListMap)
+// Trade-off: ~50% more memory than BST, probabilistic O(log n) not guaranteed</code></pre>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Skip List vs Balanced BST (Red-Black Tree): Skip List is simpler to implement, naturally supports concurrent access (lock-free with CAS), and has the same O(log n) performance. BST gives deterministic worst-case; Skip List is probabilistic (but practically equivalent). Redis uses Skip Lists for sorted sets because they're simpler and support range queries efficiently.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Redis Sorted Sets (ZSET):</strong> Implemented as Skip List + hash table. The Skip List enables O(log n) insertion and range queries (ZRANGEBYSCORE). Used for: leaderboards (rank players by score), rate limiting (sliding window of timestamps), and priority queues. Redis chose Skip List over BST for simplicity of implementation and lock-free concurrent access.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention Skip Lists for ordered data with fast range queries: 'For the leaderboard, I'd use Redis Sorted Set (backed by a Skip List). ZADD for score updates (O(log n)), ZREVRANGE for top-K players (O(log n + K)). Skip Lists support concurrent writers without complex rebalancing — unlike AVL/Red-Black trees. Perfect for real-time ranking systems.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.21.7 Probabilistic Structures - When to Use</h3><span class="badge">Internals</span></div><div class="card-body">
+<pre><code>// Decision framework:
+// Q: "Do I need exact answers?"
+// If NO and dataset is huge -> probabilistic structure saves 10-100x memory
+
+// Bloom Filter: "Is X in this set?" (maybe yes / definitely no)
+//   - Use: dedup URLs in web crawler, check if key exists before DB lookup
+//   - Redis: BF.ADD / BF.EXISTS (RedisBloom module)
+
+// HyperLogLog: "How many unique items?" (~0.8% error, 12KB)
+//   - Use: unique visitors per page, distinct queries per day
+//   - Redis: PFADD page:home user123 / PFCOUNT page:home
+
+// Count-Min Sketch: "How often does X appear?" (over-estimates possible)
+//   - Use: top-K trending items, frequency cap in ads, heavy hitter detection
+//   - Redis: CMS.INCRBY / CMS.QUERY (RedisBloom module)
+
+// TopK: "What are the K most frequent items?" (approximate)
+//   - Use: trending hashtags, most searched queries
+//   - Redis: TOPK.ADD / TOPK.LIST</code></pre>
+<table><tr><th>Structure</th><th>Space</th><th>Accuracy</th><th>Use Case</th></tr>
+<tr><td>HashSet</td><td>O(n)</td><td>Exact</td><td>Small sets, precision needed</td></tr>
+<tr><td>Bloom Filter</td><td>O(1) ~10 bits/elem</td><td>FP possible</td><td>Huge sets, can tolerate FP</td></tr>
+<tr><td>HashMap (counts)</td><td>O(n)</td><td>Exact</td><td>Small cardinality</td></tr>
+<tr><td>HyperLogLog</td><td>12KB fixed</td><td>~0.8% error</td><td>Billions of unique items</td></tr>
+<tr><td>Count-Min Sketch</td><td>O(1) fixed</td><td>Over-estimates</td><td>Frequency in streams</td></tr>
+</table>
+<div class="trade-off-box"><h4>Trade-off</h4><p>All probabilistic data structures trade exactness for massive space savings. Bloom Filter: membership testing (12 bits/element vs full storage). HyperLogLog: cardinality (12KB vs storing all elements). Count-Min Sketch: frequency estimation (fixed size vs exact counters). T-Digest: percentiles (few KB vs storing all values). Use when: dataset is huge AND approximate answers are acceptable.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Google Chrome:</strong> Uses Bloom Filter to check URLs against a malware database. The full database is on Google's servers, but a Bloom Filter fits in the browser. If URL passes Bloom Filter ('definitely not malicious'), no network call needed. If Bloom Filter says 'maybe malicious' (1% false positive rate), Chrome queries the full database server-side for exact check.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Know when to suggest probabilistic structures: 'Exact unique user count across 1B events? HyperLogLog (12KB, 0.81% error). Check if URL was seen in a crawler with 10B URLs? Bloom Filter (1.2GB vs 100GB for hash set). Estimate top-K trending hashtags in a stream? Count-Min Sketch with min-heap. The interviewer wants to see you optimize for scale — exact isn't always necessary.'</p></div>
+</div></div>
+
+</div>
+
+<div class="page-nav">
+<a href="4.20-microservices.html">&#8592; Previous: 4.20 Microservices</a>
+<a href="4.22-concurrency.html">Next: 4.22 Concurrency &#8594;</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

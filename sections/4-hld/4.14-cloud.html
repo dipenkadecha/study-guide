@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.14 Cloud - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">SD Concepts Index</a></li>
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-cloud" class="section-block section-s4"><h2 class="section-title"><span class="section-num">4.14</span>Cloud & Infrastructure</h2>
+<div class="card"><div class="card-header"><h3>4.14.1 Kubernetes Scaling</h3><span class="badge">DevOps</span></div><div class="card-body">
+<pre><code># HPA: scale pods based on CPU/memory/custom metrics
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: order-service-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: order-service
+  minReplicas: 3
+  maxReplicas: 50
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 70
+  - type: Pods          # Custom metric (Kafka consumer lag)
+    pods:
+      metric:
+        name: kafka_consumer_lag
+      target:
+        type: AverageValue
+        averageValue: "100"
+  behavior:
+    scaleUp:
+      stabilizationWindowSeconds: 30  # Prevent flapping
+    scaleDown:
+      stabilizationWindowSeconds: 300  # Slow scale-down (5 min)</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Spotify:</strong> Runs 2000+ microservices on GKE (Google Kubernetes Engine). Each team owns their service's Helm chart. HPA scales based on custom Datadog metrics (p99 latency). A new service goes from code to production in under 15 minutes via fully automated CI/CD pipeline triggered by PR merge.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Managed K8s (EKS/GKE) vs Self-Managed: Managed removes control plane burden ($0.10/hr premium) but limits customization. Self-managed gives full control (custom schedulers, CNI plugins) but requires dedicated platform team (3-5 engineers). For 99% of companies: use managed K8s. Self-manage only if you're at Google/Netflix scale or have unique requirements.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention K8s scaling naturally: 'Services deployed as K8s Deployments with HPA (target 70% CPU). Each pod has resource requests/limits to prevent noisy neighbors. Liveness and readiness probes ensure traffic only routes to healthy pods. Rolling deployments with maxSurge=25% for zero-downtime releases.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.14.2 Compute Options: EKS vs ECS vs Lambda</h3><span class="badge">Cloud</span></div><div class="card-body">
+<p>Choosing where your containers/functions run is a core cloud decision — it trades operational control against managed simplicity and cost model.</p>
+<div class="see-also">→ CI/CD pipeline stages and deployment strategies (blue-green / canary / rolling, Argo Rollouts) are covered on the <a href="4.23-devops.html">DevOps &amp; Deployment</a> page (4.23.4 and 4.23.5).</div>
+<div class="trade-off-box"><h4>Trade-off: EKS vs ECS vs Lambda</h4>
+<table><tr><th>Service</th><th>Complexity</th><th>Control</th><th>Cold Start</th><th>Cost Model</th></tr>
+<tr><td>EKS (Kubernetes)</td><td>High (k8s ops)</td><td>Full</td><td>None (always running)</td><td>Per node-hour</td></tr>
+<tr><td>ECS (Fargate)</td><td>Medium</td><td>Moderate</td><td>None</td><td>Per vCPU-second</td></tr>
+<tr><td>Lambda</td><td>Low</td><td>Limited</td><td>100ms-10s</td><td>Per invocation + duration</td></tr>
+</table>
+<ul>
+<li><strong>EKS:</strong> Full ecosystem (service mesh, operators, KEDA). Use when team has K8s expertise and needs advanced orchestration.</li>
+<li><strong>ECS Fargate:</strong> Simpler K8s. Use when you want containers without managing nodes.</li>
+<li><strong>Lambda:</strong> Event-driven, sporadic traffic, glue logic. Avoid for: steady high traffic (expensive), long-running tasks (&gt;15min), large payloads.</li>
+</ul></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Default to managed containers, reserve serverless for spiky work: "Steady traffic → ECS Fargate or EKS (no cold starts, predictable cost). Spiky/event-driven → Lambda. We keep Lambda off the hot request path to avoid cold-start tail latency, using it for async jobs and glue."</p></div>
+</div></div>
+</div>
+
+
+
+<div class="card"><div class="card-header"><h3>4.14.3 IaaS / PaaS / SaaS</h3><span class="badge">Foundation</span></div><div class="card-body">
+<p><strong>What they are:</strong> Three layers of cloud abstraction that determine what you manage vs what the provider manages.</p>
+
+<table>
+<tr><th>Layer</th><th>You Manage</th><th>Provider Manages</th><th>Examples</th><th>Use Case</th></tr>
+<tr><td><strong>IaaS</strong> (Infrastructure as a Service)</td><td>OS, Runtime, App, Data</td><td>Servers, Storage, Networking, Virtualization</td><td>AWS EC2, Azure VMs, GCP Compute Engine</td><td>Full control needed, custom OS/config, lift-and-shift migration</td></tr>
+<tr><td><strong>PaaS</strong> (Platform as a Service)</td><td>App, Data</td><td>OS, Runtime, Middleware, Servers</td><td>Heroku, AWS Elastic Beanstalk, Google App Engine, Azure App Service</td><td>Focus on code, not infra. Web apps, APIs</td></tr>
+<tr><td><strong>SaaS</strong> (Software as a Service)</td><td>Nothing (just use it)</td><td>Everything</td><td>Gmail, Slack, Salesforce, Datadog</td><td>Ready-made tools, no development needed</td></tr>
+</table>
+
+<pre><code>// Modern additions to the spectrum:
+// FaaS (Function as a Service) — Serverless:
+//   You manage: individual functions (code snippets)
+//   Provider manages: everything including scaling, invocation
+//   Examples: AWS Lambda, Azure Functions, Google Cloud Functions
+//   Use case: Event-driven, sporadic workloads, pay-per-invocation
+
+// CaaS (Container as a Service):
+//   You manage: containers, app code
+//   Provider manages: orchestration, OS, infra
+//   Examples: AWS ECS/EKS, Google GKE, Azure AKS
+//   Use case: Microservices, portable deployments</code></pre>
+<div class="trade-off-box"><h4>Trade-off</h4><p>IaaS (EC2): maximum control, maximum responsibility (you patch the OS). PaaS (Heroku, App Runner): focus on code but limited customization. SaaS (Stripe, Auth0): zero development effort for solved problems but vendor lock-in and less control. Choose: IaaS for core differentiating services, PaaS for standard web services, SaaS for commoditized functions (auth, payments, email).</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Shopify:</strong> Runs core commerce platform on IaaS (custom K8s on GCP). Uses SaaS for non-core: Cloudflare (CDN/WAF), Datadog (observability), PagerDuty (alerting), Vault (secrets). Philosophy: build what differentiates you, buy everything else.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Show pragmatism in your design: 'For authentication, I'd use Auth0 (SaaS) rather than building custom auth — it's a solved problem. For our core recommendation engine (business differentiator), we need full control so I'd run it on K8s (IaaS). This lets the team focus engineering effort on what makes our product unique.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.14.4 Containers &amp; Docker</h3><span class="badge">Foundation</span></div><div class="card-body">
+<p><strong>What it does:</strong> Package an application with ALL its dependencies (runtime, libraries, config) into a portable, isolated unit that runs identically everywhere — dev laptop, CI server, production.</p>
+
+<table>
+<tr><th>Aspect</th><th>Virtual Machine</th><th>Container</th></tr>
+<tr><td>Isolation</td><td>Full OS (hypervisor-level)</td><td>Process-level (shared kernel)</td></tr>
+<tr><td>Size</td><td>GBs (includes full OS)</td><td>MBs (just app + libs)</td></tr>
+<tr><td>Startup</td><td>Minutes</td><td>Seconds</td></tr>
+<tr><td>Resource overhead</td><td>High (each VM runs full OS)</td><td>Low (shared kernel)</td></tr>
+<tr><td>Density</td><td>~10 VMs per host</td><td>~100 containers per host</td></tr>
+<tr><td>Security isolation</td><td>Strong (hardware boundary)</td><td>Weaker (kernel shared, namespace isolation)</td></tr>
+<tr><td>Use case</td><td>Multi-tenant, different OS needs</td><td>Microservices, CI/CD, dev environments</td></tr>
+</table>
+
+<pre><code>// Dockerfile example (multi-stage build for Java Spring Boot):
+// Stage 1: Build
+FROM maven:3.9-eclipse-temurin-21 AS builder
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline          // Cache dependencies
+COPY src ./src
+RUN mvn package -DskipTests            // Build JAR
+
+// Stage 2: Run (slim image)
+FROM eclipse-temurin:21-jre-alpine
+COPY --from=builder /app/target/*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "app.jar"]
+
+// Result: ~150MB image (not 800MB with full JDK + Maven)
+
+// Key Docker concepts for interviews:
+// - Image: immutable template (built from Dockerfile)
+// - Container: running instance of an image
+// - Layer caching: unchanged layers reused → fast rebuilds
+// - Multi-stage builds: separate build and runtime → smaller images
+// - Docker Compose: multi-container local development
+// - Registry: Docker Hub, ECR, GCR (store/distribute images)</code></pre>
+
+<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing deployment in system design, mention containers as the default packaging mechanism: "Services are containerized with Docker, deployed to Kubernetes for orchestration." If asked about the difference from VMs, highlight: containers share the host kernel (faster, lighter) while VMs provide stronger isolation. For multi-tenant SaaS, you might use VMs for tenant isolation with containers inside each VM for service deployment.</p></div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Containers vs VMs vs Serverless: VMs provide strong isolation (separate kernels) but slow boot (minutes) and resource-heavy. Containers share kernel (faster boot in seconds, efficient) but weaker isolation. Serverless has zero management but cold starts and execution limits. Default to containers for general workloads; VMs for strict isolation (multi-tenant); serverless for event-driven, sporadic loads.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Docker Hub:</strong> 13+ billion image pulls per month. Most enterprises standardize on 3-5 base images (company-approved, security-scanned) that teams extend. Multi-stage builds reduce production image size by 70-90% (build stage has compilers, production stage has only runtime). Distroless images (Google) eliminate shell/package managers — reduces attack surface.</p></div>
+</div></div>
+
+<div class="page-nav">
+<a href="4.13-observability.html">&#8592; Previous: 4.13 Observability</a>
+<a href="4.15-storage.html">Next: 4.15 Storage &#8594;</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

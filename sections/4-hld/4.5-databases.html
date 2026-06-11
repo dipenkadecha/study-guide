@@ -1,0 +1,284 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.5 Databases - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">SD Concepts Index</a></li>
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-databases" class="section-block section-s4"><h2 class="section-title"><span class="section-num">4.5</span>Database Design</h2>
+<div class="card"><div class="card-header"><h3>4.5.1 Database Selection Guide</h3><span class="badge">Database</span></div><div class="card-body">
+<table><tr><th>Type</th><th>Examples</th><th>Data Model</th><th>Best For</th><th>Avoid When</th></tr>
+<tr><td>Relational</td><td>PostgreSQL, MySQL</td><td>Tables, SQL, ACID</td><td>Complex queries, transactions, joins</td><td>Massive horizontal scale needed</td></tr>
+<tr><td>Key-Value</td><td>Redis, DynamoDB</td><td>Key -> Value</td><td>Caching, sessions, leaderboards</td><td>Complex queries, relationships</td></tr>
+<tr><td>Document</td><td>MongoDB, Firestore</td><td>JSON documents</td><td>Flexible schema, content management</td><td>Many-to-many relationships</td></tr>
+<tr><td>Column-Family</td><td>Cassandra, HBase</td><td>Wide columns</td><td>Time-series, write-heavy, large scale</td><td>Complex queries, joins</td></tr>
+<tr><td>Graph</td><td>Neo4j, Neptune</td><td>Nodes + edges</td><td>Social networks, fraud detection</td><td>Simple CRUD, large scans</td></tr>
+<tr><td>Time-Series</td><td>InfluxDB, TimescaleDB</td><td>Timestamp-keyed</td><td>Metrics, IoT, monitoring</td><td>General-purpose queries</td></tr>
+</table>
+<div class="trade-off-box"><h4>Trade-off: ACID vs BASE</h4>
+<ul>
+<li><strong>ACID (SQL):</strong> Atomicity, Consistency, Isolation, Durability. Strong guarantees but limits horizontal scaling. Use for: payments, inventory, booking.</li>
+<li><strong>BASE (NoSQL):</strong> Basically Available, Soft-state, Eventually consistent. Better scalability/availability but weaker guarantees. Use for: social feeds, analytics, logs.</li>
+<li><strong>Hybrid approach:</strong> Use ACID for critical path (payment) + BASE for eventual (notifications, analytics). Most production systems mix both.</li>
+</ul></div>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Discord:</strong> Started with PostgreSQL, hit scaling limits at 1 billion messages. Migrated to Cassandra for messages (write-heavy, partitioned by channel_id + time bucket). Kept PostgreSQL for user accounts (strong consistency needed for auth).</p>
+</div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Always justify your database choice: "I'm choosing PostgreSQL for the user service because we need ACID transactions for account operations. For the activity feed, I'd use Cassandra — write-heavy, partitioned by user_id, eventual consistency is acceptable for social feeds." Never say "just use MySQL" without reasoning.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.5.2 Indexing Internals</h3><span class="badge">Database</span></div><div class="card-body">
+<pre><code>// B+Tree Index (PostgreSQL, MySQL InnoDB default)
+// Leaf nodes contain all keys in sorted order + pointers to rows
+// Good for: range queries, ORDER BY, equality
+CREATE INDEX idx_orders_status_date ON orders(status, created_at DESC);
+// Composite index: leftmost prefix rule - can use (status), (status, created_at)
+// Cannot use just (created_at) with this index!
+
+// Hash Index: O(1) equality only, no range queries
+// GIN Index: full-text search, array contains, JSONB queries
+CREATE INDEX idx_products_tags ON products USING GIN(tags);
+
+// Partial Index: index subset of rows (saves space + speeds writes)
+CREATE INDEX idx_active_orders ON orders(customer_id) WHERE status = 'ACTIVE';
+
+// Covering Index: includes all columns needed (index-only scan)
+CREATE INDEX idx_orders_cover ON orders(customer_id) INCLUDE (total, status);</code></pre>
+<div class="trade-off-box"><h4>Trade-off: B-Tree vs LSM-Tree</h4><p>B-Tree (PostgreSQL, MySQL): fast reads (O(log n) point lookups), slower writes (random I/O for updates). LSM-Tree (Cassandra, RocksDB): fast writes (sequential I/O, append-only), slower reads (must check multiple levels). Choose B-Tree for read-heavy OLTP; LSM-Tree for write-heavy ingestion.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Slack:</strong> Added a composite index on (channel_id, timestamp) to their messages table. Query "last 50 messages in channel X" went from 800ms full table scan to 2ms index seek. A single index change eliminated their #1 performance bottleneck at 10M+ daily active users.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing database design, always mention: "I'd add indexes on columns used in WHERE clauses and JOIN conditions. For the messages table: composite index on (channel_id, created_at DESC) supports our primary query pattern — latest messages per channel."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.5.3 Sharding Strategies</h3><span class="badge">Database</span></div><div class="card-body">
+<pre><code>// Hash-based sharding: hash(key) % num_shards
+// Pro: Even distribution. Con: Resharding requires data migration.
+
+// Range-based sharding: key ranges per shard (e.g., A-M shard1, N-Z shard2)
+// Pro: Range queries on shard key. Con: Hot spots if range is popular.
+
+// Consistent Hashing: minimize redistribution on shard add/remove
+// Production choice: DynamoDB uses consistent hashing internally
+
+// Shard key selection is CRITICAL:
+// Good: customer_id (even distribution, queries isolated to one shard)
+// Bad: created_date (all recent writes hit one shard - hot partition!)
+// Bad: country_code (uneven - US shard gets 60% of traffic)</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Instagram:</strong> Shards PostgreSQL by user_id. Each shard holds ~10M users. Shard key chosen so one user's feed/posts/likes stay on same shard (locality). Cross-shard queries (global search) go to separate Elasticsearch cluster.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: Sharding Strategies</h4><p>Hash-based: even distribution but cross-shard queries are expensive and range queries impossible. Range-based: efficient range queries and data locality but risks hot shards (recent dates get all writes). Directory-based: flexible mapping but directory is SPOF. Most systems start hash-based and add application-level routing for cross-shard needs.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Only introduce sharding when you've shown the scale requires it. Say: "At 1TB and 50K QPS, a single PostgreSQL instance won't suffice. I'd shard by user_id using consistent hashing — keeps one user's data co-located, and we can add shards without full re-partition." Always mention the cross-shard query challenge and how you'd handle it (scatter-gather or separate search index).</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.5.4 Multi-tenancy Patterns</h3><span class="badge">Pattern</span></div><div class="card-body">
+<table><tr><th>Pattern</th><th>Isolation</th><th>Cost</th><th>Complexity</th><th>Use When</th></tr>
+<tr><td>Shared DB, shared schema</td><td>Low (tenant_id column)</td><td>Lowest</td><td>Low</td><td>Many small tenants, cost-sensitive</td></tr>
+<tr><td>Shared DB, separate schema</td><td>Medium</td><td>Medium</td><td>Medium</td><td>Need some isolation, moderate tenants</td></tr>
+<tr><td>Separate DB per tenant</td><td>High</td><td>Highest</td><td>High</td><td>Compliance requirements, large enterprises</td></tr>
+</table>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.5.5 Write-Ahead Log Pattern</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> Before writing data to the main storage, write the operation to a sequential, append-only log file. If the system crashes mid-operation, replay the log on restart to recover incomplete operations. The log is the source of truth until the data is safely persisted.</p>
+
+<p><strong>How it works:</strong></p>
+<pre><code>// Simplified WAL flow:
+// 1. Client sends: INSERT INTO orders (id, amount) VALUES (42, 99.99)
+// 2. Database writes to WAL: [LSN: 1001] INSERT orders (42, 99.99)
+// 3. Database acknowledges write to client (durable - it's in the WAL)
+// 4. Later: background process flushes the actual data pages to disk
+// 5. On crash: replay WAL from last checkpoint to recover unflushed writes
+
+// WAL entry structure (PostgreSQL-style):
+// [LSN] [Transaction ID] [Operation Type] [Table] [Before Image] [After Image]
+// LSN = Log Sequence Number (monotonically increasing)</code></pre>
+
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Every reliable database uses WAL internally (PostgreSQL, MySQL InnoDB, Cassandra commit log)</li>
+<li>Database replication — replicas replay the primary's WAL to stay in sync</li>
+<li>Change Data Capture (CDC) — applications read the WAL to react to data changes (Debezium)</li>
+<li>Event sourcing implementations — the event log IS effectively a WAL</li>
+<li>Distributed consensus — Raft and Paxos use replicated logs</li>
+</ul>
+
+<p><strong>When NOT to use:</strong></p>
+<ul>
+<li>In-memory caches where durability isn't needed (pure Redis cache without persistence)</li>
+<li>Ephemeral/disposable data (session stores that can be regenerated)</li>
+</ul>
+
+<p><strong>Trade-offs:</strong></p>
+<table>
+<tr><th>Advantage</th><th>Disadvantage</th></tr>
+<tr><td>Crash recovery — no data loss</td><td>Double-write overhead (log + actual storage)</td></tr>
+<tr><td>Sequential writes are fast (append-only)</td><td>Log grows continuously, needs compaction/checkpointing</td></tr>
+<tr><td>Enables replication and CDC</td><td>Recovery time depends on log size since last checkpoint</td></tr>
+<tr><td>Atomic transactions across multiple operations</td><td>Adds I/O latency (fsync on every commit for durability)</td></tr>
+</table>
+
+<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing database internals or replication, always mention WAL. It's the foundation of: (1) crash recovery, (2) replication (streaming WAL to replicas), (3) point-in-time recovery (replay WAL to any timestamp), and (4) CDC (Debezium reads PostgreSQL's WAL). Say: "The WAL guarantees durability — once the write is in the log, it survives crashes even if the data pages haven't been flushed yet."</p></div>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>PostgreSQL streaming replication:</strong> Primary streams WAL records to replicas in real-time. Debezium reads PostgreSQL's WAL for Change Data Capture — every INSERT/UPDATE/DELETE becomes a Kafka event for downstream services without touching the application code.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: WAL fsync Frequency</h4><p>fsync every commit: maximum durability (zero data loss) but adds ~2ms latency per write. fsync batched (every 100ms): better throughput but up to 100ms of data loss on crash. PostgreSQL defaults to fsync per commit (synchronous_commit=on); can be relaxed for non-critical data.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.5.6 Transactions &amp; Isolation Levels</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> A transaction groups multiple operations into an atomic unit — either all succeed or all rollback. Isolation levels control how concurrent transactions see each other's uncommitted changes.</p>
+
+<table>
+<tr><th>Isolation Level</th><th>Dirty Read</th><th>Non-Repeatable Read</th><th>Phantom Read</th><th>Performance</th><th>Use Case</th></tr>
+<tr><td><strong>Read Uncommitted</strong></td><td>Possible</td><td>Possible</td><td>Possible</td><td>Fastest</td><td>Analytics on approximate data</td></tr>
+<tr><td><strong>Read Committed</strong></td><td>Prevented</td><td>Possible</td><td>Possible</td><td>Fast</td><td>Default in PostgreSQL, most OLTP apps</td></tr>
+<tr><td><strong>Repeatable Read</strong></td><td>Prevented</td><td>Prevented</td><td>Possible (InnoDB prevents)</td><td>Moderate</td><td>Default in MySQL InnoDB, financial reports</td></tr>
+<tr><td><strong>Serializable</strong></td><td>Prevented</td><td>Prevented</td><td>Prevented</td><td>Slowest</td><td>Money transfers, inventory (correctness critical)</td></tr>
+</table>
+
+<pre><code>// Anomaly examples:
+// Dirty Read: Transaction B reads data that Transaction A wrote but hasn't committed yet.
+//   If A rolls back, B used invalid data.
+
+// Non-Repeatable Read: Transaction A reads row X, Transaction B updates X and commits.
+//   A reads X again — gets different value within same transaction.
+
+// Phantom Read: Transaction A queries WHERE age > 25 (gets 10 rows).
+//   Transaction B inserts a new row with age=30 and commits.
+//   A re-runs same query — now gets 11 rows (phantom appeared).
+
+// PostgreSQL Serializable Snapshot Isolation (SSI):
+// Uses optimistic concurrency — allows transactions to proceed but
+// aborts one if a serialization conflict is detected at commit time.
+// No locks held during execution = better throughput than traditional 2PL.</code></pre>
+
+<p><strong>ACID Guarantee Breakdown:</strong></p>
+<table>
+<tr><th>Property</th><th>What It Means</th><th>Implementation</th></tr>
+<tr><td><strong>Atomicity</strong></td><td>All or nothing — partial failures rolled back</td><td>WAL (undo log)</td></tr>
+<tr><td><strong>Consistency</strong></td><td>DB moves from one valid state to another</td><td>Constraints, triggers</td></tr>
+<tr><td><strong>Isolation</strong></td><td>Concurrent transactions don't interfere</td><td>Locks or MVCC</td></tr>
+<tr><td><strong>Durability</strong></td><td>Committed data survives crashes</td><td>WAL (redo log), fsync</td></tr>
+</table>
+<div class="trade-off-box"><h4>Trade-off: Isolation Level Selection</h4><p>Higher isolation = fewer anomalies but more locking/aborts = lower throughput. Read Committed (PostgreSQL default) is the sweet spot for most apps — prevents dirty reads without heavy locking. Use Serializable only for financial operations where correctness > performance.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Stripe:</strong> Payment processing uses Serializable isolation for balance operations — a double-charge would be catastrophic. Non-critical reads (dashboard analytics) use Read Committed for better performance. Different isolation levels for different operations within the same application.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When designing payment or inventory systems, explicitly state: "I'd use Serializable isolation for the balance deduction to prevent race conditions — two concurrent purchases can't both read balance=100 and both succeed." Shows you understand concurrency at the database level.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.5.7 Schema Design: Normalization vs Denormalization</h3><span class="badge">Database</span></div><div class="card-body">
+<p><strong>Normalization:</strong> Eliminate data redundancy by splitting into related tables (1NF → 2NF → 3NF → BCNF). Each fact stored once.</p>
+<p><strong>Denormalization:</strong> Intentionally add redundancy to avoid expensive JOINs at read time. Trade storage for speed.</p>
+
+<table>
+<tr><th>Aspect</th><th>Normalized</th><th>Denormalized</th></tr>
+<tr><td>Data redundancy</td><td>None — single source of truth</td><td>Duplicated across tables</td></tr>
+<tr><td>Write performance</td><td>Fast (update one place)</td><td>Slow (update multiple copies)</td></tr>
+<tr><td>Read performance</td><td>Slow (many JOINs)</td><td>Fast (single table scan)</td></tr>
+<tr><td>Storage</td><td>Minimal</td><td>Higher (duplicate data)</td></tr>
+<tr><td>Consistency</td><td>Easy (one copy)</td><td>Risk of inconsistency across copies</td></tr>
+<tr><td>Best for</td><td>OLTP, write-heavy, transactional</td><td>OLAP, read-heavy, analytics, caching</td></tr>
+</table>
+
+<pre><code>// Normalized (3NF): Orders table references customer_id and product_id
+// SELECT o.id, c.name, p.title, o.quantity
+// FROM orders o
+// JOIN customers c ON o.customer_id = c.id
+// JOIN products p ON o.product_id = p.id
+// WHERE o.date > '2024-01-01'
+// Problem: 3-table JOIN, expensive at scale
+
+// Denormalized: Orders table includes customer_name, product_title directly
+// SELECT id, customer_name, product_title, quantity
+// FROM orders_denormalized
+// WHERE date > '2024-01-01'
+// Problem: If customer changes name, must update all their order rows
+
+// Materialized View (compromise): Pre-computed JOIN refreshed periodically
+// CREATE MATERIALIZED VIEW order_summary AS
+// SELECT o.id, c.name, p.title, o.quantity, o.date
+// FROM orders o JOIN customers c ON ... JOIN products p ON ...;
+// REFRESH MATERIALIZED VIEW order_summary;  -- run on schedule</code></pre>
+
+<div class="interview-tip"><h4>Interview Tip</h4><p>In system design: normalize for the write path (transactional core), denormalize for the read path (query/search/dashboard). This is essentially what CQRS does — normalized write model, denormalized read model. Mention Materialized Views as the middle ground. For NoSQL (DynamoDB, Cassandra), denormalization is the default because JOINs don't exist — you design your schema around your access patterns.</p></div>
+<div class="trade-off-box"><h4>Trade-off: When to Denormalize</h4><p>Denormalize when: read queries are slow due to JOINs, data changes infrequently, and you accept write complexity. Keep normalized when: data changes frequently (avoid update anomalies), storage is a concern, or consistency is critical. The modern pattern: normalized for writes (OLTP), denormalized for reads (OLAP/cache).</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Twitter:</strong> Tweets table is denormalized — includes author_name directly (avoids JOIN to users table on every timeline render). When a user changes their display name, a background job updates all their tweet records. Acceptable trade-off: name changes are rare, timeline reads happen billions of times daily.</p></div>
+</div></div>
+
+<div class="page-nav">
+<a href="4.4-load-balancing.html">&#8592; Previous: 4.4 Load Balancing</a>
+<a href="4.6-caching.html">Next: 4.6 Caching &#8594;</a>
+</div>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

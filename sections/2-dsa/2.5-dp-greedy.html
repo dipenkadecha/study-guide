@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.5 DP &amp; Greedy - Interview Prep</title>
+<link href="../../assets/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA &amp; Algorithms</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays &amp; Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing &amp; HashMaps</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees &amp; Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps &amp; Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP &amp; Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency Structures</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - Low-Level Design</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID Principles</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational Patterns</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural Patterns</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral Patterns</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing Strategies</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="../../sections/4-hld/4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="../../sections/4-hld/4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="../../sections/4-hld/4.3-networking.html">4.3 Networking &amp; Communication</a></li>
+<li><a href="../../sections/4-hld/4.4-load-balancing.html">4.4 Load Balancing &amp; Traffic</a></li>
+<li><a href="../../sections/4-hld/4.5-databases.html">4.5 Database Design</a></li>
+<li><a href="../../sections/4-hld/4.6-caching.html">4.6 Caching</a></li>
+<li><a href="../../sections/4-hld/4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="../../sections/4-hld/4.8-messaging.html">4.8 Messaging &amp; Async</a></li>
+<li><a href="../../sections/4-hld/4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="../../sections/4-hld/4.10-scalability.html">4.10 Scalability Techniques</a></li>
+<li><a href="../../sections/4-hld/4.11-resilience.html">4.11 Reliability &amp; Resilience</a></li>
+<li><a href="../../sections/4-hld/4.12-security.html">4.12 Security</a></li>
+<li><a href="../../sections/4-hld/4.13-observability.html">4.13 Observability &amp; Monitoring</a></li>
+<li><a href="../../sections/4-hld/4.14-cloud.html">4.14 Cloud &amp; Infrastructure</a></li>
+<li><a href="../../sections/4-hld/4.15-storage.html">4.15 Storage Systems</a></li>
+<li><a href="../../sections/4-hld/4.16-performance.html">4.16 Performance Optimization</a></li>
+<li><a href="../../sections/4-hld/4.17-tradeoffs.html">4.17 Design Trade-offs</a></li>
+<li><a href="../../sections/4-hld/4.18-system-design-problems.html">4.18 Common SD Problems</a></li>
+<li><a href="../../sections/4-hld/4.19-consistency.html">4.19 Consistency Patterns</a></li>
+<li><a href="../../sections/4-hld/4.20-microservices.html">4.20 Microservices Patterns</a></li>
+<li><a href="../../sections/4-hld/4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="../../sections/4-hld/4.22-concurrency.html">4.22 Concurrency &amp; Locking</a></li>
+<li><a href="../../sections/4-hld/4.23-devops.html">4.23 DevOps &amp; Deployment</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input id="searchInput" placeholder="Search topics... (Ctrl+K)" type="text"/><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s2-dp"></div><h2 class="section-title"><span class="section-num">2.5</span>Dynamic Programming &amp; Greedy</h2>
+<div class="card"><div class="card-header"><h3>2.5.1 DP Problem-Solving Framework</h3><span class="badge">Pattern</span></div><div class="card-body">
+<ol>
+<li><strong>Define state:</strong> What information do I need to make a decision at each step?</li>
+<li><strong>Define transition:</strong> How does current state relate to smaller subproblems?</li>
+<li><strong>Base case:</strong> What's the answer for the smallest subproblem?</li>
+<li><strong>Optimize space:</strong> Do I need the full table or just previous row?</li>
+</ol>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.5.2 Pattern: Knapsack (0/1)</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// 0/1 Knapsack - O(n*W) time, O(W) space (optimized)
+public int knapsack(int[] weights, int[] values, int capacity) {
+    int n = weights.length;
+    int[] dp = new int[capacity + 1];
+
+    for (int i = 0; i &lt; n; i++) {
+        // Traverse RIGHT to LEFT to avoid using same item twice
+        for (int w = capacity; w &gt;= weights[i]; w--) {
+            dp[w] = Math.max(dp[w], dp[w - weights[i]] + values[i]);
+        }
+    }
+    return dp[capacity];
+}
+// Variant: Unbounded knapsack -&gt; traverse LEFT to RIGHT (reuse items)
+// Variant: Count ways -&gt; dp[w] += dp[w - weights[i]]</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.5.3 Pattern: Longest Common Subsequence</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// LCS - O(m*n) time, O(min(m,n)) space
+// Applications: diff algorithms, DNA sequence alignment, version control
+public int longestCommonSubsequence(String text1, String text2) {
+    if (text1.length() &lt; text2.length()) return longestCommonSubsequence(text2, text1);
+    int[] dp = new int[text2.length() + 1];
+
+    for (int i = 1; i &lt;= text1.length(); i++) {
+        int prev = 0;
+        for (int j = 1; j &lt;= text2.length(); j++) {
+            int temp = dp[j];
+            if (text1.charAt(i-1) == text2.charAt(j-1))
+                dp[j] = prev + 1;
+            else
+                dp[j] = Math.max(dp[j], dp[j-1]);
+            prev = temp;
+        }
+    }
+    return dp[text2.length()];
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.5.4 Greedy: When to Use</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// Greedy works when: local optimal choice leads to global optimum
+// Proof technique: exchange argument or greedy stays ahead
+
+// Interval Scheduling - Maximum non-overlapping intervals
+// Sort by end time, always pick earliest ending
+public int maxNonOverlapping(int[][] intervals) {
+    Arrays.sort(intervals, (a, b) -&gt; a[1] - b[1]);  // Sort by end time
+    int count = 1, end = intervals[0][1];
+    for (int i = 1; i &lt; intervals.length; i++) {
+        if (intervals[i][0] &gt;= end) {  // Non-overlapping
+            count++;
+            end = intervals[i][1];
+        }
+    }
+    return count;
+}</code></pre>
+<div class="trade-off-box"><h4>Trade-off: DP vs Greedy</h4>
+<table><tr><th>Aspect</th><th>DP</th><th>Greedy</th></tr>
+<tr><td>Optimal substructure</td><td>Required</td><td>Required</td></tr>
+<tr><td>Overlapping subproblems</td><td>Required</td><td>Not needed</td></tr>
+<tr><td>Greedy choice property</td><td>Not needed</td><td>Required (must prove)</td></tr>
+<tr><td>Complexity</td><td>Higher (explores all)</td><td>Lower (one choice per step)</td></tr>
+<tr><td>Correctness</td><td>Always correct</td><td>Must prove greedy works</td></tr>
+</table></div></div>
+<div class="card"><div class="card-header"><h3>2.5.5 Backtracking</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// Backtracking = DFS over a decision tree: choose -> explore -> un-choose.
+// Use cases: subsets, permutations, combinations, N-Queens, word search, Sudoku.
+
+// 1) Subsets - O(2^n) results, each built incrementally
+void subsets(int[] nums, int start, List&lt;Integer&gt; path, List&lt;List&lt;Integer&gt;&gt; out) {
+    out.add(new ArrayList&lt;&gt;(path));          // every node is a valid subset
+    for (int i = start; i &lt; nums.length; i++) {
+        path.add(nums[i]);                    // choose
+        subsets(nums, i + 1, path, out);      // explore (i+1 avoids reuse)
+        path.remove(path.size() - 1);         // un-choose (backtrack)
+    }
+}
+
+// 2) Permutations - O(n!) using a 'used' marker
+void permute(int[] nums, boolean[] used, List&lt;Integer&gt; path, List&lt;List&lt;Integer&gt;&gt; out) {
+    if (path.size() == nums.length) { out.add(new ArrayList&lt;&gt;(path)); return; }
+    for (int i = 0; i &lt; nums.length; i++) {
+        if (used[i]) continue;
+        used[i] = true; path.add(nums[i]);
+        permute(nums, used, path, out);
+        used[i] = false; path.remove(path.size() - 1);
+    }
+}
+
+// 3) Pruning is what makes it tractable: in N-Queens / Sudoku, check validity
+//    BEFORE recursing so whole branches are skipped (the "bound" in branch-and-bound).</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Backtracking vs DP</h4>
+<p>Backtracking <em>enumerates</em> solutions (you need the actual subsets/arrangements) and is exponential. DP <em>counts or optimizes</em> by reusing overlapping subproblems. If the question asks "how many ways" or "max value", prefer DP; if it asks "list all valid configurations", it's backtracking. To deduplicate (e.g. subsets with duplicates), sort first and skip <code>i &gt; start &amp;&amp; nums[i] == nums[i-1]</code>.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4>
+<p>State the template out loud: <strong>choose → explore → un-choose</strong>, plus "where can I prune?". Always give the complexity in terms of the solution space (2^n subsets, n! permutations) and note the O(n) path-copy cost on each leaf.</p></div>
+</div></div>
+</div>
+<div class="page-nav">
+<a href="2.4-heaps-tries.html">← Previous: 2.4 Heaps &amp; Tries</a>
+<a href="2.6-concurrency-ds.html">Next: 2.6 Concurrency Structures →</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

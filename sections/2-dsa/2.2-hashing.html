@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.2 Hashing &amp; HashMaps - Interview Prep</title>
+<link href="../../assets/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA &amp; Algorithms</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays &amp; Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing &amp; HashMaps</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees &amp; Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps &amp; Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP &amp; Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency Structures</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - Low-Level Design</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID Principles</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational Patterns</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural Patterns</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral Patterns</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing Strategies</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="../../sections/4-hld/4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="../../sections/4-hld/4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="../../sections/4-hld/4.3-networking.html">4.3 Networking &amp; Communication</a></li>
+<li><a href="../../sections/4-hld/4.4-load-balancing.html">4.4 Load Balancing &amp; Traffic</a></li>
+<li><a href="../../sections/4-hld/4.5-databases.html">4.5 Database Design</a></li>
+<li><a href="../../sections/4-hld/4.6-caching.html">4.6 Caching</a></li>
+<li><a href="../../sections/4-hld/4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="../../sections/4-hld/4.8-messaging.html">4.8 Messaging &amp; Async</a></li>
+<li><a href="../../sections/4-hld/4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="../../sections/4-hld/4.10-scalability.html">4.10 Scalability Techniques</a></li>
+<li><a href="../../sections/4-hld/4.11-resilience.html">4.11 Reliability &amp; Resilience</a></li>
+<li><a href="../../sections/4-hld/4.12-security.html">4.12 Security</a></li>
+<li><a href="../../sections/4-hld/4.13-observability.html">4.13 Observability &amp; Monitoring</a></li>
+<li><a href="../../sections/4-hld/4.14-cloud.html">4.14 Cloud &amp; Infrastructure</a></li>
+<li><a href="../../sections/4-hld/4.15-storage.html">4.15 Storage Systems</a></li>
+<li><a href="../../sections/4-hld/4.16-performance.html">4.16 Performance Optimization</a></li>
+<li><a href="../../sections/4-hld/4.17-tradeoffs.html">4.17 Design Trade-offs</a></li>
+<li><a href="../../sections/4-hld/4.18-system-design-problems.html">4.18 Common SD Problems</a></li>
+<li><a href="../../sections/4-hld/4.19-consistency.html">4.19 Consistency Patterns</a></li>
+<li><a href="../../sections/4-hld/4.20-microservices.html">4.20 Microservices Patterns</a></li>
+<li><a href="../../sections/4-hld/4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="../../sections/4-hld/4.22-concurrency.html">4.22 Concurrency &amp; Locking</a></li>
+<li><a href="../../sections/4-hld/4.23-devops.html">4.23 DevOps &amp; Deployment</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input id="searchInput" placeholder="Search topics... (Ctrl+K)" type="text"/><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div class="section-block section-s2" id="s2-hashing"><h2 class="section-title"><span class="section-num">2.2</span>Hashing &amp; HashMaps</h2>
+<div class="card"><div class="card-header"><h3>2.2.1 HashMap Internal Structure (Java 8+)</h3><span class="badge">Core</span></div><div class="card-body">
+<ul>
+<li>Array of Node[] buckets (default 16, load factor 0.75)</li>
+<li>Bucket collision: linked list -&gt; when bucket has 8+ nodes, converts to Red-Black Tree (O(n) -&gt; O(log n))</li>
+<li>Resize: double capacity, rehash all entries (expensive!)</li>
+</ul>
+<pre><code>// Pre-size HashMap to avoid rehashing - production optimization
+// Expected 10000 entries, load factor 0.75 -&gt; need capacity 13334
+Map&lt;String, Order&gt; orderCache = new HashMap&lt;&gt;((int)(10000 / 0.75) + 1);
+
+// Compute patterns - atomic read-modify-write
+cache.computeIfAbsent(key, k -&gt; expensiveComputation(k));  // Only compute if missing
+cache.merge(key, 1, Integer::sum);                          // Atomic increment</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.2.2 ConcurrentHashMap - Thread-Safe Without Global Lock</h3><span class="badge">Core</span></div><div class="card-body">
+<pre><code>// ConcurrentHashMap: lock striping (Java 8+: CAS + synchronized on node)
+// No null keys or values (unlike HashMap)
+ConcurrentHashMap&lt;String, AtomicLong&gt; metrics = new ConcurrentHashMap&lt;&gt;();
+
+// WRONG - race condition (check-then-act)
+if (!metrics.containsKey(key)) { metrics.put(key, new AtomicLong(0)); }
+metrics.get(key).incrementAndGet();
+
+// RIGHT - atomic compound operation
+metrics.computeIfAbsent(key, k -&gt; new AtomicLong(0)).incrementAndGet();
+
+// Bulk parallel operations (Java 8+)
+long total = metrics.reduceValuesToLong(
+    1000,               // parallelism threshold: go parallel if size &gt; 1000
+    AtomicLong::get,    // transformer
+    0L,                 // identity
+    Long::sum           // reducer
+);</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.2.3 Consistent Hashing (Distributed Systems)</h3><span class="badge">Core</span></div><div class="card-body">
+<pre><code>// Consistent hashing: minimize key redistribution when nodes change
+// Without: adding 1 node to 10 redistributes ~90% keys (modulo changes)
+// With: adding 1 node redistributes only ~10% keys (K/N average)
+public class ConsistentHash&lt;T&gt; {
+    private final TreeMap&lt;Long, T&gt; ring = new TreeMap&lt;&gt;();
+    private final int virtualNodes;  // 100-200 vnodes per physical node
+
+    public void addNode(T node) {
+        for (int i = 0; i &lt; virtualNodes; i++) {
+            long hash = hash(node.toString() + "#" + i);
+            ring.put(hash, node);
+        }
+    }
+
+    public T getNode(String key) {
+        long hash = hash(key);
+        Map.Entry&lt;Long, T&gt; entry = ring.ceilingEntry(hash);
+        return (entry != null) ? entry.getValue() : ring.firstEntry().getValue();
+    }
+}
+// Trade-off: More virtual nodes = better distribution but more memory
+// Production: 150-200 vnodes per node is sweet spot</code></pre>
+<div class="trade-off-box"><h4>Trade-off: HashMap vs ConcurrentHashMap vs Collections.synchronizedMap</h4>
+<table><tr><th>Type</th><th>Thread Safety</th><th>Performance</th><th>Use When</th></tr>
+<tr><td>HashMap</td><td>None</td><td>Best single-thread</td><td>Local scope, no sharing</td></tr>
+<tr><td>ConcurrentHashMap</td><td>Per-bucket (CAS + synchronized on node, Java 8+)</td><td>Best concurrent</td><td>Shared, high contention</td></tr>
+<tr><td>synchronizedMap</td><td>Global lock</td><td>Worst concurrent</td><td>Legacy code only</td></tr>
+<tr><td>CopyOnWriteArrayList</td><td>Copy on write</td><td>Best read-heavy</td><td>Rare writes, frequent reads</td></tr>
+</table></div></div>
+</div>
+</div>
+<div class="page-nav">
+<a href="2.1-arrays-strings.html">← Previous: 2.1 Arrays &amp; Strings</a>
+<a href="2.3-trees-graphs.html">Next: 2.3 Trees &amp; Graphs →</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

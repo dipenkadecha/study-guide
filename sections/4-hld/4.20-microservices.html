@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.20 Microservices - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">SD Concepts Index</a></li>
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-mspatterns" class="section-block section-s4">
+<h2 class="section-title"><span class="section-num">4.20</span>Microservices Patterns</h2>
+<div class="card"><div class="card-header"><h3>4.20.1 Service Mesh (Istio/Linkerd)</h3><span class="badge">Architecture</span></div><div class="card-body">
+<pre><code>// Service mesh: infrastructure layer for service-to-service communication
+// Sidecar proxy (Envoy) handles: mTLS, retries, circuit breaking, observability
+// Application code is unaware - zero code changes
+
+// Benefits: consistent security (mTLS everywhere), traffic management (canary),
+// observability (distributed tracing auto-injected), no library dependencies
+
+// Trade-off: Added latency (~1-3ms per hop), operational complexity,
+// resource overhead (sidecar per pod). Worth it at 20+ services.</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Lyft (Envoy):</strong> Created Envoy proxy — runs as sidecar next to every service. Handles mTLS, circuit breaking, retries, observability without application code changes. Now part of Istio. Lyft routes 3M+ requests/second through Envoy sidecars — services just talk to localhost, Envoy handles the rest.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Sidecar overhead: each pod gets an Envoy proxy (+100MB RAM, +2ms latency per hop). For 500 services with 5 replicas each = 2500 sidecars consuming 250GB RAM cluster-wide. Benefits: mTLS everywhere, traffic management, observability — all without code changes. Skip service mesh if &lt;20 services or latency-critical (trading systems). Consider ambient mesh (Istio) for lower overhead.</p></div>
+<div class="trade-off-box"><h4>Trade-off: Service Mesh vs Library-based (Spring Cloud)</h4>
+<ul>
+<li><strong>Service Mesh (Istio):</strong> Language-agnostic, no code changes, consistent policies. Higher infra complexity, latency overhead.</li>
+<li><strong>Library (Spring Cloud):</strong> Simpler ops, no sidecar overhead. Java-only, library version management, code coupling.</li>
+<li><strong>Decision:</strong> Polyglot/large orgs -> Service Mesh. Java-only/small team -> Spring Cloud. Can combine both.</li>
+</ul></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention service mesh for cross-cutting concerns: "Rather than implementing retry/timeout/circuit-breaker in every service, we use Istio service mesh. The Envoy sidecar handles: mTLS (zero-trust), retries with budget (max 20% of requests retried), circuit breaking (5xx threshold), and emits golden metrics (latency, errors, saturation) automatically. App code stays focused on business logic."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.20.2 Strangler Fig Migration</h3><span class="badge">Architecture</span></div><div class="card-body">
+<pre><code>// Incrementally migrate monolith to microservices without big-bang rewrite
+// Steps:
+// 1. Place proxy/facade in front of monolith
+// 2. New features built as microservices behind proxy
+// 3. Gradually route traffic from monolith to new services
+// 4. Eventually monolith shrinks to nothing
+
+// Anti-corruption Layer: adapter between old and new systems
+// Prevents legacy domain model from leaking into new services
+public class LegacyOrderAdapter implements OrderPort {
+    private final LegacyOrderSystem legacy;
+    public Order getOrder(String id) {
+        LegacyOrderDTO dto = legacy.fetchOrder(id);
+        return mapToDomainModel(dto); // Translate legacy to clean domain
+    }
+}</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Amazon:</strong> Migrated from monolithic bookstore (Obidos) to microservices over 8+ years. New features built as services, old monolith routes gradually redirected via API Gateway. No big-bang rewrite — the monolith "strangled" as traffic shifted service by service until nothing remained.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Strangler Fig is low-risk (old system runs until new one proves itself) but slow (months-to-years for full migration) and complex (routing logic, data sync between old and new). Big-bang rewrite is faster but high-risk (if it fails, massive wasted effort). Strangler Fig is almost always preferred — reduces risk at the cost of longer timeline and temporary complexity of running both systems.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>For migration questions: "I'd use Strangler Fig — route new feature traffic to the new service while existing traffic stays on the monolith. An API gateway routes by path: /v2/users → new service, /users → legacy. Gradually migrate endpoints. Data: new service reads from both old DB and new DB during transition. Once all traffic migrated, decommission legacy."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.20.3 BFF (Backend for Frontend)</h3><span class="badge">Architecture</span></div><div class="card-body">
+<p><strong>What it does:</strong> a separate API backend layer per client type (web, mobile, internal tools, third-party). Each BFF aggregates and shapes data from the same backend microservices for its specific frontend's needs.</p>
+<pre><code>// Without BFF: one generic API serves all clients
+//   Mobile app → Generic API → 10 microservices
+//   Web app    → Generic API → 10 microservices
+//   Problem: Mobile gets too much data, Web needs extra calls for rich views
+
+// With BFF: each client type has its own backend
+//   Mobile app → Mobile BFF → microservices (lightweight, minimal data, offline-first)
+//   Web app    → Web BFF    → microservices (rich, aggregated data, SSR, WebSocket)
+//   Admin tool → Admin BFF  → microservices (full access, different auth)
+
+// Mobile BFF: aggregate 3 service calls into 1 optimized response
+// GET /mobile/dashboard  -> userService + orderService + recommendationService
+//   Returns: single small, flat JSON payload (no deep nesting)</code></pre>
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Significantly different client needs (mobile bandwidth vs desktop richness)</li>
+<li>Different teams own different frontends (mobile team controls their BFF)</li>
+<li>Third-party clients need different auth, rate limits, and data shapes than internal ones</li>
+</ul>
+<p><strong>When NOT to use:</strong></p>
+<ul>
+<li>Single client type (just have one API layer)</li>
+<li>Clients have similar needs (unnecessary duplication)</li>
+<li>Small team (maintaining multiple BFFs is overhead) — GraphQL can sometimes replace BFF</li>
+</ul>
+<div class="trade-off-box"><h4>Trade-off: BFF vs GraphQL vs Generic API</h4>
+<table>
+<tr><th>Approach</th><th>Pros</th><th>Cons</th></tr>
+<tr><td><strong>BFF per client</strong></td><td>Optimized per client, team autonomy, simple client code</td><td>Code duplication across BFFs, more services to maintain</td></tr>
+<tr><td><strong>GraphQL</strong></td><td>Single API, clients fetch exactly what they need, no over/under-fetching</td><td>Complex server implementation, N+1 query risk, caching harder</td></tr>
+<tr><td><strong>Generic REST API</strong></td><td>Simple, one API to maintain</td><td>Over-fetching for mobile, under-fetching for web (multiple round trips)</td></tr>
+</table>
+</div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Netflix:</strong> Separate BFFs for TV app (simple navigation, large images), mobile app (bandwidth-constrained, smaller payloads), and web app (interactive, more data). Each BFF aggregates the same backend microservices but returns device-optimized responses — TV BFF returns pre-formatted layouts; mobile BFF returns compressed, paginated data.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Use BFF when clients have very different needs: "Mobile app needs minimal payload (battery, bandwidth). Web app needs rich data for interactive dashboards. Rather than one generic API that over-serves mobile or under-serves web, each platform gets a BFF that aggregates and shapes data from the same backend services for its specific needs."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.20.4 Service Discovery</h3><span class="badge">Patterns</span></div><div class="card-body">
+<pre><code>// Client-side discovery: client queries service registry, picks instance
+// Server-side discovery: load balancer queries registry, routes request
+
+// Client-side (Netflix Eureka, Consul):
+// Pro: fewer hops, client controls LB. Con: client needs discovery library.
+// Server-side (AWS ALB, Kubernetes Service):
+// Pro: clients are simple. Con: extra hop, LB is bottleneck.
+
+// Kubernetes built-in: Service object = stable DNS name + load balancing
+// Pod IPs change on restart, Service IP stays constant
+// kube-dns resolves "order-service.namespace.svc.cluster.local" -> pod IPs</code></pre>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Client-side (Eureka) vs Server-side (K8s DNS/AWS ALB): Client-side gives more control (custom load balancing, circuit breaking) but adds library dependency to every service. Server-side is transparent (services just use DNS) but less flexible (standard round-robin only). In Kubernetes: use K8s Service (server-side) as default; add Istio for advanced routing if needed.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Netflix (Eureka):</strong> Each service instance registers itself with Eureka on startup, sends heartbeats every 30s. Client library caches the registry locally — continues working even if Eureka goes down. Services fetch registry updates every 30s. Deregistration on graceful shutdown; 90s timeout for crashed instances. Self-preservation mode prevents mass deregistration during network partitions.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>In Kubernetes designs, service discovery is mostly solved: "K8s Services provide DNS-based discovery (my-service.namespace.svc.cluster.local resolves to pod IPs). For cross-cluster or non-K8s: Consul for service registry with health checks. Key point: services register on startup, deregister on shutdown, and health checks remove unhealthy instances automatically."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.20.5 Database-per-Service Pattern</h3><span class="badge">Patterns</span></div><div class="card-body">
+<pre><code>// Each microservice owns its data - no shared database!
+// Benefits: independent schema evolution, independent scaling, technology freedom
+// Challenge: cross-service queries (no JOINs across services)
+
+// Solutions for cross-service data:
+// 1. API Composition: aggregate data from multiple service APIs
+// 2. CQRS: maintain materialized views via events
+// 3. Saga: coordinate multi-service transactions
+
+// API Composition (Aggregator pattern):
+@Service
+public class OrderSummaryAggregator {
+    public OrderSummary getFullOrder(String orderId) {
+        Order order = orderClient.getOrder(orderId);           // Service 1
+        Payment payment = paymentClient.getByOrder(orderId);   // Service 2
+        Address address = userClient.getAddress(order.userId()); // Service 3
+        return new OrderSummary(order, payment, address);       // Combine
+    }
+    // Trade-off: multiple network calls, eventual consistency, partial failures
+}</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Netflix:</strong> Each microservice owns its data store — user service uses Cassandra (high write throughput), recommendation service uses MySQL + ML feature store, search uses Elasticsearch, session service uses Redis. No shared databases — services communicate only via APIs and events.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Data isolation (each service owns its data) eliminates coupling but makes cross-service queries impossible (no JOINs). Requires: API calls for cross-service data, eventual consistency between services, Saga pattern for distributed transactions. Alternative: shared database with schema-per-service (logical isolation, physical sharing) — easier queries but risks coupling through shared tables.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Explain the motivation: "Each microservice owns its database — User Service has PostgreSQL, Product Service has MongoDB, Search Service has Elasticsearch. This enables: independent deployments (schema changes don't affect others), technology diversity (right DB for each use case), independent scaling. Trade-off: cross-service queries require API composition (BFF aggregates) or materialized views via CDC."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.20.6 Anti-corruption Layer (ACL)</h3><span class="badge">Patterns</span></div><div class="card-body">
+<pre><code>// When integrating with legacy/external systems, ACL prevents their domain
+// model from polluting your clean domain model
+
+// Without ACL: legacy field names, formats, and quirks leak everywhere
+// With ACL: adapter translates between external model and your domain
+
+public class PaymentGatewayACL implements PaymentPort {
+    private final LegacyPaymentAPI legacy; // Horrible API with weird naming
+
+    public PaymentResult charge(Money amount, PaymentMethod method) {
+        // Translate clean domain to legacy format
+        LegacyRequest req = new LegacyRequest();
+        req.setAMT(amount.cents());          // Legacy uses cents as int
+        req.setPMT_TYP(mapToLegacyCode(method)); // Legacy uses integer codes
+        LegacyResponse resp = legacy.processTransaction(req);
+        // Translate back to clean domain
+        return new PaymentResult(resp.getTXN_ID(), mapStatus(resp.getSTS()));
+    }
+}</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Shared Database vs Database-per-Service</h4>
+<table><tr><th>Approach</th><th>Consistency</th><th>Coupling</th><th>Complexity</th><th>When</th></tr>
+<tr><td>Shared DB</td><td>Strong (ACID joins)</td><td>High (schema lock-in)</td><td>Low</td><td>Early-stage, small team, tightly related services</td></tr>
+<tr><td>DB-per-service</td><td>Eventual</td><td>Low (independent)</td><td>High (sagas, events)</td><td>Independent teams, different scaling needs</td></tr>
+<tr><td>Shared schema, separate tables</td><td>Medium</td><td>Medium</td><td>Medium</td><td>Transitional step from monolith</td></tr>
+</table></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Shopify:</strong> When integrating with legacy ERP systems for enterprise merchants, they use an ACL that translates between Shopify's modern domain model (Product, Variant, Inventory) and the ERP's legacy model (SKU, BOM, WarehouseSlot). The ACL prevents ERP concepts from leaking into Shopify's clean domain — isolates legacy complexity.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Use ACL during migrations or integrations: "Between our new Order Service and the legacy billing system, I'd place an Anti-corruption Layer. It translates our domain events (OrderPlaced) into the legacy system's expected format (SOAP XML with their specific field names). If the legacy system changes or is replaced, only the ACL adapter needs updating — our domain stays clean."</p></div>
+</div></div>
+
+</div>
+
+<div class="page-nav">
+<a href="4.19-consistency.html">&#8592; Previous: 4.19 Consistency</a>
+<a href="4.21-data-structures.html">Next: 4.21 SD Data Structures &#8594;</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

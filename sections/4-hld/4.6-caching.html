@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.6 Caching - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">SD Concepts Index</a></li>
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div class="section-block section-s4" id="s4-caching"><h2 class="section-title"><span class="section-num">4.6</span>Caching</h2>
+<div class="card"><div class="card-header"><h3>4.6.1 Caching Patterns</h3><span class="badge">Performance</span></div><div class="card-body">
+<div class="diagram-container">
+<svg viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
+<rect x="10" y="10" width="140" height="100" rx="8" fill="#1e293b" stroke="#10b981"/>
+<text x="80" y="35" text-anchor="middle" fill="#10b981" font-size="9" font-weight="bold">Cache-Aside</text>
+<text x="80" y="55" text-anchor="middle" fill="#94a3b8" font-size="7">App checks cache first</text>
+<text x="80" y="70" text-anchor="middle" fill="#94a3b8" font-size="7">Miss: read DB, populate cache</text>
+<text x="80" y="85" text-anchor="middle" fill="#94a3b8" font-size="7">Most common pattern</text>
+<rect x="180" y="10" width="140" height="100" rx="8" fill="#1e293b" stroke="#3b82f6"/>
+<text x="250" y="35" text-anchor="middle" fill="#3b82f6" font-size="9" font-weight="bold">Write-Through</text>
+<text x="250" y="55" text-anchor="middle" fill="#94a3b8" font-size="7">Write to cache + DB</text>
+<text x="250" y="70" text-anchor="middle" fill="#94a3b8" font-size="7">synchronously</text>
+<text x="250" y="85" text-anchor="middle" fill="#94a3b8" font-size="7">Strong consistency</text>
+<rect x="350" y="10" width="140" height="100" rx="8" fill="#1e293b" stroke="#f59e0b"/>
+<text x="420" y="35" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="bold">Write-Behind</text>
+<text x="420" y="55" text-anchor="middle" fill="#94a3b8" font-size="7">Write to cache only</text>
+<text x="420" y="70" text-anchor="middle" fill="#94a3b8" font-size="7">Async flush to DB</text>
+<text x="420" y="85" text-anchor="middle" fill="#94a3b8" font-size="7">Best write perf, risk</text>
+</svg>
+</div>
+<pre><code>// Cache-Aside pattern (Lazy Loading) - most common
+public Order getOrder(String orderId) {
+    // 1. Check cache
+    Order cached = redisTemplate.opsForValue().get("order:" + orderId);
+    if (cached != null) return cached;
+
+    // 2. Cache miss - load from DB
+    Order order = orderRepository.findById(orderId).orElseThrow();
+
+    // 3. Populate cache with TTL
+    redisTemplate.opsForValue().set("order:" + orderId, order, Duration.ofMinutes(15));
+    return order;
+}
+
+// Cache Stampede prevention (thundering herd)
+// Problem: cache expires, 1000 concurrent requests all hit DB
+// Solution 1: Distributed lock (only one thread refreshes)
+public Order getOrderWithLock(String orderId) {
+    Order cached = cache.get("order:" + orderId);
+    if (cached != null) return cached;
+
+    String lockKey = "lock:order:" + orderId;
+    if (redisLock.tryLock(lockKey, Duration.ofSeconds(5))) {
+        try {
+            cached = cache.get("order:" + orderId); // Double-check
+            if (cached != null) return cached;
+            Order fresh = orderRepository.findById(orderId).orElseThrow();
+            cache.set("order:" + orderId, fresh, Duration.ofMinutes(15));
+            return fresh;
+        } finally { redisLock.unlock(lockKey); }
+    }
+    return cache.get("order:" + orderId); // Wait for other thread's result
+}</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Facebook (Meta):</strong> Memcached cluster with 1000+ servers caching user profiles, friend lists, and news feed data. Cache-aside pattern: on miss, read from MySQL, populate cache. Handles 10B+ cache requests/second with p99 < 1ms.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: Cache-Aside vs Read-Through</h4><p>Cache-Aside: application controls loading logic (flexible, explicit) but cache misses are expensive (app must handle). Read-Through: cache auto-loads on miss (simpler app code) but less control over loading strategy. Write-Through ensures consistency but doubles write latency. Write-Behind is fast but risks data loss if cache crashes before flush.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Always specify your caching strategy in HLD: "We use Cache-Aside with Redis for user profiles — TTL of 5 minutes. On write, we invalidate the cache key (not update it) to avoid race conditions between concurrent reads and writes." Mention TTL + invalidation strategy together.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.6.2 Eviction Policies</h3><span class="badge">Performance</span></div><div class="card-body">
+<table><tr><th>Policy</th><th>Evicts</th><th>Best For</th><th>Overhead</th></tr>
+<tr><td>LRU</td><td>Least Recently Used</td><td>General purpose, recency matters</td><td>O(1) with LinkedHashMap</td></tr>
+<tr><td>LFU</td><td>Least Frequently Used</td><td>Popularity matters (CDN)</td><td>O(log n) or O(1) with O(n) space</td></tr>
+<tr><td>W-TinyLFU (Caffeine)</td><td>Admission filter + LFU</td><td>Best overall hit rate</td><td>O(1), compact sketch</td></tr>
+<tr><td>TTL</td><td>Expired entries</td><td>Time-sensitive data</td><td>O(1)</td></tr>
+</table>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Caffeine (Java):</strong> Uses W-TinyLFU eviction — combines recency (LRU window) and frequency (count-min sketch). Achieves near-optimal hit rates. Used by Spring Boot's default cache, Neo4j, Apache Druid. Outperforms Guava cache by 30-50% hit rate in production benchmarks.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: LRU vs LFU vs W-TinyLFU</h4><p>LRU: evicts least recently accessed (simple, good for temporal locality). LFU: evicts least frequently accessed (good for stable hot set) but slow to adapt to new popular items. W-TinyLFU (Caffeine): combines both — admission window (LRU) + main cache (LFU with aging). Dominates in benchmarks but more complex implementation.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Default to LRU in interviews (it's the most common). If asked to optimize: "For our product catalog cache where some items are always popular, I'd use W-TinyLFU (Caffeine in Java, or Redis with approximated LFU). It prevents cache pollution from one-time scans that would evict genuinely hot items."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.6.3 Connection Pooling</h3><span class="badge">Performance</span></div><div class="card-body">
+<pre><code>// HikariCP - fastest Java connection pool
+// Formula: pool_size = (2 * CPU_cores) + effective_spindle_count
+// For SSD (spindle=0): pool_size = 2 * cores = 16 for 8-core machine
+// More connections != better: context switching overhead dominates
+
+// HTTP Connection Pooling (RestTemplate/WebClient)
+@Bean
+public WebClient webClient() {
+    HttpClient httpClient = HttpClient.create()
+        .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 3000)
+        .responseTimeout(Duration.ofSeconds(5))
+        .pool(ConnectionProvider.builder("custom")
+            .maxConnections(100)           // Max total connections
+            .maxIdleTime(Duration.ofSeconds(30))
+            .maxLifeTime(Duration.ofMinutes(5))
+            .pendingAcquireMaxCount(1000)  // Queue when pool exhausted
+            .build());
+    return WebClient.builder().clientConnector(new ReactorClientHttpConnector(httpClient)).build();
+}</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Redis vs Memcached vs Caffeine</h4>
+<table><tr><th>Feature</th><th>Redis</th><th>Memcached</th><th>Caffeine (local)</th></tr>
+<tr><td>Data structures</td><td>Rich (lists, sets, sorted sets)</td><td>Key-value only</td><td>Key-value</td></tr>
+<tr><td>Persistence</td><td>Yes (AOF, RDB)</td><td>No</td><td>No (JVM memory)</td></tr>
+<tr><td>Clustering</td><td>Yes (Redis Cluster)</td><td>Client-side sharding</td><td>No (single JVM)</td></tr>
+<tr><td>Latency</td><td>~0.5ms network</td><td>~0.5ms network</td><td>~100ns (no network)</td></tr>
+<tr><td>Use case</td><td>Distributed cache + data store</td><td>Simple distributed cache</td><td>L1 cache (hot data)</td></tr>
+</table>
+<p><strong>Best practice: Multi-level caching:</strong> L1 (Caffeine, in-JVM, 100ns) -> L2 (Redis, distributed, 0.5ms) -> DB (10-50ms)</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Heroku:</strong> Each dyno gets max 20 database connections. With 50 dynos, that's 1000 connections to PostgreSQL (near its limit). PgBouncer in transaction-pooling mode reduces actual DB connections to 100 while serving 1000 application connections — 10x multiplexing ratio.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention connection pooling whenever you discuss databases at scale: "Each service instance maintains a HikariCP pool of 10-20 connections. With 100 instances, that's 1000-2000 DB connections — if that exceeds PostgreSQL's limit (~500 recommended), we add PgBouncer for connection multiplexing."</p></div>
+</div></div>
+</div>
+
+<div class="card"><div class="card-header"><h3>4.6.4 Read-Through Cache Pattern</h3><span class="badge">Pattern</span></div><div class="card-body">
+<p><strong>What it does:</strong> The cache itself is responsible for loading data from the database on a miss. The application only talks to the cache, never directly to the database. On a cache miss, the cache loads from DB, stores the result, and returns it.</p>
+
+<p><strong>Comparison of all cache loading patterns:</strong></p>
+<table>
+<tr><th>Pattern</th><th>Read Flow</th><th>Write Flow</th><th>Best For</th></tr>
+<tr><td><strong>Cache-Aside</strong> (Lazy Loading)</td><td>App checks cache → miss → app reads DB → app writes to cache</td><td>App writes to DB, invalidates cache</td><td>General purpose, most common</td></tr>
+<tr><td><strong>Read-Through</strong></td><td>App reads cache → miss → cache reads DB → cache stores &amp; returns</td><td>App writes to DB, cache auto-loads on next read</td><td>Simplify app code, cache handles loading</td></tr>
+<tr><td><strong>Write-Through</strong></td><td>App reads cache (always hit after first write)</td><td>App writes to cache → cache writes to DB synchronously</td><td>Read-after-write consistency critical</td></tr>
+<tr><td><strong>Write-Behind</strong> (Write-Back)</td><td>App reads cache</td><td>App writes to cache → cache async flushes to DB in batches</td><td>Write-heavy, brief inconsistency OK</td></tr>
+</table>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.6.5 Cache Stampede Prevention</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>Problem:</strong> When a popular cache entry expires, thousands of simultaneous requests hit the database for the same data — a "thundering herd" or cache stampede.</p>
+
+<p><strong>Solutions:</strong></p>
+<table>
+<tr><th>Technique</th><th>How It Works</th><th>Trade-off</th></tr>
+<tr><td><strong>Request Coalescing</strong> (Singleflight)</td><td>First request acquires a lock and fetches from DB. All other concurrent requests for the same key wait for the first to complete, then share the result.</td><td>Adds lock coordination; all waiters blocked on single fetch</td></tr>
+<tr><td><strong>Probabilistic Early Expiration</strong></td><td>Each request has a small random chance of refreshing the cache BEFORE it expires. Popular keys get refreshed by natural traffic.</td><td>Occasional redundant DB reads; doesn't guarantee no stampede</td></tr>
+<tr><td><strong>Background Refresh</strong></td><td>A background job refreshes popular cache entries before they expire. The cache never actually expires for hot keys.</td><td>Stale data during refresh window; extra infrastructure</td></tr>
+<tr><td><strong>Stale-While-Revalidate</strong></td><td>Serve stale data immediately while asynchronously refreshing the cache in the background.</td><td>Clients briefly see stale data; simpler than locking</td></tr>
+</table>
+
+<pre><code>// Singleflight pattern (Go-style, applicable in Java with Caffeine or custom)
+// Only ONE thread fetches from DB, others wait and share the result
+
+// Java with Caffeine (built-in coalescing):
+LoadingCache&lt;String, User&gt; cache = Caffeine.newBuilder()
+    .maximumSize(10_000)
+    .expireAfterWrite(Duration.ofMinutes(5))
+    .build(key -&gt; userRepository.findById(key)); // Only called ONCE per key miss
+
+// Manual singleflight with ConcurrentHashMap:
+ConcurrentMap&lt;String, CompletableFuture&lt;User&gt;&gt; inFlight = new ConcurrentHashMap&lt;&gt;();
+
+public User getUser(String id) {
+    User cached = cache.get(id);
+    if (cached != null) return cached;
+    
+    // computeIfAbsent ensures only ONE future is created per key
+    CompletableFuture&lt;User&gt; future = inFlight.computeIfAbsent(id, k -&gt;
+        CompletableFuture.supplyAsync(() -&gt; {
+            User user = db.findById(k);
+            cache.put(k, user);
+            return user;
+        })
+    );
+    
+    try {
+        return future.get(); // All concurrent callers share this single DB fetch
+    } finally {
+        inFlight.remove(id); // Clean up after completion
+    }
+}</code></pre>
+
+<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing caching, interviewers often follow up with "what happens when the cache key expires and 10,000 requests hit simultaneously?" This is the cache stampede question. Mention request coalescing (singleflight) as the primary solution, then note that Caffeine and Guava LoadingCache handle this automatically. For distributed caches (Redis), mention distributed locks or probabilistic early refresh.</p></div>
+<div class="trade-off-box"><h4>Trade-off: Stampede Prevention Approaches</h4><p>Locking (singleflight): guaranteed single fetch but adds coordination latency + lock contention. Probabilistic early refresh: no locks but occasional redundant DB reads. Stale-while-revalidate: instant response (stale) but clients briefly see outdated data. Best practice: use Caffeine/Guava LoadingCache (built-in coalescing) for local cache, distributed lock for Redis.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Reddit:</strong> Popular post cache keys expire simultaneously → thousands of requests hit PostgreSQL for the same post. Solution: probabilistic early expiration — random 10% of requests refresh the cache 30 seconds before TTL. Popular keys stay warm naturally from organic traffic.</p></div>
+</div></div>
+
+<div class="page-nav">
+<a href="4.5-databases.html">&#8592; Previous: 4.5 Databases</a>
+<a href="4.7-data-processing.html">Next: 4.7 Data Processing &#8594;</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

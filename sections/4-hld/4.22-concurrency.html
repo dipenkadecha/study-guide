@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.22 Concurrency - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-concurrency" class="section-block section-s4">
+<h2 class="section-title"><span class="section-num">4.22</span>Concurrency & Locking Patterns</h2>
+<div class="card"><div class="card-header"><h3>4.22.1 Optimistic vs Pessimistic Locking</h3><span class="badge">Critical</span></div><div class="card-body">
+<pre><code>// OPTIMISTIC: Assume no conflict, detect at commit time
+// Implementation: version column. UPDATE ... WHERE version = expected_version
+@Entity
+public class Product {
+    @Version
+    private Long version; // JPA increments automatically
+    private int stockCount;
+}
+// If two transactions read version=5, first to commit sets version=6
+// Second gets OptimisticLockException -> retry with fresh data
+// Best when: conflicts are rare (< 5% of transactions)
+
+// PESSIMISTIC: Lock row immediately, block others
+// SELECT * FROM seats WHERE id = ? FOR UPDATE
+// Other transactions wait until lock released
+// Best when: conflicts are frequent, must not fail (booking systems)</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>GitHub:</strong> Pull request merges use optimistic locking. When you click "Merge," GitHub checks if the base branch has changed since you last loaded the page (version check). If it has, the merge is rejected and you must re-fetch — prevents silent overwrites in concurrent merge scenarios without holding locks during code review.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Optimistic (check version at commit, abort on conflict): high throughput when conflicts are rare (read-heavy), but wasted work on abort. Pessimistic (lock before read): guaranteed success but blocks concurrent access (lower throughput). Rule of thumb: optimistic for web apps (low contention on any single row), pessimistic for inventory/seat booking (high contention on popular items).</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Match locking strategy to contention level: 'For user profile updates (low contention — only the user themselves edits): optimistic locking with version column. For concert seat booking (high contention — thousands competing for same seat): pessimistic lock (SELECT FOR UPDATE). Optimistic would cause too many retries under high contention.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.22.2 Distributed Lock with Fencing</h3><span class="badge">Critical</span></div><div class="card-body">
+<pre><code>// Problem: Lock holder pauses (GC), lock expires, new holder gets lock
+// Both think they have the lock -> data corruption
+
+// Solution: Fencing tokens - monotonically increasing counter
+// Lock acquisition returns token (e.g., 33). Client passes to storage.
+// Storage rejects writes with token less than highest seen.
+
+// Client A gets lock (token=33), pauses (GC)
+// Lock expires, Client B gets lock (token=34), writes with token=34
+// Client A wakes up, tries to write with token=33 -> REJECTED (34 > 33)</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Shopify:</strong> Uses Redis distributed locks for inventory reservation during flash sales. When 100K users click "Buy" simultaneously, each checkout acquires a lock on the specific SKU, decrements inventory, and releases. Lock TTL of 5s prevents deadlocks if a checkout process crashes mid-operation.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: Locking Strategies</h4>
+<table><tr><th>Strategy</th><th>Throughput</th><th>Conflict Handling</th><th>Best For</th></tr>
+<tr><td>Optimistic (version)</td><td>High (no blocking)</td><td>Retry on conflict</td><td>Read-heavy, rare conflicts</td></tr>
+<tr><td>Pessimistic (FOR UPDATE)</td><td>Lower (blocking)</td><td>Wait for lock</td><td>Write-heavy, frequent conflicts</td></tr>
+<tr><td>Distributed (Redis)</td><td>Medium</td><td>Fail-fast or wait</td><td>Cross-service coordination</td></tr>
+<tr><td>Lock-free (CAS)</td><td>Highest</td><td>Spin retry</td><td>Hot paths, counters, queues</td></tr>
+</table></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Always mention the fencing token: 'A distributed lock alone isn't safe — if the holder pauses (GC, network delay) and the lock expires, two processes can act as leader simultaneously. The fencing token (monotonic counter from the lock service) ensures storage rejects stale writes. Process with token=34 can't overwrite data written by process with token=35.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.22.3 MVCC Deep Dive (PostgreSQL)</h3><span class="badge">Deep Dive</span></div><div class="card-body">
+<pre><code>// MVCC: each row has xmin (created by txn) and xmax (deleted/updated by txn)
+// Readers see snapshot: rows where xmin < my_txn AND (xmax > my_txn OR xmax=0)
+// Writers create new row version (old version invisible to new txns after vacuum)
+
+// Isolation Levels (PostgreSQL):
+// READ COMMITTED (default): each statement sees committed data at statement start
+// REPEATABLE READ: entire transaction sees snapshot from transaction start
+// SERIALIZABLE: transactions behave as if executed one-at-a-time
+
+// Production gotcha: long-running transactions prevent vacuum from cleaning old rows
+// -> Table bloat -> Slower queries. Monitor: pg_stat_user_tables (n_dead_tup)</code></pre>
+<div class="trade-off-box"><h4>Trade-off</h4><p>MVCC eliminates read-write contention (readers see snapshots, never block) but: old versions accumulate as dead tuples (bloat), long-running transactions prevent cleanup (hold snapshots open), and VACUUM CPU/IO cost. Alternatives: lock-based (simple, blocks readers) or optimistic without MVCC (recheck at commit). PostgreSQL chose MVCC — optimized for read-heavy OLTP workloads.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>PostgreSQL:</strong> VACUUM ANALYZE runs automatically (autovacuum) to reclaim dead tuples. But: a single long-running query (analytics report on OLTP DB) can pin the snapshot horizon — preventing VACUUM from cleaning up tuples that newer transactions created and deleted. Solution: statement_timeout for long queries, separate OLAP replica for analytics.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Explain MVCC's benefit concretely: 'In PostgreSQL, a SELECT never blocks an UPDATE and vice versa. The reader sees the row version that existed at query start, while the writer creates a new version. This enables high concurrency for read-heavy apps without explicit locking. The cost: tuples accumulate and VACUUM is needed — monitor bloat in production.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.22.4 Lock-free Patterns (CAS)</h3><span class="badge">Deep Dive</span></div><div class="card-body">
+<pre><code>// Compare-And-Swap: atomic read-modify-write without locks
+// AtomicInteger.compareAndSet(expected, new) -> true if current == expected
+
+// Lock-free stack (Treiber Stack):
+public class LockFreeStack&lt;E&gt; {
+    private final AtomicReference&lt;Node&lt;E&gt;&gt; top = new AtomicReference&lt;&gt;();
+
+    public void push(E item) {
+        Node&lt;E&gt; newNode = new Node&lt;&gt;(item);
+        Node&lt;E&gt; current;
+        do {
+            current = top.get();
+            newNode.next = current;
+        } while (!top.compareAndSet(current, newNode)); // Retry until success
+    }
+}
+// No locks! Multiple threads can push simultaneously.
+// Trade-off: under high contention, CAS retries waste CPU (spinning)
+// Solution: exponential backoff or LongAdder (striped counters)</code></pre>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Lock-free (CAS loops): no blocking, no deadlocks, better throughput under low-to-medium contention. But: high contention → excessive retries (spinning wastes CPU), complex to implement correctly (ABA problem), and harder to reason about. Lock-based: simpler to understand, fair (FIFO ordering), but risk of priority inversion and deadlocks. Use lock-free for hot counters/queues; lock-based for complex critical sections.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Java ConcurrentHashMap:</strong> Uses CAS for individual bucket updates — multiple threads can write to different buckets concurrently without locks. Under the hood: compare-and-swap on the bucket's head node. If CAS fails (another thread modified it), retry with the new value. Achieves near-linear scalability on multi-core CPUs for non-conflicting keys.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Know when to suggest CAS: 'For the distributed counter (likes, views), I'd use AtomicLong (CAS-based) rather than synchronized — no thread blocking, scales better on multi-core. For complex operations (transfer money between two accounts), I'd use locks — CAS on multiple variables simultaneously isn't atomic without hardware support (DCAS doesn't exist on commodity hardware).'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.22.5 Deadlock Prevention in Production</h3><span class="badge">Deep Dive</span></div><div class="card-body">
+<pre><code>// Common deadlock: Txn A locks row 1 then row 2. Txn B locks row 2 then row 1.
+// Prevention strategies:
+// 1. Lock ordering: always acquire locks in consistent order (sorted by key)
+// 2. Lock timeout: acquire with timeout, release all and retry if timeout
+// 3. Deadlock detection: DB detects cycles, kills one transaction (PostgreSQL)
+
+// Spring/JPA: set lock timeout
+@QueryHints({@QueryHint(name = "javax.persistence.lock.timeout", value = "3000")})
+@Lock(LockModeType.PESSIMISTIC_WRITE)
+Optional&lt;Seat&gt; findByIdForUpdate(String id);
+
+// Production monitoring: track deadlock frequency, slow lock waits
+// PostgreSQL: pg_stat_activity (wait_event_type = 'Lock')</code></pre>
+<div class="trade-off-box"><h4>Trade-off: When to Use Each Concurrency Strategy</h4>
+<ul>
+<li><strong>synchronized/ReentrantLock:</strong> Simple, when contention is moderate. JVM optimizes (biased locking). Default choice.</li>
+<li><strong>Optimistic locking (@Version):</strong> Read-heavy, conflicts < 5%. Retry on failure. No blocking. JPA/Hibernate.</li>
+<li><strong>Pessimistic locking (FOR UPDATE):</strong> Write-heavy, conflicts > 20%. Critical sections (booking). Blocking.</li>
+<li><strong>Lock-free (CAS/Atomic):</strong> Ultra-hot paths (counters, queues). No blocking or deadlock. Complex to implement correctly.</li>
+<li><strong>Distributed locks (Redis/ZK):</strong> Cross-process coordination. Keep TTL short, always use fencing tokens, handle failures gracefully.</li>
+</ul></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>PostgreSQL:</strong> Detects deadlocks automatically by checking the wait-for graph every deadlock_timeout (default 1s). When detected, one transaction is aborted (victim chosen by least work done). Application must catch the deadlock error and retry. Prevention: always acquire locks in consistent order (e.g., by account_id ascending) — guarantees no circular wait.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>For any system with multiple locks: 'Deadlock prevention via lock ordering — all services acquire locks in a globally consistent order (e.g., alphabetical by resource ID). For database transactions: keep them short (minimize lock holding time), access tables in the same order across all queries, and use SELECT FOR UPDATE NOWAIT to fail fast rather than block indefinitely.'</p></div>
+</div></div>
+</div>
+
+<div class="page-nav">
+<a href="4.21-data-structures.html">&#8592; Previous: 4.21 SD Data Structures</a>
+<a href="4.23-devops.html">Next: 4.23 DevOps &#8594;</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

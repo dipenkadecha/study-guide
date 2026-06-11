@@ -1,0 +1,184 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.23 DevOps - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-devops" class="section-block section-s4">
+<h2 class="section-title"><span class="section-num">4.23</span>DevOps & Deployment Patterns</h2>
+<div class="card"><div class="card-header"><h3>4.23.1 GitOps</h3><span class="badge">DevOps</span></div><div class="card-body">
+<pre><code>// GitOps: Git is single source of truth for infrastructure & application state
+// Flow: Code change -> PR -> merge -> ArgoCD detects -> syncs to cluster
+// Benefits: audit trail (git history), rollback (git revert), declarative
+
+// ArgoCD watches a GitOps repo containing Kubernetes manifests
+// Any drift between git and cluster is auto-corrected
+// No kubectl apply from laptops - all changes through PR review</code></pre>
+<div class="trade-off-box"><h4>Trade-off</h4><p>GitOps (declarative, git as source of truth): full audit trail, easy rollback (git revert), consistent environments. But: secrets management is tricky (can't store secrets in git), and drift detection adds complexity. Traditional CI/CD (imperative push): simpler for small teams but no audit trail of WHAT is deployed WHERE without extra tooling.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Weaveworks/Intuit:</strong> ArgoCD watches git repositories for Kubernetes manifest changes. When a developer merges a PR that changes a Deployment replica count, ArgoCD detects the drift from desired state and automatically syncs the cluster. Rollback = revert the git commit. Entire cluster state is reproducible from a single git repository.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>For deployment questions: 'We use GitOps with ArgoCD — Kubernetes manifests stored in git, ArgoCD syncs cluster state to match. Deployment = merge PR to main branch. Rollback = git revert. Benefits: complete audit trail (who changed what, when, why via PR), reproducible environments (spin up staging from same git repo), and developer-friendly (no kubectl access needed).'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.23.2 Feature Flags</h3><span class="badge">DevOps</span></div><div class="card-body">
+<pre><code>// Decouple deployment from release - deploy code without activating it
+// Use cases: gradual rollout, A/B testing, kill switch, trunk-based development
+if (featureFlags.isEnabled("new-checkout-flow", userId)) {
+    return newCheckoutService.process(cart);
+} else {
+    return legacyCheckoutService.process(cart);
+}
+// Tools: LaunchDarkly, Unleash, Flagsmith, custom Redis-backed
+// Critical: clean up old flags! Tech debt accumulates fast.</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Facebook:</strong> GateKeeper system controls feature rollout to 3B+ users. New features start at 0.1% (internal), scale to 1% (dogfood), then 10%, 50%, 100%. If metrics degrade at any stage, one click disables the feature globally in seconds without a deploy. Engineers ship code daily — GateKeeper decouples deploy from release.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Feature flags enable safe deployments (deploy dark, enable gradually) but accumulate as technical debt if not cleaned up. Each flag adds conditional complexity, increases test matrix (flag on/off), and risk of flag conflicts. Best practice: treat flags as temporary — remove within 2 sprints of full rollout. Permanent flags only for ops toggles (maintenance mode) or A/B experiments.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention feature flags for risk mitigation: 'New recommendation algorithm deployed behind a feature flag. Enable for 1% of users, monitor engagement metrics for 24h. If positive, roll to 10%, 50%, 100% over a week. If metrics degrade at any stage, kill switch (disable flag) gives instant rollback without deployment. Flags are cleaned up after full rollout.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.23.3 Immutable Infrastructure</h3><span class="badge">DevOps</span></div><div class="card-body">
+<pre><code>// Never modify running servers. Replace them entirely.
+// Old way: SSH into server, apt-get update, restart (snowflake servers)
+// New way: Build new AMI/image with changes, deploy new instances, destroy old
+
+// Benefits: reproducible, no configuration drift, easy rollback (switch back)
+// Implementation: Packer builds AMI -> Terraform deploys -> old instances terminated
+// Containers embody this: never docker exec to fix - rebuild image and redeploy</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Feature Flags vs Branch-based Development</h4>
+<ul>
+<li><strong>Feature Flags:</strong> Trunk-based, deploy often, toggle features. Risk: flag complexity, dead code if not cleaned.</li>
+<li><strong>Feature Branches:</strong> Isolation, full testing before merge. Risk: long-lived branches, merge conflicts, integration pain.</li>
+<li><strong>Best practice:</strong> Use flags for major features (gradual rollout), short-lived branches (&lt; 2 days) for smaller changes.</li>
+</ul></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Netflix:</strong> Every deployment creates new AMIs (Amazon Machine Images). Servers are never patched in place — a new image is built, tested, and deployed. The old ASG (Auto Scaling Group) is scaled down as the new one scales up (red/black deployment). If issues arise, simply scale the old ASG back up. No configuration drift — every server is identical to its image.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Connect to deployment strategy: 'We use immutable infrastructure — containers are built once, promoted through environments (dev → staging → prod) without modification. No SSH into production, no config changes on running instances. If a fix is needed, build a new image and deploy. This eliminates configuration drift — every production instance is identical and reproducible from the Dockerfile.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.23.4 Production CI/CD Pipeline Stages</h3><span class="badge">Production</span></div><div class="card-body">
+<pre><code>// Modern CI/CD for a Java microservice:
+// 1. Commit Stage (2-5 min): compile, unit tests, SAST (SonarQube), dependency check
+// 2. Build Stage (3-5 min): Docker image build, push to registry (ECR)
+// 3. Integration Stage (5-10 min): Testcontainers integration tests
+// 4. Security Stage: container scan (Trivy), secret detection, OWASP check
+// 5. Deploy Staging: full environment, contract tests, performance tests
+// 6. Deploy Prod: canary 5% -> metrics check -> auto-rollback or promote -> 100%
+
+// Key metrics to gate promotion:
+// Error rate &lt; 0.1%, p99 latency &lt; SLO, no new error types
+// If breached -> automatic rollback to previous version</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Google:</strong> Monorepo with 1 billion files, 86TB of source code. Every commit triggers CI across affected targets. 150K+ builds/day on distributed build system (Bazel). Deploys to production multiple times daily via automated canary analysis — if error rates spike, automatic rollback within 2 minutes.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Comprehensive pipeline (lint → unit test → integration test → security scan → performance test → canary) gives confidence but is slow (30-60 min). Fast pipeline (lint → unit test → deploy) enables rapid iteration but risky. Balance: fast pipeline for feature branches (lint + unit tests, ~5 min), comprehensive pipeline for main/release branches (all stages, 30 min). Never block developers with slow feedback loops.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Describe your ideal pipeline: 'PR triggers: lint + unit tests + security scan (5 min). Merge to main triggers: full integration tests + build image + deploy to staging + smoke tests (15 min). Release: canary 5% for 30 min (automated metric comparison) → progressive rollout. On failure at any stage: block + notify. Key metric: lead time (commit to production) < 1 hour.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.23.5 Blue-Green vs Canary vs Rolling</h3><span class="badge">Production</span></div><div class="card-body">
+<table><tr><th>Strategy</th><th>Rollback</th><th>Risk</th><th>Infra Cost</th><th>Best For</th></tr>
+<tr><td>Blue-Green</td><td>Instant (LB switch)</td><td>Low</td><td>2x during deploy</td><td>Critical services, instant rollback needed</td></tr>
+<tr><td>Canary</td><td>Fast (seconds)</td><td>Lowest</td><td>Small extra</td><td>High-traffic, subtle bugs</td></tr>
+<tr><td>Rolling</td><td>Slow (reverse roll)</td><td>Medium</td><td>None</td><td>K8s default, stateless services</td></tr>
+<tr><td>Recreate</td><td>Redeploy (slow)</td><td>High</td><td>None</td><td>Schema changes, incompatible versions</td></tr>
+</table>
+<pre><code>// Progressive canary with Argo Rollouts (GitOps: ArgoCD syncs this on image bump)
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+spec:
+  strategy:
+    canary:
+      steps:
+      - setWeight: 5       # send 5% of traffic to the new version
+      - pause: {duration: 5m}
+      - analysis:          # automated gate: is success-rate healthy?
+          templates:
+          - templateName: success-rate
+      - setWeight: 50
+      - pause: {duration: 10m}
+      - setWeight: 100     # promote to 100% if metrics stayed green</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Amazon:</strong> Canary deployments across 100M+ customer requests. New version gets 1% traffic for 30 minutes. Automated analysis compares error rates, latency percentiles, and business metrics against baseline. If any metric regresses beyond threshold, automatic rollback fires — zero human intervention for 99% of bad deploys.</p>
+</div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When asked about deployment, always mention: "We use canary with automated metric analysis. If error rate exceeds threshold, Argo Rollouts automatically rolls back. This caught a memory leak in production last quarter before it affected more than 2% of users."</p></div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Blue-Green: instant rollback (switch back to old), simple, but requires 2x infrastructure during transition. Canary: gradual risk exposure (1% → 5% → 100%), resource-efficient (only a few new pods), but rollback is slower (need to detect issue, route back). Rolling update: resource-efficient (replace pods one by one), zero extra infra, but rollback means re-rolling forward with old version (slow).</p></div>
+</div></div>
+
+</div>
+<div class="page-nav">
+<a href="4.22-concurrency.html">&#8592; Previous: 4.22 Concurrency</a>
+<a href="../../sections/5-behavioral/5.1-star-method.html">Next: 5.1 STAR Method &#8594;</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

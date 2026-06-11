@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.5 LLD Problems - Interview Prep</title>
+<link href="../../assets/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA &amp; Algorithms</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays &amp; Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing &amp; HashMaps</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees &amp; Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps &amp; Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP &amp; Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency Structures</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - Low-Level Design</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID Principles</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational Patterns</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural Patterns</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral Patterns</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing Strategies</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="../../sections/4-hld/4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="../../sections/4-hld/4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="../../sections/4-hld/4.3-networking.html">4.3 Networking &amp; Communication</a></li>
+<li><a href="../../sections/4-hld/4.4-load-balancing.html">4.4 Load Balancing &amp; Traffic</a></li>
+<li><a href="../../sections/4-hld/4.5-databases.html">4.5 Database Design</a></li>
+<li><a href="../../sections/4-hld/4.6-caching.html">4.6 Caching</a></li>
+<li><a href="../../sections/4-hld/4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="../../sections/4-hld/4.8-messaging.html">4.8 Messaging &amp; Async</a></li>
+<li><a href="../../sections/4-hld/4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="../../sections/4-hld/4.10-scalability.html">4.10 Scalability Techniques</a></li>
+<li><a href="../../sections/4-hld/4.11-resilience.html">4.11 Reliability &amp; Resilience</a></li>
+<li><a href="../../sections/4-hld/4.12-security.html">4.12 Security</a></li>
+<li><a href="../../sections/4-hld/4.13-observability.html">4.13 Observability &amp; Monitoring</a></li>
+<li><a href="../../sections/4-hld/4.14-cloud.html">4.14 Cloud &amp; Infrastructure</a></li>
+<li><a href="../../sections/4-hld/4.15-storage.html">4.15 Storage Systems</a></li>
+<li><a href="../../sections/4-hld/4.16-performance.html">4.16 Performance Optimization</a></li>
+<li><a href="../../sections/4-hld/4.17-tradeoffs.html">4.17 Design Trade-offs</a></li>
+<li><a href="../../sections/4-hld/4.18-system-design-problems.html">4.18 Common SD Problems</a></li>
+<li><a href="../../sections/4-hld/4.19-consistency.html">4.19 Consistency Patterns</a></li>
+<li><a href="../../sections/4-hld/4.20-microservices.html">4.20 Microservices Patterns</a></li>
+<li><a href="../../sections/4-hld/4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="../../sections/4-hld/4.22-concurrency.html">4.22 Concurrency &amp; Locking</a></li>
+<li><a href="../../sections/4-hld/4.23-devops.html">4.23 DevOps &amp; Deployment</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input id="searchInput" placeholder="Search topics... (Ctrl+K)" type="text"/><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div class="section-block section-s3" id="s3-problems"><h2 class="section-title"><span class="section-num">3.5</span>LLD Problems</h2>
+<div class="card"><div class="card-header"><h3>3.5.1 Algorithms Comparison</h3><span class="badge">Classic</span></div><div class="card-body">
+<div class="diagram-container">
+<svg viewbox="0 0 600 100" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#1e293b" height="50" rx="8" stroke="#f59e0b" width="130" x="10" y="30"></rect>
+<text fill="#f59e0b" font-size="9" font-weight="bold" text-anchor="middle" x="75" y="50">Token Bucket</text>
+<text fill="#94a3b8" font-size="8" text-anchor="middle" x="75" y="67">Allows bursts</text>
+<rect fill="#1e293b" height="50" rx="8" stroke="#3b82f6" width="130" x="160" y="30"></rect>
+<text fill="#3b82f6" font-size="9" font-weight="bold" text-anchor="middle" x="225" y="50">Sliding Window</text>
+<text fill="#94a3b8" font-size="8" text-anchor="middle" x="225" y="67">Smooth rate</text>
+<rect fill="#1e293b" height="50" rx="8" stroke="#10b981" width="130" x="310" y="30"></rect>
+<text fill="#10b981" font-size="9" font-weight="bold" text-anchor="middle" x="375" y="50">Fixed Window</text>
+<text fill="#94a3b8" font-size="8" text-anchor="middle" x="375" y="67">Simple, edge burst</text>
+<rect fill="#1e293b" height="50" rx="8" stroke="#8b5cf6" width="130" x="460" y="30"></rect>
+<text fill="#8b5cf6" font-size="9" font-weight="bold" text-anchor="middle" x="525" y="50">Leaky Bucket</text>
+<text fill="#94a3b8" font-size="8" text-anchor="middle" x="525" y="67">Fixed output rate</text>
+</svg>
+</div>
+<pre><code>// Token Bucket - most common in production (AWS, Stripe use this)
+public class TokenBucketRateLimiter {
+    private final int maxTokens;
+    private final int refillRate; // tokens per second
+    private double availableTokens;
+    private long lastRefillTimestamp;
+
+    public synchronized boolean allowRequest() {
+        refill();
+        if (availableTokens &gt;= 1) {
+            availableTokens--;
+            return true;
+        }
+        return false;
+    }
+
+    private void refill() {
+        long now = System.nanoTime();
+        double elapsed = (now - lastRefillTimestamp) / 1_000_000_000.0;
+        availableTokens = Math.min(maxTokens, availableTokens + elapsed * refillRate);
+        lastRefillTimestamp = now;
+    }
+}
+
+// Sliding Window Log - precise but memory-heavy
+public class SlidingWindowRateLimiter {
+    private final TreeMap&lt;Long, Integer&gt; requestLog = new TreeMap&lt;&gt;();
+    private final int maxRequests;
+    private final Duration window;
+
+    public synchronized boolean allowRequest() {
+        long now = System.currentTimeMillis();
+        long windowStart = now - window.toMillis();
+        requestLog.headMap(windowStart).clear();  // Evict old entries
+
+        int currentCount = requestLog.values().stream().mapToInt(i -&gt; i).sum();
+        if (currentCount &lt; maxRequests) {
+            requestLog.merge(now, 1, Integer::sum);
+            return true;
+        }
+        return false;
+    }
+}</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Rate Limiting Algorithms</h4>
+<table><tr><th>Algorithm</th><th>Memory</th><th>Precision</th><th>Burst Handling</th><th>Use Case</th></tr>
+<tr><td>Token Bucket</td><td>O(1)</td><td>Good</td><td>Allows controlled bursts</td><td>API rate limiting (AWS)</td></tr>
+<tr><td>Sliding Window Log</td><td>O(N)</td><td>Exact</td><td>No bursts</td><td>Strict compliance</td></tr>
+<tr><td>Sliding Window Counter</td><td>O(1)</td><td>Approximate</td><td>Weighted between windows</td><td>Good balance</td></tr>
+<tr><td>Fixed Window</td><td>O(1)</td><td>Rough</td><td>2x burst at boundary</td><td>Simple use cases</td></tr>
+<tr><td>Leaky Bucket</td><td>O(1)</td><td>Good</td><td>Smooths all bursts</td><td>Network traffic shaping</td></tr>
+</table></div><div class="production-insight"><h4>Production Insight</h4>
+<pre><code>// LRU Cache - O(1) get and put using HashMap + Doubly Linked List
+public class LRUCache&lt;K, V&gt; {
+    private final int capacity;
+    private final Map&lt;K, Node&lt;K, V&gt;&gt; map;
+    private final Node&lt;K, V&gt; head, tail; // Sentinel nodes
+
+    public LRUCache(int capacity) {
+        this.capacity = capacity;
+        this.map = new HashMap&lt;&gt;((int)(capacity / 0.75) + 1);
+        head = new Node&lt;&gt;(null, null);
+        tail = new Node&lt;&gt;(null, null);
+        head.next = tail;
+        tail.prev = head;
+    }
+
+    public V get(K key) {
+        Node&lt;K, V&gt; node = map.get(key);
+        if (node == null) return null;
+        moveToHead(node);  // Mark as recently used
+        return node.value;
+    }
+
+    public void put(K key, V value) {
+        Node&lt;K, V&gt; existing = map.get(key);
+        if (existing != null) {
+            existing.value = value;
+            moveToHead(existing);
+        } else {
+            Node&lt;K, V&gt; newNode = new Node&lt;&gt;(key, value);
+            map.put(key, newNode);
+            addToHead(newNode);
+            if (map.size() &gt; capacity) {
+                Node&lt;K, V&gt; evicted = removeTail();
+                map.remove(evicted.key);
+            }
+        }
+    }
+    // Thread-safe version: use ConcurrentHashMap + ReadWriteLock on list operations
+}</code></pre>
+<div class="production-insight">
+<p>In production, use Caffeine (Java's fastest caching library) over manual LRU. It uses W-TinyLFU eviction which outperforms LRU by ~30% hit rate. Interview wants you to implement LRU manually; production wants you to know Caffeine exists.</p></div>
+</div></div>
+<div class="card"><div class="card-header"><h3>3.5.2 Walkthrough: Design a Parking Lot</h3><span class="badge">LLD Problem</span></div><div class="card-body">
+<p>The classic object-modeling round. The interviewer scores <em>how you get to the classes</em>, not the code volume. Drive it in four steps.</p>
+<h4>1. Clarify requirements &amp; scope</h4>
+<ul>
+<li><strong>Functional:</strong> multiple levels; spot types (compact / large / motorcycle / EV); a vehicle takes the smallest spot that fits; issue a ticket on entry; compute fee on exit; show free-spot count per level.</li>
+<li><strong>Non-functional:</strong> thread-safe spot assignment (two cars must not get the same spot); pluggable pricing; extensible to new vehicle/spot types.</li>
+<li><strong>Out of scope (state it):</strong> payments gateway, reservations, license-plate OCR.</li>
+</ul>
+<h4>2. Identify entities (nouns → classes)</h4>
+<pre><code>enum VehicleType { MOTORCYCLE, CAR, TRUCK, EV }
+enum SpotType    { MOTORCYCLE, COMPACT, LARGE, EV }
+
+abstract class Vehicle { final String plate; final VehicleType type; }
+
+class ParkingSpot {
+    final String id; final SpotType type;
+    private Vehicle vehicle;                 // null = free
+    boolean isFree() { return vehicle == null; }
+    boolean fits(Vehicle v) { return isFree() &amp;&amp; SpotFit.allows(type, v.type); }
+}
+
+class Level {                                // one floor
+    final int floor;
+    final List&lt;ParkingSpot&gt; spots;
+    Optional&lt;ParkingSpot&gt; findSpot(Vehicle v) { ... }
+}
+
+class Ticket {                               // issued at entry
+    final String id; final String plate;
+    final String spotId; final Instant entryTime;
+}</code></pre>
+<h4>3. Behavior &amp; concurrency</h4>
+<pre><code>class ParkingLot {
+    private final List&lt;Level&gt; levels;
+    private final PricingStrategy pricing;   // Strategy: hourly, flat, tiered
+    private final Map&lt;String, Ticket&gt; active = new ConcurrentHashMap&lt;&gt;();
+
+    // Synchronize the find+occupy so two threads can't grab one spot.
+    synchronized Ticket parkVehicle(Vehicle v) {
+        for (Level lvl : levels) {
+            Optional&lt;ParkingSpot&gt; s = lvl.findSpot(v);
+            if (s.isPresent()) {
+                s.get().assign(v);
+                Ticket t = new Ticket(UUID.randomUUID().toString(),
+                                      v.plate, s.get().id, Instant.now());
+                active.put(t.id, t);
+                return t;
+            }
+        }
+        throw new ParkingFullException(v.type);
+    }
+
+    Money exit(String ticketId) {
+        Ticket t = active.remove(ticketId);
+        if (t == null) throw new InvalidTicketException(ticketId);
+        freeSpot(t.spotId);
+        return pricing.price(t.entryTime, Instant.now(), t /* spot type */);
+    }
+}</code></pre>
+<h4>4. Call out the design choices</h4>
+<div class="interview-tip"><h4>What scores points</h4>
+<ul>
+<li><strong>Strategy</strong> for <code>PricingStrategy</code> so fee rules change without touching the lot — name it.</li>
+<li><strong>Concurrency:</strong> the find-then-occupy must be atomic; coarse <code>synchronized</code> is fine to start, then offer per-level locks or an optimistic CAS on the spot to reduce contention as a scaling follow-up.</li>
+<li><strong>Open/Closed:</strong> adding an EV charging spot = new enum value + a <code>SpotFit</code> rule, no changes to <code>parkVehicle</code>.</li>
+<li>End with extension hooks: multiple entrances, a display board (Observer on free-count), reservations.</li>
+</ul></div>
+</div></div>
+</div>
+
+<div class="page-nav">
+<a href="3.4-behavioral-patterns.html">← Previous: 3.4 Behavioral</a>
+<a href="3.6-testing.html">Next: 3.6 Testing →</a>
+</div>
+</div></main>
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

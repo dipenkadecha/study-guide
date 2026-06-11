@@ -1,0 +1,356 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.9 Distributed Systems - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">SD Concepts Index</a></li>
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-distributed" class="section-block section-s4"><h2 class="section-title"><span class="section-num">4.9</span>Distributed Systems Concepts</h2>
+<div class="card"><div class="card-header"><h3>4.9.1 Consensus Algorithms</h3><span class="badge">Advanced</span></div><div class="card-body">
+<table><tr><th>Algorithm</th><th>Approach</th><th>Leader</th><th>Use Case</th></tr>
+<tr><td>Raft</td><td>Leader-based log replication</td><td>Yes (elected)</td><td>etcd, Consul, CockroachDB</td></tr>
+<tr><td>Paxos</td><td>Proposal/accept phases</td><td>Optional</td><td>Google Spanner, Chubby</td></tr>
+<tr><td>Gossip</td><td>Epidemic broadcast</td><td>No (peer-to-peer)</td><td>Cassandra membership, SWIM</td></tr>
+</table>
+<pre><code>// Raft simplified: Leader Election + Log Replication
+// 1. All nodes start as Followers
+// 2. If no heartbeat from Leader in timeout -> become Candidate
+// 3. Candidate requests votes from peers (majority wins)
+// 4. Leader sends heartbeats + replicates log entries
+// 5. Entry committed when majority of nodes have it
+// Key: only committed entries are applied to state machine</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>etcd (Kubernetes):</strong> Uses Raft consensus for cluster state. Every kubectl apply writes to etcd — requires majority (3 of 5 nodes) to acknowledge before confirming. If 2 nodes die, cluster remains operational. If 3 die, cluster becomes read-only (no quorum for writes).</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: Raft vs Paxos</h4><p>Raft: easier to understand and implement (clear leader, sequential log), used by etcd, Consul. Paxos: more flexible (multi-decree, leaderless variants) but notoriously hard to implement correctly. In practice, choose Raft for new systems — correctness is easier to verify. Paxos for academic/research contexts or Google-scale (Chubby uses Multi-Paxos).</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing coordination services: "We use etcd (Raft-based) for leader election and distributed configuration. Raft guarantees that as long as a majority of nodes (3 of 5) are alive, the cluster remains operational and consistent." Mention the write penalty: every write requires majority acknowledgment.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.9.2 Distributed Locking</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// Redis Distributed Lock (Redlock algorithm by Antirez)
+// Simple version (single Redis):
+public boolean acquireLock(String resource, String lockId, Duration ttl) {
+    Boolean acquired = redisTemplate.opsForValue()
+        .setIfAbsent("lock:" + resource, lockId, ttl);
+    return Boolean.TRUE.equals(acquired);
+}
+
+public void releaseLock(String resource, String lockId) {
+    // Lua script for atomic check-and-delete (prevent releasing someone else's lock)
+    String script = "if redis.call('get',KEYS[1]) == ARGV[1] then " +
+                    "return redis.call('del',KEYS[1]) else return 0 end";
+    redisTemplate.execute(new DefaultRedisScript&lt;&gt;(script, Long.class),
+        List.of("lock:" + resource), lockId);
+}
+
+// Production: use Redisson (Java) for robust implementation with:
+// - Watchdog (auto-extend TTL while holding lock)
+// - Fair locking (FIFO ordering)
+// - RedLock (multiple Redis instances for fault tolerance)</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Redlock (Redis):</strong> Stripe uses Redis-based distributed locks for idempotent payment processing. Lock acquired across 5 Redis instances — if client gets lock on 3+, it proceeds. Fencing tokens prevent stale lock holders from making writes after their lock expired.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: Redis Lock vs ZooKeeper Lock</h4><p>Redis (Redlock): fast, simple, but relies on clock synchronization (unsafe if clocks drift). ZooKeeper/etcd: slower but uses sequential nodes + ephemeral sessions (no clock dependency). For critical sections (payment deduction), use ZooKeeper. For best-effort dedup (prevent duplicate emails), Redis is fine.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Always mention fencing tokens with distributed locks: "The lock includes a monotonically increasing fencing token. If a lock holder is slow and its lock expires, the new holder gets a higher token. Storage rejects writes with stale tokens — prevents the 'zombie process' problem where an expired lock holder still writes."</p></div>
+<div class="see-also">→ The fencing-token mechanism (with a step-by-step GC-pause example) is detailed on the <a href="4.22-concurrency.html">Concurrency &amp; Locking</a> page (4.22.2 Distributed Lock with Fencing).</div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.9.3 Clock Synchronization</h3><span class="badge">Advanced</span></div><div class="card-body">
+<table><tr><th>Clock Type</th><th>Purpose</th><th>Accuracy</th><th>Used By</th></tr>
+<tr><td>Lamport Clock</td><td>Causal ordering (counter)</td><td>Logical only</td><td>Ordering events across nodes</td></tr>
+<tr><td>Vector Clock</td><td>Detect causality + conflicts</td><td>Logical only</td><td>Dynamo, Riak (conflict detection)</td></tr>
+<tr><td>HLC (Hybrid Logical)</td><td>Physical time + logical counter</td><td>ms + counter</td><td>CockroachDB, MongoDB</td></tr>
+<tr><td>TrueTime</td><td>Bounded uncertainty interval</td><td>GPS + atomic clocks</td><td>Google Spanner (globally consistent)</td></tr>
+</table>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.9.4 Distributed Rate Limiter</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// Distributed rate limiting with Redis - Sliding Window Counter
+// Challenge: centralized counter across multiple app instances
+public boolean isAllowed(String clientId, int maxRequests, Duration window) {
+    String key = "ratelimit:" + clientId;
+    long now = System.currentTimeMillis();
+    long windowStart = now - window.toMillis();
+
+    // Lua script for atomic operation (avoid race conditions)
+    String luaScript = """
+        redis.call('ZREMRANGEBYSCORE', KEYS[1], 0, ARGV[1])
+        local count = redis.call('ZCARD', KEYS[1])
+        if count < tonumber(ARGV[2]) then
+            redis.call('ZADD', KEYS[1], ARGV[3], ARGV[3])
+            redis.call('EXPIRE', KEYS[1], ARGV[4])
+            return 1
+        end
+        return 0
+    """;
+    Long result = redisTemplate.execute(new DefaultRedisScript&lt;&gt;(luaScript, Long.class),
+        List.of(key),
+        String.valueOf(windowStart), String.valueOf(maxRequests),
+        String.valueOf(now), String.valueOf(window.toSeconds()));
+    return result == 1;
+}
+// Trade-off: Redis ZSET gives precise sliding window but O(log n) per request
+// Alternative: Redis INCR + EXPIRE for fixed window (O(1) but boundary burst issue)</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Cloudflare:</strong> Rate limits 45M requests/second globally using distributed counters. Each edge node keeps a local counter synced via gossip protocol. Allows brief over-limit bursts (eventual consistency) rather than blocking legitimate traffic with strict global coordination.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: ZooKeeper vs etcd vs Redis for Distributed Coordination</h4>
+<table><tr><th>System</th><th>Consensus</th><th>Use For</th><th>Limitation</th></tr>
+<tr><td>ZooKeeper</td><td>ZAB</td><td>Leader election, config, naming</td><td>Complex ops model, JVM-based</td></tr>
+<tr><td>etcd</td><td>Raft</td><td>K8s config, service discovery, locks</td><td>Smaller datasets (&lt;8GB)</td></tr>
+<tr><td>Redis</td><td>None (single/sentinel)</td><td>Caching, locks, rate limiting</td><td>Not CP by default, data loss on failover</td></tr>
+</table></div>
+</div></div>
+</div>
+
+<div class="card"><div class="card-header"><h3>4.9.5 Vector Clocks</h3><span class="badge">Advanced</span></div><div class="card-body">
+<p><strong>What it does:</strong> Tracks causality in a distributed system by maintaining a vector of logical timestamps, one per node. When events are causally related, vector clocks identify the ordering. When events are concurrent (neither caused the other), vector clocks identify the conflict for resolution.</p>
+
+<pre><code>// Vector Clock Example with 3 nodes (A, B, C):
+// Each node maintains a vector: [A_count, B_count, C_count]
+
+// Initial state: A=[0,0,0], B=[0,0,0], C=[0,0,0]
+
+// Node A writes "x=1": A increments own counter
+//   A=[1,0,0]
+
+// Node A sends to B: B merges (takes max of each position) + increments own
+//   B = max([1,0,0], [0,0,0]) + increment B = [1,1,0]
+
+// Node C writes "x=2" independently: C increments own counter  
+//   C=[0,0,1]
+
+// CONFLICT DETECTED: B=[1,1,0] vs C=[0,0,1]
+// Neither dominates the other (B has higher A,B but C has higher C)
+// These are CONCURRENT writes - application must resolve the conflict!
+
+// Comparison rules:
+// V1 dominates V2 (V1 happened-after V2) if ALL positions in V1 >= V2
+// If neither dominates, events are concurrent (conflict!)
+
+// Resolution strategies:
+// 1. Last-Writer-Wins (LWW) - use physical timestamp to pick winner (data loss!)
+// 2. Application-level merge - e.g., for shopping cart, take union of items
+// 3. CRDTs - data structures that auto-resolve without coordination</code></pre>
+
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Conflict detection in eventually consistent systems (DynamoDB, Riak)</li>
+<li>Multi-leader replication where concurrent writes can happen</li>
+<li>Collaborative editing (detecting conflicting edits)</li>
+</ul>
+
+<p><strong>Trade-offs:</strong></p>
+<table>
+<tr><th>Aspect</th><th>Vector Clocks</th><th>Lamport Timestamps</th><th>Physical Timestamps (LWW)</th></tr>
+<tr><td>Detects concurrency</td><td>Yes (main advantage)</td><td>No (only total order)</td><td>No</td></tr>
+<tr><td>Size</td><td>O(N) per entry (N = nodes)</td><td>O(1) single integer</td><td>O(1) single timestamp</td></tr>
+<tr><td>Clock sync needed</td><td>No (logical)</td><td>No (logical)</td><td>Yes (NTP drift = silent data loss)</td></tr>
+<tr><td>Conflict resolution</td><td>Application decides</td><td>N/A (no conflict info)</td><td>Arbitrary winner (last write)</td></tr>
+<tr><td>Used by</td><td>Riak (deprecated), research</td><td>Many distributed DBs internally</td><td>Cassandra, DynamoDB (simplified)</td></tr>
+</table>
+
+<div class="interview-tip"><h4>Interview Tip</h4><p>In practice, most production systems use simplified approaches: DynamoDB uses Last-Writer-Wins with server timestamps, Cassandra uses LWW per column. Full vector clocks are rarely used due to space overhead. But knowing them shows deep understanding of distributed causality. Mention: "Vector clocks solve the problem of detecting concurrent writes, but most systems trade correctness for simplicity with LWW."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.9.6 Leader Election</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> In a cluster, one node is elected as the "leader" to coordinate work (writes, scheduling, decisions). Other nodes are followers. If the leader fails, a new one is elected.</p>
+
+<pre><code>// Leader Election approaches:
+// 1. Bully Algorithm: highest-ID node wins (simple but slow recovery)
+// 2. Raft consensus: nodes vote, majority wins, term-based (etcd, Consul)
+// 3. External coordinator: ZooKeeper ephemeral nodes, etcd lease
+
+// ZooKeeper leader election:
+// - Each candidate creates an ephemeral sequential znode: /election/node_00001
+// - Node with lowest sequence number becomes leader
+// - If leader dies, ephemeral node auto-deleted → next lowest becomes leader
+
+// Raft leader election (simplified):
+// 1. All nodes start as followers with random election timeouts (150-300ms)
+// 2. First to timeout becomes candidate, increments term, votes for self
+// 3. Sends RequestVote to all peers
+// 4. Wins if gets majority (N/2 + 1) votes
+// 5. Leader sends periodic heartbeats to maintain authority
+// 6. If heartbeat stops → followers timeout → new election</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Single Leader vs Multi-Leader</h4><p>Single leader: simple coordination, no conflicts, but leader is SPOF and bottleneck. Multi-leader: higher availability and write throughput but requires conflict resolution (LWW, vector clocks, CRDTs). Use single leader for coordination (schedulers, lock managers); multi-leader for geo-distributed writes (DynamoDB global tables).</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Kubernetes:</strong> The kube-controller-manager uses leader election via etcd lease. Only ONE controller-manager runs active at a time — others are standby. If the leader crashes, lease expires in 15s, and a new leader is elected automatically. Prevents duplicate scheduling of pods.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Use leader election for any "exactly-one" constraint: "The scheduler service uses leader election (etcd lease) — only one instance dispatches jobs at a time. If the leader dies, a new one takes over within the lease TTL (10-15s). This prevents duplicate job execution without distributed locking per job."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.9.7 Heartbeat &amp; Failure Detection</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> Nodes send periodic "I'm alive" signals to detect failures. If heartbeats stop, the node is suspected dead.</p>
+
+<table>
+<tr><th>Approach</th><th>How It Works</th><th>False Positive Risk</th><th>Used By</th></tr>
+<tr><td><strong>Fixed timeout</strong></td><td>No heartbeat in T seconds = dead</td><td>High (network delays trigger false detection)</td><td>Simple systems</td></tr>
+<tr><td><strong>Phi Accrual</strong></td><td>Statistical model of heartbeat intervals, outputs suspicion level (phi)</td><td>Low (adapts to network conditions)</td><td>Cassandra, Akka</td></tr>
+<tr><td><strong>SWIM Protocol</strong></td><td>Random probe + indirect probe via peers before declaring dead</td><td>Very low (peer confirmation required)</td><td>Serf, Memberlist</td></tr>
+</table>
+
+<pre><code>// Heartbeat configuration trade-off:
+// Short interval (100ms): Fast detection but high network overhead + more false positives
+// Long interval (30s): Low overhead but slow failure detection
+
+// Typical production values:
+// - Heartbeat interval: 1-5 seconds
+// - Failure threshold: 3 missed heartbeats (3-15s detection time)
+// - etcd: election timeout = 1000ms, heartbeat = 100ms</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Fast Detection vs False Positives</h4><p>Short heartbeat interval (100ms) + low threshold (3 misses = 300ms detection): fast failure detection but network jitter causes false positives (healthy nodes marked dead). Long interval (5s) + high threshold (3 misses = 15s): fewer false positives but slow to detect actual failures. Adaptive approaches (Phi Accrual) auto-tune based on observed latency distribution.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Cassandra:</strong> Uses Phi Accrual failure detector — adapts threshold based on historical heartbeat intervals between specific node pairs. If Node A typically responds in 50ms but hasn't in 500ms, suspicion is high. If Node B (cross-region) typically takes 200ms, same 500ms delay has lower suspicion. Reduces false positives in heterogeneous networks.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When designing health checks: "Each node sends heartbeats every 1s. If 3 consecutive heartbeats are missed (3s), the node is suspected dead and traffic is redirected. We use a Phi Accrual detector to adapt to network conditions rather than a fixed timeout — reduces false positives during GC pauses or network congestion."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.9.8 Split Brain Problem</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it is:</strong> A network partition divides the cluster into two groups, each believing the other is dead. Both halves may elect their own leader, leading to conflicting writes and data divergence.</p>
+
+<pre><code>// Split Brain scenario:
+// Cluster: [A, B, C, D, E] — A is leader
+// Network partition: [A, B] | [C, D, E]
+//
+// Partition 1: A thinks it's still leader (has B)
+// Partition 2: C, D, E can't reach A → elect C as new leader
+// Result: TWO leaders accepting writes → DATA DIVERGENCE!
+
+// Prevention strategies:
+// 1. Quorum requirement: Leader must have majority (N/2 + 1) to accept writes
+//    - [A, B] = 2 nodes, need 3 for majority → A steps down (CORRECT)
+//    - [C, D, E] = 3 nodes, has majority → C becomes leader (CORRECT)
+//
+// 2. Fencing tokens: New leader gets monotonically increasing token
+//    - Old leader's writes rejected by storage (token too old)
+//
+// 3. STONITH (Shoot The Other Node In The Head):
+//    - When partition detected, power off the other node physically
+//    - Used in traditional HA (Pacemaker/Corosync)</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Quorum vs Availability During Partition</h4><p>Requiring quorum (majority) prevents split brain but makes the minority partition completely unavailable. Without quorum, both partitions serve traffic but risk data divergence. Trade-off: safety (data correctness) vs liveness (continued operation). CP systems choose safety; AP systems choose liveness and reconcile later.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Elasticsearch:</strong> Historically suffered split brain when network partitions caused two master nodes. Fixed by requiring minimum_master_nodes = (N/2)+1 (quorum). In ES 7+, this is automatic via the voting configuration. A 3-node cluster tolerates 1 node failure; 2 failures = cluster goes read-only (no quorum for writes).</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When asked "how do you prevent split brain?": "Quorum requirement — a leader must maintain majority acknowledgment to accept writes. If a network partition splits our 5-node cluster into [2] and [3], only the [3] partition elects a new leader. The [2] partition stops accepting writes, serving stale reads until reconnection."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.9.9 Hinted Handoff</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> When a node is temporarily unavailable, another node stores the writes intended for it as "hints." When the original node comes back, hints are replayed to bring it up to date.</p>
+
+<pre><code>// Hinted Handoff flow (Cassandra/DynamoDB-style):
+// 1. Write arrives for Node C (which is down)
+// 2. Coordinator stores write locally as a "hint":
+//    { target: "Node C", data: {key: "user:123", value: ...}, timestamp: T }
+// 3. Coordinator still acknowledges write to client (if quorum met by other replicas)
+// 4. Background: periodically check if Node C is back
+// 5. Node C comes back → replay all stored hints → Node C is caught up
+// 6. Delete hints after successful replay
+
+// Trade-offs:
+// + Improves availability during brief outages
+// + Node recovers faster (doesn't need full anti-entropy repair)
+// - Hints consume storage on the hinting node
+// - Only works for SHORT outages (hints expire after timeout, e.g., 3 hours)
+// - NOT a replacement for full repair (read repair + anti-entropy still needed)</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Hint Duration vs Storage Cost</h4><p>Long hint retention (24h+): node recovers fully from short outages but hinting nodes accumulate significant storage. Short retention (1h): less storage overhead but longer outages require full anti-entropy repair (slower recovery). Cassandra defaults to 3 hours — balances recovery speed vs storage cost for typical maintenance windows.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Cassandra:</strong> During rolling upgrades, each node goes down for 2-3 minutes. Hinted handoff stores writes destined for the upgrading node on its peers. When it comes back, hints replay in seconds — the node catches up without triggering expensive full repair. Enables zero-downtime upgrades across 100+ node clusters.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention hinted handoff for eventually consistent systems: "If a replica is temporarily down, coordinator stores the write as a hint. On recovery, hints replay to bring the replica current. This handles brief outages (maintenance, restarts) without requiring a full anti-entropy repair — which would scan the entire dataset."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.9.10 Read Repair</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> During a read, if replicas return different versions of the data, the coordinator identifies the most recent version and pushes it to the stale replicas. Reads "repair" inconsistencies opportunistically.</p>
+
+<pre><code>// Read Repair flow:
+// 1. Client reads key "user:123" with consistency level ALL (read from all 3 replicas)
+// 2. Replica A: version 5 (latest)
+//    Replica B: version 5 (latest)
+//    Replica C: version 3 (STALE - was down during writes 4 and 5)
+// 3. Coordinator returns version 5 to client
+// 4. Coordinator sends version 5 to Replica C in background → C is now up to date
+
+// Types of repair:
+// 1. Read Repair (foreground): triggered by client reads, only repairs read keys
+// 2. Anti-Entropy Repair (background): Merkle tree comparison, repairs ALL keys
+//    - Cassandra: nodetool repair (scheduled, e.g., weekly)
+//    - Compares hash trees between replicas to find divergent ranges
+
+// When read repair happens depends on read consistency:
+// - ONE: coordinator reads from 1 replica, may do digest read from others in background
+// - QUORUM: reads from majority, repairs minority if they disagree
+// - ALL: reads from all replicas, guaranteed to detect and repair inconsistency</code></pre>
+
+<div class="interview-tip"><h4>Interview Tip</h4><p>These patterns form a complete failure recovery story: Heartbeats detect failure → Leader election picks a new coordinator → Quorum prevents split brain → Hinted handoff handles short outages → Read repair fixes staleness over time → Anti-entropy repair catches everything else. Mention this full chain when discussing "how does your system handle node failures?" in interviews.</p></div>
+</div></div>
+
+<div class="page-nav">
+<a href="4.8-messaging.html">&#8592; Previous: 4.8 Messaging</a>
+<a href="4.10-scalability.html">Next: 4.10 Scalability &#8594;</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.1 Core Fundamentals - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-fundamentals" class="section-block section-s4"><h2 class="section-title"><span class="section-num">4.1</span>Core Fundamentals</h2>
+<div class="card"><div class="card-header"><h3>4.1.1 Key Metrics</h3><span class="badge">Foundation</span></div><div class="card-body">
+<table><tr><th>Property</th><th>Definition</th><th>Measurement</th></tr>
+<tr><td>Scalability</td><td>Handle growing load by adding resources</td><td>Requests/sec, concurrent users</td></tr>
+<tr><td>Availability</td><td>System uptime percentage</td><td>99.9% = 8.76h downtime/year</td></tr>
+<tr><td>Reliability</td><td>Correct results even under failures</td><td>Error rate, data loss incidents</td></tr>
+<tr><td>Durability</td><td>Data survives failures</td><td>RPO (Recovery Point Objective)</td></tr>
+<tr><td>Latency</td><td>Time to first byte / response</td><td>p50, p95, p99 percentiles</td></tr>
+<tr><td>Throughput</td><td>Operations completed per unit time</td><td>QPS, TPS, MB/s</td></tr>
+</table>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Open every system design answer by clarifying which metrics matter most: "Before diving in, let me confirm — are we optimizing for availability (99.99%) or consistency? What's the expected QPS and acceptable p99 latency?" This frames the entire design and shows structured thinking.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.1.2 CAP Theorem</h3><span class="badge">Foundation</span></div><div class="card-body">
+<p>In a distributed system experiencing a network partition (P), you must choose between Consistency (C) and Availability (A). You cannot have both.</p>
+<table><tr><th>Choice</th><th>Behavior During Partition</th><th>Systems</th></tr>
+<tr><td>CP (Consistency)</td><td>Reject writes to maintain consistency</td><td>ZooKeeper, HBase, MongoDB (default)</td></tr>
+<tr><td>AP (Availability)</td><td>Accept writes, resolve conflicts later</td><td>Cassandra, DynamoDB, CouchDB</td></tr>
+</table>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>DynamoDB (AP):</strong> During the 2021 us-east-1 event, DynamoDB continued accepting writes on both sides of the partition, resolving conflicts via last-writer-wins. <strong>Google Spanner (CP):</strong> Uses TrueTime (atomic clocks + GPS) to maintain global strong consistency, accepting ~7ms higher write latency as the cost.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: CP vs AP</h4><p>CP systems (HBase, ZooKeeper) reject writes during partitions — safe but unavailable. AP systems (Cassandra, DynamoDB) accept writes during partitions — available but may serve stale/conflicting data. Most real systems are "tunable" — Cassandra lets you choose per-query (ONE=AP, QUORUM=closer to CP).</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Never say "we need all three of CAP." Instead say: "Since network partitions are inevitable in distributed systems, we choose [AP for this feed service because stale reads are acceptable] or [CP for this payment service because incorrect balances are unacceptable]." Always tie the choice to a business requirement.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.1.3 PACELC Theorem (Extension of CAP)</h3><span class="badge">Foundation</span></div><div class="card-body">
+<p>If Partition (P): choose A or C. Else (E): choose Latency (L) or Consistency (C).</p>
+<pre><code>// Examples:
+// DynamoDB: PA/EL - Available during partition, low latency otherwise (eventual consistency)
+// PostgreSQL: PC/EC - Consistent always (single leader), higher latency for consistency
+// Cassandra: PA/EL - Available + low latency (tunable consistency per query)
+// MongoDB: PC/EC - Consistent (minority partition can't elect a primary, so writes are
+//          rejected); reads from primary by default. Matches its CP classification above.</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Cassandra (PA/EL):</strong> LinkedIn uses Cassandra for activity feeds — during partitions it stays available (stale reads OK), and in normal operation it prioritizes low latency over per-write consistency. Tunable consistency per query (ONE for reads, QUORUM for writes).</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: Latency vs Consistency in Normal Operation</h4><p>Even without partitions, you must choose: synchronous replication (consistent, slower) or async replication (fast, eventually consistent). This is the "EL vs EC" choice. Most systems choose EL (latency) for reads and EC (consistency) for critical writes.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>PACELC is more useful than CAP in interviews because it covers the common case (no partition). Say: "CAP only matters during failures, but PACELC tells us the everyday trade-off. For this system I'd choose PA/EL like DynamoDB — optimize for speed, accept eventual consistency."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.1.4 Stateless vs Stateful Services</h3><span class="badge">Foundation</span></div><div class="card-body">
+<pre><code>// STATELESS: No server-side session. All state in request (JWT, query params)
+// Advantages: horizontal scaling trivial, any instance handles any request
+// Example: REST API servers behind load balancer
+
+// STATEFUL: Server holds session/connection state
+// Examples: WebSocket servers, database connections, in-memory caches
+// Challenge: sticky sessions or state externalization needed
+
+// Pattern: Externalize state to make services "stateless"
+// Before: session in memory -> sticky sessions, can't scale
+// After: session in Redis -> any instance can serve any user
+@Bean
+public ReactiveSessionRepository sessionRepository(ReactiveRedisConnectionFactory factory) {
+    return new ReactiveRedisSessionRepository(factory); // Externalized state
+}</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Consistency Models</h4>
+<table><tr><th>Model</th><th>Guarantee</th><th>Latency</th><th>Use Case</th></tr>
+<tr><td>Strong (Linearizable)</td><td>Read always sees latest write</td><td>Highest</td><td>Financial, inventory counts</td></tr>
+<tr><td>Sequential</td><td>All see same order of operations</td><td>High</td><td>Distributed locks</td></tr>
+<tr><td>Causal</td><td>Causally related ops seen in order</td><td>Medium</td><td>Social feeds, messaging</td></tr>
+<tr><td>Eventual</td><td>All replicas converge eventually</td><td>Lowest</td><td>DNS, CDN, product catalog</td></tr>
+</table></div>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Netflix Zuul/Spring Cloud Gateway:</strong> All API gateway instances are stateless — JWT tokens carry session state. Any instance can handle any request. Session data externalized to Redis, enabling horizontal scaling to 1000+ gateway instances during peak (Sunday night streaming).</p>
+</div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When designing any web service, always state: "The API layer is stateless — session/auth state lives in JWT tokens or external Redis. This lets us scale horizontally behind a load balancer with zero sticky sessions." It's a foundational assumption that unlocks everything else in your design.</p></div>
+</div></div>
+
+<div class="page-nav">
+<a href="4.0-overview.html">&#8592; Previous: 4.0 Overview &amp; Topic Index</a>
+<a href="4.2-architecture-patterns.html">Next: 4.2 Architecture Patterns &#8594;</a>
+</div>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

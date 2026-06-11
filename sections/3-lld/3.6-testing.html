@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.6 Testing Strategies - Interview Prep</title>
+<link href="../../assets/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA &amp; Algorithms</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays &amp; Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing &amp; HashMaps</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees &amp; Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps &amp; Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP &amp; Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency Structures</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - Low-Level Design</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID Principles</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational Patterns</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural Patterns</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral Patterns</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing Strategies</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="../../sections/4-hld/4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="../../sections/4-hld/4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="../../sections/4-hld/4.3-networking.html">4.3 Networking &amp; Communication</a></li>
+<li><a href="../../sections/4-hld/4.4-load-balancing.html">4.4 Load Balancing &amp; Traffic</a></li>
+<li><a href="../../sections/4-hld/4.5-databases.html">4.5 Database Design</a></li>
+<li><a href="../../sections/4-hld/4.6-caching.html">4.6 Caching</a></li>
+<li><a href="../../sections/4-hld/4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="../../sections/4-hld/4.8-messaging.html">4.8 Messaging &amp; Async</a></li>
+<li><a href="../../sections/4-hld/4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="../../sections/4-hld/4.10-scalability.html">4.10 Scalability Techniques</a></li>
+<li><a href="../../sections/4-hld/4.11-resilience.html">4.11 Reliability &amp; Resilience</a></li>
+<li><a href="../../sections/4-hld/4.12-security.html">4.12 Security</a></li>
+<li><a href="../../sections/4-hld/4.13-observability.html">4.13 Observability &amp; Monitoring</a></li>
+<li><a href="../../sections/4-hld/4.14-cloud.html">4.14 Cloud &amp; Infrastructure</a></li>
+<li><a href="../../sections/4-hld/4.15-storage.html">4.15 Storage Systems</a></li>
+<li><a href="../../sections/4-hld/4.16-performance.html">4.16 Performance Optimization</a></li>
+<li><a href="../../sections/4-hld/4.17-tradeoffs.html">4.17 Design Trade-offs</a></li>
+<li><a href="../../sections/4-hld/4.18-system-design-problems.html">4.18 Common SD Problems</a></li>
+<li><a href="../../sections/4-hld/4.19-consistency.html">4.19 Consistency Patterns</a></li>
+<li><a href="../../sections/4-hld/4.20-microservices.html">4.20 Microservices Patterns</a></li>
+<li><a href="../../sections/4-hld/4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="../../sections/4-hld/4.22-concurrency.html">4.22 Concurrency &amp; Locking</a></li>
+<li><a href="../../sections/4-hld/4.23-devops.html">4.23 DevOps &amp; Deployment</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input id="searchInput" placeholder="Search topics... (Ctrl+K)" type="text"/><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s3-testing"></div><h2 class="section-title"><span class="section-num">3.6</span>Testing Strategies</h2>
+<div class="card"><div class="card-header"><h3>3.6.1 Testing Pyramid</h3><span class="badge">SDE3</span></div><div class="card-body">
+<div class="diagram-container">
+<svg viewbox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+<polygon fill="none" points="200,10 350,190 50,190" stroke="#60a5fa" stroke-width="2"></polygon>
+<line stroke="#60a5fa" stroke-dasharray="4" x1="100" x2="300" y1="130" y2="130"></line>
+<line stroke="#60a5fa" stroke-dasharray="4" x1="140" x2="260" y1="70" y2="70"></line>
+<text fill="#10b981" font-size="12" font-weight="bold" text-anchor="middle" x="200" y="175">Unit Tests (70%)</text>
+<text fill="#f59e0b" font-size="11" font-weight="bold" text-anchor="middle" x="200" y="115">Integration Tests (20%)</text>
+<text fill="#ef4444" font-size="10" font-weight="bold" text-anchor="middle" x="200" y="55">E2E Tests (10%)</text>
+<text fill="#94a3b8" font-size="9" text-anchor="middle" x="200" y="195">Fast, isolated, many</text>
+<text fill="#94a3b8" font-size="8" x="370" y="130">Slower, fewer</text>
+<text fill="#94a3b8" font-size="8" x="370" y="70">Slowest, fewest</text>
+</svg>
+</div>
+</div></div>
+<div class="card"><div class="card-header"><h3>3.6.2 Testing Types for Microservices</h3><span class="badge">SDE3</span></div><div class="card-body">
+<table><tr><th>Type</th><th>Scope</th><th>Speed</th><th>Tools</th></tr>
+<tr><td>Unit</td><td>Single class/method</td><td>ms</td><td>JUnit 5, Mockito</td></tr>
+<tr><td>Integration</td><td>Multiple components + DB/cache</td><td>seconds</td><td>@SpringBootTest, Testcontainers</td></tr>
+<tr><td>Contract</td><td>API compatibility between services</td><td>seconds</td><td>Spring Cloud Contract, Pact</td></tr>
+<tr><td>E2E</td><td>Full user journey across services</td><td>minutes</td><td>Playwright, RestAssured</td></tr>
+<tr><td>Chaos</td><td>Failure injection in production</td><td>varies</td><td>Chaos Monkey, Litmus</td></tr>
+</table>
+<pre><code>// Integration test with Testcontainers (real DB, not mocks)
+@SpringBootTest
+@Testcontainers
+class OrderServiceIntegrationTest {
+
+    @Container
+    static PostgreSQLContainer&lt;?&gt; postgres = new PostgreSQLContainer&lt;&gt;("postgres:15")
+        .withDatabaseName("orders_test");
+
+    @Container
+    static KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:7.4.0"));
+
+    @DynamicPropertySource
+    static void configure(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgres::getJdbcUrl);
+        registry.add("spring.kafka.bootstrap-servers", kafka::getBootstrapServers);
+    }
+
+    @Test
+    void shouldCreateOrderAndPublishEvent() {
+        // Given
+        OrderRequest request = new OrderRequest("cust-1", List.of(new LineItem("SKU-1", 2)));
+
+        // When
+        Order order = orderService.createOrder(request);
+
+        // Then
+        assertThat(order.status()).isEqualTo(OrderStatus.CREATED);
+        assertThat(orderRepository.findById(order.id())).isPresent();
+
+        // Verify Kafka event published
+        ConsumerRecord&lt;String, String&gt; record = KafkaTestUtils.getSingleRecord(consumer, "orders");
+        assertThat(record.value()).contains(order.id());
+    }
+}
+
+// Contract test - ensure API compatibility
+@SpringBootTest
+@AutoConfigureStubRunner(ids = "com.myapp:inventory-service:+:stubs:8090")
+class OrderServiceContractTest {
+    @Test
+    void shouldCallInventoryServiceCorrectly() {
+        // Stub runner provides WireMock stub from inventory-service's contract
+        StockResponse response = inventoryClient.checkStock("SKU-1");
+        assertThat(response.available()).isTrue();
+    }
+}</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Mocking vs Real Dependencies</h4>
+<ul>
+<li><strong>Mocks (Mockito):</strong> Fast, isolated, but can drift from real behavior. Use for unit tests.</li>
+<li><strong>Testcontainers:</strong> Real DB/Kafka/Redis in Docker. Slower but catches integration issues. Use for integration tests.</li>
+<li><strong>Contract Tests:</strong> Verify API compatibility without running other services. Catches breaking changes at build time.</li>
+<li><strong>Rule of thumb:</strong> Mock what you don't own (external APIs). Use real instances for what you do own (your DB, your Kafka).</li>
+</ul></div></div>
+</div>
+<div class="page-nav">
+<a href="3.5-lld-problems.html">← Previous: 3.5 LLD Problems</a>
+<a href="../../sections/4-hld/4.1-core-fundamentals.html">Next: 4.1 Core Fundamentals →</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

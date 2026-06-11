@@ -1,0 +1,743 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pattern Quick Reference - Flashcards</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+<style>
+.page-header{text-align:center;padding:2rem 0 1rem;border-bottom:1px solid var(--border);margin-bottom:1.5rem}
+.page-header h1{font-size:2rem;font-weight:800;color:var(--text);margin-bottom:0.3rem}
+.page-header p{color:var(--text-muted);font-size:0.95rem}
+.filter-bar{display:flex;flex-wrap:wrap;gap:0.5rem;padding:1rem 0;align-items:center;position:sticky;top:48px;background:var(--bg);z-index:40;border-bottom:1px solid var(--border);margin-bottom:1.5rem}
+.filter-btn{padding:0.4rem 0.9rem;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text-muted);font-size:0.75rem;cursor:pointer;transition:all .2s;font-weight:500;white-space:nowrap}
+.filter-btn:hover{border-color:var(--accent);color:var(--text)}
+.filter-btn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+.search-filter{flex:1;min-width:200px;padding:0.45rem 0.9rem;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:0.8rem;outline:none}
+.search-filter:focus{border-color:var(--accent)}
+.flashcard-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem;padding-bottom:2rem}
+.flashcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--card-radius);padding:1.25rem;border-top:4px solid var(--border);transition:all .3s cubic-bezier(.4,0,.2,1);opacity:1;transform:translateY(0)}
+.flashcard:hover{box-shadow:0 8px 30px rgba(0,0,0,0.12);transform:translateY(-4px)}
+.flashcard.hidden{display:none}
+.flashcard-name{font-size:0.95rem;font-weight:700;color:var(--text);margin-bottom:0.5rem}
+.flashcard-category{display:inline-block;font-size:0.65rem;padding:0.15rem 0.5rem;border-radius:10px;font-weight:600;margin-bottom:0.6rem;color:#fff}
+.flashcard-def{font-size:0.82rem;color:var(--text);margin-bottom:0.6rem;line-height:1.5}
+.flashcard-use{font-size:0.75rem;color:var(--text-muted);margin-bottom:0.5rem;padding-left:0.8rem;border-left:2px solid var(--border)}
+.flashcard-use strong{color:var(--text);font-weight:600}
+.flashcard-tradeoff{font-size:0.75rem;font-style:italic;color:var(--text-muted);margin-bottom:0.6rem;padding:0.4rem 0.6rem;background:var(--surface2);border-radius:6px}
+.flashcard-link{font-size:0.75rem;color:var(--accent);text-decoration:none;display:inline-flex;align-items:center;gap:0.3rem;font-weight:500}
+.flashcard-link:hover{text-decoration:underline}
+.flashcard-link::before{content:'\2192'}
+.card-count{font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.flashcard.fade-in{animation:fadeIn .3s ease forwards}
+@media(max-width:768px){.flashcard-grid{grid-template-columns:1fr}.filter-bar{flex-direction:column;align-items:stretch}}
+@media(min-width:1200px){.flashcard-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="../../sections/4-hld/4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="../../sections/4-hld/4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="../../sections/4-hld/4.3-networking.html">4.3 Networking</a></li>
+<li><a href="../../sections/4-hld/4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="../../sections/4-hld/4.5-databases.html">4.5 Databases</a></li>
+<li><a href="../../sections/4-hld/4.6-caching.html">4.6 Caching</a></li>
+<li><a href="../../sections/4-hld/4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="../../sections/4-hld/4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="../../sections/4-hld/4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="../../sections/4-hld/4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="../../sections/4-hld/4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="../../sections/4-hld/4.12-security.html">4.12 Security</a></li>
+<li><a href="../../sections/4-hld/4.13-observability.html">4.13 Observability</a></li>
+<li><a href="../../sections/4-hld/4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="../../sections/4-hld/4.15-storage.html">4.15 Storage</a></li>
+<li><a href="../../sections/4-hld/4.16-performance.html">4.16 Performance</a></li>
+<li><a href="../../sections/4-hld/4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="../../sections/4-hld/4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="../../sections/4-hld/4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="../../sections/4-hld/4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="../../sections/4-hld/4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="../../sections/4-hld/4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="../../sections/4-hld/4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="quick-reference.html">Quick Reference</a></li>
+<li><a href="pattern-flashcards.html" class="active">Pattern Flashcards</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div class="page-header">
+<h1>Pattern Quick Reference</h1>
+<p>67 System Design Patterns as Flashcards</p>
+</div>
+<div class="filter-bar" id="filterBar">
+<button class="filter-btn active" data-filter="all">All (67)</button>
+<button class="filter-btn" data-filter="communication" style="--btn-color:#8b5cf6">Communication (8)</button>
+<button class="filter-btn" data-filter="storage" style="--btn-color:#3b82f6">Storage (7)</button>
+<button class="filter-btn" data-filter="caching" style="--btn-color:#10b981">Caching (6)</button>
+<button class="filter-btn" data-filter="reliability" style="--btn-color:#ef4444">Reliability (9)</button>
+<button class="filter-btn" data-filter="scaling" style="--btn-color:#f59e0b">Scaling (6)</button>
+<button class="filter-btn" data-filter="architecture" style="--btn-color:#06b6d4">Architecture (8)</button>
+<button class="filter-btn" data-filter="distributed" style="--btn-color:#ec4899">Distributed (9)</button>
+<button class="filter-btn" data-filter="consistency" style="--btn-color:#14b8a6">Consistency (6)</button>
+<button class="filter-btn" data-filter="api" style="--btn-color:#a855f7">API Design (4)</button>
+<button class="filter-btn" data-filter="fundamentals" style="--btn-color:#6366f1">Fundamentals (2)</button>
+<button class="filter-btn" data-filter="observability" style="--btn-color:#0ea5e9">Observability (2)</button>
+<input type="text" class="search-filter" id="patternSearch" placeholder="Search patterns by name...">
+</div>
+<div class="card-count" id="cardCount">Showing 65 of 65 patterns</div>
+<div class="flashcard-grid" id="flashcardGrid">
+<div class="flashcard" data-category="communication" style="border-top-color:#8b5cf6">
+<h3 class="flashcard-name">Request-Response (REST/gRPC)</h3>
+<span class="flashcard-category" style="background:#8b5cf6">Communication</span>
+<p class="flashcard-def">Synchronous client-server communication</p>
+<div class="flashcard-use"><strong>When:</strong> CRUD APIs, simple queries</div>
+<div class="flashcard-tradeoff">Simple but creates coupling</div>
+<a class="flashcard-link" href="../4-hld/4.3-networking.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="communication" style="border-top-color:#8b5cf6">
+<h3 class="flashcard-name">Publish-Subscribe</h3>
+<span class="flashcard-category" style="background:#8b5cf6">Communication</span>
+<p class="flashcard-def">Broadcast messages to multiple consumers via topics</p>
+<div class="flashcard-use"><strong>When:</strong> Event notifications, fan-out</div>
+<div class="flashcard-tradeoff">Decoupled but eventual consistency</div>
+<a class="flashcard-link" href="../4-hld/4.8-messaging.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="communication" style="border-top-color:#8b5cf6">
+<h3 class="flashcard-name">Message Queues</h3>
+<span class="flashcard-category" style="background:#8b5cf6">Communication</span>
+<p class="flashcard-def">Async point-to-point delivery with guaranteed processing</p>
+<div class="flashcard-use"><strong>When:</strong> Task offloading, workload buffering</div>
+<div class="flashcard-tradeoff">Reliable but adds latency</div>
+<a class="flashcard-link" href="../4-hld/4.8-messaging.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="communication" style="border-top-color:#8b5cf6">
+<h3 class="flashcard-name">WebSockets</h3>
+<span class="flashcard-category" style="background:#8b5cf6">Communication</span>
+<p class="flashcard-def">Persistent bidirectional connection for real-time data</p>
+<div class="flashcard-use"><strong>When:</strong> Chat, live feeds, gaming</div>
+<div class="flashcard-tradeoff">Real-time but resource-heavy per connection</div>
+<a class="flashcard-link" href="../4-hld/4.3-networking.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="communication" style="border-top-color:#8b5cf6">
+<h3 class="flashcard-name">Webhooks</h3>
+<span class="flashcard-category" style="background:#8b5cf6">Communication</span>
+<p class="flashcard-def">Server pushes events to client callback URL</p>
+<div class="flashcard-use"><strong>When:</strong> Third-party integrations, payment notifications</div>
+<div class="flashcard-tradeoff">No polling but requires public endpoint</div>
+<a class="flashcard-link" href="../4-hld/4.3-networking.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="communication" style="border-top-color:#8b5cf6">
+<h3 class="flashcard-name">API Gateway</h3>
+<span class="flashcard-category" style="background:#8b5cf6">Communication</span>
+<p class="flashcard-def">Single entry point routing to multiple backend services</p>
+<div class="flashcard-use"><strong>When:</strong> Microservices, cross-cutting concerns</div>
+<div class="flashcard-tradeoff">Centralized control but single point of failure</div>
+<a class="flashcard-link" href="../4-hld/4.3-networking.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="storage" style="border-top-color:#3b82f6">
+<h3 class="flashcard-name">Primary-Replica</h3>
+<span class="flashcard-category" style="background:#3b82f6">Storage</span>
+<p class="flashcard-def">Write to primary, read from replicas</p>
+<div class="flashcard-use"><strong>When:</strong> Read-heavy workloads</div>
+<div class="flashcard-tradeoff">Read scaling but replication lag</div>
+<a class="flashcard-link" href="../4-hld/4.5-databases.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="storage" style="border-top-color:#3b82f6">
+<h3 class="flashcard-name">Sharding</h3>
+<span class="flashcard-category" style="background:#3b82f6">Storage</span>
+<p class="flashcard-def">Partition data across multiple databases</p>
+<div class="flashcard-use"><strong>When:</strong> Dataset exceeds single node</div>
+<div class="flashcard-tradeoff">Write scaling but cross-shard queries are complex</div>
+<a class="flashcard-link" href="../4-hld/4.5-databases.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="storage" style="border-top-color:#3b82f6">
+<h3 class="flashcard-name">Write-Ahead Log (WAL)</h3>
+<span class="flashcard-category" style="background:#3b82f6">Storage</span>
+<p class="flashcard-def">Log operations before applying to storage</p>
+<div class="flashcard-use"><strong>When:</strong> Crash recovery, replication, CDC</div>
+<div class="flashcard-tradeoff">Durability but double-write overhead</div>
+<a class="flashcard-link" href="../4-hld/4.5-databases.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="storage" style="border-top-color:#3b82f6">
+<h3 class="flashcard-name">Event Sourcing</h3>
+<span class="flashcard-category" style="background:#3b82f6">Storage</span>
+<p class="flashcard-def">Store state changes as immutable event sequence</p>
+<div class="flashcard-use"><strong>When:</strong> Audit trails, temporal queries</div>
+<div class="flashcard-tradeoff">Full history but complex reads (need projections)</div>
+<a class="flashcard-link" href="../4-hld/4.2-architecture-patterns.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="storage" style="border-top-color:#3b82f6">
+<h3 class="flashcard-name">CQRS</h3>
+<span class="flashcard-category" style="background:#3b82f6">Storage</span>
+<p class="flashcard-def">Separate read and write models</p>
+<div class="flashcard-use"><strong>When:</strong> Different read/write scaling needs</div>
+<div class="flashcard-tradeoff">Optimized paths but eventual consistency</div>
+<a class="flashcard-link" href="../4-hld/4.2-architecture-patterns.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="storage" style="border-top-color:#3b82f6">
+<h3 class="flashcard-name">Database per Service</h3>
+<span class="flashcard-category" style="background:#3b82f6">Storage</span>
+<p class="flashcard-def">Each microservice owns its database</p>
+<div class="flashcard-use"><strong>When:</strong> Team autonomy, polyglot persistence</div>
+<div class="flashcard-tradeoff">Independence but distributed transactions</div>
+<a class="flashcard-link" href="../4-hld/4.20-microservices.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="storage" style="border-top-color:#3b82f6">
+<h3 class="flashcard-name">Data Partitioning</h3>
+<span class="flashcard-category" style="background:#3b82f6">Storage</span>
+<p class="flashcard-def">Split data by range, hash, or geography</p>
+<div class="flashcard-use"><strong>When:</strong> Large datasets, multi-region</div>
+<div class="flashcard-tradeoff">Locality but partition management overhead</div>
+<a class="flashcard-link" href="../4-hld/4.5-databases.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="caching" style="border-top-color:#10b981">
+<h3 class="flashcard-name">Cache-Aside (Lazy Loading)</h3>
+<span class="flashcard-category" style="background:#10b981">Caching</span>
+<p class="flashcard-def">App checks cache, loads from DB on miss</p>
+<div class="flashcard-use"><strong>When:</strong> General-purpose caching</div>
+<div class="flashcard-tradeoff">Simple but cache miss penalty</div>
+<a class="flashcard-link" href="../4-hld/4.6-caching.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="caching" style="border-top-color:#10b981">
+<h3 class="flashcard-name">Read-Through</h3>
+<span class="flashcard-category" style="background:#10b981">Caching</span>
+<p class="flashcard-def">Cache auto-loads from DB on miss</p>
+<div class="flashcard-use"><strong>When:</strong> Simplify app code</div>
+<div class="flashcard-tradeoff">Abstracted but less control</div>
+<a class="flashcard-link" href="../4-hld/4.6-caching.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="caching" style="border-top-color:#10b981">
+<h3 class="flashcard-name">Write-Through</h3>
+<span class="flashcard-category" style="background:#10b981">Caching</span>
+<p class="flashcard-def">Write to cache and DB synchronously</p>
+<div class="flashcard-use"><strong>When:</strong> Read-after-write consistency needed</div>
+<div class="flashcard-tradeoff">Consistent but write latency doubled</div>
+<a class="flashcard-link" href="../4-hld/4.6-caching.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="caching" style="border-top-color:#10b981">
+<h3 class="flashcard-name">Write-Behind (Write-Back)</h3>
+<span class="flashcard-category" style="background:#10b981">Caching</span>
+<p class="flashcard-def">Write to cache, async flush to DB</p>
+<div class="flashcard-use"><strong>When:</strong> Write-heavy workloads</div>
+<div class="flashcard-tradeoff">Fast writes but risk of data loss</div>
+<a class="flashcard-link" href="../4-hld/4.6-caching.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="caching" style="border-top-color:#10b981">
+<h3 class="flashcard-name">CDN (Content Delivery Network)</h3>
+<span class="flashcard-category" style="background:#10b981">Caching</span>
+<p class="flashcard-def">Cache static content at edge locations</p>
+<div class="flashcard-use"><strong>When:</strong> Global users, static assets</div>
+<div class="flashcard-tradeoff">Low latency but cache invalidation complexity</div>
+<a class="flashcard-link" href="../4-hld/4.6-caching.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="reliability" style="border-top-color:#ef4444">
+<h3 class="flashcard-name">Circuit Breaker</h3>
+<span class="flashcard-category" style="background:#ef4444">Reliability</span>
+<p class="flashcard-def">Stop calling failing service, fail fast</p>
+<div class="flashcard-use"><strong>When:</strong> Cascading failure prevention</div>
+<div class="flashcard-tradeoff">Fast failure but needs tuning thresholds</div>
+<a class="flashcard-link" href="../4-hld/4.11-resilience.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="reliability" style="border-top-color:#ef4444">
+<h3 class="flashcard-name">Retry with Backoff</h3>
+<span class="flashcard-category" style="background:#ef4444">Reliability</span>
+<p class="flashcard-def">Retry failed ops with increasing delay</p>
+<div class="flashcard-use"><strong>When:</strong> Transient failures (network blips)</div>
+<div class="flashcard-tradeoff">Resilient but can amplify load (retry storm)</div>
+<a class="flashcard-link" href="../4-hld/4.11-resilience.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="reliability" style="border-top-color:#ef4444">
+<h3 class="flashcard-name">Bulkhead</h3>
+<span class="flashcard-category" style="background:#ef4444">Reliability</span>
+<p class="flashcard-def">Isolate resources per service/tenant</p>
+<div class="flashcard-use"><strong>When:</strong> Prevent noisy neighbor</div>
+<div class="flashcard-tradeoff">Isolation but resource underutilization</div>
+<a class="flashcard-link" href="../4-hld/4.11-resilience.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="reliability" style="border-top-color:#ef4444">
+<h3 class="flashcard-name">Idempotency</h3>
+<span class="flashcard-category" style="background:#ef4444">Reliability</span>
+<p class="flashcard-def">Same request produces same result regardless of repeats</p>
+<div class="flashcard-use"><strong>When:</strong> Payment processing, message handling</div>
+<div class="flashcard-tradeoff">Safe retries but requires idempotency key storage</div>
+<a class="flashcard-link" href="../4-hld/4.8-messaging.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="reliability" style="border-top-color:#ef4444">
+<h3 class="flashcard-name">Dead Letter Queue (DLQ)</h3>
+<span class="flashcard-category" style="background:#ef4444">Reliability</span>
+<p class="flashcard-def">Route failed messages to separate queue</p>
+<div class="flashcard-use"><strong>When:</strong> Unprocessable messages need investigation</div>
+<div class="flashcard-tradeoff">No message loss but requires monitoring</div>
+<a class="flashcard-link" href="../4-hld/4.8-messaging.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="reliability" style="border-top-color:#ef4444">
+<h3 class="flashcard-name">Graceful Degradation</h3>
+<span class="flashcard-category" style="background:#ef4444">Reliability</span>
+<p class="flashcard-def">Serve reduced functionality vs total failure</p>
+<div class="flashcard-use"><strong>When:</strong> Partial outages</div>
+<div class="flashcard-tradeoff">Available but degraded experience</div>
+<a class="flashcard-link" href="../4-hld/4.11-resilience.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="reliability" style="border-top-color:#ef4444">
+<h3 class="flashcard-name">Saga Pattern</h3>
+<span class="flashcard-category" style="background:#ef4444">Reliability</span>
+<p class="flashcard-def">Distributed transaction via compensating actions</p>
+<div class="flashcard-use"><strong>When:</strong> Cross-service transactions</div>
+<div class="flashcard-tradeoff">Eventually consistent but complex rollback logic</div>
+<a class="flashcard-link" href="../4-hld/4.20-microservices.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="scaling" style="border-top-color:#f59e0b">
+<h3 class="flashcard-name">Horizontal Scaling</h3>
+<span class="flashcard-category" style="background:#f59e0b">Scaling</span>
+<p class="flashcard-def">Add more machines</p>
+<div class="flashcard-use"><strong>When:</strong> Stateless services under load</div>
+<div class="flashcard-tradeoff">Linear scaling but state management harder</div>
+<a class="flashcard-link" href="../4-hld/4.10-scalability.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="scaling" style="border-top-color:#f59e0b">
+<h3 class="flashcard-name">Consistent Hashing</h3>
+<span class="flashcard-category" style="background:#f59e0b">Scaling</span>
+<p class="flashcard-def">Distribute load with minimal remapping on changes</p>
+<div class="flashcard-use"><strong>When:</strong> Distributed caches, partitioning</div>
+<div class="flashcard-tradeoff">Balanced but virtual nodes add complexity</div>
+<a class="flashcard-link" href="../4-hld/4.9-distributed-systems.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="scaling" style="border-top-color:#f59e0b">
+<h3 class="flashcard-name">Load Balancing</h3>
+<span class="flashcard-category" style="background:#f59e0b">Scaling</span>
+<p class="flashcard-def">Distribute traffic across server instances</p>
+<div class="flashcard-use"><strong>When:</strong> Multiple server instances</div>
+<div class="flashcard-tradeoff">Even distribution but adds network hop</div>
+<a class="flashcard-link" href="../4-hld/4.4-load-balancing.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="scaling" style="border-top-color:#f59e0b">
+<h3 class="flashcard-name">Connection Pooling</h3>
+<span class="flashcard-category" style="background:#f59e0b">Scaling</span>
+<p class="flashcard-def">Reuse expensive connections</p>
+<div class="flashcard-use"><strong>When:</strong> Database connections, HTTP clients</div>
+<div class="flashcard-tradeoff">Fast but pool exhaustion under spikes</div>
+<a class="flashcard-link" href="../4-hld/4.16-performance.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="scaling" style="border-top-color:#f59e0b">
+<h3 class="flashcard-name">Rate Limiting</h3>
+<span class="flashcard-category" style="background:#f59e0b">Scaling</span>
+<p class="flashcard-def">Cap requests per client/time window</p>
+<div class="flashcard-use"><strong>When:</strong> API protection, fair usage</div>
+<div class="flashcard-tradeoff">Protection but legitimate traffic may be throttled</div>
+<a class="flashcard-link" href="../4-hld/4.12-security.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="scaling" style="border-top-color:#f59e0b">
+<h3 class="flashcard-name">Auto-Scaling</h3>
+<span class="flashcard-category" style="background:#f59e0b">Scaling</span>
+<p class="flashcard-def">Dynamically add/remove instances based on metrics</p>
+<div class="flashcard-use"><strong>When:</strong> Variable traffic patterns</div>
+<div class="flashcard-tradeoff">Cost-efficient but cold start latency</div>
+<a class="flashcard-link" href="../4-hld/4.14-cloud.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="architecture" style="border-top-color:#06b6d4">
+<h3 class="flashcard-name">Microservices</h3>
+<span class="flashcard-category" style="background:#06b6d4">Architecture</span>
+<p class="flashcard-def">Decompose into independently deployable services</p>
+<div class="flashcard-use"><strong>When:</strong> Large teams, independent scaling needs</div>
+<div class="flashcard-tradeoff">Autonomy but distributed complexity</div>
+<a class="flashcard-link" href="../4-hld/4.2-architecture-patterns.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="architecture" style="border-top-color:#06b6d4">
+<h3 class="flashcard-name">Event-Driven Architecture</h3>
+<span class="flashcard-category" style="background:#06b6d4">Architecture</span>
+<p class="flashcard-def">Components communicate via events</p>
+<div class="flashcard-use"><strong>When:</strong> Loose coupling, audit trails</div>
+<div class="flashcard-tradeoff">Decoupled but harder to debug/trace</div>
+<a class="flashcard-link" href="../4-hld/4.2-architecture-patterns.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="architecture" style="border-top-color:#06b6d4">
+<h3 class="flashcard-name">Backend for Frontend (BFF)</h3>
+<span class="flashcard-category" style="background:#06b6d4">Architecture</span>
+<p class="flashcard-def">Dedicated backend per client type</p>
+<div class="flashcard-use"><strong>When:</strong> Different client needs (mobile vs web)</div>
+<div class="flashcard-tradeoff">Optimized per client but code duplication</div>
+<a class="flashcard-link" href="../4-hld/4.20-microservices.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="architecture" style="border-top-color:#06b6d4">
+<h3 class="flashcard-name">Sidecar Pattern</h3>
+<span class="flashcard-category" style="background:#06b6d4">Architecture</span>
+<p class="flashcard-def">Attach helper process alongside main service</p>
+<div class="flashcard-use"><strong>When:</strong> Cross-cutting concerns (logging, proxy)</div>
+<div class="flashcard-tradeoff">Separation of concerns but resource overhead</div>
+<a class="flashcard-link" href="../4-hld/4.20-microservices.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="architecture" style="border-top-color:#06b6d4">
+<h3 class="flashcard-name">Lambda Architecture</h3>
+<span class="flashcard-category" style="background:#06b6d4">Architecture</span>
+<p class="flashcard-def">Batch + stream processing in parallel</p>
+<div class="flashcard-use"><strong>When:</strong> Real-time + accurate analytics</div>
+<div class="flashcard-tradeoff">Best of both but dual pipeline maintenance</div>
+<a class="flashcard-link" href="../4-hld/4.7-data-processing.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="architecture" style="border-top-color:#06b6d4">
+<h3 class="flashcard-name">Strangler Fig</h3>
+<span class="flashcard-category" style="background:#06b6d4">Architecture</span>
+<p class="flashcard-def">Incrementally replace legacy system</p>
+<div class="flashcard-use"><strong>When:</strong> Migration without big-bang rewrite</div>
+<div class="flashcard-tradeoff">Low risk but long transition period</div>
+<a class="flashcard-link" href="../4-hld/4.20-microservices.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="distributed" style="border-top-color:#ec4899">
+<h3 class="flashcard-name">Leader Election</h3>
+<span class="flashcard-category" style="background:#ec4899">Distributed</span>
+<p class="flashcard-def">One node coordinates, others follow</p>
+<div class="flashcard-use"><strong>When:</strong> Distributed schedulers, single-writer</div>
+<div class="flashcard-tradeoff">Coordination but leader is SPOF</div>
+<a class="flashcard-link" href="../4-hld/4.9-distributed-systems.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="distributed" style="border-top-color:#ec4899">
+<h3 class="flashcard-name">Consensus (Raft/Paxos)</h3>
+<span class="flashcard-category" style="background:#ec4899">Distributed</span>
+<p class="flashcard-def">Nodes agree on a value despite failures</p>
+<div class="flashcard-use"><strong>When:</strong> Distributed state machines, config stores</div>
+<div class="flashcard-tradeoff">Strong consistency but latency from quorum</div>
+<a class="flashcard-link" href="../4-hld/4.9-distributed-systems.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="distributed" style="border-top-color:#ec4899">
+<h3 class="flashcard-name">Gossip Protocol</h3>
+<span class="flashcard-category" style="background:#ec4899">Distributed</span>
+<p class="flashcard-def">Nodes share state via random peer-to-peer exchange</p>
+<div class="flashcard-use"><strong>When:</strong> Membership, failure detection</div>
+<div class="flashcard-tradeoff">Scalable but eventually consistent</div>
+<a class="flashcard-link" href="../4-hld/4.9-distributed-systems.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="distributed" style="border-top-color:#ec4899">
+<h3 class="flashcard-name">Vector Clocks</h3>
+<span class="flashcard-category" style="background:#ec4899">Distributed</span>
+<p class="flashcard-def">Track causality between distributed events</p>
+<div class="flashcard-use"><strong>When:</strong> Conflict detection in multi-leader replication</div>
+<div class="flashcard-tradeoff">Detects concurrency but O(N) space per entry</div>
+<a class="flashcard-link" href="../4-hld/4.9-distributed-systems.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="distributed" style="border-top-color:#ec4899">
+<h3 class="flashcard-name">Two-Phase Commit (2PC)</h3>
+<span class="flashcard-category" style="background:#ec4899">Distributed</span>
+<p class="flashcard-def">Coordinator ensures all-or-nothing across nodes</p>
+<div class="flashcard-use"><strong>When:</strong> Distributed transactions (rare in practice)</div>
+<div class="flashcard-tradeoff">Atomic but blocking if coordinator fails</div>
+<a class="flashcard-link" href="../4-hld/4.9-distributed-systems.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="distributed" style="border-top-color:#ec4899">
+<h3 class="flashcard-name">Heartbeat</h3>
+<span class="flashcard-category" style="background:#ec4899">Distributed</span>
+<p class="flashcard-def">Periodic signal to detect node failures</p>
+<div class="flashcard-use"><strong>When:</strong> Health checking, cluster membership</div>
+<div class="flashcard-tradeoff">Simple but false positives on network delay</div>
+<a class="flashcard-link" href="../4-hld/4.9-distributed-systems.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="consistency" style="border-top-color:#14b8a6">
+<h3 class="flashcard-name">Strong Consistency</h3>
+<span class="flashcard-category" style="background:#14b8a6">Consistency</span>
+<p class="flashcard-def">Read always sees latest write</p>
+<div class="flashcard-use"><strong>When:</strong> Financial transactions, inventory</div>
+<div class="flashcard-tradeoff">Correct but high latency (quorum/locks)</div>
+<a class="flashcard-link" href="../4-hld/4.19-consistency.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="consistency" style="border-top-color:#14b8a6">
+<h3 class="flashcard-name">Eventual Consistency</h3>
+<span class="flashcard-category" style="background:#14b8a6">Consistency</span>
+<p class="flashcard-def">Replicas converge over time</p>
+<div class="flashcard-use"><strong>When:</strong> Social media, DNS, analytics</div>
+<div class="flashcard-tradeoff">Available but stale reads possible</div>
+<a class="flashcard-link" href="../4-hld/4.19-consistency.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="consistency" style="border-top-color:#14b8a6">
+<h3 class="flashcard-name">Read-Your-Writes</h3>
+<span class="flashcard-category" style="background:#14b8a6">Consistency</span>
+<p class="flashcard-def">User always sees their own writes</p>
+<div class="flashcard-use"><strong>When:</strong> User profiles, shopping carts</div>
+<div class="flashcard-tradeoff">Good UX but adds routing complexity</div>
+<a class="flashcard-link" href="../4-hld/4.19-consistency.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="consistency" style="border-top-color:#14b8a6">
+<h3 class="flashcard-name">Quorum (W+R > N)</h3>
+<span class="flashcard-category" style="background:#14b8a6">Consistency</span>
+<p class="flashcard-def">Majority agreement for reads/writes</p>
+<div class="flashcard-use"><strong>When:</strong> Tunable consistency (Cassandra, DynamoDB)</div>
+<div class="flashcard-tradeoff">Flexible but slower than single-node</div>
+<a class="flashcard-link" href="../4-hld/4.19-consistency.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="consistency" style="border-top-color:#14b8a6">
+<h3 class="flashcard-name">CRDTs</h3>
+<span class="flashcard-category" style="background:#14b8a6">Consistency</span>
+<p class="flashcard-def">Conflict-free data types that auto-merge</p>
+<div class="flashcard-use"><strong>When:</strong> Collaborative editing, counters</div>
+<div class="flashcard-tradeoff">No coordination but limited data types</div>
+<a class="flashcard-link" href="../4-hld/4.19-consistency.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="api" style="border-top-color:#a855f7">
+<h3 class="flashcard-name">Cursor-Based Pagination</h3>
+<span class="flashcard-category" style="background:#a855f7">API Design</span>
+<p class="flashcard-def">Navigate results with opaque cursor token</p>
+<div class="flashcard-use"><strong>When:</strong> Infinite scroll, live feeds</div>
+<div class="flashcard-tradeoff">Stable under mutations but no random page access</div>
+<a class="flashcard-link" href="../4-hld/4.3-networking.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="api" style="border-top-color:#a855f7">
+<h3 class="flashcard-name">API Versioning</h3>
+<span class="flashcard-category" style="background:#a855f7">API Design</span>
+<p class="flashcard-def">Maintain multiple API versions simultaneously</p>
+<div class="flashcard-use"><strong>When:</strong> Evolving APIs with existing clients</div>
+<div class="flashcard-tradeoff">Backward compat but version sprawl</div>
+<a class="flashcard-link" href="../4-hld/4.3-networking.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="api" style="border-top-color:#a855f7">
+<h3 class="flashcard-name">Idempotency Keys</h3>
+<span class="flashcard-category" style="background:#a855f7">API Design</span>
+<p class="flashcard-def">Client-generated key ensures exactly-once processing</p>
+<div class="flashcard-use"><strong>When:</strong> Payment APIs, critical mutations</div>
+<div class="flashcard-tradeoff">Safe but requires key storage and dedup logic</div>
+<a class="flashcard-link" href="../4-hld/4.8-messaging.html">View detailed section</a>
+</div>
+<div class="flashcard" data-category="api" style="border-top-color:#a855f7">
+<h3 class="flashcard-name">Rate Limiting (Token Bucket)</h3>
+<span class="flashcard-category" style="background:#a855f7">API Design</span>
+<p class="flashcard-def">Control request rate per client</p>
+<div class="flashcard-use"><strong>When:</strong> Public APIs, multi-tenant</div>
+<div class="flashcard-tradeoff">Fair usage but adds latency for check</div>
+<a class="flashcard-link" href="../4-hld/4.12-security.html">View detailed section</a>
+</div>
+</div>
+
+<div class="section-separator" style="margin: 3rem 0 2rem; padding: 2rem 0; border-top: 2px dashed var(--border);">
+<h2 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text);">Extended Patterns (Priority 2)</h2>
+<p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Important supporting concepts that complement the core patterns above.</p>
+</div>
+
+<div class="flashcard-grid" id="extendedGrid">
+
+<div class="flashcard" data-category="fundamentals" style="border-top: 3px dashed #6366f1;">
+<span class="flashcard-category" style="background: #6366f1;">Fundamentals</span>
+<h3>CAP Theorem</h3>
+<p class="flashcard-def">A distributed system can provide at most 2 of 3 guarantees: Consistency, Availability, Partition tolerance. Since partitions are inevitable, you choose CP or AP.</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Any distributed database choice (CP: MongoDB, HBase | AP: Cassandra, DynamoDB)</p>
+<p class="flashcard-tradeoff"><em>Trade-off: CP sacrifices availability during partitions; AP sacrifices consistency (stale reads)</em></p>
+<a href="../4-hld/4.1-core-fundamentals.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="fundamentals" style="border-top: 3px dashed #6366f1;">
+<span class="flashcard-category" style="background: #6366f1;">Fundamentals</span>
+<h3>PACELC Theorem</h3>
+<p class="flashcard-def">Extension of CAP: if Partition, choose A or C; Else (normal operation), choose Latency or Consistency. Covers the common case when there's no partition.</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Explains why Cassandra (PA/EL) is fast but eventually consistent, while Spanner (PC/EC) is consistent but slower</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Systems that choose consistency (PC/EC) always pay latency cost, even without partitions</em></p>
+<a href="../4-hld/4.1-core-fundamentals.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="observability" style="border-top: 3px dashed #0ea5e9;">
+<span class="flashcard-category" style="background: #0ea5e9;">Observability</span>
+<h3>Three Pillars of Observability</h3>
+<p class="flashcard-def">Logs (what happened), Metrics (how much/how fast), Traces (request path across services). Together they provide full system visibility.</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Every production system needs all three; debugging distributed failures requires correlated traces</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Full observability is expensive (storage, processing); balance detail vs cost with sampling</em></p>
+<a href="../4-hld/4.13-observability.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="observability" style="border-top: 3px dashed #0ea5e9;">
+<span class="flashcard-category" style="background: #0ea5e9;">Observability</span>
+<h3>SLI / SLO / SLA</h3>
+<p class="flashcard-def">SLI = measurable indicator (p99 latency). SLO = target for the SLI (p99 < 200ms). SLA = contractual commitment with consequences if SLO is missed.</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Defining service reliability targets, error budgets, alerting thresholds</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Tighter SLOs = more engineering investment in reliability; loose SLOs = higher error budget for feature velocity</em></p>
+<a href="../4-hld/4.13-observability.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="distributed" style="border-top: 3px dashed #ec4899;">
+<span class="flashcard-category" style="background: #ec4899;">Distributed</span>
+<h3>Distributed Locking</h3>
+<p class="flashcard-def">Coordinate access to shared resources across nodes using locks backed by a distributed store (Redis SETNX, ZooKeeper ephemeral nodes, etcd leases).</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Preventing double-processing, leader election, distributed cron, resource reservation</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Adds latency and a dependency; lock holder crashing requires TTL/fencing tokens to avoid deadlocks</em></p>
+<a href="../4-hld/4.9-distributed-systems.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="reliability" style="border-top: 3px dashed #ef4444;">
+<span class="flashcard-category" style="background: #ef4444;">Reliability</span>
+<h3>Chaos Engineering</h3>
+<p class="flashcard-def">Intentionally inject failures (kill nodes, add latency, corrupt data) in production to discover weaknesses before they cause real outages.</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Validating resilience patterns actually work under real conditions (Netflix Chaos Monkey)</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Risk of actual outage during experiments; requires mature monitoring and blast radius control</em></p>
+<a href="../4-hld/4.11-resilience.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="consistency" style="border-top: 3px dashed #14b8a6;">
+<span class="flashcard-category" style="background: #14b8a6;">Consistency</span>
+<h3>Outbox Pattern</h3>
+<p class="flashcard-def">Write events to an "outbox" table in the same database transaction as the business data. A separate process reads the outbox and publishes to the message broker.</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Reliable event publishing without distributed transactions (dual-write problem)</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Guaranteed delivery but adds latency (async publish) and requires outbox polling/CDC</em></p>
+<a href="../4-hld/4.19-consistency.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="architecture" style="border-top: 3px dashed #06b6d4;">
+<span class="flashcard-category" style="background: #06b6d4;">Architecture</span>
+<h3>Service Discovery</h3>
+<p class="flashcard-def">Mechanism for services to find each other's network locations dynamically, without hardcoded addresses. Client-side (Eureka) or server-side (Kubernetes DNS).</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Microservices with dynamic scaling (IPs change), container orchestration</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Adds infrastructure complexity; stale registry = routing to dead instances</em></p>
+<a href="../4-hld/4.20-microservices.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="caching" style="border-top: 3px dashed #10b981;">
+<span class="flashcard-category" style="background: #10b981;">Caching</span>
+<h3>Cache Stampede Prevention</h3>
+<p class="flashcard-def">When a hot cache key expires, thousands of requests simultaneously hit the database. Prevent with request coalescing (singleflight), probabilistic early refresh, or stale-while-revalidate.</p>
+<p class="flashcard-use"><strong>When relevant:</strong> High-traffic systems with popular cache keys (product pages, user profiles)</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Coalescing adds lock coordination; early refresh wastes some DB reads; stale serves outdated data briefly</em></p>
+<a href="../4-hld/4.6-caching.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="communication" style="border-top: 3px dashed #8b5cf6;">
+<span class="flashcard-category" style="background: #8b5cf6;">Communication</span>
+<h3>Backpressure</h3>
+<p class="flashcard-def">Mechanism to prevent a fast producer from overwhelming a slow consumer. Strategies: drop, buffer, throttle producer, sample, or scale consumers.</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Streaming pipelines, reactive systems, any producer-consumer with rate mismatch</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Dropping loses data; buffering risks OOM; throttling slows producers; scaling costs money</em></p>
+<a href="../4-hld/4.8-messaging.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="communication" style="border-top: 3px dashed #8b5cf6;">
+<span class="flashcard-category" style="background: #8b5cf6;">Communication</span>
+<h3>Long Polling / SSE</h3>
+<p class="flashcard-def">Long Polling: server holds request until data available. SSE: persistent one-way server-to-client stream over HTTP. Both simpler than WebSocket for push-only scenarios.</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Notifications, live feeds, dashboards (SSE); compatibility-constrained environments (Long Polling)</p>
+<p class="flashcard-tradeoff"><em>Trade-off: SSE is unidirectional only; Long Polling has connection overhead per message</em></p>
+<a href="../4-hld/4.3-networking.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="reliability" style="border-top: 3px dashed #ef4444;">
+<span class="flashcard-category" style="background: #ef4444;">Reliability</span>
+<h3>Failover Patterns</h3>
+<p class="flashcard-def">Automatically redirect traffic to standby when primary fails. Active-Passive (hot standby, seconds), Active-Active (both serve, near-zero), Pilot Light (minimal infra, minutes).</p>
+<p class="flashcard-use"><strong>When relevant:</strong> High availability requirements, multi-region deployments, disaster recovery</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Active-Active = zero downtime but 2x cost; Pilot Light = cheap but slow recovery</em></p>
+<a href="../4-hld/4.11-resilience.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="distributed" style="border-top: 3px dashed #ec4899;">
+<span class="flashcard-category" style="background: #ec4899;">Distributed</span>
+<h3>Leader Election</h3>
+<p class="flashcard-def">Elect one node as coordinator in a cluster. If leader fails, remaining nodes hold new election. Implemented via Raft consensus, ZooKeeper ephemeral nodes, or etcd leases.</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Distributed schedulers, single-writer databases, coordinator selection</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Simplifies coordination but leader is SPOF; election period = brief unavailability</em></p>
+<a href="../4-hld/4.9-distributed-systems.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="distributed" style="border-top: 3px dashed #ec4899;">
+<span class="flashcard-category" style="background: #ec4899;">Distributed</span>
+<h3>Split Brain</h3>
+<p class="flashcard-def">Network partition divides cluster into groups, each electing its own leader — causing conflicting writes. Prevented by quorum requirement (majority needed to accept writes).</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Any replicated system with leader election, distributed databases</p>
+<p class="flashcard-tradeoff"><em>Trade-off: Quorum prevents split brain but minority partition becomes unavailable (sacrifices A for C)</em></p>
+<a href="../4-hld/4.9-distributed-systems.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+<div class="flashcard" data-category="architecture" style="border-top: 3px dashed #06b6d4;">
+<span class="flashcard-category" style="background: #06b6d4;">Architecture</span>
+<h3>ETL Pipeline</h3>
+<p class="flashcard-def">Extract data from sources, Transform (clean, aggregate, join), Load into destination (warehouse/lake). Modern variant ELT loads raw data first, transforms in-place.</p>
+<p class="flashcard-use"><strong>When relevant:</strong> Analytics pipelines, data warehousing, business intelligence, ML feature stores</p>
+<p class="flashcard-tradeoff"><em>Trade-off: ETL = cleaner destination but slow; ELT = faster ingest but warehouse must handle transforms</em></p>
+<a href="../4-hld/4.7-data-processing.html" class="flashcard-link">See detailed section &rarr;</a>
+</div>
+
+</div>
+
+<div class="page-nav">
+<a href="quick-reference.html">&larr; Quick Reference</a>
+<a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index &rarr;</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+<script>
+(function(){
+  const allCards = document.querySelectorAll('.flashcard');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const searchInput = document.getElementById('patternSearch');
+  const cardCount = document.getElementById('cardCount');
+  const totalCards = allCards.length;
+
+  function updateCount(){
+    const visible = document.querySelectorAll('.flashcard:not(.hidden)').length;
+    cardCount.textContent = 'Showing ' + visible + ' of ' + totalCards + ' patterns';
+  }
+
+  function applyFilters(){
+    const activeBtn = document.querySelector('.filter-btn.active');
+    const category = activeBtn ? activeBtn.getAttribute('data-filter') : 'all';
+    const search = searchInput.value.toLowerCase().trim();
+    allCards.forEach(function(card){
+      const cardCat = card.getAttribute('data-category');
+      const name = (card.querySelector('.flashcard-name') || card.querySelector('h3')).textContent.toLowerCase();
+      const catMatch = category === 'all' || cardCat === category;
+      const searchMatch = !search || name.indexOf(search) !== -1;
+      if(catMatch && searchMatch){
+        card.classList.remove('hidden');
+        card.classList.add('fade-in');
+      } else {
+        card.classList.add('hidden');
+        card.classList.remove('fade-in');
+      }
+    });
+    updateCount();
+  }
+
+  filterBtns.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      filterBtns.forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      applyFilters();
+    });
+  });
+
+  searchInput.addEventListener('input', applyFilters);
+  updateCount();
+})();
+</script>
+</body>
+</html>

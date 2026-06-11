@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.1 Arrays &amp; Strings - Interview Prep</title>
+<link href="../../assets/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA &amp; Algorithms</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays &amp; Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing &amp; HashMaps</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees &amp; Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps &amp; Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP &amp; Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency Structures</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - Low-Level Design</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID Principles</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational Patterns</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural Patterns</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral Patterns</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing Strategies</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="../../sections/4-hld/4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="../../sections/4-hld/4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="../../sections/4-hld/4.3-networking.html">4.3 Networking &amp; Communication</a></li>
+<li><a href="../../sections/4-hld/4.4-load-balancing.html">4.4 Load Balancing &amp; Traffic</a></li>
+<li><a href="../../sections/4-hld/4.5-databases.html">4.5 Database Design</a></li>
+<li><a href="../../sections/4-hld/4.6-caching.html">4.6 Caching</a></li>
+<li><a href="../../sections/4-hld/4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="../../sections/4-hld/4.8-messaging.html">4.8 Messaging &amp; Async</a></li>
+<li><a href="../../sections/4-hld/4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="../../sections/4-hld/4.10-scalability.html">4.10 Scalability Techniques</a></li>
+<li><a href="../../sections/4-hld/4.11-resilience.html">4.11 Reliability &amp; Resilience</a></li>
+<li><a href="../../sections/4-hld/4.12-security.html">4.12 Security</a></li>
+<li><a href="../../sections/4-hld/4.13-observability.html">4.13 Observability &amp; Monitoring</a></li>
+<li><a href="../../sections/4-hld/4.14-cloud.html">4.14 Cloud &amp; Infrastructure</a></li>
+<li><a href="../../sections/4-hld/4.15-storage.html">4.15 Storage Systems</a></li>
+<li><a href="../../sections/4-hld/4.16-performance.html">4.16 Performance Optimization</a></li>
+<li><a href="../../sections/4-hld/4.17-tradeoffs.html">4.17 Design Trade-offs</a></li>
+<li><a href="../../sections/4-hld/4.18-system-design-problems.html">4.18 Common SD Problems</a></li>
+<li><a href="../../sections/4-hld/4.19-consistency.html">4.19 Consistency Patterns</a></li>
+<li><a href="../../sections/4-hld/4.20-microservices.html">4.20 Microservices Patterns</a></li>
+<li><a href="../../sections/4-hld/4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="../../sections/4-hld/4.22-concurrency.html">4.22 Concurrency &amp; Locking</a></li>
+<li><a href="../../sections/4-hld/4.23-devops.html">4.23 DevOps &amp; Deployment</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input id="searchInput" placeholder="Search topics... (Ctrl+K)" type="text"/><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div class="section-block section-s2" id="s2-arrays"><h2 class="section-title"><span class="section-num">2.1</span>Arrays, Strings &amp; Sliding Window</h2>
+<div class="card"><div class="card-header"><h3>2.1.1 When to Use</h3><span class="badge">Pattern</span></div><div class="card-body">
+<ul><li>Contiguous subarray/substring problems</li><li>Fixed or variable size window</li><li>Maximum/minimum in a range</li></ul>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.1.2 Template: Variable-Size Window</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// Find longest substring with at most K distinct characters - O(n)
+public int longestSubstringKDistinct(String s, int k) {
+    Map&lt;Character, Integer&gt; freq = new HashMap&lt;&gt;();
+    int left = 0, maxLen = 0;
+
+    for (int right = 0; right &lt; s.length(); right++) {
+        freq.merge(s.charAt(right), 1, Integer::sum);  // Expand window
+
+        while (freq.size() &gt; k) {                       // Shrink until valid
+            char c = s.charAt(left);
+            freq.merge(c, -1, Integer::sum);
+            if (freq.get(c) == 0) freq.remove(c);
+            left++;
+        }
+        maxLen = Math.max(maxLen, right - left + 1);    // Update answer
+    }
+    return maxLen;
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.1.3 Two Pointers Pattern</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// 3Sum: Find all triplets summing to zero - O(n^2)
+public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) {
+    Arrays.sort(nums);  // Sort enables two-pointer technique
+    List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+
+    for (int i = 0; i &lt; nums.length - 2; i++) {
+        if (i &gt; 0 &amp;&amp; nums[i] == nums[i-1]) continue; // Skip duplicates
+
+        int left = i + 1, right = nums.length - 1;
+        while (left &lt; right) {
+            int sum = nums[i] + nums[left] + nums[right];
+            if (sum == 0) {
+                result.add(List.of(nums[i], nums[left], nums[right]));
+                while (left &lt; right &amp;&amp; nums[left] == nums[left+1]) left++;
+                while (left &lt; right &amp;&amp; nums[right] == nums[right-1]) right--;
+                left++; right--;
+            } else if (sum &lt; 0) left++;
+            else right--;
+        }
+    }
+    return result;
+}
+// Trade-off: Sorting O(n log n) enables O(n) two-pointer scan
+// Alternative: HashSet approach is O(n^2) time, O(n) space but harder to deduplicate</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.1.4 Prefix Sum Pattern</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// Subarray sum equals K - O(n) with prefix sum + hashmap
+public int subarraySum(int[] nums, int k) {
+    Map&lt;Integer, Integer&gt; prefixCount = new HashMap&lt;&gt;();
+    prefixCount.put(0, 1);  // Empty prefix
+    int sum = 0, count = 0;
+
+    for (int num : nums) {
+        sum += num;
+        count += prefixCount.getOrDefault(sum - k, 0); // How many prefixes make valid subarray
+        prefixCount.merge(sum, 1, Integer::sum);
+    }
+    return count;
+}
+// Key insight: if prefix[j] - prefix[i] = k, then subarray [i+1..j] sums to k</code></pre>
+<div class="trade-off-box"><h4>Pattern Selection Guide</h4>
+<table><tr><th>Problem Signal</th><th>Pattern</th><th>Time</th></tr>
+<tr><td>Contiguous subarray, max/min length</td><td>Sliding Window</td><td>O(n)</td></tr>
+<tr><td>Sorted array, pair/triplet finding</td><td>Two Pointers</td><td>O(n) / O(n^2)</td></tr>
+<tr><td>Subarray sum equals K, range queries</td><td>Prefix Sum</td><td>O(n)</td></tr>
+<tr><td>Substring with conditions</td><td>Sliding Window + HashMap</td><td>O(n)</td></tr>
+</table></div></div>
+<div class="card"><div class="card-header"><h3>2.1.5 Binary Search Patterns</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// O(log n). The hard part is loop invariants and overflow, not the idea.
+// Always use mid = lo + (hi - lo) / 2 to avoid integer overflow.
+
+// 1) Classic: find exact target
+int search(int[] a, int target) {
+    int lo = 0, hi = a.length - 1;          // closed interval [lo, hi]
+    while (lo &lt;= hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (a[mid] == target) return mid;
+        else if (a[mid] &lt; target) lo = mid + 1;
+        else hi = mid - 1;
+    }
+    return -1;
+}
+
+// 2) Leftmost insertion point (lower_bound) - first index where a[i] &gt;= target
+int lowerBound(int[] a, int target) {
+    int lo = 0, hi = a.length;              // half-open [lo, hi)
+    while (lo &lt; hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (a[mid] &lt; target) lo = mid + 1;
+        else hi = mid;
+    }
+    return lo;                              // in [0, a.length]
+}
+
+// 3) Search in rotated sorted array - one half is always sorted
+int searchRotated(int[] a, int target) {
+    int lo = 0, hi = a.length - 1;
+    while (lo &lt;= hi) {
+        int mid = lo + (hi - lo) / 2;
+        if (a[mid] == target) return mid;
+        if (a[lo] &lt;= a[mid]) {              // left half sorted
+            if (a[lo] &lt;= target &amp;&amp; target &lt; a[mid]) hi = mid - 1; else lo = mid + 1;
+        } else {                            // right half sorted
+            if (a[mid] &lt; target &amp;&amp; target &lt;= a[hi]) lo = mid + 1; else hi = mid - 1;
+        }
+    }
+    return -1;
+}</code></pre>
+<div class="trade-off-box"><h4>Binary Search on the Answer</h4>
+<p>The most missed senior pattern: when the answer is a number in a monotonic range (min capacity to ship in D days, smallest divisor, Koko eating bananas), binary-search the <em>answer space</em> and use a feasibility check <code>canDo(x)</code> as the predicate. Complexity becomes O(n · log(range)).</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4>
+<p>Pick one template and stick to it to avoid off-by-one bugs. Verbalize the invariant ("everything left of lo is &lt; target"). If you see "sorted" or "minimize the maximum / maximize the minimum", binary search should be your first thought.</p></div>
+</div></div>
+</div>
+</div>
+<div class="page-nav">
+<a href="../../sections/1-foundations/1.2-spring-boot.html">← Previous: 1.2 Spring Boot</a>
+<a href="2.2-hashing.html">Next: 2.2 Hashing →</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

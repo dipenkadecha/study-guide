@@ -1,0 +1,16 @@
+{
+  "autoApproveTools": true,
+  "permissions": {
+    "allow": [
+      "Bash(awk '{printf \"%6.1fKB  %s\\\\n\", $5/1024, $9}')",
+      "Bash(sort -k2)",
+      "Bash(mv style.css styles.css)",
+      "Bash(mv script.js scripts.js)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(perl -0pi -e 's#\\\\n</main>#\\\\n</div>\\\\n</main>#' sections/4-hld/4.8-messaging.html)",
+      "WebFetch(domain:github.com)",
+      "Bash(git --version)",
+      "Bash(gh --version)"
+    ]
+  }
+}

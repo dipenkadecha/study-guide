@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.7 Data Processing - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">SD Concepts Index</a></li>
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-dataprocessing" class="section-block section-s4"><h2 class="section-title"><span class="section-num">4.7</span>Data Processing</h2>
+<div class="card"><div class="card-header"><h3>4.7.1 Processing Paradigms</h3><span class="badge">Data</span></div><div class="card-body">
+<table><tr><th>Type</th><th>Latency</th><th>Tools</th><th>Use Case</th></tr>
+<tr><td>Batch</td><td>Minutes to hours</td><td>Spark, MapReduce, Flink (batch)</td><td>ETL, reports, ML training</td></tr>
+<tr><td>Stream</td><td>Milliseconds to seconds</td><td>Kafka Streams, Flink, Spark Streaming</td><td>Real-time analytics, fraud detection</td></tr>
+<tr><td>Lambda Architecture</td><td>Both</td><td>Batch layer + Speed layer + Serving layer</td><td>Accuracy + low latency (complex)</td></tr>
+<tr><td>Kappa Architecture</td><td>Stream only</td><td>Single stream processing pipeline</td><td>Simpler, replay from log</td></tr>
+</table>
+<pre><code>// Kafka Streams - real-time event processing in Java
+StreamsBuilder builder = new StreamsBuilder();
+KStream&lt;String, OrderEvent&gt; orders = builder.stream("orders");
+
+// Real-time aggregation: revenue per product per hour
+KTable&lt;Windowed&lt;String&gt;, Long&gt; hourlyRevenue = orders
+    .groupBy((key, order) -> order.productId())
+    .windowedBy(TimeWindows.ofSizeWithNoGrace(Duration.ofHours(1)))
+    .aggregate(
+        () -> 0L,
+        (key, order, total) -> total + order.amount(),
+        Materialized.with(Serdes.String(), Serdes.Long())
+    );
+
+// Output to topic for downstream consumers
+hourlyRevenue.toStream()
+    .map((windowed, total) -> KeyValue.pair(windowed.key(), total))
+    .to("hourly-revenue");</code></pre>
+
+<div class="trade-off-box"><h4>Trade-off: Batch vs Stream Processing</h4>
+<ul>
+<li><strong>Batch:</strong> Higher throughput, complete data (full recomputation), complex joins easy, higher latency. Use for: daily reports, ML training, data warehouse ETL.</li>
+<li><strong>Stream:</strong> Lower latency, incomplete data (approximations), complex state management, exactly-once harder. Use for: fraud detection, real-time dashboards, alerting.</li>
+<li><strong>Modern trend:</strong> Unified (Apache Flink handles both). Use stream-first architecture, batch as special case of bounded stream.</li>
+</ul></div>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Spotify Wrapped:</strong> Batch processing (Apache Spark) computes yearly listening statistics for 400M+ users. Runs in December, processes petabytes of listening history accumulated all year. Results cached and served when users open the app — classic batch-then-serve pattern.</p>
+</div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Always clarify latency requirements: "Does the user need results in real-time (stream processing) or is nightly batch acceptable?" This single question determines your architecture. Real-time → Flink/Kafka Streams. Batch → Spark/Airflow. Hybrid → Lambda Architecture (both).</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.7.2 Lambda Architecture Pattern</h3><span class="badge">Architecture</span></div><div class="card-body">
+<p><strong>What it does:</strong> Runs batch and stream processing in parallel. The batch layer produces accurate results with high latency. The speed layer (stream) produces approximate results with low latency. A serving layer merges both views for queries.</p>
+
+<pre><code>// Lambda Architecture layers:
+//
+// ┌─────────────────────────────────────────────────┐
+// │              Raw Data (Immutable)                 │
+// └────────────┬───────────────────┬─────────────────┘
+//              │                   │
+//    ┌─────────▼────────┐  ┌──────▼──────────┐
+//    │   Batch Layer     │  │  Speed Layer     │
+//    │ (MapReduce/Spark) │  │ (Flink/Kafka)    │
+//    │ Complete, accurate│  │ Real-time, approx│
+//    │ High latency      │  │ Low latency      │
+//    └─────────┬─────────┘  └──────┬───────────┘
+//              │                    │
+//    ┌─────────▼────────────────────▼──────────┐
+//    │           Serving Layer                   │
+//    │  Merges batch views + real-time views     │
+//    │  Serves queries with best available data  │
+//    └──────────────────────────────────────────┘
+
+// Example: Analytics Dashboard
+// - Batch layer: Nightly Spark job computes accurate daily/weekly/monthly metrics
+// - Speed layer: Kafka Streams computes real-time counters since last batch run
+// - Serving layer: Query = batch_result + speed_result_since_last_batch</code></pre>
+
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Systems needing both real-time responsiveness AND batch-level accuracy</li>
+<li>Analytics platforms showing real-time trends and daily aggregates</li>
+<li>Fraud detection: real-time scoring + nightly model retraining</li>
+<li>Search engines: real-time index updates + periodic full reindexing</li>
+</ul>
+
+<p><strong>When NOT to use:</strong></p>
+<ul>
+<li>Simple systems where batch OR stream alone suffices</li>
+<li>When the Kappa Architecture (stream-only with replay) can handle your needs</li>
+</ul>
+
+<div class="trade-off-box"><h4>Trade-off: Lambda vs Kappa Architecture</h4>
+<table>
+<tr><th>Aspect</th><th>Lambda (Batch + Stream)</th><th>Kappa (Stream Only)</th></tr>
+<tr><td>Complexity</td><td>High — two parallel pipelines to maintain</td><td>Lower — single stream pipeline</td></tr>
+<tr><td>Code duplication</td><td>Logic often duplicated in batch and stream</td><td>Single codebase</td></tr>
+<tr><td>Accuracy</td><td>Batch layer guarantees correctness</td><td>Relies on stream reprocessing for corrections</td></tr>
+<tr><td>Reprocessing</td><td>Batch naturally reprocesses everything</td><td>Replay events from start (can be slow for years of data)</td></tr>
+<tr><td>Use case</td><td>Need guaranteed accurate aggregates + real-time</td><td>Real-time is sufficient, can tolerate replay for corrections</td></tr>
+</table>
+</div>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>LinkedIn:</strong> Real-time analytics use Lambda Architecture — batch layer (Hadoop) computes accurate daily metrics, speed layer (Kafka Streams + Samza) provides real-time counters for active sessions. Serving layer merges both for dashboard that shows "today's views" (stream) alongside "last 30 days" (batch).</p>
+</div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention Lambda Architecture for analytics systems: "We run batch (Spark, nightly) for accurate historical metrics and stream (Flink) for real-time dashboards. The serving layer merges both views." If the interviewer asks about complexity, suggest Kappa as the simpler alternative when reprocessing from Kafka replay is acceptable.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.7.3 OLTP vs OLAP</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What they are:</strong> Two fundamentally different workload types that drive database and architecture choices.</p>
+
+<table>
+<tr><th>Aspect</th><th>OLTP (Online Transaction Processing)</th><th>OLAP (Online Analytical Processing)</th></tr>
+<tr><td>Purpose</td><td>Run the business (transactions)</td><td>Analyze the business (insights)</td></tr>
+<tr><td>Operations</td><td>INSERT, UPDATE, DELETE (single rows)</td><td>SELECT with aggregations (millions of rows)</td></tr>
+<tr><td>Queries</td><td>Simple, known in advance, indexed</td><td>Complex, ad-hoc, full scans</td></tr>
+<tr><td>Latency</td><td>Milliseconds (user-facing)</td><td>Seconds to minutes (analyst-facing)</td></tr>
+<tr><td>Schema</td><td>Normalized (3NF), many tables</td><td>Denormalized (Star/Snowflake schema)</td></tr>
+<tr><td>Concurrency</td><td>Thousands of concurrent users</td><td>Tens of concurrent analysts</td></tr>
+<tr><td>Storage engine</td><td>Row-oriented (PostgreSQL, MySQL)</td><td>Column-oriented (ClickHouse, Redshift, BigQuery)</td></tr>
+<tr><td>Data freshness</td><td>Real-time (current state)</td><td>Near-real-time to batch (historical)</td></tr>
+<tr><td>Examples</td><td>Order placement, user signup, payment</td><td>Revenue dashboard, funnel analysis, reporting</td></tr>
+</table>
+
+<pre><code>// Why column-oriented storage is fast for OLAP:
+// Row store: reads entire row (100 columns) to get 3 columns → wasted I/O
+// Column store: reads only the 3 columns needed → minimal I/O
+
+// Example: "What is total revenue by country for 2024?"
+// Row store: scan ALL columns of ALL rows, extract country + revenue
+// Column store: scan ONLY country column + revenue column (highly compressible)
+
+// Star Schema for OLAP:
+//   fact_orders (order_id, customer_key, product_key, date_key, amount)
+//        ↓              ↓              ↓            ↓
+//   dim_customer   dim_product    dim_date
+//   (name, country) (title, cat)  (year, quarter, month)</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Row Store vs Column Store</h4><p>Row stores (PostgreSQL): fast for point lookups and transactional writes (entire row in one disk read). Column stores (ClickHouse, Redshift): fast for aggregations over millions of rows (reads only needed columns, better compression). Never use a column store for OLTP or a row store for heavy analytics.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Uber:</strong> OLTP (MySQL) handles ride transactions in real-time. OLAP (Apache Pinot) powers the internal analytics dashboard — queries like "average ride duration by city this week" scan billions of rows in seconds using columnar storage + pre-aggregated indexes.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When designing systems with both transactional AND analytical needs: "OLTP database (PostgreSQL) handles user-facing operations. CDC streams changes to the OLAP warehouse (ClickHouse/BigQuery) for analytics. This separation lets each optimize for its workload without interference."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.7.4 ETL (Extract, Transform, Load)</h3><span class="badge">Data</span></div><div class="card-body">
+<p><strong>What it does:</strong> Move data from operational systems into analytical systems. Extract from sources, Transform (clean, aggregate, join), Load into destination (warehouse/lake).</p>
+
+<table>
+<tr><th>Pattern</th><th>Flow</th><th>When to Use</th><th>Tools</th></tr>
+<tr><td><strong>ETL</strong></td><td>Extract → Transform → Load</td><td>Data needs cleaning before loading, warehouse has strict schema</td><td>Apache Spark, Airflow, dbt, Informatica</td></tr>
+<tr><td><strong>ELT</strong></td><td>Extract → Load → Transform</td><td>Warehouse is powerful enough to transform (BigQuery, Snowflake), schema-on-read</td><td>Fivetran + dbt, Snowflake, BigQuery</td></tr>
+<tr><td><strong>Streaming ETL</strong></td><td>Continuous Extract → Transform → Load</td><td>Near-real-time analytics needed</td><td>Kafka Connect + Flink/Kafka Streams</td></tr>
+</table>
+
+<pre><code>// Modern ELT pipeline example:
+// 1. Extract: Fivetran/Airbyte pulls data from PostgreSQL, Stripe, Salesforce
+// 2. Load: Raw data dumped into Snowflake staging tables (schema-on-read)
+// 3. Transform: dbt models clean, join, and aggregate into analytics tables
+//
+// dbt model example (SQL-based transform):
+// models/marts/revenue_by_country.sql
+// SELECT
+//   c.country,
+//   DATE_TRUNC('month', o.created_at) as month,
+//   SUM(o.amount) as total_revenue,
+//   COUNT(DISTINCT o.customer_id) as unique_customers
+// FROM {{ ref('stg_orders') }} o
+// JOIN {{ ref('stg_customers') }} c ON o.customer_id = c.id
+// GROUP BY 1, 2</code></pre>
+<div class="trade-off-box"><h4>Trade-off: ETL vs ELT</h4><p>ETL: transform before loading (data arrives clean, warehouse stays tidy) but pipeline is complex and slow to iterate. ELT: load raw data first, transform in-place (faster iteration, schema-on-read) but warehouse accumulates raw junk. Modern trend favors ELT with tools like dbt for in-warehouse transformations.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Airbnb:</strong> Uses Apache Airflow (which they created) to orchestrate 50,000+ daily ETL jobs. Data flows from production PostgreSQL → S3 (raw) → Spark transforms → Hive/Presto tables → Superset dashboards. DAG-based scheduling ensures jobs run in dependency order with automatic retries.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When asked about data pipelines: "We use ELT — Fivetran syncs raw data to Snowflake, then dbt models transform it into analytics-ready tables. This decouples ingestion from transformation, letting analysts iterate on transforms without re-running expensive extracts."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.7.5 Data Lake vs Data Warehouse vs Lakehouse</h3><span class="badge">Storage</span></div><div class="card-body">
+
+<table>
+<tr><th>Aspect</th><th>Data Warehouse</th><th>Data Lake</th><th>Data Lakehouse</th></tr>
+<tr><td>Data type</td><td>Structured only</td><td>Structured + Semi-structured + Unstructured</td><td>All types (unified)</td></tr>
+<tr><td>Schema</td><td>Schema-on-write (defined upfront)</td><td>Schema-on-read (raw storage)</td><td>Schema enforcement optional</td></tr>
+<tr><td>Storage format</td><td>Proprietary (columnar)</td><td>Open files (Parquet, JSON, CSV)</td><td>Open table formats (Delta Lake, Iceberg, Hudi)</td></tr>
+<tr><td>Query performance</td><td>Fast (optimized, indexed)</td><td>Slow without optimization</td><td>Fast (indexing + caching on open formats)</td></tr>
+<tr><td>Cost</td><td>Expensive (compute + storage coupled)</td><td>Cheap (object storage like S3)</td><td>Moderate (cheap storage + compute on demand)</td></tr>
+<tr><td>ACID transactions</td><td>Yes</td><td>No (append-only)</td><td>Yes (Delta Lake/Iceberg add transactions)</td></tr>
+<tr><td>Use case</td><td>BI dashboards, SQL analytics</td><td>ML training data, raw logs, data science</td><td>Unified analytics + ML on one platform</td></tr>
+<tr><td>Examples</td><td>Snowflake, BigQuery, Redshift</td><td>S3 + Athena, HDFS, Azure Data Lake</td><td>Databricks (Delta Lake), Apache Iceberg on S3</td></tr>
+</table>
+
+<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing data architecture, mention the modern trend: "Companies are moving from separate data lakes and warehouses to lakehouses. A lakehouse gives you the cheap, scalable storage of a data lake (S3/Parquet) with the ACID transactions and query performance of a warehouse (via Delta Lake or Iceberg). This eliminates the need to copy data between systems." This shows awareness of current industry direction.</p></div>
+<div class="trade-off-box"><h4>Trade-off: Separate vs Unified Architecture</h4><p>Separate lake + warehouse: mature tooling but data copied between systems (expensive, stale). Unified lakehouse: single copy of data, no movement, but newer technology (Delta Lake/Iceberg maturity). If starting fresh in 2024+, default to lakehouse. Legacy systems may keep both during migration.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Netflix:</strong> Runs a Lakehouse on Apache Iceberg + S3. All data (structured analytics, semi-structured logs, unstructured ML features) lives in one S3-backed system. Both Spark batch jobs and Trino interactive queries access the same tables — no ETL between lake and warehouse needed.</p></div>
+</div></div>
+
+<div class="page-nav">
+<a href="4.6-caching.html">&#8592; Previous: 4.6 Caching</a>
+<a href="4.8-messaging.html">Next: 4.8 Messaging &#8594;</a>
+</div>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2.3 Trees &amp; Graphs - Interview Prep</title>
+<link href="../../assets/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA &amp; Algorithms</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays &amp; Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing &amp; HashMaps</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees &amp; Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps &amp; Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP &amp; Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency Structures</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - Low-Level Design</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID Principles</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational Patterns</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural Patterns</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral Patterns</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing Strategies</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="../../sections/4-hld/4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="../../sections/4-hld/4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="../../sections/4-hld/4.3-networking.html">4.3 Networking &amp; Communication</a></li>
+<li><a href="../../sections/4-hld/4.4-load-balancing.html">4.4 Load Balancing &amp; Traffic</a></li>
+<li><a href="../../sections/4-hld/4.5-databases.html">4.5 Database Design</a></li>
+<li><a href="../../sections/4-hld/4.6-caching.html">4.6 Caching</a></li>
+<li><a href="../../sections/4-hld/4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="../../sections/4-hld/4.8-messaging.html">4.8 Messaging &amp; Async</a></li>
+<li><a href="../../sections/4-hld/4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="../../sections/4-hld/4.10-scalability.html">4.10 Scalability Techniques</a></li>
+<li><a href="../../sections/4-hld/4.11-resilience.html">4.11 Reliability &amp; Resilience</a></li>
+<li><a href="../../sections/4-hld/4.12-security.html">4.12 Security</a></li>
+<li><a href="../../sections/4-hld/4.13-observability.html">4.13 Observability &amp; Monitoring</a></li>
+<li><a href="../../sections/4-hld/4.14-cloud.html">4.14 Cloud &amp; Infrastructure</a></li>
+<li><a href="../../sections/4-hld/4.15-storage.html">4.15 Storage Systems</a></li>
+<li><a href="../../sections/4-hld/4.16-performance.html">4.16 Performance Optimization</a></li>
+<li><a href="../../sections/4-hld/4.17-tradeoffs.html">4.17 Design Trade-offs</a></li>
+<li><a href="../../sections/4-hld/4.18-system-design-problems.html">4.18 Common SD Problems</a></li>
+<li><a href="../../sections/4-hld/4.19-consistency.html">4.19 Consistency Patterns</a></li>
+<li><a href="../../sections/4-hld/4.20-microservices.html">4.20 Microservices Patterns</a></li>
+<li><a href="../../sections/4-hld/4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="../../sections/4-hld/4.22-concurrency.html">4.22 Concurrency &amp; Locking</a></li>
+<li><a href="../../sections/4-hld/4.23-devops.html">4.23 DevOps &amp; Deployment</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input id="searchInput" placeholder="Search topics... (Ctrl+K)" type="text"/><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div class="section-block section-s2" id="s2-trees"><h2 class="section-title"><span class="section-num">2.3</span>Trees &amp; Graphs</h2>
+<div class="card"><div class="card-header"><h3>2.3.1 BFS Level-Order (Queue-based)</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// BFS - Level order traversal - O(n) time, O(w) space where w = max width
+public List&lt;List&lt;Integer&gt;&gt; levelOrder(TreeNode root) {
+    List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();
+    if (root == null) return result;
+    Queue&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
+    queue.offer(root);
+
+    while (!queue.isEmpty()) {
+        int levelSize = queue.size();  // Snapshot current level size
+        List&lt;Integer&gt; level = new ArrayList&lt;&gt;();
+        for (int i = 0; i &lt; levelSize; i++) {
+            TreeNode node = queue.poll();
+            level.add(node.val);
+            if (node.left != null) queue.offer(node.left);
+            if (node.right != null) queue.offer(node.right);
+        }
+        result.add(level);
+    }
+    return result;
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.3.2 DFS Patterns</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// Iterative DFS with explicit stack - avoids StackOverflow for deep (100K+) trees.
+// (The recursive one-liner is cleaner but blows the call stack on skewed trees.)
+public int maxDepth(TreeNode root) {
+    if (root == null) return 0;
+    Deque&lt;TreeNode&gt; nodes = new ArrayDeque&lt;&gt;();
+    Deque&lt;Integer&gt; depths = new ArrayDeque&lt;&gt;();
+    nodes.push(root);
+    depths.push(1);
+    int max = 0;
+    while (!nodes.isEmpty()) {
+        TreeNode node = nodes.pop();
+        int depth = depths.pop();
+        max = Math.max(max, depth);
+        if (node.left != null)  { nodes.push(node.left);  depths.push(depth + 1); }
+        if (node.right != null) { nodes.push(node.right); depths.push(depth + 1); }
+    }
+    return max;
+}
+
+// Lowest Common Ancestor - O(n) time, O(h) space
+public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+    if (root == null || root == p || root == q) return root;
+    TreeNode left = lowestCommonAncestor(root.left, p, q);
+    TreeNode right = lowestCommonAncestor(root.right, p, q);
+    if (left != null &amp;&amp; right != null) return root;  // Found on both sides
+    return left != null ? left : right;
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.3.3 Topological Sort (Kahn's BFS)</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// Use case: build systems, task scheduling, course prerequisites
+// Only works on DAG (Directed Acyclic Graph)
+public List&lt;Integer&gt; topologicalSort(int n, int[][] edges) {
+    List&lt;List&lt;Integer&gt;&gt; adj = new ArrayList&lt;&gt;();
+    int[] inDegree = new int[n];
+    for (int i = 0; i &lt; n; i++) adj.add(new ArrayList&lt;&gt;());
+
+    for (int[] e : edges) {
+        adj.get(e[0]).add(e[1]);
+        inDegree[e[1]]++;
+    }
+
+    Queue&lt;Integer&gt; queue = new LinkedList&lt;&gt;();
+    for (int i = 0; i &lt; n; i++) if (inDegree[i] == 0) queue.offer(i);
+
+    List&lt;Integer&gt; order = new ArrayList&lt;&gt;();
+    while (!queue.isEmpty()) {
+        int node = queue.poll();
+        order.add(node);
+        for (int neighbor : adj.get(node)) {
+            if (--inDegree[neighbor] == 0) queue.offer(neighbor);
+        }
+    }
+    return order.size() == n ? order : Collections.emptyList(); // Cycle detection
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.3.4 Dijkstra's Shortest Path</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// Weighted graph shortest path - O((V+E) log V) with priority queue
+// Use case: routing, network latency, cost optimization
+public int[] dijkstra(int n, List&lt;int[]&gt;[] adj, int src) {
+    int[] dist = new int[n];
+    Arrays.fill(dist, Integer.MAX_VALUE);
+    dist[src] = 0;
+
+    PriorityQueue&lt;int[]&gt; pq = new PriorityQueue&lt;&gt;((a, b) -&gt; a[1] - b[1]);
+    pq.offer(new int[]{src, 0});
+
+    while (!pq.isEmpty()) {
+        int[] curr = pq.poll();
+        int u = curr[0], d = curr[1];
+        if (d &gt; dist[u]) continue;  // Skip outdated entry
+
+        for (int[] edge : adj[u]) {
+            int v = edge[0], w = edge[1];
+            if (dist[u] + w &lt; dist[v]) {
+                dist[v] = dist[u] + w;
+                pq.offer(new int[]{v, dist[v]});
+            }
+        }
+    }
+    return dist;
+}
+// Trade-off: Dijkstra O((V+E)logV) vs Bellman-Ford O(VE)
+// Dijkstra: faster, no negative edges
+// Bellman-Ford: handles negative edges, detects negative cycles</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>2.3.5 System Design Relevant Trees</h3><span class="badge">Advanced</span></div><div class="card-body">
+<table><tr><th>Structure</th><th>Use In Production</th><th>Complexity</th></tr>
+<tr><td>B-Tree / B+Tree</td><td>Database indexes (PostgreSQL, MySQL InnoDB)</td><td>O(log n) search/insert</td></tr>
+<tr><td>LSM-Tree</td><td>Write-heavy stores (Cassandra, RocksDB, LevelDB)</td><td>O(1) write, O(log n) read</td></tr>
+<tr><td>Red-Black Tree</td><td>TreeMap, ConcurrentSkipListMap</td><td>O(log n) all ops</td></tr>
+<tr><td>Trie</td><td>Autocomplete, IP routing, spell check</td><td>O(L) where L = key length</td></tr>
+</table>
+<div class="trade-off-box"><h4>Trade-off: B-Tree vs LSM-Tree</h4>
+<ul>
+<li><strong>B-Tree (PostgreSQL, MySQL):</strong> Read-optimized, in-place updates, good for read-heavy OLTP. Write amplification from random I/O.</li>
+<li><strong>LSM-Tree (Cassandra, RocksDB):</strong> Write-optimized, sequential writes to memtable then SSTables. Read amplification from multiple levels. Compaction overhead.</li>
+<li><strong>Decision:</strong> Read:Write ratio &gt; 80:20 -&gt; B-Tree. Write-heavy (logs, time-series, messaging) -&gt; LSM-Tree</li>
+</ul></div></div>
+<div class="card"><div class="card-header"><h3>2.3.6 Union-Find (Disjoint Set Union)</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// Near O(1) amortized (inverse Ackermann) per op with both optimizations.
+// Use cases: connected components, cycle detection in undirected graphs,
+// Kruskal's MST, account merging, "number of provinces / islands" (offline).
+class UnionFind {
+    private final int[] parent, rank;
+    private int components;
+
+    UnionFind(int n) {
+        parent = new int[n];
+        rank = new int[n];
+        components = n;
+        for (int i = 0; i &lt; n; i++) parent[i] = i;
+    }
+
+    int find(int x) {                       // path compression
+        while (parent[x] != x) {
+            parent[x] = parent[parent[x]];  // halve the path
+            x = parent[x];
+        }
+        return x;
+    }
+
+    boolean union(int a, int b) {           // union by rank
+        int ra = find(a), rb = find(b);
+        if (ra == rb) return false;         // already connected -> cycle edge
+        if (rank[ra] &lt; rank[rb]) { int t = ra; ra = rb; rb = t; }
+        parent[rb] = ra;
+        if (rank[ra] == rank[rb]) rank[ra]++;
+        components--;
+        return true;
+    }
+
+    int count() { return components; }      // # of disjoint sets
+}
+
+// Cycle detection: union() returns false when both ends share a root.
+// Counting components: start with n, each successful union shrinks by one.</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Union-Find vs BFS/DFS</h4>
+<p>For <em>dynamic</em> connectivity (edges arriving over time, repeated "are these connected?" queries) Union-Find is far better — each query is ~O(1) amortized. BFS/DFS recomputes components in O(V+E) per query. But Union-Find only answers connectivity; it can't give the actual path, and it doesn't handle edge deletion.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4>
+<p>Reach for DSU when you hear "merge groups", "connected components", "redundant connection", or "MST". Always mention both optimizations (path compression + union by rank) — without them it degrades to O(n) per op.</p></div>
+</div></div>
+</div>
+</div>
+<div class="page-nav">
+<a href="2.2-hashing.html">← Previous: 2.2 Hashing &amp; HashMaps</a>
+<a href="2.4-heaps-tries.html">Next: 2.4 Heaps &amp; Tries →</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

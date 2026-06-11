@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.4 Behavioral Patterns - Interview Prep</title>
+<link href="../../assets/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA &amp; Algorithms</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays &amp; Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing &amp; HashMaps</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees &amp; Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps &amp; Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP &amp; Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency Structures</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - Low-Level Design</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID Principles</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational Patterns</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural Patterns</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral Patterns</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing Strategies</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="../../sections/4-hld/4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="../../sections/4-hld/4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="../../sections/4-hld/4.3-networking.html">4.3 Networking &amp; Communication</a></li>
+<li><a href="../../sections/4-hld/4.4-load-balancing.html">4.4 Load Balancing &amp; Traffic</a></li>
+<li><a href="../../sections/4-hld/4.5-databases.html">4.5 Database Design</a></li>
+<li><a href="../../sections/4-hld/4.6-caching.html">4.6 Caching</a></li>
+<li><a href="../../sections/4-hld/4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="../../sections/4-hld/4.8-messaging.html">4.8 Messaging &amp; Async</a></li>
+<li><a href="../../sections/4-hld/4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="../../sections/4-hld/4.10-scalability.html">4.10 Scalability Techniques</a></li>
+<li><a href="../../sections/4-hld/4.11-resilience.html">4.11 Reliability &amp; Resilience</a></li>
+<li><a href="../../sections/4-hld/4.12-security.html">4.12 Security</a></li>
+<li><a href="../../sections/4-hld/4.13-observability.html">4.13 Observability &amp; Monitoring</a></li>
+<li><a href="../../sections/4-hld/4.14-cloud.html">4.14 Cloud &amp; Infrastructure</a></li>
+<li><a href="../../sections/4-hld/4.15-storage.html">4.15 Storage Systems</a></li>
+<li><a href="../../sections/4-hld/4.16-performance.html">4.16 Performance Optimization</a></li>
+<li><a href="../../sections/4-hld/4.17-tradeoffs.html">4.17 Design Trade-offs</a></li>
+<li><a href="../../sections/4-hld/4.18-system-design-problems.html">4.18 Common SD Problems</a></li>
+<li><a href="../../sections/4-hld/4.19-consistency.html">4.19 Consistency Patterns</a></li>
+<li><a href="../../sections/4-hld/4.20-microservices.html">4.20 Microservices Patterns</a></li>
+<li><a href="../../sections/4-hld/4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="../../sections/4-hld/4.22-concurrency.html">4.22 Concurrency &amp; Locking</a></li>
+<li><a href="../../sections/4-hld/4.23-devops.html">4.23 DevOps &amp; Deployment</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input id="searchInput" placeholder="Search topics... (Ctrl+K)" type="text"/><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s3-behavioral"></div><h2 class="section-title"><span class="section-num">3.4</span>Behavioral Design Patterns</h2>
+<div class="card"><div class="card-header"><h3>3.4.1 Strategy - Interchangeable Algorithms</h3><span class="badge">Patterns</span></div><div class="card-body">
+<pre><code>// Strategy: select algorithm at runtime
+// Use case: pricing engines, compression, serialization, sorting strategies
+public interface PricingStrategy {
+    BigDecimal calculatePrice(Product product, Customer customer);
+}
+
+@Component("premium")
+public class PremiumPricingStrategy implements PricingStrategy {
+    public BigDecimal calculatePrice(Product p, Customer c) {
+        return p.basePrice().multiply(new BigDecimal("0.85")); // 15% discount
+    }
+}
+
+@Component("bulk")
+public class BulkPricingStrategy implements PricingStrategy {
+    public BigDecimal calculatePrice(Product p, Customer c) {
+        int qty = c.orderQuantity();
+        BigDecimal discount = qty &gt; 100 ? new BigDecimal("0.70") : new BigDecimal("0.90");
+        return p.basePrice().multiply(discount);
+    }
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>3.4.2 Observer / Event-Driven (Spring Events)</h3><span class="badge">Patterns</span></div><div class="card-body">
+<pre><code>// Spring ApplicationEvent - decoupled communication
+public record OrderCompletedEvent(String orderId, String customerId, BigDecimal total) {}
+
+@Component
+public class OrderService {
+    private final ApplicationEventPublisher publisher;
+
+    @Transactional
+    public void completeOrder(String orderId) {
+        Order order = updateStatus(orderId, COMPLETED);
+        publisher.publishEvent(new OrderCompletedEvent(
+            order.id(), order.customerId(), order.total()));
+    }
+}
+
+@Component
+public class LoyaltyPointsListener {
+    @EventListener
+    @Async  // Non-blocking - runs in separate thread
+    public void onOrderCompleted(OrderCompletedEvent event) {
+        loyaltyService.addPoints(event.customerId(), calculatePoints(event.total()));
+    }
+}
+// Multiple listeners react independently: email, analytics, loyalty, inventory</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>3.4.3 Chain of Responsibility</h3><span class="badge">Patterns</span></div><div class="card-body">
+<pre><code>// Chain: pass request along handlers until one handles it
+// Production use: Spring Security Filter Chain, validation pipelines
+public interface ValidationHandler {
+    ValidationResult validate(Order order);
+    void setNext(ValidationHandler next);
+}
+
+public class StockValidationHandler implements ValidationHandler {
+    private ValidationHandler next;
+    public ValidationResult validate(Order order) {
+        if (!inventoryService.hasStock(order.items()))
+            return ValidationResult.failure("Insufficient stock");
+        return next != null ? next.validate(order) : ValidationResult.success();
+    }
+}
+// Chain: Stock -&gt; FraudCheck -&gt; CreditLimit -&gt; AddressValidation</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>3.4.4 State - Behavior Driven by Internal State</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// Intent: an object changes its behavior when its state changes - replaces
+// sprawling if/switch on a status field. Classic LLD asks: vending machine,
+// order lifecycle, TCP connection, document workflow.
+public interface OrderState {
+    OrderState pay(OrderContext ctx);
+    OrderState ship(OrderContext ctx);
+    OrderState cancel(OrderContext ctx);
+}
+
+public class CreatedState implements OrderState {
+    public OrderState pay(OrderContext c)    { c.capturePayment(); return new PaidState(); }
+    public OrderState ship(OrderContext c)   { throw new IllegalStateException("not paid"); }
+    public OrderState cancel(OrderContext c) { return new CancelledState(); }
+}
+public class PaidState implements OrderState {
+    public OrderState pay(OrderContext c)    { throw new IllegalStateException("already paid"); }
+    public OrderState ship(OrderContext c)   { c.createShipment(); return new ShippedState(); }
+    public OrderState cancel(OrderContext c) { c.refund(); return new CancelledState(); }
+}
+// Context delegates to the current state; each state knows its legal transitions.
+public class OrderContext {
+    private OrderState state = new CreatedState();
+    public void pay()    { state = state.pay(this); }
+    public void ship()   { state = state.ship(this); }
+    public void cancel() { state = state.cancel(this); }
+}</code></pre>
+<div class="trade-off-box"><h4>State vs Strategy</h4>
+<p>Same structure (delegate to a pluggable object), different intent. <strong>Strategy</strong> is chosen by the client and is usually stateless/independent. <strong>State</strong> transitions itself — each state decides the next state — and the object's behavior changes over its lifetime. Mention that illegal transitions become explicit exceptions instead of silent bugs.</p></div>
+</div></div>
+<div class="card"><div class="card-header"><h3>3.4.5 Command - Encapsulate a Request as an Object</h3><span class="badge">Pattern</span></div><div class="card-body">
+<pre><code>// Intent: wrap an action + its data in an object so you can queue, log,
+// schedule, or undo it. Use cases: undo/redo, task queues, transactional
+// operations, GUI actions, the Memento+Command undo stack.
+public interface Command {
+    void execute();
+    void undo();
+}
+
+public class AddTextCommand implements Command {
+    private final Document doc;
+    private final String text;
+    public AddTextCommand(Document doc, String text) { this.doc = doc; this.text = text; }
+    public void execute() { doc.append(text); }
+    public void undo()    { doc.deleteLast(text.length()); }
+}
+
+// Invoker keeps history; doesn't know what each command actually does.
+public class CommandInvoker {
+    private final Deque&lt;Command&gt; history = new ArrayDeque&lt;&gt;();
+    public void run(Command c) { c.execute(); history.push(c); }
+    public void undo()         { if (!history.isEmpty()) history.pop().undo(); }
+}</code></pre>
+<div class="interview-tip"><h4>Interview Tip</h4>
+<p>Command decouples the <em>invoker</em> (button, scheduler, queue) from the <em>receiver</em> (the object doing the work). The undo stack falls out naturally. If asked for redo, keep a second stack. This is the go-to answer for "design undo/redo" or "design a task scheduler".</p></div>
+</div></div>
+<div class="page-nav">
+<a href="3.3-structural.html">← Previous: 3.3 Structural</a>
+<a href="3.5-lld-problems.html">Next: 3.5 LLD Problems →</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

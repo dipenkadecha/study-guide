@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.12 Security - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-security" class="section-block section-s4"><h2 class="section-title"><span class="section-num">4.12</span>Security</h2>
+<div class="card"><div class="card-header"><h3>4.12.1 Authentication &amp; Authorization</h3><span class="badge">Security</span></div><div class="card-body">
+<table><tr><th>Mechanism</th><th>Use Case</th><th>Token Location</th><th>Stateless</th></tr>
+<tr><td>JWT</td><td>API authentication</td><td>Authorization header</td><td>Yes (self-contained)</td></tr>
+<tr><td>OAuth 2.0</td><td>Third-party access delegation</td><td>Access + refresh tokens</td><td>Yes (with JWT)</td></tr>
+<tr><td>Session</td><td>Traditional web apps</td><td>Cookie</td><td>No (server-side state)</td></tr>
+<tr><td>mTLS</td><td>Service-to-service</td><td>Certificate</td><td>Yes</td></tr>
+</table>
+<table><tr><th>Authorization</th><th>Model</th><th>Best For</th></tr>
+<tr><td>RBAC</td><td>User -> Role -> Permissions</td><td>Simple hierarchy (admin/user/viewer)</td></tr>
+<tr><td>ABAC</td><td>Rules based on attributes (user, resource, context)</td><td>Complex policies (time-based, geo-based)</td></tr>
+<tr><td>ReBAC</td><td>Relationship-based (Google Zanzibar)</td><td>Social graphs, document sharing</td></tr>
+</table>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Google:</strong> OAuth 2.0 + OpenID Connect for "Sign in with Google" across 4M+ third-party apps. Internally uses ALTS (Application Layer Transport Security) for service-to-service mTLS — every RPC between Google services is authenticated and encrypted without developer involvement.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: JWT vs Session Tokens</h4><p>JWT: stateless (no server-side session store), scalable, but can't be revoked until expiry (use short TTL + refresh tokens). Session tokens: revocable instantly (delete from store), but require centralized session store (Redis) — adds latency and SPOF. Most production systems use short-lived JWTs (15min) + refresh tokens stored server-side.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Specify your auth architecture: "API Gateway validates JWT signatures (stateless, no DB call). JWTs expire in 15 minutes. Refresh tokens are stored in Redis with user_id — enables instant revocation (logout, password change). Internal service-to-service uses mTLS (mutual TLS) — no tokens needed, identity verified by certificate."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.12.2 Encryption</h3><span class="badge">Security</span></div><div class="card-body">
+<table><tr><th>Type</th><th>Scope</th><th>Tools</th><th>Use Case</th></tr>
+<tr><td>At Rest</td><td>Stored data</td><td>AES-256, AWS KMS, HashiCorp Vault</td><td>Database fields, S3 objects, disk volumes</td></tr>
+<tr><td>In Transit</td><td>Network communication</td><td>TLS 1.3, mTLS</td><td>All API calls, inter-service traffic</td></tr>
+<tr><td>End-to-End</td><td>Client to final recipient</td><td>Signal Protocol, PGP</td><td>Messaging apps, email</td></tr>
+</table>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.12.3 API Security &amp; Common Vulnerabilities</h3><span class="badge">Security</span></div><div class="card-body">
+<table><tr><th>Threat</th><th>Description</th><th>Mitigation</th></tr>
+<tr><td>Rate Limiting</td><td>Prevent abuse and DDoS</td><td>Token bucket, sliding window (Redis-based)</td></tr>
+<tr><td>CORS</td><td>Cross-origin resource sharing control</td><td>Whitelist allowed origins, restrict methods</td></tr>
+<tr><td>CSRF</td><td>Cross-site request forgery</td><td>CSRF tokens, SameSite cookies, double-submit</td></tr>
+<tr><td>XSS</td><td>Cross-site scripting injection</td><td>Content Security Policy, output encoding, sanitize input</td></tr>
+<tr><td>SQL Injection</td><td>Malicious SQL in user input</td><td>Parameterized queries, ORM, input validation</td></tr>
+<tr><td>DDoS</td><td>Distributed denial of service</td><td>CDN (CloudFlare), WAF, auto-scaling, rate limits</td></tr>
+</table>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.12.4 Zero Trust Architecture</h3><span class="badge">Security</span></div><div class="card-body">
+<pre><code>// Zero Trust Principles:
+// 1. Never trust, always verify (even internal traffic)
+// 2. Least privilege access (minimal permissions per service)
+// 3. Assume breach (encrypt everything, segment networks)
+
+// Implementation:
+// - mTLS between all services (Istio/Linkerd service mesh)
+// - Short-lived tokens (rotate every 15 min, not days)
+// - Network segmentation (namespace isolation in K8s)
+// - Secrets management (Vault with dynamic secrets)
+// - Continuous verification (re-auth on sensitive operations)</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Google BeyondCorp:</strong> Eliminated VPN entirely. Every request (internal or external) must prove identity + device health + context. An engineer accessing an internal tool from a coffee shop gets the same auth challenge as from the office. Access decisions made per-request, not per-network-location.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: Zero Trust vs Perimeter Security</h4><p>Zero Trust: every request authenticated/authorized regardless of network location — more secure but adds latency (auth check on every call) and complexity (policy engine, identity infrastructure). Perimeter: simple (trust everything inside the VPN) but catastrophic if breached (lateral movement is trivial). Industry is moving to Zero Trust after high-profile breaches (SolarWinds).</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>For security-sensitive designs: "We follow Zero Trust — no implicit trust based on network location. Every service-to-service call requires mTLS + JWT with fine-grained permissions. Even internal services behind the firewall authenticate every request. Access decisions are policy-based (OPA/Rego) evaluating: who + what + where + when."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.12.5 Secrets Management</h3><span class="badge">Security</span></div><div class="card-body">
+<table><tr><th>Tool</th><th>Feature</th><th>Best For</th></tr>
+<tr><td>HashiCorp Vault</td><td>Dynamic secrets, auto-rotation, PKI</td><td>Multi-cloud, complex rotations</td></tr>
+<tr><td>AWS Secrets Manager</td><td>Auto-rotation, RDS integration</td><td>AWS-native applications</td></tr>
+<tr><td>K8s Secrets + Sealed Secrets</td><td>Encrypted at rest, GitOps-friendly</td><td>Kubernetes workloads</td></tr>
+</table>
+</div></div>
+
+<div class="page-nav">
+<a href="4.11-resilience.html">&#8592; Previous: 4.11 Resilience</a>
+<a href="4.13-observability.html">Next: 4.13 Observability &#8594;</a>
+</div>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

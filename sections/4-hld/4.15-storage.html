@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.15 Storage - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-storage" class="section-block section-s4"><h2 class="section-title"><span class="section-num">4.15</span>Storage Systems</h2>
+<div class="card"><div class="card-header"><h3>4.15.1 Storage Types Comparison</h3><span class="badge">Infrastructure</span></div><div class="card-body">
+<table><tr><th>Type</th><th>Examples</th><th>Access Pattern</th><th>Performance</th><th>Use Case</th></tr>
+<tr><td>Object Storage</td><td>S3, GCS, MinIO, Azure Blob</td><td>Key-value via HTTP API (PUT/GET)</td><td>High throughput, higher latency</td><td>Images, backups, data lake, logs, ML artifacts</td></tr>
+<tr><td>Block Storage</td><td>EBS, Azure Disk, Persistent Volumes</td><td>Low-level blocks, mount as disk</td><td>Low latency, high IOPS</td><td>Databases, boot volumes, transactional workloads</td></tr>
+<tr><td>File Storage</td><td>EFS, FSx, NFS, GlusterFS</td><td>POSIX file system, shared mount</td><td>Medium latency, shared access</td><td>Shared config, CMS, legacy apps, container shared volumes</td></tr>
+<tr><td>Distributed FS</td><td>HDFS, Ceph, MinIO</td><td>Large sequential reads/writes</td><td>High throughput for large files</td><td>Big data analytics, data warehousing, ML training data</td></tr>
+</table>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.15.2 Object Storage (S3) Patterns</h3><span class="badge">Infrastructure</span></div><div class="card-body">
+<pre><code>// S3 Design Patterns for System Design:
+
+// 1. Data Lake Architecture
+// Raw Zone -> Processed Zone -> Curated Zone
+// s3://data-lake/raw/events/2024/01/15/hour=14/*.parquet
+// s3://data-lake/processed/user-sessions/*.parquet
+// s3://data-lake/curated/analytics-ready/*.parquet
+
+// 2. S3 Performance Optimization
+// - Prefix partitioning: distribute across prefixes for >3,500 PUT/s or >5,500 GET/s
+// - Multipart upload: files > 100MB (parallel upload parts)
+// - S3 Transfer Acceleration: CloudFront edge locations for global uploads
+// - S3 Select: query subset of object (push-down filtering, save bandwidth)
+
+// 3. Storage Classes (cost optimization)
+// Standard: frequent access ($0.023/GB)
+// Intelligent-Tiering: auto-moves between tiers
+// Glacier: archive, minutes-to-hours retrieval ($0.004/GB)
+// Glacier Deep Archive: rarely accessed ($0.00099/GB)</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Dropbox:</strong> Stores 2+ exabytes in a custom object storage system (Magic Pocket). Originally used S3 but built their own to save $75M+ annually at scale. Objects stored with Reed-Solomon erasure coding (1.5x storage overhead vs 3x for replication) across multiple data centers.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Consistency vs Performance in Object Storage: S3 is now strongly consistent for all operations (since Dec 2020) — no more eventual consistency issues. However: single-object write throughput is limited (5GB single PUT, 5TB multipart). For small files (&lt;1MB), S3 latency (50-100ms first byte) is too slow for hot path — front with CloudFront CDN or ElastiCache.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Use S3 for all blob storage in system design: 'User uploads go to S3 (11 nines durability, lifecycle policies move to Glacier after 90 days). Pre-signed URLs for direct upload/download — our servers never touch the binary data. S3 event notification triggers Lambda for thumbnail generation.' Shows complete data flow without hand-waving.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.15.3 Block Storage (EBS) Patterns</h3><span class="badge">Infrastructure</span></div><div class="card-body">
+<table><tr><th>Volume Type</th><th>IOPS</th><th>Throughput</th><th>Use Case</th></tr>
+<tr><td>gp3 (General)</td><td>3,000 - 16,000</td><td>125 - 1,000 MB/s</td><td>Most workloads, boot volumes</td></tr>
+<tr><td>io2 (Provisioned)</td><td>Up to 64,000</td><td>Up to 1,000 MB/s</td><td>Databases requiring consistent IOPS</td></tr>
+<tr><td>st1 (Throughput)</td><td>500 baseline</td><td>Up to 500 MB/s</td><td>Big data, log processing, sequential I/O</td></tr>
+</table>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.15.4 Distributed File Systems (HDFS)</h3><span class="badge">Infrastructure</span></div><div class="card-body">
+<pre><code>// HDFS Architecture:
+// NameNode (metadata): file->block mapping, replication factor
+// DataNode (data): stores actual blocks (default 128MB each)
+// Replication: default 3 copies across racks for fault tolerance
+
+// When to use HDFS vs Object Storage:
+// HDFS: Hadoop ecosystem, MapReduce/Spark jobs, need data locality
+// Object Storage: Cloud-native, serverless, REST APIs, lower cost
+// Modern trend: Object storage (S3) + Spark/Presto = HDFS replacement</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Storage System Selection</h4>
+<ul>
+<li><strong>Object Storage:</strong> Cheapest at scale, infinite capacity, but higher latency and no in-place updates. Best for write-once-read-many patterns.</li>
+<li><strong>Block Storage:</strong> Fastest I/O, supports databases, but expensive and limited to single-AZ attachment. Best for transactional workloads.</li>
+<li><strong>File Storage:</strong> Shared access across instances, familiar POSIX interface, but lower performance than block. Best for shared state between containers.</li>
+</ul></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Hadoop/HDFS:</strong> Each data block (128MB) replicated 3x across different racks. NameNode tracks all block locations in memory — 1 billion files requires ~300GB RAM for metadata. Facebook's HDFS cluster: 600+ PB across 4,000+ nodes. Trade-off: great for large sequential reads (analytics), terrible for small random reads (use HBase/Cassandra instead).</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention HDFS for batch analytics: 'Raw event data (clickstream, logs) is stored in HDFS/S3 as Parquet files partitioned by date. Spark jobs process daily partitions for analytics. The large block size (128MB-256MB) optimizes for sequential scan throughput rather than random access — appropriate for our batch processing pattern.'</p></div>
+</div></div>
+<div class="page-nav">
+<a href="4.14-cloud.html">&#8592; Previous: 4.14 Cloud</a>
+<a href="4.16-performance.html">Next: 4.16 Performance &#8594;</a>
+</div>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

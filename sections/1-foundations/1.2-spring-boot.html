@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.2 Spring Boot &amp; Reactive - Interview Prep</title>
+<link href="../../assets/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA &amp; Algorithms</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays &amp; Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing &amp; HashMaps</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees &amp; Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps &amp; Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP &amp; Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency Structures</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - Low-Level Design</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID Principles</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational Patterns</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural Patterns</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral Patterns</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing Strategies</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="../../sections/4-hld/4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="../../sections/4-hld/4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="../../sections/4-hld/4.3-networking.html">4.3 Networking &amp; Communication</a></li>
+<li><a href="../../sections/4-hld/4.4-load-balancing.html">4.4 Load Balancing &amp; Traffic</a></li>
+<li><a href="../../sections/4-hld/4.5-databases.html">4.5 Database Design</a></li>
+<li><a href="../../sections/4-hld/4.6-caching.html">4.6 Caching</a></li>
+<li><a href="../../sections/4-hld/4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="../../sections/4-hld/4.8-messaging.html">4.8 Messaging &amp; Async</a></li>
+<li><a href="../../sections/4-hld/4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="../../sections/4-hld/4.10-scalability.html">4.10 Scalability Techniques</a></li>
+<li><a href="../../sections/4-hld/4.11-resilience.html">4.11 Reliability &amp; Resilience</a></li>
+<li><a href="../../sections/4-hld/4.12-security.html">4.12 Security</a></li>
+<li><a href="../../sections/4-hld/4.13-observability.html">4.13 Observability &amp; Monitoring</a></li>
+<li><a href="../../sections/4-hld/4.14-cloud.html">4.14 Cloud &amp; Infrastructure</a></li>
+<li><a href="../../sections/4-hld/4.15-storage.html">4.15 Storage Systems</a></li>
+<li><a href="../../sections/4-hld/4.16-performance.html">4.16 Performance Optimization</a></li>
+<li><a href="../../sections/4-hld/4.17-tradeoffs.html">4.17 Design Trade-offs</a></li>
+<li><a href="../../sections/4-hld/4.18-system-design-problems.html">4.18 Common SD Problems</a></li>
+<li><a href="../../sections/4-hld/4.19-consistency.html">4.19 Consistency Patterns</a></li>
+<li><a href="../../sections/4-hld/4.20-microservices.html">4.20 Microservices Patterns</a></li>
+<li><a href="../../sections/4-hld/4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="../../sections/4-hld/4.22-concurrency.html">4.22 Concurrency &amp; Locking</a></li>
+<li><a href="../../sections/4-hld/4.23-devops.html">4.23 DevOps &amp; Deployment</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input id="searchInput" placeholder="Search topics... (Ctrl+K)" type="text"/><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div class="section-block section-s1" id="s1-spring"><h2 class="section-title"><span class="section-num">1.2</span>Spring Boot &amp; Reactive Programming</h2>
+<div class="card"><div class="card-header"><h3>1.2.1 Auto-Configuration Mechanism</h3><span class="badge">Core</span></div><div class="card-body">
+<p>Spring Boot reads <code>META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports</code> to discover configuration classes. Each uses <code>@Conditional</code> annotations to activate only when classpath/property conditions are met.</p>
+<pre><code>// Custom auto-configuration for a caching library
+@AutoConfiguration
+@ConditionalOnClass(CacheManager.class)           // Only if class on classpath
+@ConditionalOnProperty(prefix = "app.cache", name = "enabled", havingValue = "true")
+@EnableConfigurationProperties(CacheProperties.class)
+public class CustomCacheAutoConfiguration {
+
+    @Bean
+    @ConditionalOnMissingBean  // User can override with their own bean
+    public CacheManager cacheManager(CacheProperties props) {
+        return new RedisCacheManager(props.getTtl(), props.getMaxSize());
+    }
+}
+
+// Order matters: load after Spring's own cache config
+// In META-INF/spring/AutoConfiguration.imports:
+// com.mylib.CustomCacheAutoConfiguration</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.2.2 Bean Lifecycle (Interview-Critical)</h3><span class="badge">Core</span></div><div class="card-body">
+<div class="diagram-container">
+<svg viewbox="0 0 700 120" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="ah" markerheight="6" markerwidth="6" orient="auto" refx="6" refy="3"><path d="M0,0 L6,3 L0,6" fill="#60a5fa"></path></marker></defs>
+<rect fill="#1e293b" height="40" rx="6" stroke="#60a5fa" width="90" x="5" y="40"></rect>
+<text fill="#e2e8f0" font-size="9" text-anchor="middle" x="50" y="65">Instantiation</text>
+<line marker-end="url(#ah)" stroke="#60a5fa" x1="95" x2="120" y1="60" y2="60"></line>
+<rect fill="#1e293b" height="40" rx="6" stroke="#60a5fa" width="90" x="120" y="40"></rect>
+<text fill="#e2e8f0" font-size="9" text-anchor="middle" x="165" y="65">Populate Props</text>
+<line marker-end="url(#ah)" stroke="#60a5fa" x1="210" x2="235" y1="60" y2="60"></line>
+<rect fill="#1e293b" height="40" rx="6" stroke="#60a5fa" width="100" x="235" y="40"></rect>
+<text fill="#e2e8f0" font-size="9" text-anchor="middle" x="285" y="65">BeanPostProcessor</text>
+<line marker-end="url(#ah)" stroke="#60a5fa" x1="335" x2="360" y1="60" y2="60"></line>
+<rect fill="#1e293b" height="40" rx="6" stroke="#10b981" width="90" x="360" y="40"></rect>
+<text fill="#e2e8f0" font-size="9" text-anchor="middle" x="405" y="65">@PostConstruct</text>
+<line marker-end="url(#ah)" stroke="#60a5fa" x1="450" x2="475" y1="60" y2="60"></line>
+<rect fill="#1e293b" height="40" rx="6" stroke="#10b981" width="70" x="475" y="40"></rect>
+<text fill="#e2e8f0" font-size="9" text-anchor="middle" x="510" y="65">Ready</text>
+<line marker-end="url(#ah)" stroke="#60a5fa" x1="545" x2="570" y1="60" y2="60"></line>
+<rect fill="#1e293b" height="40" rx="6" stroke="#ef4444" width="90" x="570" y="40"></rect>
+<text fill="#e2e8f0" font-size="9" text-anchor="middle" x="615" y="65">@PreDestroy</text>
+</svg>
+</div>
+<div class="interview-tip"><h4>Interview Tip</h4>
+<p>The order is: Constructor -&gt; @Autowired setters -&gt; BeanPostProcessor.postProcessBeforeInitialization -&gt; @PostConstruct -&gt; InitializingBean.afterPropertiesSet -&gt; custom init-method -&gt; BeanPostProcessor.postProcessAfterInitialization -&gt; Ready -&gt; @PreDestroy -&gt; DisposableBean.destroy</p></div></div>
+</div>
+<div class="card"><div class="card-header"><h3>1.2.3 N+1 Problem &amp; Solutions</h3><span class="badge">Performance</span></div><div class="card-body">
+<pre><code>// PROBLEM: N+1 queries - fetches 1 order + N queries for items
+@Entity
+public class Order {
+    @OneToMany(mappedBy = "order", fetch = FetchType.LAZY)
+    private List&lt;OrderItem&gt; items; // Each access triggers separate query
+}
+
+// SOLUTION 1: JOIN FETCH in JPQL
+@Query("SELECT o FROM Order o JOIN FETCH o.items WHERE o.customerId = :id")
+List&lt;Order&gt; findByCustomerIdWithItems(@Param("id") String customerId);
+
+// SOLUTION 2: @EntityGraph (declarative)
+@EntityGraph(attributePaths = {"items", "items.product"})
+@Query("SELECT o FROM Order o WHERE o.status = :status")
+List&lt;Order&gt; findByStatusWithGraph(@Param("status") OrderStatus status);
+
+// SOLUTION 3: Batch fetching (global config)
+// application.yml: spring.jpa.properties.hibernate.default_batch_fetch_size=25
+// Fetches items in batches of 25 instead of one-by-one</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.2.4 HikariCP Connection Pool Tuning</h3><span class="badge">Performance</span></div><div class="card-body">
+<pre><code># Production HikariCP config for 8-core machine
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 20        # Rule: connections = (2 * CPU cores) + effective_spindle_count
+      minimum-idle: 5               # Keep some warm connections
+      connection-timeout: 3000      # Fail fast - 3 seconds
+      idle-timeout: 600000          # 10 min idle before eviction
+      max-lifetime: 1800000         # 30 min max - before DB kills it
+      leak-detection-threshold: 30000  # Log warning if connection held &gt; 30s
+      pool-name: OrderServicePool
+      # Critical: statement caching
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Eager vs Lazy Loading</h4>
+<ul>
+<li><strong>Lazy (default for @OneToMany):</strong> Loads on access. Risk: LazyInitializationException outside transaction. Risk: N+1 if accessed in loop.</li>
+<li><strong>Eager (default for @ManyToOne):</strong> Always loaded. Risk: Loading entire object graph. Cartesian product with multiple eager collections.</li>
+<li><strong>Best Practice:</strong> Keep everything LAZY + use JOIN FETCH / @EntityGraph for specific use cases. Never use EAGER in entities.</li>
+</ul></div></div>
+</div>
+<div class="card"><div class="card-header"><h3>Spring Security - JWT &amp; OAuth2</h3><span class="badge">Security</span></div><div class="card-body">
+<pre><code>// Modern Spring Security 6.x config (lambda DSL)
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        return http
+            .csrf(csrf -&gt; csrf.disable())  // Disable for stateless APIs
+            .sessionManagement(session -&gt;
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(auth -&gt; auth
+                .requestMatchers("/api/public/**").permitAll()
+                .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                .requestMatchers("/actuator/health").permitAll()
+                .anyRequest().authenticated()
+            )
+            .oauth2ResourceServer(oauth2 -&gt;
+                oauth2.jwt(jwt -&gt; jwt.jwtAuthenticationConverter(jwtConverter()))
+            )
+            .exceptionHandling(ex -&gt; ex
+                .authenticationEntryPoint(new CustomAuthEntryPoint())
+            )
+            .build();
+    }
+
+    // Extract roles from JWT claims
+    private JwtAuthenticationConverter jwtConverter() {
+        JwtGrantedAuthoritiesConverter conv = new JwtGrantedAuthoritiesConverter();
+        conv.setAuthoritiesClaimName("roles");
+        conv.setAuthorityPrefix("ROLE_");
+        JwtAuthenticationConverter jwtConv = new JwtAuthenticationConverter();
+        jwtConv.setJwtGrantedAuthoritiesConverter(conv);
+        return jwtConv;
+    }
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.2.5 Reactive Streams Core Types</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// Mono = 0 or 1 element | Flux = 0 to N elements
+// Key operators for production:
+
+// 1. Parallel processing with concurrency control
+Flux.fromIterable(orderIds)
+    .flatMap(id -&gt; orderService.enrich(id), 10)  // Max 10 concurrent
+    .onErrorContinue((err, obj) -&gt;               // Skip failures, continue
+        log.warn("Failed to enrich {}: {}", obj, err.getMessage()))
+    .collectList()
+    .block();
+
+// 2. Retry with exponential backoff
+webClient.get()
+    .uri("/api/inventory/{id}", productId)
+    .retrieve()
+    .bodyToMono(Inventory.class)
+    .retryWhen(Retry.backoff(3, Duration.ofMillis(100))
+        .maxBackoff(Duration.ofSeconds(2))
+        .filter(ex -&gt; ex instanceof WebClientResponseException.ServiceUnavailable))
+    .timeout(Duration.ofSeconds(5))
+    .onErrorReturn(Inventory.empty());
+
+// 3. Caching with TTL
+Mono&lt;UserProfile&gt; cachedProfile = userService.getProfile(userId)
+    .cache(Duration.ofMinutes(5));  // Cache result for 5 minutes</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.2.6 Backpressure Strategies</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// Producer faster than consumer - must handle backpressure
+Flux.create(sink -&gt; {
+    kafkaConsumer.subscribe(records -&gt; sink.next(records));
+}, FluxSink.OverflowStrategy.BUFFER)     // Options: BUFFER, DROP, LATEST, ERROR
+    .onBackpressureBuffer(1000,            // Buffer up to 1000
+        dropped -&gt; metrics.increment("dropped.events"),  // Overflow handler
+        BufferOverflowStrategy.DROP_OLDEST)
+    .publishOn(Schedulers.boundedElastic()) // Process on separate scheduler
+    .subscribe(this::processRecord);</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Spring MVC (Virtual Threads) vs WebFlux</h4>
+<ul>
+<li><strong>Spring MVC + Virtual Threads (Java 21+):</strong> Simple blocking code, familiar debugging, works with all JDBC drivers, good for request-response patterns</li>
+<li><strong>WebFlux:</strong> True streaming (SSE, WebSocket), built-in backpressure, non-blocking from top to bottom, better for event-driven architectures</li>
+<li><strong>Recommendation for 2024+:</strong> Default to MVC + Virtual Threads. Use WebFlux only when you need streaming semantics or are already invested in reactive ecosystem (R2DBC, reactive Redis/Kafka)</li>
+</ul></div></div>
+</div>
+<div class="card"><div class="card-header"><h3>1.2.7 Service Discovery with Eureka/Consul</h3><span class="badge">Architecture</span></div><div class="card-body">
+<pre><code>// Service registration (Spring Cloud Netflix Eureka)
+@SpringBootApplication
+@EnableDiscoveryClient
+public class OrderServiceApplication { }
+
+// Client-side load balancing (Spring Cloud LoadBalancer)
+@Bean
+@LoadBalanced
+public WebClient.Builder webClientBuilder() {
+    return WebClient.builder();
+}
+
+// Usage - service name resolved via discovery
+webClient.get()
+    .uri("http://inventory-service/api/stock/{id}", productId)  // logical name
+    .retrieve()
+    .bodyToMono(Stock.class);</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.2.8 Resilience4j Circuit Breaker</h3><span class="badge">Architecture</span></div><div class="card-body">
+<pre><code>// Circuit breaker config
+resilience4j:
+  circuitbreaker:
+    instances:
+      paymentService:
+        slidingWindowSize: 10
+        failureRateThreshold: 50          # Open after 50% failures
+        waitDurationInOpenState: 10s      # Wait before half-open
+        permittedNumberOfCallsInHalfOpenState: 3
+        slowCallRateThreshold: 80
+        slowCallDurationThreshold: 2s
+
+// Usage with annotations
+@CircuitBreaker(name = "paymentService", fallbackMethod = "paymentFallback")
+@TimeLimiter(name = "paymentService")
+@Retry(name = "paymentService")
+public CompletableFuture&lt;PaymentResponse&gt; processPayment(PaymentRequest req) {
+    return CompletableFuture.supplyAsync(() -&gt; paymentClient.charge(req));
+}
+
+public CompletableFuture&lt;PaymentResponse&gt; paymentFallback(PaymentRequest req, Throwable t) {
+    // Queue for retry, return pending status
+    retryQueue.publish(req);
+    return CompletableFuture.completedFuture(PaymentResponse.pending(req.orderId()));
+}</code></pre>
+<div class="production-insight"><h4>Production Insight</h4>
+<p>Always order annotations: @Retry(outermost) -&gt; @CircuitBreaker -&gt; @TimeLimiter(innermost). Retry wraps the circuit breaker - retries only happen when circuit is CLOSED. If circuit is OPEN, fail immediately without retrying.</p></div></div>
+</div>
+</div>
+<div class="page-nav">
+<a href="1.1-java-deep-dive.html">← Previous: 1.1 Java Deep Dive</a>
+<a href="../../sections/2-dsa/2.1-arrays-strings.html">Next: 2.1 Arrays &amp; Strings →</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

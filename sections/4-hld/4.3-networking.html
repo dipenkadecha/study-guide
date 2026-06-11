@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.3 Networking - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">SD Concepts Index</a></li>
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-networking" class="section-block section-s4"><h2 class="section-title"><span class="section-num">4.3</span>Networking & Communication</h2>
+<div class="card"><div class="card-header"><h3>4.3.1 DNS Resolution Flow</h3><span class="badge">Networking</span></div><div class="card-body">
+<div class="diagram-container">
+<svg viewBox="0 0 600 80" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="an" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#60a5fa"/></marker></defs>
+<rect x="5" y="20" width="80" height="40" rx="6" fill="#1e293b" stroke="#60a5fa"/><text x="45" y="45" text-anchor="middle" fill="#e2e8f0" font-size="8">Client</text>
+<line x1="85" y1="40" x2="110" y2="40" stroke="#60a5fa" marker-end="url(#an)"/>
+<rect x="110" y="20" width="90" height="40" rx="6" fill="#1e293b" stroke="#60a5fa"/><text x="155" y="45" text-anchor="middle" fill="#e2e8f0" font-size="8">Local Resolver</text>
+<line x1="200" y1="40" x2="225" y2="40" stroke="#60a5fa" marker-end="url(#an)"/>
+<rect x="225" y="20" width="80" height="40" rx="6" fill="#1e293b" stroke="#f59e0b"/><text x="265" y="45" text-anchor="middle" fill="#e2e8f0" font-size="8">Root DNS</text>
+<line x1="305" y1="40" x2="330" y2="40" stroke="#60a5fa" marker-end="url(#an)"/>
+<rect x="330" y="20" width="80" height="40" rx="6" fill="#1e293b" stroke="#f59e0b"/><text x="370" y="45" text-anchor="middle" fill="#e2e8f0" font-size="8">TLD DNS</text>
+<line x1="410" y1="40" x2="435" y2="40" stroke="#60a5fa" marker-end="url(#an)"/>
+<rect x="435" y="20" width="100" height="40" rx="6" fill="#1e293b" stroke="#10b981"/><text x="485" y="45" text-anchor="middle" fill="#e2e8f0" font-size="8">Authoritative NS</text>
+</svg>
+</div>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Netflix:</strong> Uses Route 53 weighted DNS for gradual region failover. DNS TTL set to 60s — allows shifting traffic from us-east-1 to eu-west-1 within minutes during regional outages without client changes.</p>
+</div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Always start HLD diagrams with DNS. "Client hits DNS which resolves to our load balancer IP. We use weighted DNS for gradual region failover and low TTL (60s) to enable fast failover." Shows you understand the full request path from user to server.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.3.2 HTTP Protocol Comparison</h3><span class="badge">Networking</span></div><div class="card-body">
+<table><tr><th>Version</th><th>Key Feature</th><th>Connection</th><th>Use Case</th></tr>
+<tr><td>HTTP/1.1</td><td>Keep-alive, pipelining</td><td>Multiple TCP (6 per domain)</td><td>Legacy systems</td></tr>
+<tr><td>HTTP/2</td><td>Multiplexing, header compression, server push</td><td>Single TCP, binary frames</td><td>Most web traffic today</td></tr>
+<tr><td>HTTP/3 (QUIC)</td><td>UDP-based, 0-RTT, no head-of-line blocking</td><td>UDP + QUIC</td><td>Mobile, unreliable networks</td></tr>
+</table>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention HTTP/2 as the baseline for modern services (multiplexing eliminates head-of-line blocking at HTTP level). For mobile-first or global apps, mention HTTP/3 (QUIC): "Zero-RTT connection resumption reduces latency for mobile users switching between Wi-Fi and cellular."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.3.3 API Communication Comparison</h3><span class="badge">Networking</span></div><div class="card-body">
+<table><tr><th>Protocol</th><th>Format</th><th>Streaming</th><th>Use Case</th></tr>
+<tr><td>REST</td><td>JSON/XML</td><td>No (SSE possible)</td><td>Public APIs, CRUD, browser clients</td></tr>
+<tr><td>gRPC</td><td>Protobuf (binary)</td><td>Bidirectional</td><td>Internal service-to-service, low latency</td></tr>
+<tr><td>GraphQL</td><td>JSON</td><td>Subscriptions</td><td>Client-specific data needs, BFF</td></tr>
+<tr><td>WebSocket</td><td>Any</td><td>Full-duplex</td><td>Real-time: chat, gaming, live data</td></tr>
+</table>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Dropbox:</strong> Migrated from REST to gRPC for internal service communication — reduced latency by 50% and payload size by 70% due to Protobuf binary encoding. Saved millions in bandwidth costs at their scale.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: REST vs gRPC vs GraphQL</h4>
+<ul>
+<li><strong>REST:</strong> Universal, cacheable (HTTP caching), browser-native. Overhead: over-fetching, multiple round trips, no typing.</li>
+<li><strong>gRPC:</strong> 10x faster (Protobuf), strong typing, streaming, code-gen. Overhead: browser support limited (needs proxy), not human-readable.</li>
+<li><strong>GraphQL:</strong> Client controls data shape, single endpoint, no over-fetching. Overhead: N+1 problem (use DataLoader), complex caching, no HTTP caching.</li>
+<li><strong>Decision:</strong> Public API = REST. Internal high-throughput = gRPC. BFF with diverse clients = GraphQL.</li>
+</ul></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Default to REST for external APIs and gRPC for internal microservice communication in your designs. Say: "External clients use REST (universal, cacheable via CDN), while internal services use gRPC for lower latency and strong typing via Protobuf contracts."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.3.4 REST API Maturity (Richardson Model)</h3><span class="badge">Essential</span></div><div class="card-body">
+<ul>
+<li><strong>Level 0:</strong> Single endpoint, RPC-style (POST /api)</li>
+<li><strong>Level 1:</strong> Resources (/users, /orders)</li>
+<li><strong>Level 2:</strong> HTTP verbs (GET, POST, PUT, DELETE) + status codes</li>
+<li><strong>Level 3:</strong> HATEOAS - hypermedia links in responses</li>
+</ul>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When designing REST APIs in interviews, aim for Level 2 (resources + proper HTTP verbs + status codes). Mention HATEOAS awareness but note it's rarely implemented in practice. What matters: consistent resource naming, proper status codes (201 Created, 404, 409 Conflict), and idempotent PUT/DELETE.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.3.5 Idempotency</h3><span class="badge">Essential</span></div><div class="card-body">
+<pre><code>// Idempotency Key - safe retries for non-idempotent operations
+POST /api/payments
+Headers: Idempotency-Key: "uuid-12345-unique-per-request"
+// Server: check if key processed before. If yes, return the cached response.
+// Implementation: store key + response in Redis with TTL (24h).
+// GET/PUT/DELETE are naturally idempotent; POST is not -> needs a key.</code></pre>
+<div class="see-also">→ Pagination is covered in <a href="4.3-networking.html">4.3.8 Cursor-Based Pagination</a> and API versioning in <a href="4.3-networking.html">4.3.9 API Versioning</a> (both below).</div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention idempotency keys for payment/order APIs — it signals production experience: "We put idempotency keys on POST /payments so a network retry doesn't double-charge; the server stores the key + response in Redis for 24h and replays the cached response on a repeat."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.3.6 Error Response Standard (RFC 7807)</h3><span class="badge">Essential</span></div><div class="card-body">
+<pre><code>// Consistent error format across all APIs
+{
+  "type": "https://api.myapp.com/errors/insufficient-funds",
+  "title": "Insufficient Funds",
+  "status": 422,
+  "detail": "Account balance .50 is less than transfer amount .00",
+  "instance": "/api/transfers/txn-abc123",
+  "traceId": "00-abc123-def456-01"
+}</code></pre>
+<div class="see-also">→ For the full REST vs gRPC vs GraphQL comparison, see <a href="4.3-networking.html">4.3.3 API Communication Comparison</a> above.</div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.3.7 Webhooks</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> Instead of the client polling for updates, the server pushes events to a client-provided callback URL when something happens. "When this order ships, POST the tracking info to this URL."</p>
+
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Third-party integrations (Stripe payment events, GitHub push events, Slack notifications)</li>
+<li>Any system where the server knows when something happens and clients need to be notified</li>
+<li>Replacing expensive polling (checking every 5 seconds vs getting pushed instantly)</li>
+</ul>
+
+<p><strong>Trade-offs:</strong></p>
+<table>
+<tr><th>Advantage</th><th>Disadvantage</th></tr>
+<tr><td>Real-time notification without polling</td><td>Client must expose a publicly accessible URL</td></tr>
+<tr><td>Reduces server load (no repeated poll requests)</td><td>Delivery not guaranteed (client may be down)</td></tr>
+<tr><td>Simple HTTP POST — no special protocol</td><td>Requires retry logic, idempotency keys, signature verification</td></tr>
+</table>
+
+<pre><code>// Webhook best practices:
+// 1. Include a signature header for verification (HMAC-SHA256)
+// 2. Implement retry with exponential backoff (1s, 5s, 30s, 5min, 1hr)
+// 3. Include an idempotency key so receivers can deduplicate
+// 4. Use a dead-letter queue for permanently failed deliveries
+// 5. Allow receivers to return 2xx quickly, process async
+
+// Example webhook payload from a payment system:
+// POST https://merchant.com/webhooks/payments
+// Headers:
+//   X-Signature: sha256=abc123...
+//   X-Idempotency-Key: evt_12345
+//   Content-Type: application/json
+// Body:
+// {
+//   "event": "payment.completed",
+//   "data": { "orderId": "ord_789", "amount": 99.99, "currency": "USD" },
+//   "timestamp": "2024-01-15T10:30:00Z"
+// }</code></pre>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When designing any event notification system, mention webhook best practices: HMAC signature verification, exponential backoff retries, idempotency keys, and a dead-letter queue for failed deliveries. This shows you've built production integrations, not just consumed APIs.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.3.8 Cursor-Based Pagination</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> Return results in pages using an opaque cursor (typically an encoded pointer to the last item) rather than offset/limit. The client passes the cursor to get the next page.</p>
+
+<table>
+<tr><th>Approach</th><th>How It Works</th><th>Pros</th><th>Cons</th></tr>
+<tr><td><strong>Offset-Based</strong></td><td><code>?page=5&amp;limit=20</code> → OFFSET 80 LIMIT 20</td><td>Simple, can jump to any page</td><td>Slow for deep pages (DB scans skipped rows), inconsistent with live inserts</td></tr>
+<tr><td><strong>Cursor-Based</strong></td><td><code>?after=eyJpZCI6MTAwfQ&amp;limit=20</code> → WHERE id &gt; 100 LIMIT 20</td><td>Fast (indexed seek), stable under inserts/deletes</td><td>Can't jump to arbitrary page, cursor is opaque</td></tr>
+<tr><td><strong>Keyset-Based</strong></td><td><code>?after_id=100&amp;limit=20</code> (non-encoded cursor)</td><td>Same as cursor but transparent</td><td>Exposes internal IDs, multi-column keys are complex</td></tr>
+</table>
+
+<pre><code>// Cursor pagination implementation:
+// 1. Client requests: GET /api/posts?limit=20
+// 2. Server returns: { items: [...20 posts...], nextCursor: "eyJpZCI6MTIzfQ==" }
+// 3. Client requests: GET /api/posts?limit=20&amp;after=eyJpZCI6MTIzfQ==
+// 4. Server decodes cursor → { id: 123 } → WHERE id > 123 ORDER BY id LIMIT 20
+
+// Why cursor is better for infinite scroll / timelines:
+// - Offset page 1000: SELECT * FROM posts OFFSET 20000 LIMIT 20 (scans 20000 rows!)
+// - Cursor page 1000: SELECT * FROM posts WHERE id > 12345 LIMIT 20 (index seek!)</code></pre>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When an interviewer asks about pagination, immediately say "cursor-based" and explain why: "Offset pagination degrades at scale — OFFSET 10000 scans and discards 10K rows. Cursor pagination uses an indexed WHERE clause, giving O(1) seek regardless of page depth. Essential for feeds and timelines."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.3.9 API Versioning</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> Maintain multiple versions of an API simultaneously so existing clients continue working when the API evolves.</p>
+
+<table>
+<tr><th>Strategy</th><th>Example</th><th>Pros</th><th>Cons</th></tr>
+<tr><td><strong>URL Path</strong></td><td><code>/api/v1/users</code>, <code>/api/v2/users</code></td><td>Explicit, easy to route, cache-friendly</td><td>URL pollution, clients must change URLs to upgrade</td></tr>
+<tr><td><strong>Header</strong></td><td><code>Accept: application/vnd.api+json;version=2</code></td><td>Clean URLs, follows HTTP semantics</td><td>Hidden, harder to test in browser, easy to forget</td></tr>
+<tr><td><strong>Query Param</strong></td><td><code>/api/users?version=2</code></td><td>Easy to test, explicit</td><td>Messy URLs, not RESTful</td></tr>
+<tr><td><strong>Content Negotiation</strong></td><td><code>Accept: application/vnd.company.v2+json</code></td><td>Most RESTful approach</td><td>Complex to implement and document</td></tr>
+</table>
+
+<div class="interview-tip"><h4>Interview Tip</h4><p>In system design interviews, when designing APIs mention: (1) versioning strategy (URL path is most common in practice), (2) pagination approach (cursor for feeds/timelines, offset for admin dashboards with page jumps), and (3) rate limiting. These show you think about API evolution and real-world usage, not just the happy path.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.3.10 Long Polling</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> Client sends a request, server holds it open until new data is available (or timeout). Once data arrives, server responds. Client immediately sends a new request. Simulates real-time push over standard HTTP.</p>
+
+<pre><code>// Long Polling flow:
+// 1. Client: GET /api/messages?since=lastMessageId
+// 2. Server: holds connection open (no response yet)
+// 3. ... 30 seconds pass, new message arrives ...
+// 4. Server: responds with new message data
+// 5. Client: immediately sends new GET /api/messages?since=newLastId
+// 6. Repeat
+
+// Server-side (Spring Boot):
+@GetMapping("/messages")
+public DeferredResult&lt;List&lt;Message&gt;&gt; pollMessages(@RequestParam long since) {
+    DeferredResult&lt;List&lt;Message&gt;&gt; result = new DeferredResult&lt;&gt;(30000L); // 30s timeout
+    
+    // Check if messages already available
+    List&lt;Message&gt; pending = messageService.getAfter(since);
+    if (!pending.isEmpty()) {
+        result.setResult(pending);
+    } else {
+        // Register listener - will complete when new message arrives
+        messageService.addListener(since, result::setResult);
+    }
+    
+    result.onTimeout(() -&gt; result.setResult(Collections.emptyList()));
+    return result;
+}</code></pre>
+
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Simple real-time needs without WebSocket infrastructure</li>
+<li>Works through firewalls/proxies that block WebSocket upgrades</li>
+<li>Low-frequency updates (notifications, status changes)</li>
+</ul>
+
+<p><strong>When NOT to use:</strong></p>
+<ul>
+<li>High-frequency bidirectional communication (use WebSockets)</li>
+<li>Streaming large data (use SSE or WebSockets)</li>
+<li>Many concurrent users — each holds a connection open</li>
+</ul>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Slack (early days):</strong> Used long polling for real-time messages before migrating to WebSockets. The client held an open HTTP request; when a new message arrived in the channel, the server responded immediately. Scaled to millions of connections but eventually migrated to WebSockets for lower overhead.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention long polling as a fallback when WebSockets aren't feasible (corporate firewalls, proxy servers that strip upgrade headers). "Our primary real-time channel is WebSocket, with long polling as a fallback for restricted network environments."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.3.11 Server-Sent Events (SSE)</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> Server pushes events to the client over a single long-lived HTTP connection. Unidirectional (server to client only). Client opens a connection, server sends events as they occur. Built on standard HTTP — no protocol upgrade needed.</p>
+
+<pre><code>// SSE vs WebSocket vs Long Polling comparison:
+// SSE:         Server → Client only, auto-reconnect, HTTP-native, text only
+// WebSocket:   Bidirectional, manual reconnect, protocol upgrade, binary + text
+// Long Polling: Simulated push, new connection per message, high overhead
+
+// Server-side SSE (Spring Boot):
+@GetMapping(value = "/stream/orders", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+public Flux&lt;ServerSentEvent&lt;Order&gt;&gt; streamOrders() {
+    return orderService.getOrderStream()
+        .map(order -&gt; ServerSentEvent.&lt;Order&gt;builder()
+            .id(order.getId())
+            .event("order-update")
+            .data(order)
+            .retry(Duration.ofSeconds(5))  // client auto-reconnects after 5s
+            .build());
+}
+
+// Client-side JavaScript:
+// const eventSource = new EventSource('/stream/orders');
+// eventSource.addEventListener('order-update', (e) =&gt; {
+//     const order = JSON.parse(e.data);
+//     updateUI(order);
+// });
+// eventSource.onerror = () =&gt; { /* auto-reconnects by default */ };</code></pre>
+
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Live dashboards, stock tickers, sports scores (server pushes updates)</li>
+<li>Notification feeds (one-way: server to browser)</li>
+<li>Progress updates for long-running operations</li>
+<li>When you need auto-reconnect (SSE has it built-in, WebSocket doesn't)</li>
+</ul>
+
+<div class="trade-off-box"><h4>Trade-off: Choosing the Right Real-Time Pattern</h4>
+<table>
+<tr><th>Pattern</th><th>Direction</th><th>Connection</th><th>Reconnect</th><th>Protocol</th><th>Best For</th></tr>
+<tr><td><strong>Short Polling</strong></td><td>Client → Server</td><td>New per request</td><td>N/A</td><td>HTTP</td><td>Simple, infrequent checks</td></tr>
+<tr><td><strong>Long Polling</strong></td><td>Server → Client (simulated)</td><td>Held open, renewed</td><td>Manual</td><td>HTTP</td><td>Compatibility, low-frequency</td></tr>
+<tr><td><strong>SSE</strong></td><td>Server → Client</td><td>Single persistent</td><td>Automatic</td><td>HTTP</td><td>Live feeds, notifications</td></tr>
+<tr><td><strong>WebSocket</strong></td><td>Bidirectional</td><td>Single persistent</td><td>Manual</td><td>WS (upgrade)</td><td>Chat, gaming, collaboration</td></tr>
+<tr><td><strong>gRPC Stream</strong></td><td>Bidirectional</td><td>Single persistent (HTTP/2)</td><td>Manual</td><td>gRPC</td><td>Service-to-service streaming</td></tr>
+</table>
+</div>
+
+<div class="interview-tip"><h4>Interview Tip</h4><p>When designing notification systems or live feeds, mention SSE first — it's simpler, HTTP-native, auto-reconnects, and works through CDNs. Reserve WebSockets for truly bidirectional needs (chat, multiplayer). Interviewers appreciate when you pick the simpler tool that fits rather than defaulting to WebSockets for everything.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.3.12 WebSockets &amp; Scaling</h3><span class="badge">Critical</span></div><div class="card-body">
+<pre><code>// WebSocket: upgrade an HTTP connection to a full-duplex TCP channel.
+// Pro: lowest latency, bidirectional, binary + text frames.
+// Con: stateful (connection state per client), not CDN-cacheable, more infra.
+// Use: chat, multiplayer gaming, collaborative editing, trading platforms.
+
+// Scaling WebSockets (the part interviewers probe):
+// Problem: user is connected to Server A, but a message for them arrives at Server B.
+// Solution: a pub/sub backbone (Redis Pub/Sub or Kafka) between the servers.
+//   1. Server B receives the message -> publishes to channel "user:{id}"
+//   2. Server A (where the user's socket lives) is subscribed -> pushes over the socket
+// Also need: sticky sessions (or a connection registry mapping userId -> server),
+//   heartbeats/ping-pong to detect dead connections, and backpressure on slow clients.</code></pre>
+<div class="trade-off-box"><h4>Trade-off</h4><p>WebSocket gives the lowest latency and true bidirectionality, but every connection is stateful — horizontal scaling needs sticky routing plus a pub/sub fanout so any server can reach any client. SSE avoids all of that (stateless-ish, auto-reconnect, CDN-friendly) but is one-way. Default to SSE unless the client must also push.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Slack:</strong> Uses WebSocket for real-time messaging (bidirectional — typing indicators need client→server too), falling back to long polling on restrictive corporate proxies. Presence (online/away) rides the same socket via lightweight heartbeats, so presence adds no extra connections.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Lead with the scaling answer: "WebSocket connections are stateful, so I'd put a connection registry (userId → server) and a Redis/Kafka pub/sub layer between socket servers — a message arriving anywhere is published and delivered to whichever server holds that user's socket. Sticky sessions at the LB keep a client pinned to its server." See the comparison table in 4.3.11 for choosing between polling / SSE / WebSocket.</p></div>
+</div></div>
+
+<div class="page-nav">
+<a href="4.2-architecture-patterns.html">&#8592; Previous: 4.2 Architecture Patterns</a>
+<a href="4.4-load-balancing.html">Next: 4.4 Load Balancing &#8594;</a>
+</div>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

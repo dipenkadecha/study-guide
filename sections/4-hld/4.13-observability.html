@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.13 Observability - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-observability" class="section-block section-s4"><h2 class="section-title"><span class="section-num">4.13</span>Observability & Monitoring</h2>
+<div class="card"><div class="card-header"><h3>4.13.1 Three Pillars of Observability</h3><span class="badge">Operations</span></div><div class="card-body">
+<pre><code>// 1. Structured Logging
+log.atInfo()
+    .addKeyValue("orderId", orderId)
+    .addKeyValue("customerId", customerId)
+    .addKeyValue("duration_ms", duration)
+    .addKeyValue("traceId", MDC.get("traceId"))
+    .log("Order processed successfully");
+// Output: {"timestamp":"...","level":"INFO","orderId":"123","traceId":"abc",...}
+
+// 2. Metrics (RED Method for services)
+// Rate: requests/second
+// Errors: error rate (4xx, 5xx)
+// Duration: latency percentiles (p50, p95, p99)
+@Timed(value = "order.create", percentiles = {0.5, 0.95, 0.99})
+public Order createOrder(OrderRequest req) { ... }
+
+// 3. Distributed Tracing (OpenTelemetry)
+// Trace -> Spans -> parent/child relationship across services
+// Propagation: W3C TraceContext header (traceparent: 00-traceId-spanId-01)
+// Tools: Jaeger, Zipkin, AWS X-Ray, Datadog APM</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Uber:</strong> Jaeger (distributed tracing, which Uber created) traces a single ride request across 50+ microservices. Each service adds a span. When a rider reports "ride took 3 minutes to match," engineers search traces by ride_id to find exactly which service added latency — was it matching algorithm, driver notification, or fraud check?</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Logs vs Metrics vs Traces — Logs: rich detail but expensive at scale (storage, indexing). Metrics: cheap (numbers, aggregatable) but no context on individual requests. Traces: show full request path but sampling needed at scale (100% tracing is prohibitively expensive). Use all three together: metrics detect, logs diagnose, traces pinpoint.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When asked about observability: 'Every service emits structured logs (JSON, correlation_id), RED metrics (Rate, Errors, Duration), and distributed traces (OpenTelemetry). Grafana dashboard shows service health. Alerts fire on p99 latency > 500ms or error rate > 1%. On-call uses traces to identify which downstream service caused the spike.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.13.2 Monitoring Methodologies</h3><span class="badge">Operations</span></div><div class="card-body">
+<table><tr><th>Method</th><th>Metrics</th><th>Best For</th></tr>
+<tr><td>RED</td><td>Rate, Errors, Duration</td><td>Request-driven services (APIs, microservices)</td></tr>
+<tr><td>USE</td><td>Utilization, Saturation, Errors</td><td>Infrastructure resources (CPU, disk, network)</td></tr>
+<tr><td>Golden Signals</td><td>Latency, Traffic, Errors, Saturation</td><td>Google SRE approach (comprehensive)</td></tr>
+</table>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Know USE (Utilization, Saturation, Errors) for infrastructure and RED (Rate, Errors, Duration) for services. In interviews: 'I monitor infrastructure with USE method — is the CPU saturated? Is the disk queue full? For microservices I use RED — what's the request rate, error rate, and latency distribution?'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.13.3 SLI / SLO / SLA</h3><span class="badge">Operations</span></div><div class="card-body">
+<table><tr><th>Term</th><th>Definition</th><th>Example</th></tr>
+<tr><td>SLI (Indicator)</td><td>Metric measuring service quality</td><td>p99 latency, error rate, availability</td></tr>
+<tr><td>SLO (Objective)</td><td>Target value for SLI</td><td>p99 latency &lt; 200ms, availability 99.95%</td></tr>
+<tr><td>SLA (Agreement)</td><td>Contract with consequences if SLO breached</td><td>99.9% uptime or credits issued</td></tr>
+<tr><td>Error Budget</td><td>Allowed unreliability (100% - SLO)</td><td>99.9% SLO = 43.8 min/month budget</td></tr>
+</table>
+<div class="interview-tip"><h4>Interview Tip</h4><p>State your SLO concretely: 'Our SLO is 99.9% of requests complete successfully within 200ms, measured over a 30-day rolling window. Error budget = 0.1% = ~43 minutes of downtime/month. When budget is exhausted, we freeze deployments and focus on reliability.' Shows you can translate reliability into business terms.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.13.4 Alerting Best Practices</h3><span class="badge">Operations</span></div><div class="card-body">
+<pre><code>// Alert on symptoms, not causes
+// BAD: Alert on CPU > 80% (cause)
+// GOOD: Alert on p99 latency > SLO (symptom users feel)
+
+// Runbook-linked alerts:
+// Every alert should have: what it means, impact, investigation steps, remediation
+// Severity levels: P1 (revenue impact, page immediately), P2 (degraded, page in hours), P3 (investigate next business day)
+
+// Error Budget Burn Rate alerting:
+// Fast burn: consuming 2% of monthly budget in 1 hour -> page
+// Slow burn: consuming 5% of monthly budget in 6 hours -> ticket</code></pre>
+<div class="production-insight"><h4>Production Insight</h4><p>Set SLOs tighter than SLAs. If SLA promises 99.9%, set internal SLO at 99.95%. The gap is your safety margin. When error budget is exhausted, freeze feature work and focus on reliability.</p></div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Sensitive alerts (low threshold) catch real issues faster but generate alert fatigue from false positives. Conservative alerts (high threshold) reduce noise but miss slow degradations. Best practice: multi-window alerting — short window (5min) for severe issues, long window (1h) for gradual degradation. Separate paging alerts (SLO-burning) from informational ones.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Describe your alerting philosophy: 'We alert on symptoms, not causes. Page on: error rate > 1% for 5 minutes (user-facing impact), p99 > 2s (SLO breach), error budget burn rate > 10x (will exhaust budget in 3 days). We DON'T page on: high CPU (a cause, not a symptom) unless it correlates with user impact.'</p></div>
+</div></div>
+
+<div class="page-nav">
+<a href="4.12-security.html">&#8592; Previous: 4.12 Security</a>
+<a href="4.14-cloud.html">Next: 4.14 Cloud &#8594;</a>
+</div>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.19 Consistency - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-consistency" class="section-block section-s4">
+<h2 class="section-title"><span class="section-num">4.19</span>Data Consistency Patterns</h2>
+<div class="card"><div class="card-header"><h3>4.19.1 Two-Phase Commit (2PC)</h3><span class="badge">Critical</span></div><div class="card-body">
+<pre><code>// 2PC: Coordinator asks all participants to prepare, then commit
+// Phase 1 (Prepare): Coordinator -> "Can you commit?" -> All vote YES/NO
+// Phase 2 (Commit): If all YES -> Coordinator -> "Commit" -> All commit
+// Problem: Blocking protocol. If coordinator crashes after prepare, participants stuck.
+// Use case: Single database with XA transactions. Avoid across microservices.</code></pre>
+<div class="trade-off-box"><h4>Trade-off</h4><p>2PC guarantees atomicity across services but is blocking — if coordinator crashes after prepare, participants hold locks indefinitely. Also slow (2 round-trips). Alternative: Saga pattern (non-blocking, compensating transactions) for most distributed scenarios. Use 2PC only within a single database (XA transactions) or when atomicity is absolutely required and latency is acceptable.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Spanner (Google):</strong> Uses 2PC internally for cross-shard transactions, but with TrueTime clock to avoid the blocking problem. For mortals: MySQL XA transactions coordinate across two MySQL instances within the same datacenter. Outside Google, most companies avoid 2PC for cross-service transactions — they use Saga/Outbox instead.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Know when NOT to use 2PC: "For cross-service transactions, 2PC is fragile (coordinator SPOF, blocking on failure). I'd use the Saga pattern instead — each step has a compensating action. For cross-shard within one database (e.g., transfer money between two MySQL shards), 2PC is acceptable because the coordinator is the application itself with known recovery behavior."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.19.2 Saga Pattern</h3><span class="badge">Critical</span></div><div class="card-body">
+<pre><code>// Saga: sequence of local transactions with compensating actions on failure
+// Orchestration: Central coordinator directs each step
+// Choreography: Each service publishes events, next service reacts
+
+// Example: Order Saga (Orchestration)
+// 1. CreateOrder -> 2. ReserveInventory -> 3. ProcessPayment -> 4. ShipOrder
+// If step 3 fails: compensate step 2 (ReleaseInventory) + step 1 (CancelOrder)
+
+@Service
+public class OrderSagaOrchestrator {
+    public void execute(OrderRequest req) {
+        try {
+            Order order = orderService.create(req);              // Step 1
+            inventoryService.reserve(order.items());              // Step 2
+            paymentService.charge(order.total());                 // Step 3
+        } catch (PaymentException e) {
+            inventoryService.release(order.items());              // Compensate 2
+            orderService.cancel(order.id());                      // Compensate 1
+            throw new SagaFailedException(e);
+        }
+    }
+}</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Uber:</strong> Ride completion uses orchestrated saga: (1) charge rider → (2) pay driver → (3) update trip record → (4) emit analytics event. If payment fails at step 1, compensating action cancels the ride charge. Cadence/Temporal workflow engine manages saga state and retries — handles 100K+ concurrent sagas.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Choreography vs Orchestration: Choreography (events between services, no central controller) is more decoupled but harder to reason about (implicit workflow, hard to debug). Orchestration (central coordinator directs steps) is easier to understand and monitor but coordinator is a coupling point. Use orchestration for complex flows (>4 steps) and choreography for simple 2-3 step flows.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Always mention compensation: "Order saga: reserve inventory → charge payment → confirm order. If payment fails, compensation runs: release inventory. Each step is idempotent, each compensation is idempotent. We use an orchestrator (Temporal/Cadence) that tracks saga state and triggers compensations on failure — no manual intervention needed."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.19.3 Outbox Pattern</h3><span class="badge">Critical</span></div><div class="card-body">
+<pre><code>// Problem: DB write + event publish must be atomic (dual write problem)
+// If DB saves but Kafka publish fails -> inconsistency
+
+// Solution: Write event to "outbox" table in same DB transaction
+// Separate process (CDC/poller) reads outbox and publishes to Kafka
+@Transactional
+public void createOrder(OrderRequest req) {
+    Order order = orderRepo.save(Order.from(req));
+    outboxRepo.save(new OutboxEvent("OrderCreated", order.id(), serialize(order)));
+    // Both in same transaction - atomic!
+}
+
+// Debezium CDC connector reads outbox table changes -> publishes to Kafka
+// After successful publish, marks outbox entry as processed</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Zalando:</strong> Uses Transactional Outbox with Debezium CDC. Order service writes order + outbox event in same PostgreSQL transaction. Debezium tails the WAL, picks up outbox entries, publishes to Kafka. Guarantees no lost events even if Kafka is temporarily down — the outbox acts as a durable buffer.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>Outbox Pattern solves dual-write (DB + message broker atomicity) but adds complexity: outbox table, CDC/polling job, dedup on consumer side. Alternative: "Listen to yourself" — service publishes event first, then consumes its own event to update DB. Simpler but loses DB transaction guarantee. Outbox is the industry standard for financial/critical operations.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Explain the dual-write problem first: "If I update the DB and publish to Kafka separately, either can fail — leading to inconsistency. Solution: write the event to an outbox table in the SAME DB transaction as the business data. A CDC connector (Debezium) tails the outbox table and publishes to Kafka. Guarantees: if DB commits, event will be published. Consumer must be idempotent (possible duplicates)."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.19.4 Change Data Capture (CDC)</h3><span class="badge">Critical</span></div><div class="card-body">
+<pre><code>// CDC: Capture row-level changes from DB transaction log (WAL/binlog)
+// Tools: Debezium (open-source), AWS DMS, Oracle GoldenGate
+// Use cases: sync databases, feed search index, event sourcing, cache invalidation
+
+// Debezium reads PostgreSQL WAL -> publishes change events to Kafka
+// Each table change becomes: {before: {...}, after: {...}, op: "u", ts_ms: ...}</code></pre>
+<div class="trade-off-box"><h4>Trade-off: 2PC vs Saga vs Outbox</h4>
+<table><tr><th>Pattern</th><th>Consistency</th><th>Performance</th><th>Complexity</th><th>Use When</th></tr>
+<tr><td>2PC</td><td>Strong (ACID)</td><td>Slow (blocking)</td><td>Low</td><td>Single DB, XA transactions</td></tr>
+<tr><td>Saga</td><td>Eventual</td><td>Good (async)</td><td>High (compensations)</td><td>Cross-service workflows</td></tr>
+<tr><td>Outbox + CDC</td><td>Eventual (reliable)</td><td>Good</td><td>Medium</td><td>Reliable event publishing</td></tr>
+</table></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>LinkedIn:</strong> Uses Databus (internal CDC) to stream database changes to search indexes, caches, and analytics. When a profile is updated in MySQL, the change propagates to Elasticsearch (search), Espresso cache (profile views), and Hadoop (analytics) — all within seconds. Single source of truth (MySQL), multiple derived views kept in sync via CDC.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention CDC for any "keep systems in sync" requirement: "Rather than dual-writing to both the database and search index, I'd use CDC (Debezium) to capture every committed change from PostgreSQL's WAL and stream it to Kafka. Consumers update Elasticsearch, Redis cache, and analytics warehouse independently. This ensures all derived systems are consistent with the primary database."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.19.5 Eventual Consistency Variants</h3><span class="badge">Advanced</span></div><div class="card-body">
+<table><tr><th>Model</th><th>Guarantee</th><th>Example</th></tr>
+<tr><td>Read-your-writes</td><td>Client always sees its own writes</td><td>After updating profile, user sees new name immediately</td></tr>
+<tr><td>Monotonic reads</td><td>Never see older data after seeing newer</td><td>Chat messages never appear to go backwards in time</td></tr>
+<tr><td>Causal consistency</td><td>Causally related writes seen in order</td><td>Reply always appears after the original message</td></tr>
+<tr><td>Session consistency</td><td>Guarantees within a session only</td><td>Shopping cart consistent within one browser session</td></tr>
+</table>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.19.6 CRDTs (Conflict-free Replicated Data Types)</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// CRDTs: data structures that can be replicated across nodes and merged
+// without coordination - mathematically guaranteed to converge
+// No consensus needed! Each node updates independently, merges resolve automatically.
+
+// Types:
+// G-Counter: grow-only counter (each node has own counter, sum = total)
+// PN-Counter: positive-negative counter (two G-Counters)
+// G-Set: grow-only set (union for merge)
+// OR-Set: observed-remove set (add wins over remove)
+// LWW-Register: last-writer-wins by timestamp
+
+// Use cases: collaborative editing (Google Docs), shopping cart (Amazon),
+// distributed counters (like counts), offline-first apps
+
+// Example: G-Counter (each node increments its own slot)
+// Node A: {A:3, B:0, C:0} -> value = 3
+// Node B: {A:0, B:5, C:0} -> value = 5
+// Merge:  {A:3, B:5, C:0} -> value = 8 (take max per node)
+// No conflicts possible! Commutative, associative, idempotent.</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Figma:</strong> Uses CRDTs for real-time collaborative design. Multiple designers edit the same canvas simultaneously — each change is a CRDT operation that auto-merges without conflicts. No central server needed for conflict resolution. Also used by Apple Notes, Redis (CRDB), and Riak for multi-region replication.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off</h4><p>CRDTs guarantee eventual convergence without coordination but: limited data types (counters, sets, registers — not arbitrary business logic), higher storage overhead (metadata for conflict resolution), and semantic conflicts (counter can go negative in some implementations). Use for: collaborative editing, distributed counters, shopping carts. Don't use for: complex business rules requiring invariants.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Use CRDTs when offline/multi-region writes are needed: "Shopping cart is a OR-Set CRDT — items added in any region merge without conflicts. Likes counter is a G-Counter CRDT — each replica counts independently, sum gives total. For the collaborative whiteboard, we'd use an RGA (Replicated Growable Array) CRDT for the element list — supports insert/delete without central coordination."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.19.7 Quorum Reads/Writes</h3><span class="badge">Advanced</span></div><div class="card-body">
+<pre><code>// Quorum: R + W > N ensures overlap between read and write sets
+// N=3 replicas, W=2 (write to 2), R=2 (read from 2)
+// At least 1 node has latest write -> client picks highest version
+
+// Tuning:
+// W=1, R=3: Fast writes, slow reads (write-heavy: IoT sensors)
+// W=3, R=1: Slow writes, fast reads (read-heavy: product catalog)
+// W=2, R=2: Balanced (most common)
+
+// Sloppy Quorum: during partition, write to ANY available nodes (not just replicas)
+// Hinted Handoff: temporarily store writes for unavailable nodes, forward when back
+// Read Repair: on read, if replicas disagree, update stale ones</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Strong vs Eventual Consistency</h4>
+<ul>
+<li><strong>Strong (linearizable):</strong> Simple programming model, higher latency (cross-node coordination), lower availability during partitions. Use: banking, inventory counts, seat booking.</li>
+<li><strong>Eventual (CRDTs/quorum):</strong> High availability, low latency, complex conflict resolution. Use: social feeds, shopping carts, counters, collaborative docs.</li>
+<li><strong>Key question in interview:</strong> "What happens if two users edit simultaneously?" If answer is "one wins" -> LWW. If "both preserved" -> CRDTs/merge.</li>
+</ul></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Cassandra:</strong> Default replication_factor=3 with QUORUM consistency = write to 2/3 replicas, read from 2/3 replicas. Guarantees overlap (at least one node has latest value). For cross-DC: LOCAL_QUORUM = quorum within local datacenter only (fast) + async replication to remote DC. Tunable per-query: ONE for analytics reads (fast, possibly stale), QUORUM for user-facing (consistent).</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Explain the math: "With N=3 replicas, W=2 writes, R=2 reads: W+R > N guarantees we read at least one up-to-date replica. Trade-off: higher W = more durable writes but slower. Higher R = more consistent reads but slower. Common configs: (W=2, R=2) for balanced, (W=3, R=1) for read-heavy workloads that need consistency without read overhead."</p></div>
+</div></div>
+</div>
+
+<div class="page-nav">
+<a href="4.18-system-design-problems.html">&#8592; Previous: 4.18 SD Problems</a>
+<a href="4.20-microservices.html">Next: 4.20 Microservices &#8594;</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

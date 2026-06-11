@@ -1,0 +1,228 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.11 Resilience - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">SD Concepts Index</a></li>
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-resilience" class="section-block section-s4"><h2 class="section-title"><span class="section-num">4.11</span>Reliability & Resilience</h2>
+<div class="card"><div class="card-header"><h3>4.11.1 Resilience Patterns Overview</h3><span class="badge">Resilience</span></div><div class="card-body">
+<div class="diagram-container">
+<svg viewBox="0 0 550 100" xmlns="http://www.w3.org/2000/svg">
+<rect x="5" y="25" width="90" height="50" rx="8" fill="#1e293b" stroke="#ef4444"/>
+<text x="50" y="45" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="bold">Circuit</text>
+<text x="50" y="58" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="bold">Breaker</text>
+<text x="50" y="70" text-anchor="middle" fill="#94a3b8" font-size="6">Stop cascading</text>
+<rect x="105" y="25" width="80" height="50" rx="8" fill="#1e293b" stroke="#f59e0b"/>
+<text x="145" y="45" text-anchor="middle" fill="#f59e0b" font-size="8" font-weight="bold">Retry</text>
+<text x="145" y="60" text-anchor="middle" fill="#94a3b8" font-size="6">Transient errors</text>
+<rect x="195" y="25" width="80" height="50" rx="8" fill="#1e293b" stroke="#10b981"/>
+<text x="235" y="45" text-anchor="middle" fill="#10b981" font-size="8" font-weight="bold">Timeout</text>
+<text x="235" y="60" text-anchor="middle" fill="#94a3b8" font-size="6">Bound latency</text>
+<rect x="285" y="25" width="80" height="50" rx="8" fill="#1e293b" stroke="#3b82f6"/>
+<text x="325" y="45" text-anchor="middle" fill="#3b82f6" font-size="8" font-weight="bold">Bulkhead</text>
+<text x="325" y="60" text-anchor="middle" fill="#94a3b8" font-size="6">Isolate failures</text>
+<rect x="375" y="25" width="80" height="50" rx="8" fill="#1e293b" stroke="#8b5cf6"/>
+<text x="415" y="45" text-anchor="middle" fill="#8b5cf6" font-size="8" font-weight="bold">Fallback</text>
+<text x="415" y="60" text-anchor="middle" fill="#94a3b8" font-size="6">Degrade gracefully</text>
+<rect x="465" y="25" width="80" height="50" rx="8" fill="#1e293b" stroke="#06b6d4"/>
+<text x="505" y="45" text-anchor="middle" fill="#06b6d4" font-size="8" font-weight="bold">Rate Limit</text>
+<text x="505" y="60" text-anchor="middle" fill="#94a3b8" font-size="6">Protect capacity</text>
+</svg>
+</div>
+<pre><code>// Retry with Exponential Backoff + Jitter (prevent thundering herd)
+public &lt;T&gt; T retryWithBackoff(Supplier&lt;T&gt; operation, int maxRetries) {
+    int attempt = 0;
+    while (true) {
+        try {
+            return operation.get();
+        } catch (TransientException e) {
+            if (++attempt >= maxRetries) throw e;
+            long baseDelay = (long) Math.pow(2, attempt) * 100; // 200, 400, 800ms
+            long jitter = ThreadLocalRandom.current().nextLong(baseDelay / 2);
+            Thread.sleep(baseDelay + jitter); // Jitter prevents synchronized retries
+        }
+    }
+}
+
+// Bulkhead: isolate thread pools per dependency
+// If PaymentService is slow, it doesn't exhaust threads for OrderService
+@Bean("paymentExecutor")
+public Executor paymentExecutor() {
+    return new ThreadPoolExecutor(5, 10, 60, TimeUnit.SECONDS,
+        new LinkedBlockingQueue&lt;&gt;(100)); // Max 10 threads for payment calls
+}
+
+@Bean("shippingExecutor")
+public Executor shippingExecutor() {
+    return new ThreadPoolExecutor(5, 10, 60, TimeUnit.SECONDS,
+        new LinkedBlockingQueue&lt;&gt;(100)); // Separate pool for shipping
+}</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Netflix:</strong> Circuit breakers (Hystrix/Resilience4j) protect against cascading failures. When the recommendation service latency exceeds 500ms, circuit opens — returns cached/default recommendations instantly. Fallback serves 95th-percentile quality while preventing the slow service from taking down the entire page load for 200M+ users.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: Resilience vs Complexity</h4><p>Each resilience pattern (circuit breaker, bulkhead, retry) adds code, configuration, and failure modes. Over-engineering with all patterns on every call creates complexity that's harder to debug than the failures it prevents. Apply resilience patterns at service boundaries (external calls), not internal method calls.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Layer resilience patterns together: "External service calls get: timeout (2s) → retry (3x with exponential backoff + jitter) → circuit breaker (opens after 5 failures in 30s) → fallback (cached/default response). This ensures graceful degradation without cascading failures." Show the full chain, not just one pattern.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.11.2 Chaos Engineering</h3><span class="badge">Resilience</span></div><div class="card-body">
+<pre><code>// Principles of Chaos Engineering (Netflix):
+// 1. Define steady state (normal metrics baseline)
+// 2. Hypothesize: "system continues working when X fails"
+// 3. Inject failure in production (controlled blast radius)
+// 4. Observe: does it match hypothesis?
+
+// Tools:
+// - Chaos Monkey: randomly kills instances
+// - Litmus Chaos: K8s-native chaos experiments
+// - Toxiproxy: inject network latency/failures
+
+// Example experiment: "What happens when Redis cache is unavailable?"
+// Expected: fallback to DB (higher latency, no outage)
+// Inject: block Redis port for 5 minutes in one AZ
+// Observe: latency increases, no errors, circuit breaker trips after 30s</code></pre>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Netflix Chaos Monkey:</strong> Randomly terminates production EC2 instances during business hours. Forces engineers to build systems that tolerate failure by default. Extended to Chaos Kong (simulate entire region failure) and Chaos Automation Platform (game days). LinkedIn and Amazon have adopted similar practices — "if you haven't tested failure, you haven't tested."</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: Timeout Values</h4>
+<ul>
+<li><strong>Too short:</strong> False failures, premature circuit breaks, good requests discarded under load</li>
+<li><strong>Too long:</strong> Thread pool exhaustion, cascading failures, users waiting forever</li>
+<li><strong>Best practice:</strong> Set timeout slightly above p99 latency of dependency. If payment p99=800ms, set timeout=1200ms. Monitor and adjust based on SLOs.</li>
+</ul></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention chaos engineering to show production readiness: "We'd run game days quarterly — inject network latency, kill random pods, simulate region failure. This validates that our circuit breakers, fallbacks, and failover actually work under real conditions rather than just in theory." Shows you think beyond happy-path design.</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.11.3 Failover Patterns</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> Automatically redirect traffic to a standby system when the primary fails. The goal is minimal downtime and data loss.</p>
+
+<table>
+<tr><th>Pattern</th><th>How It Works</th><th>Failover Time</th><th>Cost</th><th>Data Loss Risk</th></tr>
+<tr><td><strong>Active-Passive (Hot Standby)</strong></td><td>Standby receives replicated data but serves no traffic. On failure, DNS/LB switches to standby.</td><td>Seconds to minutes</td><td>2x infrastructure (idle standby)</td><td>Minimal (replication lag)</td></tr>
+<tr><td><strong>Active-Active</strong></td><td>Both nodes serve traffic simultaneously. On failure, surviving node absorbs all traffic.</td><td>Near-zero (already serving)</td><td>2x infrastructure (both active)</td><td>None (both are current)</td></tr>
+<tr><td><strong>Warm Standby</strong></td><td>Standby runs but at reduced capacity. Scaled up on failover.</td><td>Minutes (scaling time)</td><td>1.5x infrastructure</td><td>Minimal</td></tr>
+<tr><td><strong>Pilot Light</strong></td><td>Minimal version of environment always running (DB replicas only). Full infra spun up on failure.</td><td>10-30 minutes</td><td>Low (minimal running)</td><td>Depends on replication</td></tr>
+</table>
+
+<pre><code>// Active-Passive failover with DNS:
+// Normal: app.example.com → Primary (us-east-1)
+// Failure detected (health check fails 3 times)
+// DNS update: app.example.com → Standby (us-west-2)
+// Problem: DNS TTL means some clients still hit dead primary for minutes
+
+// Active-Active with load balancer:
+// app.example.com → Load Balancer → [Node A, Node B]
+// Node A dies → LB removes from pool → all traffic to Node B
+// Failover time: ~10 seconds (next health check interval)
+// Challenge: both nodes must handle full write load (no split-brain writes)</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Active-Active vs Active-Passive</h4><p>Active-Active: near-zero failover time, both regions serve traffic, but requires conflict resolution for writes (multi-leader replication) and 2x cost. Active-Passive: simpler (single writer), cheaper (standby mostly idle), but failover takes seconds-to-minutes (DNS propagation, connection draining). Choose based on RTO requirements and budget.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Netflix:</strong> Runs active-active across 3 AWS regions (us-east-1, us-west-2, eu-west-1). Zuul routes users to nearest region. If us-east-1 fails, traffic automatically shifts to remaining regions within 30 seconds via DNS + health checks. Each region can handle 100% of global traffic (over-provisioned for failover).</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>For high-availability questions: "Active-active across 2 regions with stateless services and eventually-consistent data replication. If Region A fails, DNS health checks detect it within 30s and shift traffic to Region B. The key challenge is data: we use async replication with conflict resolution (last-writer-wins) for non-critical data, and synchronous replication for payment state."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.11.4 Disaster Recovery (RPO / RTO)</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>Key Metrics:</strong></p>
+<table>
+<tr><th>Metric</th><th>Definition</th><th>Question It Answers</th><th>Example</th></tr>
+<tr><td><strong>RPO (Recovery Point Objective)</strong></td><td>Maximum acceptable data loss measured in time</td><td>"How much data can we afford to lose?"</td><td>RPO = 1 hour → backups every hour; lose at most 1 hour of data</td></tr>
+<tr><td><strong>RTO (Recovery Time Objective)</strong></td><td>Maximum acceptable downtime before recovery</td><td>"How fast must we be back online?"</td><td>RTO = 15 min → system must recover within 15 minutes</td></tr>
+</table>
+
+<pre><code>// DR strategies mapped to RPO/RTO:
+//
+// Strategy          | RPO          | RTO           | Cost
+// ─────────────────────────────────────────────────────────
+// Backup &amp; Restore | Hours        | Hours         | $     (cheapest)
+// Pilot Light      | Minutes      | 10-30 min     | $$
+// Warm Standby     | Seconds      | Minutes       | $$$
+// Active-Active    | Zero (sync)  | Near-zero     | $$$$ (most expensive)
+//
+// Choosing: RPO/RTO depends on business impact of downtime
+// - Payment system: RPO=0, RTO=30s (active-active, sync replication)
+// - Blog platform: RPO=24h, RTO=4h (daily backups, manual restore)
+// - E-commerce: RPO=5min, RTO=15min (warm standby, async replication)</code></pre>
+
+<div class="interview-tip"><h4>Interview Tip</h4><p>When discussing high availability in system design, always quantify with RPO/RTO. Say: "For this payment system, we need RPO near zero (no lost transactions) and RTO under 30 seconds. This means active-active with synchronous replication across regions." This shows you think in business requirements, not just technical patterns. Then map: stricter RPO/RTO = more expensive = discuss trade-offs with the interviewer.</p></div>
+<div class="trade-off-box"><h4>Trade-off: Cost vs Recovery Speed</h4><p>Stricter RPO/RTO = exponentially more expensive. RPO=0 requires synchronous cross-region replication (doubles write latency + network costs). RTO=0 requires active-active (2x infrastructure). Most systems accept RPO=5min (async replication) and RTO=15min (warm standby) as a cost-effective middle ground.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>AWS Multi-AZ RDS:</strong> Synchronous replication across Availability Zones (RPO=0 within region). Automatic failover in 60-120 seconds (RTO≈2min). Cross-region read replicas provide RPO=seconds for regional disaster (async replication). Full region failover (Route 53 health check → promote cross-region replica) achieves RTO≈5-10min.</p></div>
+</div></div>
+
+<div class="page-nav">
+<a href="4.10-scalability.html">&#8592; Previous: 4.10 Scalability</a>
+<a href="4.12-security.html">Next: 4.12 Security &#8594;</a>
+</div>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

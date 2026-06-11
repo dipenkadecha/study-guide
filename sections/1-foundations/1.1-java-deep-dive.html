@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1.1 Java Deep Dive - Interview Prep</title>
+<link href="../../assets/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA &amp; Algorithms</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays &amp; Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing &amp; HashMaps</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees &amp; Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps &amp; Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP &amp; Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency Structures</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - Low-Level Design</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID Principles</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational Patterns</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural Patterns</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral Patterns</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing Strategies</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="../../sections/4-hld/4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="../../sections/4-hld/4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="../../sections/4-hld/4.3-networking.html">4.3 Networking &amp; Communication</a></li>
+<li><a href="../../sections/4-hld/4.4-load-balancing.html">4.4 Load Balancing &amp; Traffic</a></li>
+<li><a href="../../sections/4-hld/4.5-databases.html">4.5 Database Design</a></li>
+<li><a href="../../sections/4-hld/4.6-caching.html">4.6 Caching</a></li>
+<li><a href="../../sections/4-hld/4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="../../sections/4-hld/4.8-messaging.html">4.8 Messaging &amp; Async</a></li>
+<li><a href="../../sections/4-hld/4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="../../sections/4-hld/4.10-scalability.html">4.10 Scalability Techniques</a></li>
+<li><a href="../../sections/4-hld/4.11-resilience.html">4.11 Reliability &amp; Resilience</a></li>
+<li><a href="../../sections/4-hld/4.12-security.html">4.12 Security</a></li>
+<li><a href="../../sections/4-hld/4.13-observability.html">4.13 Observability &amp; Monitoring</a></li>
+<li><a href="../../sections/4-hld/4.14-cloud.html">4.14 Cloud &amp; Infrastructure</a></li>
+<li><a href="../../sections/4-hld/4.15-storage.html">4.15 Storage Systems</a></li>
+<li><a href="../../sections/4-hld/4.16-performance.html">4.16 Performance Optimization</a></li>
+<li><a href="../../sections/4-hld/4.17-tradeoffs.html">4.17 Design Trade-offs</a></li>
+<li><a href="../../sections/4-hld/4.18-system-design-problems.html">4.18 Common SD Problems</a></li>
+<li><a href="../../sections/4-hld/4.19-consistency.html">4.19 Consistency Patterns</a></li>
+<li><a href="../../sections/4-hld/4.20-microservices.html">4.20 Microservices Patterns</a></li>
+<li><a href="../../sections/4-hld/4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="../../sections/4-hld/4.22-concurrency.html">4.22 Concurrency &amp; Locking</a></li>
+<li><a href="../../sections/4-hld/4.23-devops.html">4.23 DevOps &amp; Deployment</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input id="searchInput" placeholder="Search topics... (Ctrl+K)" type="text"/><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div class="section-block section-s1" id="s1-java"><h2 class="section-title"><span class="section-num">1.1</span>Java Deep Dive</h2>
+<div class="card"><div class="card-header"><h3>1.1.1 Key Concepts</h3><span class="badge">Core</span></div><div class="card-body">
+<p>The JMM defines how threads interact through memory and what behaviors are allowed in concurrent execution. It specifies when changes made by one thread become visible to another.</p>
+<ul>
+<li><strong>Happens-Before Relationship</strong> - Guarantees that memory writes by one specific statement are visible to another. Thread.start() happens-before any action in the started thread.</li>
+<li><strong>Visibility</strong> - Without synchronization, Thread A's writes may never be seen by Thread B due to CPU caches and compiler reordering.</li>
+<li><strong>Atomicity</strong> - Read/write of reference variables and most primitives (except long/double) are atomic. Compound operations (i++) are NOT atomic.</li>
+<li><strong>Reordering</strong> - JIT compiler and CPU can reorder instructions for performance. Only constrained by happens-before rules.</li>
+</ul>
+<pre><code>// Double-Checked Locking - Requires volatile!
+public class Singleton {
+    private static volatile Singleton instance; // volatile prevents reordering
+
+    public static Singleton getInstance() {
+        if (instance == null) {                    // First check (no lock)
+            synchronized (Singleton.class) {
+                if (instance == null) {            // Second check (with lock)
+                    instance = new Singleton();    // Without volatile, another thread
+                }                                  // might see partially constructed object
+            }
+        }
+        return instance;
+    }
+}</code></pre>
+<div class="trade-off-box"><h4>Trade-offs: volatile vs synchronized vs Atomic</h4>
+<table><tr><th>Mechanism</th><th>Use When</th><th>Cost</th><th>Guarantees</th></tr>
+<tr><td>volatile</td><td>Single variable visibility</td><td>Low - memory fence only</td><td>Visibility + ordering, NOT atomicity of compounds</td></tr>
+<tr><td>synchronized</td><td>Multiple operations must be atomic</td><td>Medium - thread blocking</td><td>Mutual exclusion + visibility + ordering</td></tr>
+<tr><td>Atomic*</td><td>Lock-free single variable CAS</td><td>Low - CAS spin</td><td>Atomicity + visibility via CAS</td></tr>
+<tr><td>StampedLock</td><td>Read-heavy workloads</td><td>Low reads / Medium writes</td><td>Optimistic reads without blocking writers</td></tr>
+</table></div><div class="interview-tip"><h4>Interview Tip</h4>
+<p>When asked "why volatile in DCL?", explain: without volatile, the JIT can reorder <code>instance = new Singleton()</code> into (1) allocate memory, (2) assign reference, (3) call constructor. Another thread sees non-null reference to unconstructed object.</p></div></div>
+</div>
+<div class="card"><div class="card-header"><h3>1.1.2 volatile - Visibility Without Locking</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> A <code>volatile</code> variable guarantees that any read always sees the most recent write by any thread. It inserts memory barriers (fences) that prevent CPU caches from serving stale values and prevent instruction reordering around the volatile access.</p>
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Simple flags/signals between threads (e.g., shutdown flag, initialization complete)</li>
+<li>One thread writes, multiple threads read (single-writer pattern)</li>
+<li>Publishing an immutable object reference (the reference assignment is atomic)</li>
+<li>Double-Checked Locking idiom (prevents reordering of object construction)</li>
+</ul>
+<p><strong>When NOT to use:</strong></p>
+<ul>
+<li>Compound operations like <code>count++</code> (read-modify-write is NOT atomic even with volatile)</li>
+<li>Check-then-act patterns like <code>if (flag) { doSomething(); flag = false; }</code></li>
+<li>When multiple variables must be updated together consistently</li>
+<li>When you need mutual exclusion (only one thread should execute a section)</li>
+</ul>
+<p><strong>What goes wrong if you misuse it:</strong></p>
+<pre><code class="language-java">// BUG: volatile does NOT make count++ atomic!
+private volatile int count = 0;
+
+// Thread A and Thread B both call this:
+public void increment() {
+    count++;  // This is actually: temp = count; temp = temp + 1; count = temp;
+    // Race condition: Both threads read count=5, both write count=6
+    // Expected: 7, Actual: 6 (lost update!)
+}
+
+// FIX: Use AtomicInteger or synchronized
+private AtomicInteger count = new AtomicInteger(0);
+public void increment() {
+    count.incrementAndGet(); // Atomic CAS operation - no lost updates
+}</code></pre>
+<pre><code class="language-java">// CORRECT USE: volatile as a shutdown flag
+public class WorkerThread extends Thread {
+    private volatile boolean running = true; // visible across threads immediately
+
+    public void run() {
+        while (running) {   // Without volatile, JIT may cache 'running' in register
+            doWork();       // and this loop runs forever even after shutdown() is called
+        }
+    }
+
+    public void shutdown() {
+        running = false;    // Immediately visible to the worker thread
+    }
+}
+
+// CORRECT USE: volatile for safe publication of immutable object
+private volatile Config config; // reference assignment is atomic
+
+public void updateConfig(Config newConfig) {
+    // newConfig is fully constructed (immutable) before assignment
+    config = newConfig; // All threads immediately see the new config
+}
+
+public Config getConfig() {
+    return config; // Always returns a fully-constructed Config, never a partial one
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.1.3 synchronized - Mutual Exclusion + Visibility</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> Acquires a monitor lock (intrinsic lock) on an object. Only one thread can hold the lock at a time. Provides three guarantees: (1) mutual exclusion - only one thread in the critical section, (2) visibility - all writes before unlock are visible after lock, (3) atomicity - the entire block appears as one operation to other threads.</p>
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Compound operations that must be atomic (check-then-act, read-modify-write on multiple fields)</li>
+<li>Guarding invariants that span multiple variables (e.g., transferring between two accounts)</li>
+<li>When you need mutual exclusion (only one thread should modify state at a time)</li>
+<li>Default choice when you need thread safety and don't have extreme performance requirements</li>
+</ul>
+<p><strong>When NOT to use:</strong></p>
+<ul>
+<li>Simple single-variable visibility (volatile is cheaper)</li>
+<li>High-contention counters/accumulators (Atomic classes or LongAdder are faster)</li>
+<li>When holding the lock for I/O or long-running operations (blocks all other threads)</li>
+<li>When you need try-lock, timed-lock, or interruptible-lock (use ReentrantLock instead)</li>
+</ul>
+<p><strong>What goes wrong if you misuse it:</strong></p>
+<pre><code class="language-java">// BUG 1: Locking on different objects = no mutual exclusion!
+public void transferWrong(Account from, Account to, int amount) {
+    synchronized (from) {  // Lock on 'from'
+        synchronized (to) { // Lock on 'to'
+            from.balance -= amount;
+            to.balance += amount;
+        }
+    }
+    // DEADLOCK RISK: Thread1 locks A then waits for B
+    //               Thread2 locks B then waits for A
+}
+
+// FIX: Always lock in consistent order (e.g., by account ID)
+public void transferSafe(Account from, Account to, int amount) {
+    Account first = from.id &lt; to.id ? from : to;
+    Account second = from.id &lt; to.id ? to : from;
+    synchronized (first) {
+        synchronized (second) {
+            from.balance -= amount;
+            to.balance += amount;
+        }
+    }
+}
+
+// BUG 2: Synchronizing on wrong object
+private final List&lt;String&gt; items = new ArrayList&lt;&gt;();
+public void addItem(String item) {
+    synchronized (item) {       // WRONG: locking on the parameter, not the shared state!
+        items.add(item);        // Different 'item' strings = different locks = no protection
+    }
+}
+// FIX: Lock on the shared mutable state
+public void addItem(String item) {
+    synchronized (items) {      // CORRECT: lock on the collection being protected
+        items.add(item);
+    }
+}
+
+// BUG 3: Holding lock during I/O (blocks all threads waiting for this lock)
+public synchronized String fetchData(String url) {
+    return httpClient.get(url);  // All other threads blocked for seconds during network call!
+}
+// FIX: Minimize lock scope
+public String fetchData(String url) {
+    String data = httpClient.get(url);  // No lock during I/O
+    synchronized (this) {
+        cache.put(url, data);           // Lock only for cache update
+    }
+    return data;
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.1.4 Atomic Classes - Lock-Free Thread Safety via CAS</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What it does:</strong> Provides atomic operations on single variables using Compare-And-Swap (CAS) hardware instructions. No locks, no blocking - threads never wait for each other. If a CAS fails (another thread modified the value), the thread retries with the new value.</p>
+<p><strong>When to use:</strong></p>
+<ul>
+<li>Counters and accumulators under low-to-moderate contention</li>
+<li>Lock-free algorithms (non-blocking stacks, queues)</li>
+<li>Single-variable atomic update where you need atomicity but not mutual exclusion of a block</li>
+<li>When you cannot afford thread blocking (real-time systems, latency-sensitive code)</li>
+</ul>
+<p><strong>When NOT to use:</strong></p>
+<ul>
+<li>High contention scenarios with many threads competing (CAS retries waste CPU cycles spinning)</li>
+<li>When you need to update multiple variables atomically together (CAS is single-variable only)</li>
+<li>When the computation in the retry loop is expensive</li>
+<li>For high-contention counters, prefer <code>LongAdder</code> (shards the count across cells)</li>
+</ul>
+<p><strong>What goes wrong if you misuse it:</strong></p>
+<pre><code class="language-java">// BUG: Atomic individual operations but non-atomic combination
+private AtomicInteger balance = new AtomicInteger(1000);
+private AtomicInteger reserved = new AtomicInteger(0);
+
+public boolean reserve(int amount) {
+    if (balance.get() &gt;= amount) {      // Step 1: Check
+        balance.addAndGet(-amount);     // Step 2: Deduct
+        reserved.addAndGet(amount);     // Step 3: Add to reserved
+        return true;
+    }
+    // RACE: Between get() and addAndGet(), another thread may have deducted!
+    // Result: balance goes negative - invariant violated
+    return false;
+}
+
+// FIX: Use CAS loop for atomic check-and-update on single variable
+public boolean reserveCAS(int amount) {
+    while (true) {
+        int current = balance.get();
+        if (current &lt; amount) return false;
+        if (balance.compareAndSet(current, current - amount)) {
+            reserved.addAndGet(amount);
+            return true; // CAS succeeded - we atomically checked and deducted
+        }
+        // CAS failed - another thread modified balance, retry with fresh value
+    }
+}
+
+// For multi-variable invariants, you MUST use synchronized or a single AtomicReference
+// holding an immutable snapshot of both values:
+record BalanceState(int available, int reserved) {}
+private AtomicReference&lt;BalanceState&gt; state =
+    new AtomicReference&lt;&gt;(new BalanceState(1000, 0));
+
+public boolean reserveCorrect(int amount) {
+    while (true) {
+        BalanceState current = state.get();
+        if (current.available() &lt; amount) return false;
+        BalanceState next = new BalanceState(
+            current.available() - amount,
+            current.reserved() + amount
+        );
+        if (state.compareAndSet(current, next)) return true;
+        // Retry if another thread changed state concurrently
+    }
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.1.5 CAS (Compare-And-Swap) - The Foundation of Lock-Free Programming</h3><span class="badge">Critical</span></div><div class="card-body">
+<p><strong>What is CAS?</strong> CAS is a single CPU instruction (e.g., <code>CMPXCHG</code> on x86) that atomically performs: "If the value at memory location X is still V (expected), then update it to N (new value) and return true. Otherwise, do nothing and return false." The entire check-and-update is one atomic hardware operation - no other thread can intervene between the check and the update.</p>
+<pre><code class="language-java">// Pseudocode of what CAS does at the hardware level:
+// This is ONE ATOMIC CPU instruction - cannot be interrupted
+boolean compareAndSwap(memoryLocation, expectedValue, newValue) {
+    if (memoryLocation.value == expectedValue) {
+        memoryLocation.value = newValue;
+        return true;   // Success: we updated the value
+    }
+    return false;      // Failure: someone else changed it, we did nothing
+}</code></pre>
+<p><strong>How Java exposes CAS:</strong></p>
+<pre><code class="language-java">// AtomicInteger internally uses Unsafe.compareAndSwapInt()
+AtomicInteger counter = new AtomicInteger(0);
+
+// compareAndSet(expected, update) - returns true if successful
+counter.compareAndSet(0, 1);  // If counter is 0, set to 1 atomically
+
+// Common CAS patterns in AtomicInteger:
+counter.incrementAndGet();     // CAS loop: get current, try CAS(current, current+1)
+counter.getAndUpdate(x -&gt; x * 2);  // CAS loop with arbitrary function
+counter.accumulateAndGet(5, Integer::max); // CAS loop: keep max of current and 5</code></pre>
+<p><strong>CAS Loop Pattern (Optimistic Concurrency):</strong></p>
+<pre><code class="language-java">// Building a lock-free stack using CAS
+public class LockFreeStack&lt;T&gt; {
+    private AtomicReference&lt;Node&lt;T&gt;&gt; top = new AtomicReference&lt;&gt;(null);
+
+    public void push(T value) {
+        Node&lt;T&gt; newNode = new Node&lt;&gt;(value);
+        while (true) {                          // CAS retry loop
+            Node&lt;T&gt; currentTop = top.get();     // Read current state
+            newNode.next = currentTop;           // Prepare new state
+            if (top.compareAndSet(currentTop, newNode)) {
+                return; // CAS succeeded - our push is committed
+            }
+            // CAS failed: another thread pushed/popped. Retry with fresh top.
+        }
+    }
+
+    public T pop() {
+        while (true) {
+            Node&lt;T&gt; currentTop = top.get();
+            if (currentTop == null) return null; // Stack is empty
+            Node&lt;T&gt; newTop = currentTop.next;
+            if (top.compareAndSet(currentTop, newTop)) {
+                return currentTop.value; // Successfully popped
+            }
+            // Retry - another thread modified the stack
+        }
+    }
+
+    private static class Node&lt;T&gt; {
+        final T value;
+        Node&lt;T&gt; next;
+        Node(T value) { this.value = value; }
+    }
+}</code></pre>
+<p><strong>ABA Problem with CAS:</strong></p>
+<pre><code class="language-java">// ABA Problem: CAS checks value equality, not identity of modifications
+// Scenario:
+// 1. Thread A reads value = "A"
+// 2. Thread B changes value to "B", then back to "A"
+// 3. Thread A's CAS succeeds (value is still "A") but the state changed underneath!
+
+// This is dangerous in linked structures (popped node reused, CAS sees same pointer)
+
+// FIX: AtomicStampedReference - adds a version stamp to detect intermediate changes
+AtomicStampedReference&lt;String&gt; ref = new AtomicStampedReference&lt;&gt;("A", 0);
+
+// Read value AND stamp together
+int[] stampHolder = new int[1];
+String current = ref.get(stampHolder);  // current="A", stampHolder[0]=0
+
+// CAS checks BOTH value AND stamp - detects ABA
+boolean success = ref.compareAndSet(
+    "A",              // expected value
+    "C",              // new value
+    stampHolder[0],   // expected stamp (0)
+    stampHolder[0] + 1 // new stamp (1) - always increment
+);
+// If another thread changed A-&gt;B-&gt;A, the stamp would be 2, not 0 -&gt; CAS fails correctly!</code></pre>
+<p><strong>When CAS degrades - High Contention:</strong></p>
+<pre><code class="language-java">// Under HIGH contention (many threads), CAS loops burn CPU retrying
+// Example: 64 threads all incrementing same AtomicInteger
+// Most CAS attempts fail -&gt; threads spin -&gt; wasted CPU cycles -&gt; poor scalability
+
+// Solution: LongAdder (Java 8+) - shards the counter across CPU cache lines
+import java.util.concurrent.atomic.LongAdder;
+
+LongAdder adder = new LongAdder();       // Each thread updates its own "cell"
+adder.increment();                        // Low contention per cell
+long total = adder.sum();                 // Sum all cells (slightly stale under writes)
+
+// LongAdder vs AtomicLong under contention:
+// 4 threads:   LongAdder ~1.5x faster than AtomicLong
+// 16 threads:  LongAdder ~4x faster
+// 64 threads:  LongAdder ~10-15x faster (AtomicLong barely scales)
+// Use AtomicLong when you need exact real-time value (e.g., sequence generator)
+// Use LongAdder when you need fast aggregation (e.g., metrics counters)</code></pre>
+<div class="trade-off-box"><h4>Complete Decision Matrix: volatile vs synchronized vs Atomic</h4>
+<table>
+<tr><th>Scenario</th><th>Best Choice</th><th>Why Not Others</th></tr>
+<tr><td>Shutdown flag (one writer, many readers)</td><td><code>volatile boolean</code></td><td>synchronized overkill; Atomic adds no benefit for simple flag</td></tr>
+<tr><td>Counter with moderate contention</td><td><code>AtomicInteger</code></td><td>volatile can't do atomic increment; synchronized too heavy</td></tr>
+<tr><td>Counter with extreme contention (64+ threads)</td><td><code>LongAdder</code></td><td>AtomicInteger CAS retries waste CPU; synchronized blocks threads</td></tr>
+<tr><td>Transfer between two accounts (multi-variable)</td><td><code>synchronized</code></td><td>volatile/Atomic can't make multi-variable update atomic</td></tr>
+<tr><td>Publishing immutable config object</td><td><code>volatile reference</code></td><td>synchronized blocks readers unnecessarily; Atomic adds overhead</td></tr>
+<tr><td>Lock-free queue/stack</td><td><code>AtomicReference</code> + CAS</td><td>synchronized defeats the purpose; volatile can't do conditional update</td></tr>
+<tr><td>Lazy initialization (DCL)</td><td><code>volatile</code> + <code>synchronized</code></td><td>Atomic alone can't prevent partial construction visibility</td></tr>
+<tr><td>Collecting metrics in hot path</td><td><code>LongAdder</code></td><td>Any locking/CAS contention adds latency to the hot path</td></tr>
+<tr><td>Sequence number generator (exact ordering)</td><td><code>AtomicLong</code></td><td>LongAdder doesn't guarantee exact current value; synchronized too slow</td></tr>
+<tr><td>Read-heavy, rare-write shared state</td><td><code>StampedLock</code> or <code>volatile</code> immutable snapshot</td><td>synchronized penalizes all readers; CAS loop on reads wasteful</td></tr>
+</table>
+</div><div class="interview-tip"><h4>Interview Tip</h4>
+<p>When discussing CAS in interviews, always mention: (1) It's a single CPU instruction - truly atomic at hardware level, (2) The retry loop pattern for building higher-level atomic operations, (3) ABA problem and how AtomicStampedReference solves it, (4) Why it degrades under high contention (cache-line bouncing, failed retries), and (5) LongAdder as the solution for high-contention counters. Show you understand the full spectrum from hardware to design trade-offs.</p></div></div>
+</div>
+<div class="card"><div class="card-header"><h3>1.1.6 GC Algorithms Comparison</h3><span class="badge">Performance</span></div><div class="card-body">
+<table><tr><th>GC</th><th>Pause Target</th><th>Heap Size</th><th>Best For</th><th>Java Ver</th></tr>
+<tr><td>G1GC</td><td>200ms</td><td>4-64GB</td><td>General purpose, balanced</td><td>9+ default</td></tr>
+<tr><td>ZGC</td><td>&lt;1ms</td><td>Up to 16TB</td><td>Ultra-low latency (trading, HFT)</td><td>15+ production</td></tr>
+<tr><td>Shenandoah</td><td>&lt;10ms</td><td>Any</td><td>Low latency, OpenJDK</td><td>12+</td></tr>
+<tr><td>Parallel GC</td><td>Higher</td><td>Medium</td><td>Batch processing, throughput</td><td>All</td></tr>
+</table>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.1.7 G1GC Internals</h3><span class="badge">Performance</span></div><div class="card-body">
+<p>G1 divides heap into equal-sized regions (~1-32MB). Tracks garbage-first: collects regions with most garbage first for maximum reclamation with minimum pause.</p>
+<pre><code>// Production G1GC Tuning for 16GB heap microservice
+-XX:+UseG1GC
+-Xms16g -Xmx16g                          // Fixed heap prevents resize pauses
+-XX:MaxGCPauseMillis=100                  // Target 100ms pause
+-XX:G1HeapRegionSize=16m                  // Larger regions for big heap
+-XX:InitiatingHeapOccupancyPercent=35     // Start concurrent cycle early
+-XX:G1MixedGCCountTarget=4               // Spread mixed GC work
+-XX:+ParallelRefProcEnabled               // Parallel reference processing
+-Xlog:gc*:file=gc.log:time,level,tags     // Structured GC logging</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.1.8 ZGC - Sub-millisecond Pauses</h3><span class="badge">Performance</span></div><div class="card-body">
+<p>ZGC uses colored pointers (metadata in pointer bits) and load barriers to achieve concurrent relocation without stop-the-world pauses proportional to heap size.</p>
+<pre><code>// ZGC for latency-critical payment service
+-XX:+UseZGC
+-XX:+ZGenerational                         // Java 21+: generational ZGC
+-Xms32g -Xmx32g
+-XX:SoftMaxHeapSize=28g                    // Prefer staying under this
+-XX:ZCollectionInterval=5                  // Force GC every 5s if idle</code></pre>
+<div class="trade-off-box"><h4>Trade-off: G1GC vs ZGC</h4>
+<ul>
+<li><strong>Choose G1GC when:</strong> General microservice, 100-200ms pauses acceptable, want predictable throughput, heap &lt; 32GB</li>
+<li><strong>Choose ZGC when:</strong> Latency SLA &lt; 10ms p99, large heaps (64GB+), trading/real-time systems, can sacrifice 5-15% throughput</li>
+<li><strong>Choose Parallel GC when:</strong> Batch jobs, offline processing, throughput matters more than latency</li>
+</ul></div></div>
+</div>
+<div class="card"><div class="card-header"><h3>1.1.9 Sealed Classes - Controlled Inheritance</h3><span class="badge">LTS</span></div><div class="card-body">
+<pre><code>// Sealed classes restrict which classes can extend them
+// Enables exhaustive pattern matching - compiler knows all subtypes
+public sealed interface PaymentResult
+    permits PaymentSuccess, PaymentFailure, PaymentPending {
+}
+
+public record PaymentSuccess(String transactionId, BigDecimal amount)
+    implements PaymentResult {}
+
+public record PaymentFailure(String errorCode, String reason)
+    implements PaymentResult {}
+
+public record PaymentPending(String trackingId, Duration estimatedTime)
+    implements PaymentResult {}
+
+// Compiler ensures exhaustive handling - no default needed
+public String handleResult(PaymentResult result) {
+    return switch (result) {
+        case PaymentSuccess s -&gt; "Paid: " + s.transactionId();
+        case PaymentFailure f -&gt; "Failed: " + f.reason();
+        case PaymentPending p -&gt; "Pending: " + p.trackingId();
+    };
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.1.10 Records - Immutable Data Carriers</h3><span class="badge">LTS</span></div><div class="card-body">
+<pre><code>// Records auto-generate: constructor, getters, equals, hashCode, toString
+// Perfect for DTOs, events, value objects
+public record OrderEvent(
+    UUID orderId,
+    String customerId,
+    List&lt;LineItem&gt; items,
+    Instant createdAt
+) {
+    // Compact constructor for validation
+    public OrderEvent {
+        Objects.requireNonNull(orderId);
+        Objects.requireNonNull(customerId);
+        items = List.copyOf(items); // Defensive copy for immutability
+        if (items.isEmpty()) throw new IllegalArgumentException("Order must have items");
+    }
+}</code></pre>
+<div class="production-insight"><h4>Production Insight</h4>
+<p>Records + Sealed interfaces = algebraic data types in Java. Use them to model domain events where the set of possible states is fixed and each state carries different data. The compiler enforces you handle every case.</p></div></div>
+</div>
+<div class="card"><div class="card-header"><h3>1.1.11 Virtual Threads (Project Loom)</h3><span class="badge">Latest LTS</span></div><div class="card-body">
+<p>Virtual threads are lightweight threads managed by the JVM, not OS. Cost: ~1KB stack (vs 1MB for platform threads). Can run millions concurrently.</p>
+<pre><code>// Before: Thread pool limits concurrency to ~200 platform threads
+ExecutorService traditional = Executors.newFixedThreadPool(200);
+
+// After: Virtual threads - one per request, millions possible
+ExecutorService virtual = Executors.newVirtualThreadPerTaskExecutor();
+
+// Spring Boot 3.2+ - just enable in config:
+// spring.threads.virtual.enabled=true
+
+// Production HTTP client with virtual threads
+try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
+    List&lt;Future&lt;Response&gt;&gt; futures = urls.stream()
+        .map(url -&gt; executor.submit(() -&gt; httpClient.send(
+            HttpRequest.newBuilder(URI.create(url)).build(),
+            HttpResponse.BodyHandlers.ofString()
+        )))
+        .toList();
+
+    // All requests run concurrently on virtual threads
+    // 10,000 concurrent HTTP calls with minimal memory
+    List&lt;Response&gt; responses = futures.stream()
+        .map(f -&gt; { try { return f.get(); } catch (Exception e) { throw new RuntimeException(e); }})
+        .toList();
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.1.12 Structured Concurrency (Preview)</h3><span class="badge">Latest LTS</span></div><div class="card-body">
+<pre><code>// Structured concurrency: child tasks are scoped to parent lifetime
+// If one fails, others are cancelled automatically
+Response fetchOrder(String orderId) throws Exception {
+    try (var scope = new StructuredTaskScope.ShutdownOnFailure()) {
+        Subtask&lt;Order&gt; order = scope.fork(() -&gt; orderService.get(orderId));
+        Subtask&lt;Payment&gt; payment = scope.fork(() -&gt; paymentService.get(orderId));
+        Subtask&lt;Shipping&gt; shipping = scope.fork(() -&gt; shippingService.get(orderId));
+
+        scope.join().throwIfFailed(); // Wait for all, fail fast
+
+        return new Response(order.get(), payment.get(), shipping.get());
+    }
+    // All subtasks guaranteed complete/cancelled when scope exits
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.1.13 Scoped Values (Preview)</h3><span class="badge">Latest LTS</span></div><div class="card-body">
+<pre><code>// Scoped Values replace ThreadLocal for virtual threads
+// ThreadLocal: mutable, inherited by child threads, memory leak prone
+// ScopedValue: immutable, explicitly bounded lifetime, GC-friendly
+private static final ScopedValue&lt;UserContext&gt; CURRENT_USER = ScopedValue.newInstance();
+
+void handleRequest(HttpRequest request) {
+    UserContext ctx = authenticate(request);
+    ScopedValue.runWhere(CURRENT_USER, ctx, () -&gt; {
+        // All code in this scope (including virtual thread children) sees ctx
+        processOrder();  // Can read CURRENT_USER.get() anywhere in call stack
+    });
+    // ctx is automatically unavailable outside scope - no leak possible
+}</code></pre>
+<div class="trade-off-box"><h4>Trade-off: Virtual Threads vs Reactive (WebFlux)</h4>
+<table><tr><th>Aspect</th><th>Virtual Threads</th><th>Reactive (WebFlux)</th></tr>
+<tr><td>Programming model</td><td>Familiar blocking/sequential</td><td>Complex chain operators (map, flatMap)</td></tr>
+<tr><td>Debugging</td><td>Normal stack traces</td><td>Fragmented, hard to trace</td></tr>
+<tr><td>Learning curve</td><td>Minimal - write blocking code</td><td>Steep - must understand backpressure, schedulers</td></tr>
+<tr><td>CPU-bound work</td><td>No benefit (still needs platform threads)</td><td>No benefit</td></tr>
+<tr><td>Ecosystem</td><td>All existing blocking libraries work</td><td>Need reactive drivers (R2DBC, reactive Redis)</td></tr>
+<tr><td>Backpressure</td><td>Not built-in</td><td>Native support</td></tr>
+<tr><td>When to choose</td><td>I/O-heavy microservices, simpler code</td><td>Streaming data, event-driven, need backpressure</td></tr>
+</table></div></div>
+</div>
+<div class="card"><div class="card-header"><h3>1.1.14 Value Classes (Project Valhalla)</h3><span class="badge">Cutting Edge</span></div><div class="card-body">
+<pre><code>// Value classes: identity-free, flattened in memory, no object header
+// Perfect for: Money, Coordinates, Complex numbers, UUIDs
+value class Money {
+    private final Currency currency;
+    private final long amountInCents;
+
+    // No identity: == compares by value, no synchronization possible
+    // Flattened: stored inline in arrays (no pointer indirection)
+    // Array of 1M Money objects: ~16MB (vs ~40MB with regular objects)
+}
+
+// Performance impact for large collections:
+Money[] prices = new Money[1_000_000]; // Contiguous memory, cache-friendly</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.1.15 Foreign Function &amp; Memory API (FFM)</h3><span class="badge">Cutting Edge</span></div><div class="card-body">
+<pre><code>// Replace JNI with safe, efficient native access
+// Use case: calling native crypto libraries, ML inference (ONNX, TensorFlow)
+try (Arena arena = Arena.ofConfined()) {
+    MemorySegment buffer = arena.allocate(1024);
+    // Zero-copy interop with native libraries
+    // No JNI boilerplate, automatic memory management
+    MethodHandle strlen = Linker.nativeLinker().downcallHandle(
+        Linker.nativeLinker().defaultLookup().find("strlen").get(),
+        FunctionDescriptor.of(ValueLayout.JAVA_LONG, ValueLayout.ADDRESS)
+    );
+}</code></pre>
+<div class="production-insight"><h4>Production Insight</h4>
+<p>Value classes will transform how we build high-performance Java: domain primitives (Money, Quantity, EmailAddress) become zero-cost abstractions. Design your domain model with value objects now - they'll get free performance boost when migrated to value classes.</p></div></div>
+</div>
+<div class="card"><div class="card-header"><h3>1.1.16 ExecutorService Patterns</h3><span class="badge">Critical</span></div><div class="card-body">
+<pre><code>// Production thread pool configuration
+ThreadPoolExecutor executor = new ThreadPoolExecutor(
+    10,                          // corePoolSize: threads always alive
+    50,                          // maxPoolSize: maximum threads under load
+    60L, TimeUnit.SECONDS,       // keepAliveTime for excess threads
+    new LinkedBlockingQueue&lt;&gt;(1000), // bounded queue prevents OOM
+    new ThreadFactory() {         // named threads for debugging
+        private final AtomicInteger counter = new AtomicInteger();
+        public Thread newThread(Runnable r) {
+            Thread t = new Thread(r, "order-processor-" + counter.incrementAndGet());
+            t.setDaemon(true);
+            return t;
+        }
+    },
+    new ThreadPoolExecutor.CallerRunsPolicy() // backpressure: caller executes if queue full
+);
+
+// Monitor in production
+executor.getActiveCount();     // Currently executing threads
+executor.getQueue().size();    // Queued tasks waiting
+executor.getCompletedTaskCount(); // Total completed</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.1.17 CompletableFuture Composition</h3><span class="badge">Critical</span></div><div class="card-body">
+<pre><code>// Parallel aggregation pattern - common in microservices
+CompletableFuture&lt;OrderSummary&gt; buildSummary(String orderId) {
+    var orderFuture = CompletableFuture.supplyAsync(
+        () -&gt; orderService.getOrder(orderId), ioExecutor);
+    var paymentFuture = CompletableFuture.supplyAsync(
+        () -&gt; paymentService.getPayment(orderId), ioExecutor);
+    var inventoryFuture = CompletableFuture.supplyAsync(
+        () -&gt; inventoryService.check(orderId), ioExecutor);
+
+    return orderFuture.thenCombine(paymentFuture, (order, payment) -&gt;
+        new OrderWithPayment(order, payment)
+    ).thenCombine(inventoryFuture, (owp, inventory) -&gt;
+        new OrderSummary(owp.order(), owp.payment(), inventory)
+    ).orTimeout(3, TimeUnit.SECONDS)           // Fail fast
+     .exceptionally(ex -&gt; OrderSummary.fallback(orderId)); // Graceful degradation
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>1.1.18 Lock Comparison</h3><span class="badge">Critical</span></div><div class="card-body">
+<table><tr><th>Lock Type</th><th>Use Case</th><th>Performance</th><th>Fairness</th></tr>
+<tr><td>synchronized</td><td>Simple mutual exclusion</td><td>Good (biased locking)</td><td>Unfair</td></tr>
+<tr><td>ReentrantLock</td><td>Need tryLock, timeout, condition</td><td>Good</td><td>Configurable</td></tr>
+<tr><td>ReadWriteLock</td><td>Read-heavy, rare writes</td><td>Good for reads</td><td>Configurable</td></tr>
+<tr><td>StampedLock</td><td>Optimistic reads, highest throughput</td><td>Best for read-heavy</td><td>Unfair</td></tr>
+</table>
+<pre><code>// StampedLock - optimistic read pattern (no blocking for readers)
+private final StampedLock lock = new StampedLock();
+private double x, y;
+
+double distanceFromOrigin() {
+    long stamp = lock.tryOptimisticRead(); // Non-blocking!
+    double currentX = x, currentY = y;     // Read fields
+    if (!lock.validate(stamp)) {           // Check if write occurred
+        stamp = lock.readLock();           // Fallback to read lock
+        try { currentX = x; currentY = y; }
+        finally { lock.unlockRead(stamp); }
+    }
+    return Math.sqrt(currentX * currentX + currentY * currentY);
+}</code></pre>
+<div class="trade-off-box"><h4>Trade-off: When to Use What</h4>
+<ul>
+<li><strong>synchronized:</strong> Default choice. Simple, JVM optimizes well (biased/thin/fat locking). Use unless you need specific features.</li>
+<li><strong>ReentrantLock:</strong> Need tryLock() with timeout (deadlock avoidance), multiple Conditions, or interruptible waiting.</li>
+<li><strong>StampedLock:</strong> Read-heavy workloads (95%+ reads). 2-3x faster than ReadWriteLock for reads. NOT reentrant - careful with nested calls.</li>
+</ul></div></div>
+</div>
+</div>
+<div class="page-nav">
+<a href="../../index.html">← Previous: Home</a>
+<a href="1.2-spring-boot.html">Next: 1.2 Spring Boot →</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

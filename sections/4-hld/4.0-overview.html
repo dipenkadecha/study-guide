@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Section 4 Overview &amp; Topic Index - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../2-dsa/2.1-arrays-strings.html">2.1 Arrays &amp; Strings</a></li>
+<li><a href="../2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../2-dsa/2.3-trees-graphs.html">2.3 Trees &amp; Graphs</a></li>
+<li><a href="../2-dsa/2.4-heaps-tries.html">2.4 Heaps &amp; Tries</a></li>
+<li><a href="../2-dsa/2.5-dp-greedy.html">2.5 DP &amp; Greedy</a></li>
+<li><a href="../2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../reference/quick-reference.html">Quick Reference</a></li>
+<li><a href="../reference/pattern-flashcards.html">Pattern Flashcards</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="sd-index" class="section-block">
+<h2 class="section-title"><span class="section-num">4.0</span>Section 4 Overview &amp; Topic Index</h2>
+<div class="card"><div class="card-header"><h3>Complete Topic Checklist (23 Categories)</h3><span class="badge">Reference</span></div><div class="card-body">
+<p>Quick-scan checklist for interview coverage. All topics covered in detail in the main sections above.</p>
+
+<h4>1. Core Fundamentals</h4>
+<ul><li><a href="4.1-core-fundamentals.html">Scalability (Vertical vs Horizontal)</a></li><li><a href="4.1-core-fundamentals.html">Availability</a></li><li><a href="4.1-core-fundamentals.html">Reliability</a></li><li><a href="4.1-core-fundamentals.html">Fault Tolerance</a></li><li><a href="4.1-core-fundamentals.html">Durability</a></li><li><a href="4.1-core-fundamentals.html">Consistency (Strong, Eventual, Causal)</a></li><li><a href="4.1-core-fundamentals.html">Latency vs Throughput</a></li><li><a href="4.1-core-fundamentals.html">CAP Theorem</a></li><li><a href="4.1-core-fundamentals.html">PACELC Theorem</a></li></ul>
+
+<h4>2. Architecture Patterns</h4>
+<ul><li><a href="4.2-architecture-patterns.html">Monolith Architecture</a></li><li><a href="4.2-architecture-patterns.html">Microservices Architecture</a></li><li><a href="4.2-architecture-patterns.html">Service-Oriented Architecture (SOA)</a></li><li><a href="4.2-architecture-patterns.html">Event-Driven Architecture</a></li><li><a href="4.2-architecture-patterns.html">Serverless Architecture</a></li><li><a href="4.2-architecture-patterns.html">Layered Architecture (3-tier / N-tier)</a></li><li><a href="4.2-architecture-patterns.html">Hexagonal Architecture (Ports &amp; Adapters)</a></li><li><a href="4.2-architecture-patterns.html">CQRS (Command Query Responsibility Segregation)</a></li><li><a href="4.2-architecture-patterns.html">Event Sourcing</a></li><li><a href="4.19-consistency.html">Saga Pattern (Orchestration vs Choreography)</a></li><li><a href="4.20-microservices.html">Strangler Fig Pattern</a></li><li><a href="4.19-consistency.html">Outbox Pattern</a></li><li><a href="4.20-microservices.html">Backend for Frontend (BFF)</a></li><li><a href="4.20-microservices.html">Sidecar Pattern</a></li></ul>
+
+<h4>3. Networking &amp; Communication</h4>
+<ul><li><a href="4.3-networking.html">DNS (Domain Name System)</a></li><li><a href="4.3-networking.html">HTTP / HTTPS / HTTP/3 (QUIC)</a></li><li><a href="4.3-networking.html">TCP vs UDP</a></li><li><a href="4.3-networking.html">REST APIs</a></li><li><a href="4.3-networking.html">GraphQL</a></li><li><a href="4.3-networking.html">gRPC</a></li><li><a href="4.3-networking.html">WebSockets</a></li><li><a href="4.3-networking.html">Long Polling</a></li><li><a href="4.3-networking.html">Server-Sent Events (SSE)</a></li><li><a href="4.3-networking.html">Load Balancing (L4 vs L7)</a></li><li><a href="4.3-networking.html">API Gateway</a></li></ul>
+
+<h4>4. Load Balancing &amp; Traffic Management</h4>
+<ul><li><a href="4.4-load-balancing.html">Round Robin</a></li><li><a href="4.4-load-balancing.html">Least Connections</a></li><li><a href="4.4-load-balancing.html">IP Hash</a></li><li><a href="4.4-load-balancing.html">Geo-based routing</a></li><li><a href="4.4-load-balancing.html">Reverse Proxy</a></li><li><a href="4.4-load-balancing.html">CDN (Content Delivery Network)</a></li><li><a href="4.4-load-balancing.html">Anycast routing</a></li></ul>
+
+<h4>5. Database Design</h4>
+<ul><li><a href="4.5-databases.html">Relational (MySQL, PostgreSQL)</a></li><li><a href="4.5-databases.html">Key-Value (Redis, DynamoDB)</a></li><li><a href="4.5-databases.html">Document (MongoDB)</a></li><li><a href="4.5-databases.html">Column-family (Cassandra)</a></li><li><a href="4.5-databases.html">Graph (Neo4j)</a></li><li><a href="4.5-databases.html">Time-Series (InfluxDB, TimescaleDB)</a></li><li><a href="4.5-databases.html">Search Engines (Elasticsearch, OpenSearch)</a></li><li><a href="4.5-databases.html">NewSQL (CockroachDB, TiDB, Spanner)</a></li><li><a href="4.5-databases.html">Indexing (B-Tree, LSM, GIN)</a></li><li><a href="4.5-databases.html">Sharding (Horizontal Partitioning)</a></li><li><a href="4.5-databases.html">Replication (Master-Slave, Multi-Master)</a></li><li><a href="4.5-databases.html">ACID vs BASE</a></li><li><a href="4.5-databases.html">Transactions &amp; Isolation Levels</a></li><li><a href="4.5-databases.html">Schema Design / Normalization / Denormalization</a></li><li><a href="4.5-databases.html">Change Data Capture (CDC)</a></li><li><a href="4.5-databases.html">Materialized Views</a></li></ul>
+<h4>6. Caching</h4>
+<ul><li><a href="4.6-caching.html">Client-side caching</a></li><li><a href="4.6-caching.html">Server-side caching</a></li><li><a href="4.6-caching.html">CDN caching</a></li><li><a href="4.6-caching.html">Eviction policies: LRU, LFU, FIFO, W-TinyLFU</a></li><li><a href="4.6-caching.html">Write-through / Write-back / Write-around</a></li><li><a href="4.6-caching.html">Distributed caching (Redis, Memcached)</a></li><li><a href="4.6-caching.html">Cache Stampede / Thundering Herd</a></li><li><a href="4.6-caching.html">Cache Warming</a></li><li><a href="4.6-caching.html">Multi-level caching (L1 in-process + L2 distributed)</a></li></ul>
+
+<h4>7. Data Processing</h4>
+<ul><li><a href="4.7-data-processing.html">Batch processing (MapReduce, Spark)</a></li><li><a href="4.7-data-processing.html">Stream processing (Flink, Kafka Streams)</a></li><li><a href="4.7-data-processing.html">Real-time processing</a></li><li><a href="4.7-data-processing.html">ETL (Extract, Transform, Load)</a></li><li><a href="4.7-data-processing.html">Data pipelines</a></li><li><a href="4.7-data-processing.html">OLAP vs OLTP</a></li><li><a href="4.7-data-processing.html">Data Lake vs Data Warehouse vs Lakehouse</a></li></ul>
+
+<h4>8. Messaging &amp; Asynchronous Systems</h4>
+<ul><li><a href="4.8-messaging.html">Message Queues: Kafka, RabbitMQ, ActiveMQ, SQS</a></li><li><a href="4.8-messaging.html">Pub/Sub (Publish-Subscribe)</a></li><li><a href="4.8-messaging.html">Event queues / Event logs</a></li><li><a href="4.8-messaging.html">Dead-letter queues</a></li><li><a href="4.8-messaging.html">Idempotency</a></li><li><a href="4.8-messaging.html">Backpressure handling</a></li><li><a href="4.8-messaging.html">Ordering guarantees (partition-level vs global)</a></li><li><a href="4.8-messaging.html">Delivery semantics (at-most-once, at-least-once, exactly-once)</a></li></ul>
+
+<h4>9. Distributed Systems Concepts</h4>
+<ul><li><a href="4.9-distributed-systems.html">Distributed consensus (Raft, Paxos)</a></li><li><a href="4.9-distributed-systems.html">Leader election</a></li><li><a href="4.9-distributed-systems.html">Distributed locking</a></li><li><a href="4.9-distributed-systems.html">Clock synchronization (NTP, Lamport, Vector, HLC, TrueTime)</a></li><li><a href="4.9-distributed-systems.html">Consistent hashing</a></li><li><a href="4.9-distributed-systems.html">Gossip protocols</a></li><li><a href="4.9-distributed-systems.html">Split brain problem</a></li><li><a href="4.9-distributed-systems.html">Bloom Filters</a></li><li><a href="4.9-distributed-systems.html">CRDTs (Conflict-free Replicated Data Types)</a></li><li><a href="4.9-distributed-systems.html">Merkle Trees</a></li><li><a href="4.9-distributed-systems.html">Two-Phase Commit (2PC)</a></li><li><a href="4.9-distributed-systems.html">Quorum reads/writes (R + W &gt; N)</a></li><li><a href="4.9-distributed-systems.html">Hinted Handoff</a></li><li><a href="4.9-distributed-systems.html">Read Repair</a></li></ul>
+
+<h4>10. Scalability Techniques</h4>
+<ul><li><a href="4.10-scalability.html">Horizontal scaling (adding nodes)</a></li><li><a href="4.10-scalability.html">Vertical scaling (bigger machines)</a></li><li><a href="4.10-scalability.html">Auto-scaling</a></li><li><a href="4.10-scalability.html">Stateless vs Stateful services</a></li><li><a href="4.10-scalability.html">Partitioning strategies</a></li></ul>
+
+<h4>11. Reliability &amp; Resilience</h4>
+<ul><li><a href="4.11-resilience.html">Circuit breaker pattern</a></li><li><a href="4.11-resilience.html">Retry mechanisms (exponential backoff + jitter)</a></li><li><a href="4.11-resilience.html">Timeouts</a></li><li><a href="4.11-resilience.html">Bulkhead pattern</a></li><li><a href="4.11-resilience.html">Graceful degradation</a></li><li><a href="4.11-resilience.html">Health checks</a></li><li><a href="4.11-resilience.html">Chaos engineering</a></li><li><a href="4.11-resilience.html">Failover (active-passive, active-active)</a></li><li><a href="4.11-resilience.html">Disaster Recovery (RPO / RTO)</a></li><li><a href="4.11-resilience.html">Feature Flags / Dark Launches</a></li></ul>
+
+<h4>12. Security</h4>
+<ul><li><a href="4.12-security.html">Authentication (OAuth, JWT)</a></li><li><a href="4.12-security.html">Authorization (RBAC, ABAC)</a></li><li><a href="4.12-security.html">Encryption (TLS, at-rest)</a></li><li><a href="4.12-security.html">Rate limiting</a></li><li><a href="4.12-security.html">DDoS protection</a></li><li><a href="4.12-security.html">API security</a></li><li><a href="4.12-security.html">mTLS (service-to-service)</a></li><li><a href="4.12-security.html">Zero Trust Architecture</a></li><li><a href="4.12-security.html">Secrets Management (Vault)</a></li><li><a href="4.12-security.html">CORS, CSRF, XSS</a></li><li><a href="4.12-security.html">OWASP Top 10</a></li></ul>
+<h4>13. Observability &amp; Monitoring</h4>
+<ul><li><a href="4.13-observability.html">Logging (structured, centralized)</a></li><li><a href="4.13-observability.html">Metrics (Prometheus, Datadog)</a></li><li><a href="4.13-observability.html">Tracing (Jaeger, Zipkin, OpenTelemetry)</a></li><li><a href="4.13-observability.html">Alerting systems</a></li><li><a href="4.13-observability.html">SLA, SLO, SLI</a></li><li><a href="4.13-observability.html">Error Budgets</a></li><li><a href="4.13-observability.html">RED method (Rate, Errors, Duration)</a></li><li><a href="4.13-observability.html">USE method (Utilization, Saturation, Errors)</a></li><li><a href="4.13-observability.html">Golden Signals</a></li><li><a href="4.13-observability.html">Runbooks &amp; Incident Management</a></li></ul>
+
+<h4>14. Cloud &amp; Infrastructure</h4>
+<ul><li><a href="4.14-cloud.html">IaaS / PaaS / SaaS</a></li><li><a href="4.14-cloud.html">Containers (Docker)</a></li><li><a href="4.14-cloud.html">Container orchestration (Kubernetes)</a></li><li><a href="4.14-cloud.html">Infrastructure as Code (Terraform, Pulumi)</a></li><li><a href="4.14-cloud.html">Serverless (AWS Lambda, Azure Functions)</a></li></ul>
+
+<h4>15. Storage Systems</h4>
+<ul><li><a href="4.15-storage.html">Object storage (S3)</a></li><li><a href="4.15-storage.html">Block storage (EBS)</a></li><li><a href="4.15-storage.html">File storage (EFS, NFS)</a></li><li><a href="4.15-storage.html">Distributed file systems (HDFS)</a></li></ul>
+
+<h4>16. Performance Optimization</h4>
+<ul><li><a href="4.16-performance.html">Caching strategies</a></li><li><a href="4.16-performance.html">Index optimization</a></li><li><a href="4.16-performance.html">Query optimization</a></li><li><a href="4.16-performance.html">Connection pooling (HikariCP, PgBouncer)</a></li><li><a href="4.16-performance.html">Compression</a></li></ul>
+
+<h4>17. Design Trade-offs</h4>
+<ul><li><a href="4.17-tradeoffs.html">Consistency vs Availability</a></li><li><a href="4.17-tradeoffs.html">Latency vs Accuracy</a></li><li><a href="4.17-tradeoffs.html">Cost vs Performance</a></li><li><a href="4.17-tradeoffs.html">Simplicity vs Flexibility</a></li></ul>
+
+<h4>18. Common System Design Problems</h4>
+<ul><li><a href="4.18-system-design-problems.html">URL shortener</a></li><li><a href="4.18-system-design-problems.html">Chat system</a></li><li><a href="4.18-system-design-problems.html">News feed (Facebook/Instagram)</a></li><li><a href="4.18-system-design-problems.html">File storage system</a></li><li><a href="4.18-system-design-problems.html">Video streaming (YouTube/Netflix)</a></li><li><a href="4.18-system-design-problems.html">Ride sharing (Uber)</a></li><li><a href="4.18-system-design-problems.html">E-commerce (Amazon)</a></li><li><a href="4.18-system-design-problems.html">Distributed Task Scheduler</a></li><li><a href="4.18-system-design-problems.html">Notification System</a></li><li><a href="4.18-system-design-problems.html">Payment System</a></li><li><a href="4.18-system-design-problems.html">Web Crawler</a></li><li><a href="4.18-system-design-problems.html">Collaborative Editor (Google Docs)</a></li></ul>
+
+<h4>19. Data Consistency Patterns</h4>
+<ul><li><a href="4.19-consistency.html">Two-Phase Commit (2PC)</a></li><li><a href="4.19-consistency.html">Saga - Orchestration (central coordinator)</a></li><li><a href="4.19-consistency.html">Saga - Choreography (event-driven)</a></li><li><a href="4.19-consistency.html">Outbox Pattern (reliable event publishing)</a></li><li><a href="4.19-consistency.html">Change Data Capture (CDC)</a></li><li><a href="4.19-consistency.html">Compensating Transactions</a></li><li><a href="4.19-consistency.html">Eventual Consistency patterns (read-your-writes, monotonic, causal)</a></li><li><a href="4.19-consistency.html">Idempotency Keys</a></li></ul>
+
+<h4>20. Microservices Patterns</h4>
+<ul><li><a href="4.20-microservices.html">Service Discovery (client-side vs server-side)</a></li><li><a href="4.20-microservices.html">Sidecar Pattern (Envoy, Istio)</a></li><li><a href="4.20-microservices.html">Ambassador Pattern</a></li><li><a href="4.20-microservices.html">Anti-corruption Layer</a></li><li><a href="4.20-microservices.html">Database-per-Service</a></li><li><a href="4.20-microservices.html">Shared Nothing Architecture</a></li><li><a href="4.20-microservices.html">API Composition / Aggregator</a></li><li><a href="4.20-microservices.html">Service Mesh (Istio, Linkerd)</a></li><li><a href="4.20-microservices.html">Strangler Fig Migration</a></li></ul>
+
+<h4>21. System Design Data Structures</h4>
+<ul><li><a href="4.21-data-structures.html">Bloom Filter (membership testing)</a></li><li><a href="4.21-data-structures.html">Count-Min Sketch (frequency estimation)</a></li><li><a href="4.21-data-structures.html">HyperLogLog (cardinality estimation)</a></li><li><a href="4.21-data-structures.html">Merkle Tree (data integrity, sync)</a></li><li><a href="4.21-data-structures.html">Geohash / Quadtree / R-tree (spatial indexing)</a></li><li><a href="4.21-data-structures.html">Skip List (concurrent sorted)</a></li><li><a href="4.21-data-structures.html">Trie / Radix Tree (prefix operations)</a></li><li><a href="4.21-data-structures.html">Ring Buffer (Disruptor)</a></li></ul>
+
+<h4>22. Concurrency &amp; Locking Patterns</h4>
+<ul><li><a href="4.22-concurrency.html">Optimistic Locking (version column, CAS)</a></li><li><a href="4.22-concurrency.html">Pessimistic Locking (SELECT FOR UPDATE)</a></li><li><a href="4.22-concurrency.html">MVCC (Multi-Version Concurrency Control)</a></li><li><a href="4.22-concurrency.html">Distributed Locks (Redis, ZooKeeper, etcd)</a></li><li><a href="4.22-concurrency.html">Fencing Tokens</a></li><li><a href="4.22-concurrency.html">Compare-and-Swap (CAS)</a></li><li><a href="4.22-concurrency.html">Read-Write Locks / StampedLock</a></li><li><a href="4.22-concurrency.html">Lock-free data structures</a></li></ul>
+
+<h4>23. DevOps &amp; Deployment Patterns</h4>
+<ul><li><a href="4.23-devops.html">CI/CD Pipelines</a></li><li><a href="4.23-devops.html">Blue-Green Deployment</a></li><li><a href="4.23-devops.html">Canary Releases</a></li><li><a href="4.23-devops.html">Rolling Updates</a></li><li><a href="4.23-devops.html">Feature Flags / Toggle</a></li><li><a href="4.23-devops.html">GitOps (ArgoCD, Flux)</a></li><li><a href="4.23-devops.html">Immutable Infrastructure</a></li><li><a href="4.23-devops.html">Infrastructure as Code (Terraform, Pulumi)</a></li><li><a href="4.23-devops.html">Container Orchestration (K8s HPA, VPA, KEDA)</a></li></ul>
+</div></div>
+</div>
+<div class="page-nav">
+<a href="../../index.html">&#8592; Previous: Home</a>
+<a href="4.1-core-fundamentals.html">Next: 4.1 Core Fundamentals &#8594;</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

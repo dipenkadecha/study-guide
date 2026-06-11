@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.16 Performance - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div id="s4-performance" class="section-block section-s4"><h2 class="section-title"><span class="section-num">4.16</span>Performance Optimization</h2>
+<div class="card"><div class="card-header"><h3>4.16.1 Caching Strategies</h3><span class="badge">Performance</span></div><div class="card-body">
+<p>Caching is the highest-leverage performance optimization — it removes work entirely rather than making it faster.</p>
+<div class="see-also">→ The caching patterns (cache-aside, write-through, write-behind, read-through), eviction policies, and stampede prevention are covered in full on the <a href="4.6-caching.html">Caching</a> page (4.6).</div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.16.2 Index Optimization</h3><span class="badge">Performance</span></div><div class="card-body">
+<pre><code>// Database Index Types and When to Use:
+
+// 1. B-Tree Index (default): range queries, equality, sorting
+CREATE INDEX idx_orders_date ON orders(created_at);
+-- Good for: WHERE created_at BETWEEN x AND y, ORDER BY created_at
+
+// 2. Hash Index: equality lookups only (O(1))
+-- Good for: WHERE user_id = 'abc123' (exact match only)
+
+// 3. Composite Index: multi-column queries (leftmost prefix rule)
+CREATE INDEX idx_user_status_date ON orders(user_id, status, created_at);
+-- Supports: WHERE user_id = ? AND status = ? AND created_at > ?
+-- Also: WHERE user_id = ? AND status = ? (prefix)
+-- NOT: WHERE status = ? (skips leftmost column)
+
+// 4. Covering Index: all columns in query are in index (no table lookup)
+CREATE INDEX idx_covering ON orders(user_id, status) INCLUDE (total_amount);
+-- SELECT total_amount FROM orders WHERE user_id = ? AND status = ?
+-- Index-only scan: never touches the table heap
+
+// 5. Partial Index: index subset of rows (smaller, faster)
+CREATE INDEX idx_active_premium ON users(email) WHERE status = 'active' AND tier = 'premium';</code></pre>
+<div class="trade-off-box"><h4>Trade-off</h4><p>More indexes = faster reads but slower writes (each INSERT/UPDATE must update all relevant indexes). A table with 10 indexes can have 5-10x slower write throughput. Strategy: index only columns in WHERE/JOIN/ORDER BY clauses. For write-heavy tables, keep indexes minimal and use covering indexes to eliminate table lookups for hot queries.</p></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>LinkedIn:</strong> Reduced query latency by 95% by adding a covering index that included all columns needed by their most frequent query — eliminated the table lookup (index-only scan). Before: 50ms with 2 disk seeks. After: 2ms from index cache only.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>When designing schemas: 'For the users table, I'd add a unique index on (email) for login lookups, a composite index on (status, created_at) for admin filtering, and ensure our primary query uses a covering index to avoid heap lookups. I'd monitor unused indexes periodically and drop them to reduce write overhead.'</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.16.3 Query Optimization</h3><span class="badge">Performance</span></div><div class="card-body">
+<table><tr><th>Problem</th><th>Symptom</th><th>Solution</th></tr>
+<tr><td>N+1 Query</td><td>100 orders -> 101 queries (1 list + 100 detail)</td><td>JOIN fetch or batch loading (IN clause)</td></tr>
+<tr><td>Full Table Scan</td><td>Slow query on large table, no index used</td><td>Add appropriate index, check EXPLAIN plan</td></tr>
+<tr><td>Over-fetching</td><td>SELECT * when only 3 columns needed</td><td>Projection (select specific columns), DTOs</td></tr>
+<tr><td>Cartesian Join</td><td>Missing join condition, explosive row count</td><td>Always specify ON clause, review EXPLAIN</td></tr>
+<tr><td>Lock Contention</td><td>Deadlocks, timeout on hot rows</td><td>Optimistic locking, shorter transactions, consistent order</td></tr>
+</table>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.16.4 Connection Pooling</h3><span class="badge">Performance</span></div><div class="card-body">
+<p>Reusing pre-established DB connections avoids the 50–100ms TCP+TLS+auth cost on every query — a major latency win under load.</p>
+<div class="see-also">→ HikariCP sizing, HTTP connection pooling, and PgBouncer multiplexing are covered in full on the <a href="4.6-caching.html">Caching</a> page (4.6.3 Connection Pooling).</div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.16.5 Compression</h3><span class="badge">Performance</span></div><div class="card-body">
+<table><tr><th>Level</th><th>Technique</th><th>Ratio</th><th>Use Case</th></tr>
+<tr><td>Network</td><td>gzip/Brotli (HTTP), Protocol Buffers</td><td>60-90% reduction</td><td>API responses, inter-service calls</td></tr>
+<tr><td>Storage</td><td>Snappy, LZ4, Zstandard</td><td>40-70% reduction</td><td>Kafka messages, columnar files</td></tr>
+<tr><td>Database</td><td>Column compression, TOAST (PostgreSQL)</td><td>Varies</td><td>Large text/JSON fields, time-series data</td></tr>
+</table>
+<div class="trade-off-box"><h4>Trade-off: Performance vs Complexity</h4>
+<ul>
+<li><strong>Premature optimization:</strong> Adding caching/indexes before understanding access patterns wastes effort and adds complexity</li>
+<li><strong>Measure first:</strong> Use APM (Application Performance Monitoring) to identify actual bottlenecks before optimizing</li>
+<li><strong>Cache invalidation:</strong> "The two hardest problems in CS: cache invalidation, naming things, and off-by-one errors." Every cache adds a consistency challenge.</li>
+</ul></div>
+<div class="production-insight"><h4>Production Example</h4><p><strong>Google:</strong> Uses Brotli compression for all web assets — 20-26% smaller than gzip at comparable CPU cost. For internal data: Zstandard (zstd) compresses Bigtable column families — 3-5x compression ratio with decompression at 1.5 GB/s (fast enough to be I/O-bound, not CPU-bound). Net effect: more data fits in memory cache.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention compression at appropriate layers: 'API responses use gzip/Brotli (Accept-Encoding). Database uses page-level compression (PostgreSQL TOAST, RocksDB LZ4). Network: gRPC has built-in compression for internal RPCs. Kafka: producer-side compression (LZ4) reduces network bandwidth by 70% with minimal CPU overhead.'</p></div>
+</div></div>
+<div class="page-nav">
+<a href="4.15-storage.html">&#8592; Previous: 4.15 Storage</a>
+<a href="4.17-tradeoffs.html">Next: 4.17 Trade-offs &#8594;</a>
+</div>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

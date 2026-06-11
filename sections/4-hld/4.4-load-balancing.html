@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4.4 Load Balancing - Interview Prep</title>
+<link rel="stylesheet" href="../../assets/styles.css">
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">&#9776;</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">&#9681;</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays & Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees & Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps & Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP & Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - LLD</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="4.3-networking.html">4.3 Networking</a></li>
+<li><a href="4.4-load-balancing.html">4.4 Load Balancing</a></li>
+<li><a href="4.5-databases.html">4.5 Databases</a></li>
+<li><a href="4.6-caching.html">4.6 Caching</a></li>
+<li><a href="4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="4.8-messaging.html">4.8 Messaging</a></li>
+<li><a href="4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="4.10-scalability.html">4.10 Scalability</a></li>
+<li><a href="4.11-resilience.html">4.11 Resilience</a></li>
+<li><a href="4.12-security.html">4.12 Security</a></li>
+<li><a href="4.13-observability.html">4.13 Observability</a></li>
+<li><a href="4.14-cloud.html">4.14 Cloud</a></li>
+<li><a href="4.15-storage.html">4.15 Storage</a></li>
+<li><a href="4.16-performance.html">4.16 Performance</a></li>
+<li><a href="4.17-tradeoffs.html">4.17 Trade-offs</a></li>
+<li><a href="4.18-system-design-problems.html">4.18 SD Problems</a></li>
+<li><a href="4.19-consistency.html">4.19 Consistency</a></li>
+<li><a href="4.20-microservices.html">4.20 Microservices</a></li>
+<li><a href="4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="4.22-concurrency.html">4.22 Concurrency</a></li>
+<li><a href="4.23-devops.html">4.23 DevOps</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Ops Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input type="text" id="searchInput" placeholder="Search topics... (Ctrl+K)"><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div class="section-block section-s4" id="s4-loadbalancing"><h2 class="section-title"><span class="section-num">4.4</span>Load Balancing & Traffic Management</h2>
+<div class="card"><div class="card-header"><h3>4.4.1 L4 vs L7 Load Balancing</h3><span class="badge">Infrastructure</span></div><div class="card-body">
+<table><tr><th>Layer</th><th>Operates On</th><th>Speed</th><th>Features</th><th>Examples</th></tr>
+<tr><td>L4 (Transport)</td><td>TCP/UDP packets</td><td>Very fast (hardware)</td><td>IP/port routing only</td><td>AWS NLB, HAProxy (TCP mode)</td></tr>
+<tr><td>L7 (Application)</td><td>HTTP requests</td><td>Moderate</td><td>URL routing, headers, SSL termination</td><td>AWS ALB, Nginx, Envoy</td></tr>
+</table>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Cloudflare:</strong> L4 (TCP) load balancing for raw throughput (gaming, IoT). L7 (HTTP) for smart routing — inspects headers to route /api/* to backend clusters and /static/* to CDN. Processes 45M+ HTTP requests/second at L7.</p>
+</div>
+<div class="trade-off-box"><h4>Trade-off: L4 vs L7 Load Balancing</h4><p>L4 (TCP): faster (no packet inspection), handles any protocol, but can't route based on content. L7 (HTTP): smarter routing (URL path, headers, cookies), can terminate TLS, enable caching, but adds latency from packet inspection. Use L4 for raw throughput (gaming, streaming); L7 for web apps needing content-based routing.</p></div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>In system design, always specify L7: "We use an L7 load balancer (ALB/Nginx) that routes /api/* to backend service pods and /static/* to a CDN origin. Health checks at L7 verify HTTP 200 responses, not just TCP connectivity — catches application-level failures."</p></div>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.4.2 Algorithms</h3><span class="badge">Infrastructure</span></div><div class="card-body">
+<table><tr><th>Algorithm</th><th>Best For</th><th>Weakness</th></tr>
+<tr><td>Round Robin</td><td>Homogeneous servers, simple</td><td>Ignores server load/capacity</td></tr>
+<tr><td>Weighted Round Robin</td><td>Heterogeneous servers</td><td>Static weights, no real-time adaptation</td></tr>
+<tr><td>Least Connections</td><td>Long-lived connections</td><td>Doesn't account for request weight</td></tr>
+<tr><td>IP Hash</td><td>Session affinity without cookies</td><td>Uneven distribution, hot spots</td></tr>
+<tr><td>Consistent Hashing</td><td>Distributed caches, minimal redistribution</td><td>Implementation complexity, vnodes needed</td></tr>
+</table>
+</div></div>
+
+<div class="card"><div class="card-header"><h3>4.4.3 CDN: Push vs Pull</h3><span class="badge">Infrastructure</span></div><div class="card-body">
+<pre><code>// PUSH CDN: You upload content to CDN. Good for static content you control.
+// Pro: Content always available immediately. Con: Must manage uploads.
+// Example: Upload video to CloudFront after encoding.
+
+// PULL CDN: CDN fetches from origin on first request, caches.
+// Pro: No upload management. Con: First request slow (cache miss).
+// Example: Web assets, API responses with Cache-Control headers.
+
+// Cache Invalidation patterns:
+// 1. TTL-based: Cache-Control: max-age=3600
+// 2. Version in URL: /static/bundle.a3f2b1.js (immutable + new URL on change)
+// 3. Purge API: POST /purge (CloudFront invalidation)
+// Best practice: immutable + versioned URLs for assets, short TTL for API responses</code></pre>
+<div class="trade-off-box"><h4>Trade-off: CDN Cache Invalidation</h4>
+<ul>
+<li><strong>Short TTL (seconds):</strong> Fresh content, more origin load, higher latency for users</li>
+<li><strong>Long TTL (days):</strong> Better performance, stale content risk, need purge mechanism</li>
+<li><strong>Best: Immutable URLs</strong> (hash in filename) with infinite cache + new URL on deploy. Zero staleness, maximum caching.</li>
+</ul></div>
+<div class="production-insight"><h4>Production Example</h4>
+<p><strong>Netflix Open Connect:</strong> Custom CDN with servers physically inside ISP networks. Caches popular content locally — 95% of traffic served from ISP-local boxes. Reduces Netflix bandwidth from crossing the internet backbone, saving ISPs money and improving user experience (lower latency, fewer buffering events).</p>
+</div>
+<div class="interview-tip"><h4>Interview Tip</h4><p>Mention CDN early in any design serving global users: "Static assets (JS, CSS, images) served via CDN with long cache TTL. API responses for popular queries cached at CDN edge with short TTL (30s) — reduces origin load by 80% for read-heavy workloads like news feeds."</p></div>
+</div></div>
+</div>
+
+<div class="page-nav">
+<a href="4.3-networking.html">&#8592; Previous: 4.3 Networking</a>
+<a href="4.5-databases.html">Next: 4.5 Databases &#8594;</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">&#8593;</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>

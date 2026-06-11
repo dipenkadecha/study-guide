@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>3.1 SOLID Principles - Interview Prep</title>
+<link href="../../assets/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">☰</button>
+<nav class="sidebar" id="sidebar">
+<div class="sidebar-header"><h2>Study Dashboard</h2><button class="theme-btn" id="themeToggle" title="Toggle Theme">◑</button></div>
+<div class="nav-section"><div class="nav-section-title">Section 1 - Foundations</div><ul class="nav-list">
+<li><a href="../../sections/1-foundations/1.1-java-deep-dive.html">1.1 Java Deep Dive</a></li>
+<li><a href="../../sections/1-foundations/1.2-spring-boot.html">1.2 Spring Boot &amp; Reactive</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 2 - DSA &amp; Algorithms</div><ul class="nav-list">
+<li><a href="../../sections/2-dsa/2.1-arrays-strings.html">2.1 Arrays &amp; Strings</a></li>
+<li><a href="../../sections/2-dsa/2.2-hashing.html">2.2 Hashing &amp; HashMaps</a></li>
+<li><a href="../../sections/2-dsa/2.3-trees-graphs.html">2.3 Trees &amp; Graphs</a></li>
+<li><a href="../../sections/2-dsa/2.4-heaps-tries.html">2.4 Heaps &amp; Tries</a></li>
+<li><a href="../../sections/2-dsa/2.5-dp-greedy.html">2.5 DP &amp; Greedy</a></li>
+<li><a href="../../sections/2-dsa/2.6-concurrency-ds.html">2.6 Concurrency Structures</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 3 - Low-Level Design</div><ul class="nav-list">
+<li><a href="../../sections/3-lld/3.1-solid.html">3.1 SOLID Principles</a></li>
+<li><a href="../../sections/3-lld/3.2-creational.html">3.2 Creational Patterns</a></li>
+<li><a href="../../sections/3-lld/3.3-structural.html">3.3 Structural Patterns</a></li>
+<li><a href="../../sections/3-lld/3.4-behavioral-patterns.html">3.4 Behavioral Patterns</a></li>
+<li><a href="../../sections/3-lld/3.5-lld-problems.html">3.5 LLD Problems</a></li>
+<li><a href="../../sections/3-lld/3.6-testing.html">3.6 Testing Strategies</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 4 - System Design (HLD)</div><ul class="nav-list">
+<li><a href="../../sections/4-hld/4.0-overview.html">4.0 Overview &amp; Topic Index</a></li>
+<li><a href="../../sections/4-hld/4.1-core-fundamentals.html">4.1 Core Fundamentals</a></li>
+<li><a href="../../sections/4-hld/4.2-architecture-patterns.html">4.2 Architecture Patterns</a></li>
+<li><a href="../../sections/4-hld/4.3-networking.html">4.3 Networking &amp; Communication</a></li>
+<li><a href="../../sections/4-hld/4.4-load-balancing.html">4.4 Load Balancing &amp; Traffic</a></li>
+<li><a href="../../sections/4-hld/4.5-databases.html">4.5 Database Design</a></li>
+<li><a href="../../sections/4-hld/4.6-caching.html">4.6 Caching</a></li>
+<li><a href="../../sections/4-hld/4.7-data-processing.html">4.7 Data Processing</a></li>
+<li><a href="../../sections/4-hld/4.8-messaging.html">4.8 Messaging &amp; Async</a></li>
+<li><a href="../../sections/4-hld/4.9-distributed-systems.html">4.9 Distributed Systems</a></li>
+<li><a href="../../sections/4-hld/4.10-scalability.html">4.10 Scalability Techniques</a></li>
+<li><a href="../../sections/4-hld/4.11-resilience.html">4.11 Reliability &amp; Resilience</a></li>
+<li><a href="../../sections/4-hld/4.12-security.html">4.12 Security</a></li>
+<li><a href="../../sections/4-hld/4.13-observability.html">4.13 Observability &amp; Monitoring</a></li>
+<li><a href="../../sections/4-hld/4.14-cloud.html">4.14 Cloud &amp; Infrastructure</a></li>
+<li><a href="../../sections/4-hld/4.15-storage.html">4.15 Storage Systems</a></li>
+<li><a href="../../sections/4-hld/4.16-performance.html">4.16 Performance Optimization</a></li>
+<li><a href="../../sections/4-hld/4.17-tradeoffs.html">4.17 Design Trade-offs</a></li>
+<li><a href="../../sections/4-hld/4.18-system-design-problems.html">4.18 Common SD Problems</a></li>
+<li><a href="../../sections/4-hld/4.19-consistency.html">4.19 Consistency Patterns</a></li>
+<li><a href="../../sections/4-hld/4.20-microservices.html">4.20 Microservices Patterns</a></li>
+<li><a href="../../sections/4-hld/4.21-data-structures.html">4.21 SD Data Structures</a></li>
+<li><a href="../../sections/4-hld/4.22-concurrency.html">4.22 Concurrency &amp; Locking</a></li>
+<li><a href="../../sections/4-hld/4.23-devops.html">4.23 DevOps &amp; Deployment</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Section 5 - Behavioral</div><ul class="nav-list">
+<li><a href="../../sections/5-behavioral/5.1-star-method.html">5.1 STAR Method</a></li>
+<li><a href="../../sections/5-behavioral/5.2-technical-decisions.html">5.2 Technical Decisions</a></li>
+<li><a href="../../sections/5-behavioral/5.3-conflict-mentoring.html">5.3 Conflict &amp; Mentoring</a></li>
+<li><a href="../../sections/5-behavioral/5.4-operational-excellence.html">5.4 Operational Excellence</a></li>
+<li><a href="../../sections/5-behavioral/5.5-technical-writing.html">5.5 Technical Writing</a></li>
+<li><a href="../../sections/5-behavioral/5.6-sde3-expectations.html">5.6 SDE3 Expectations</a></li>
+</ul></div>
+<div class="nav-section"><div class="nav-section-title">Reference</div><ul class="nav-list">
+<li><a href="../../sections/reference/quick-reference.html">Quick Reference</a></li>
+</ul></div>
+</nav>
+<main class="main-content" id="mainContent">
+<div class="top-bar">
+<div class="search-box"><input id="searchInput" placeholder="Search topics... (Ctrl+K)" type="text"/><div class="search-results" id="searchResults"></div></div>
+<button class="collapse-btn" id="collapseAll">Collapse All</button>
+</div>
+<div class="section-block section-s3" id="s3-solid"><h2 class="section-title"><span class="section-num">3.1</span>SOLID Principles</h2>
+<div class="card"><div class="card-header"><h3>3.1.1 S - Single Responsibility Principle</h3><span class="badge">Foundation</span></div><div class="card-body">
+<pre><code>// BAD: OrderService handles orders, emails, and PDFs
+public class OrderService {
+    public Order createOrder(OrderRequest req) { ... }
+    public void sendConfirmationEmail(Order order) { ... }  // Not its job
+    public byte[] generateInvoicePdf(Order order) { ... }   // Not its job
+}
+
+// GOOD: Each class has one reason to change
+public class OrderService {
+    private final OrderRepository repo;
+    private final EventPublisher events;
+
+    public Order createOrder(OrderRequest req) {
+        Order order = Order.from(req);
+        repo.save(order);
+        events.publish(new OrderCreatedEvent(order)); // Others react to event
+        return order;
+    }
+}
+// EmailService listens to OrderCreatedEvent -&gt; sends email
+// InvoiceService listens to OrderCreatedEvent -&gt; generates PDF</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>3.1.2 O - Open/Closed Principle</h3><span class="badge">Foundation</span></div><div class="card-body">
+<pre><code>// Open for extension, closed for modification
+// BAD: Adding new payment type requires modifying existing code
+public BigDecimal calculateFee(Payment payment) {
+    if (payment.type == CREDIT_CARD) return amount.multiply(0.029);
+    else if (payment.type == PAYPAL) return amount.multiply(0.034);
+    // Must modify this method for every new payment type
+}
+
+// GOOD: Strategy pattern - extend without modifying
+public interface FeeCalculator {
+    BigDecimal calculate(BigDecimal amount);
+    PaymentType supports();
+}
+
+@Component
+public class CreditCardFeeCalculator implements FeeCalculator {
+    public BigDecimal calculate(BigDecimal amount) { return amount.multiply(new BigDecimal("0.029")); }
+    public PaymentType supports() { return PaymentType.CREDIT_CARD; }
+}
+// Add new payment type = add new class, zero changes to existing code</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>3.1.3 L - Liskov Substitution Principle</h3><span class="badge">Foundation</span></div><div class="card-body">
+<pre><code>// Subtypes must be substitutable for their base types without breaking behavior
+// Classic violation: Square extends Rectangle
+// BAD:
+class Rectangle { void setWidth(int w); void setHeight(int h); }
+class Square extends Rectangle {
+    void setWidth(int w) { super.setWidth(w); super.setHeight(w); } // Breaks Rectangle contract
+}
+
+// GOOD: Use composition or separate hierarchy
+sealed interface Shape permits Rectangle, Square, Circle {
+    double area();
+}
+record Rectangle(double width, double height) implements Shape {
+    public double area() { return width * height; }
+}
+record Square(double side) implements Shape {
+    public double area() { return side * side; }
+}</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>3.1.4 I - Interface Segregation Principle</h3><span class="badge">Foundation</span></div><div class="card-body">
+<pre><code>// BAD: Fat interface forces unnecessary implementations
+interface UserRepository {
+    User findById(String id);
+    List&lt;User&gt; findAll();
+    void save(User user);
+    void delete(String id);
+    List&lt;User&gt; findByComplexCriteria(Criteria c); // Not all clients need this
+    void bulkImport(List&lt;User&gt; users);             // Only admin needs this
+}
+
+// GOOD: Segregated interfaces
+interface UserReader { User findById(String id); List&lt;User&gt; findAll(); }
+interface UserWriter { void save(User user); void delete(String id); }
+interface UserBulkOps { void bulkImport(List&lt;User&gt; users); }
+// Clients depend only on what they use</code></pre>
+</div></div>
+<div class="card"><div class="card-header"><h3>3.1.5 D - Dependency Inversion Principle</h3><span class="badge">Foundation</span></div><div class="card-body">
+<pre><code>// High-level modules should not depend on low-level modules.
+// Both should depend on abstractions.
+
+// BAD: OrderService directly depends on MySQLOrderRepository
+public class OrderService {
+    private MySQLOrderRepository repo = new MySQLOrderRepository(); // Tight coupling
+}
+
+// GOOD: Depend on abstraction
+public class OrderService {
+    private final OrderRepository repo; // Interface - can be MySQL, Mongo, InMemory
+
+    public OrderService(OrderRepository repo) { this.repo = repo; }
+}
+// In tests: new OrderService(new InMemoryOrderRepository())
+// In prod: Spring injects MySQLOrderRepository</code></pre>
+<div class="interview-tip"><h4>Interview Tip</h4>
+<p>When asked about SOLID, always give the principle + a real violation you've seen in production + how you refactored it. Shows practical experience, not just textbook knowledge.</p></div></div>
+</div>
+</div>
+<div class="page-nav">
+<a href="../../sections/2-dsa/2.6-concurrency-ds.html">← Previous: 2.6 Concurrency</a>
+<a href="3.2-creational.html">Next: 3.2 Creational →</a>
+</div>
+</main>
+<button class="back-to-top" id="backToTop" title="Back to top">↑</button>
+<script src="../../assets/scripts.js"></script>
+</body>
+</html>
